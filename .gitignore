@@ -1,3 +1,6 @@
+# Project description (local only)
+project-description/
+
 # Log files (large)
 logs/*.log
 logs/*.log.gz
