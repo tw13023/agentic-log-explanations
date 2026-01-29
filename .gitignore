@@ -1,0 +1,33 @@
+# Log files (large)
+logs/*.log
+logs/*.log.gz
+logs/*.gz
+
+# Keep the label file (small)
+!logs/anomaly_label_HDFS.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

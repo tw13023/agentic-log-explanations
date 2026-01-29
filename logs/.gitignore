@@ -1,0 +1,4 @@
+*.log
+HDFS.log
+HDFS_part_*
+!HDFS_part_*.gz
