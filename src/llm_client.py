@@ -1,19 +1,51 @@
 """
-LLM Client for local models.
+Unified LLM Client using OpenAI-compatible API.
 
 Supports:
-- Ollama (REST API)
-- llama-cpp-python (direct GGUF loading)
+- OpenAI (GPT-4o, GPT-4, etc.)
+- Ollama (local, OpenAI-compatible endpoint)
+- Any OpenAI-compatible API
 
-Provides a simple interface to interact with locally-running LLM models.
+Single client, multiple providers - just change base_url.
 """
 
 import json
 import time
-from typing import Dict, Optional, Any, Generator, Union
+import os
+from typing import Dict, Optional, Tuple
 from dataclasses import dataclass, field
-from pathlib import Path
 import requests
+
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
+
+# Provider presets
+PROVIDERS = {
+    "openai": {
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "default_model": "gpt-4o",
+    },
+    "ollama": {
+        "base_url": "http://localhost:11434/v1",
+        "api_key_env": None,  # Ollama doesn't need API key
+        "default_model": "llama3.1:8b",
+    },
+}
+
+# Pricing per 1M tokens (OpenAI only)
+PRICING = {
+    "gpt-4o": {"input": 2.50, "output": 10.00},
+    "gpt-4o-mini": {"input": 0.15, "output": 0.60},
+    "gpt-4-turbo": {"input": 10.00, "output": 30.00},
+    "gpt-4": {"input": 30.00, "output": 60.00},
+    "gpt-3.5-turbo": {"input": 0.50, "output": 1.50},
+}
 
 
 @dataclass
@@ -25,12 +57,8 @@ class LLMResponse:
     completion_tokens: int = 0
     total_tokens: int = 0
     latency_ms: float = 0.0
+    cost_usd: float = 0.0
     raw_response: Dict = field(default_factory=dict)
-    
-    @property
-    def total_cost_estimate(self) -> float:
-        """Estimate cost (for local models, this is always 0)."""
-        return 0.0
     
     def to_dict(self) -> Dict:
         return {
@@ -39,83 +67,112 @@ class LLMResponse:
             "prompt_tokens": self.prompt_tokens,
             "completion_tokens": self.completion_tokens,
             "total_tokens": self.total_tokens,
-            "latency_ms": self.latency_ms
+            "latency_ms": self.latency_ms,
+            "cost_usd": self.cost_usd,
         }
 
 
-class LlamaCppClient:
+class LLMClient:
     """
-    Client for llama-cpp-python (direct GGUF model loading).
-    
-    This loads GGUF models directly without needing a server.
-    Better for POC and experimentation.
+    Unified LLM client using OpenAI-compatible API.
     
     Usage:
-        client = LlamaCppClient(model_path="/path/to/model.gguf")
-        response = client.generate("Explain this log anomaly...")
+        # OpenAI
+        client = LLMClient(provider="openai", model="gpt-4o")
+        
+        # Ollama (local)
+        client = LLMClient(provider="ollama", model="llama3.1:8b")
+        
+        # Custom endpoint
+        client = LLMClient(base_url="http://my-server/v1", model="my-model")
+        
+        # Generate
+        response = client.generate("Explain this anomaly...")
+        print(response.content)
     """
     
     def __init__(
         self,
-        model_path: str,
-        n_ctx: int = 4096,
-        n_gpu_layers: int = -1,  # -1 = all layers on GPU
+        provider: str = "ollama",
+        model: Optional[str] = None,
+        base_url: Optional[str] = None,
+        api_key: Optional[str] = None,
         temperature: float = 0.1,
         max_tokens: int = 1024,
-        verbose: bool = False
+        timeout: int = 120,
     ):
         """
-        Initialize llama-cpp client.
+        Initialize LLM client.
         
         Args:
-            model_path: Path to GGUF model file
-            n_ctx: Context window size
-            n_gpu_layers: Number of layers to offload to GPU (-1 for all)
+            provider: "openai", "ollama", or custom
+            model: Model name (uses provider default if not specified)
+            base_url: Override provider's base URL
+            api_key: API key (or set via environment variable)
             temperature: Sampling temperature
             max_tokens: Maximum tokens in response
-            verbose: Print llama.cpp logs
+            timeout: Request timeout in seconds
         """
-        self.model_path = Path(model_path)
-        self.n_ctx = n_ctx
-        self.n_gpu_layers = n_gpu_layers
+        # Get provider config
+        if provider in PROVIDERS:
+            config = PROVIDERS[provider]
+            self.base_url = base_url or config["base_url"]
+            self.model = model or config["default_model"]
+            env_key = config.get("api_key_env")
+            self.api_key = api_key or (os.environ.get(env_key) if env_key else None)
+        else:
+            # Custom provider
+            if not base_url:
+                raise ValueError(f"base_url required for custom provider '{provider}'")
+            self.base_url = base_url
+            self.model = model or "default"
+            self.api_key = api_key
+        
+        self.provider = provider
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.verbose = verbose
+        self.timeout = timeout
         
-        self._llm = None
-        self._loaded = False
-    
-    def _load_model(self):
-        """Lazy load the model."""
-        if self._loaded:
-            return
-        
-        try:
-            from llama_cpp import Llama
-        except ImportError:
-            raise ImportError(
-                "Please install llama-cpp-python: pip install llama-cpp-python"
-            )
-        
-        if not self.model_path.exists():
-            raise FileNotFoundError(f"Model not found: {self.model_path}")
-        
-        print(f"Loading model from {self.model_path}...")
-        start = time.time()
-        
-        self._llm = Llama(
-            model_path=str(self.model_path),
-            n_ctx=self.n_ctx,
-            n_gpu_layers=self.n_gpu_layers,
-            verbose=self.verbose
-        )
-        
-        print(f"Model loaded in {time.time() - start:.1f}s")
-        self._loaded = True
+        # Setup session
+        self._session = requests.Session()
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
+        self._session.headers.update(headers)
     
     def is_available(self) -> bool:
-        """Check if model file exists."""
-        return self.model_path.exists()
+        """Check if LLM server is accessible."""
+        try:
+            response = self._session.get(
+                f"{self.base_url}/models",
+                timeout=5
+            )
+            return response.status_code == 200
+        except Exception:
+            return False
+    
+    def list_models(self) -> list:
+        """List available models."""
+        try:
+            response = self._session.get(
+                f"{self.base_url}/models",
+                timeout=10
+            )
+            if response.status_code == 200:
+                data = response.json()
+                return [m.get("id", m.get("name", "")) for m in data.get("data", data.get("models", []))]
+            return []
+        except Exception:
+            return []
+    
+    def _calculate_cost(self, prompt_tokens: int, completion_tokens: int) -> float:
+        """Calculate cost in USD (OpenAI only)."""
+        for key, pricing in PRICING.items():
+            if key in self.model:
+                input_cost = (prompt_tokens / 1_000_000) * pricing["input"]
+                output_cost = (completion_tokens / 1_000_000) * pricing["output"]
+                return input_cost + output_cost
+        return 0.0
     
     def generate(
         self,
@@ -123,112 +180,107 @@ class LlamaCppClient:
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
         max_tokens: Optional[int] = None,
-        json_mode: bool = False
+        json_mode: bool = False,
     ) -> LLMResponse:
         """
-        Generate a response from the LLM.
+        Generate a response.
         
         Args:
             prompt: User prompt
             system_prompt: Optional system prompt
             temperature: Override default temperature
             max_tokens: Override default max tokens
-            json_mode: If True, add JSON grammar constraints
+            json_mode: Request JSON output format
             
         Returns:
             LLMResponse object
         """
-        self._load_model()
-        
-        start_time = time.time()
-        
-        # Build full prompt
-        full_prompt = ""
+        messages = []
         if system_prompt:
-            full_prompt = f"<|system|>\n{system_prompt}</s>\n"
-        full_prompt += f"<|user|>\n{prompt}</s>\n<|assistant|>\n"
+            messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": prompt})
         
-        # Generation kwargs
-        kwargs = {
-            "max_tokens": max_tokens or self.max_tokens,
-            "temperature": temperature or self.temperature,
-            "stop": ["</s>", "<|user|>", "<|endoftext|>"],
-            "echo": False
-        }
-        
-        # For JSON mode, we can add a grammar constraint if needed
-        if json_mode:
-            kwargs["stop"].append("\n\n")
-        
-        result = self._llm(full_prompt, **kwargs)
-        
-        latency_ms = (time.time() - start_time) * 1000
-        
-        content = result["choices"][0]["text"].strip()
-        usage = result.get("usage", {})
-        
-        return LLMResponse(
-            content=content,
-            model=str(self.model_path.name),
-            prompt_tokens=usage.get("prompt_tokens", 0),
-            completion_tokens=usage.get("completion_tokens", 0),
-            total_tokens=usage.get("total_tokens", 0),
-            latency_ms=latency_ms,
-            raw_response=result
-        )
+        return self.chat(messages, temperature, max_tokens, json_mode)
     
     def chat(
         self,
         messages: list,
         temperature: Optional[float] = None,
         max_tokens: Optional[int] = None,
-        json_mode: bool = False
+        json_mode: bool = False,
     ) -> LLMResponse:
         """
-        Chat completion with message history.
+        Chat with message history.
         
         Args:
-            messages: List of {"role": "user/assistant/system", "content": "..."}
+            messages: List of {"role": "...", "content": "..."} dicts
             temperature: Override default temperature
             max_tokens: Override default max tokens
-            json_mode: If True, request JSON output
+            json_mode: Request JSON output format
             
         Returns:
             LLMResponse object
         """
-        self._load_model()
-        
         start_time = time.time()
         
-        result = self._llm.create_chat_completion(
-            messages=messages,
-            max_tokens=max_tokens or self.max_tokens,
-            temperature=temperature or self.temperature,
-            stop=["</s>"]
-        )
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "temperature": temperature if temperature is not None else self.temperature,
+            "max_tokens": max_tokens or self.max_tokens,
+        }
         
-        latency_ms = (time.time() - start_time) * 1000
+        if json_mode:
+            payload["response_format"] = {"type": "json_object"}
         
-        content = result["choices"][0]["message"]["content"].strip()
-        usage = result.get("usage", {})
-        
-        return LLMResponse(
-            content=content,
-            model=str(self.model_path.name),
-            prompt_tokens=usage.get("prompt_tokens", 0),
-            completion_tokens=usage.get("completion_tokens", 0),
-            total_tokens=usage.get("total_tokens", 0),
-            latency_ms=latency_ms,
-            raw_response=result
-        )
+        try:
+            response = self._session.post(
+                f"{self.base_url}/chat/completions",
+                json=payload,
+                timeout=self.timeout,
+            )
+            response.raise_for_status()
+            
+            data = response.json()
+            latency_ms = (time.time() - start_time) * 1000
+            
+            # Extract usage (OpenAI format)
+            usage = data.get("usage", {})
+            prompt_tokens = usage.get("prompt_tokens", 0)
+            completion_tokens = usage.get("completion_tokens", 0)
+            
+            return LLMResponse(
+                content=data["choices"][0]["message"]["content"],
+                model=self.model,
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
+                total_tokens=usage.get("total_tokens", prompt_tokens + completion_tokens),
+                latency_ms=latency_ms,
+                cost_usd=self._calculate_cost(prompt_tokens, completion_tokens),
+                raw_response=data,
+            )
+            
+        except requests.exceptions.HTTPError as e:
+            error_msg = str(e)
+            if e.response is not None:
+                try:
+                    error_data = e.response.json()
+                    error_msg = error_data.get("error", {}).get("message", error_msg)
+                except:
+                    pass
+            raise RuntimeError(f"LLM API error: {error_msg}")
+        except requests.exceptions.Timeout:
+            raise RuntimeError(f"LLM API timeout after {self.timeout}s")
+        except Exception as e:
+            raise RuntimeError(f"LLM API error: {e}")
     
     def generate_json(
         self,
         prompt: str,
         system_prompt: Optional[str] = None,
         temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None
-    ) -> tuple[Dict, LLMResponse]:
+        max_tokens: Optional[int] = None,
+    ) -> Tuple[Dict, LLMResponse]:
         """
         Generate a JSON response.
         
@@ -240,353 +292,60 @@ class LlamaCppClient:
             system_prompt=system_prompt,
             temperature=temperature,
             max_tokens=max_tokens,
-            json_mode=True
+            json_mode=True,
         )
         
         content = response.content.strip()
         
-        # Handle potential markdown code blocks
+        # Clean up markdown code blocks if present
         if content.startswith("```"):
             lines = content.split("\n")
-            end_idx = -1 if lines[-1].strip() in ("```", "```json") else len(lines)
-            content = "\n".join(lines[1:end_idx])
+            content = "\n".join(lines[1:-1] if lines[-1].startswith("```") else lines[1:])
         
-        # Try to find JSON in the response
-        # Sometimes models add text before/after JSON
+        # Find JSON boundaries
         json_start = content.find("{")
         json_end = content.rfind("}") + 1
         if json_start >= 0 and json_end > json_start:
             content = content[json_start:json_end]
         
         parsed = json.loads(content)
-        
         return parsed, response
 
 
-class OllamaClient:
-    """
-    Client for Ollama local LLM server.
-    
-    Ollama must be running locally (default: http://localhost:11434)
-    
-    Usage:
-        client = OllamaClient(model="llama3.2")
-        response = client.generate("Explain this log anomaly...")
-    """
-    
-    def __init__(
-        self,
-        model: str = "llama3.2",
-        base_url: str = "http://localhost:11434",
-        temperature: float = 0.1,
-        max_tokens: int = 1024,
-        timeout: int = 120
-    ):
-        """
-        Initialize Ollama client.
-        
-        Args:
-            model: Model name (e.g., "llama3.2", "llama3.1", "mistral", "codellama")
-            base_url: Ollama server URL
-            temperature: Sampling temperature (lower = more deterministic)
-            max_tokens: Maximum tokens in response
-            timeout: Request timeout in seconds
-        """
-        self.model = model
-        self.base_url = base_url.rstrip("/")
-        self.temperature = temperature
-        self.max_tokens = max_tokens
-        self.timeout = timeout
-        
-        self._session = requests.Session()
-    
-    def is_available(self) -> bool:
-        """Check if Ollama server is running and model is available."""
-        try:
-            response = self._session.get(
-                f"{self.base_url}/api/tags",
-                timeout=5
-            )
-            if response.status_code == 200:
-                models = response.json().get("models", [])
-                model_names = [m.get("name", "").split(":")[0] for m in models]
-                return self.model.split(":")[0] in model_names
-            return False
-        except Exception:
-            return False
-    
-    def list_models(self) -> list:
-        """List available models on the Ollama server."""
-        try:
-            response = self._session.get(
-                f"{self.base_url}/api/tags",
-                timeout=5
-            )
-            if response.status_code == 200:
-                return response.json().get("models", [])
-            return []
-        except Exception:
-            return []
-    
-    def generate(
-        self,
-        prompt: str,
-        system_prompt: Optional[str] = None,
-        temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None,
-        json_mode: bool = False
-    ) -> LLMResponse:
-        """
-        Generate a response from the LLM.
-        
-        Args:
-            prompt: User prompt
-            system_prompt: Optional system prompt
-            temperature: Override default temperature
-            max_tokens: Override default max tokens
-            json_mode: If True, request JSON output format
-            
-        Returns:
-            LLMResponse object
-        """
-        start_time = time.time()
-        
-        # Build request payload
-        payload = {
-            "model": self.model,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
-                "temperature": temperature or self.temperature,
-                "num_predict": max_tokens or self.max_tokens
-            }
-        }
-        
-        if system_prompt:
-            payload["system"] = system_prompt
-        
-        if json_mode:
-            payload["format"] = "json"
-        
-        try:
-            response = self._session.post(
-                f"{self.base_url}/api/generate",
-                json=payload,
-                timeout=self.timeout
-            )
-            response.raise_for_status()
-            
-            data = response.json()
-            latency_ms = (time.time() - start_time) * 1000
-            
-            return LLMResponse(
-                content=data.get("response", ""),
-                model=self.model,
-                prompt_tokens=data.get("prompt_eval_count", 0),
-                completion_tokens=data.get("eval_count", 0),
-                total_tokens=data.get("prompt_eval_count", 0) + data.get("eval_count", 0),
-                latency_ms=latency_ms,
-                raw_response=data
-            )
-            
-        except requests.exceptions.Timeout:
-            raise TimeoutError(f"Ollama request timed out after {self.timeout}s")
-        except requests.exceptions.ConnectionError:
-            raise ConnectionError(
-                f"Cannot connect to Ollama at {self.base_url}. "
-                "Make sure Ollama is running: `ollama serve`"
-            )
-        except requests.exceptions.HTTPError as e:
-            raise RuntimeError(f"Ollama HTTP error: {e}")
-    
-    def chat(
-        self,
-        messages: list,
-        temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None,
-        json_mode: bool = False
-    ) -> LLMResponse:
-        """
-        Chat completion with message history.
-        
-        Args:
-            messages: List of {"role": "user/assistant/system", "content": "..."}
-            temperature: Override default temperature
-            max_tokens: Override default max tokens
-            json_mode: If True, request JSON output format
-            
-        Returns:
-            LLMResponse object
-        """
-        start_time = time.time()
-        
-        payload = {
-            "model": self.model,
-            "messages": messages,
-            "stream": False,
-            "options": {
-                "temperature": temperature or self.temperature,
-                "num_predict": max_tokens or self.max_tokens
-            }
-        }
-        
-        if json_mode:
-            payload["format"] = "json"
-        
-        try:
-            response = self._session.post(
-                f"{self.base_url}/api/chat",
-                json=payload,
-                timeout=self.timeout
-            )
-            response.raise_for_status()
-            
-            data = response.json()
-            latency_ms = (time.time() - start_time) * 1000
-            
-            return LLMResponse(
-                content=data.get("message", {}).get("content", ""),
-                model=self.model,
-                prompt_tokens=data.get("prompt_eval_count", 0),
-                completion_tokens=data.get("eval_count", 0),
-                total_tokens=data.get("prompt_eval_count", 0) + data.get("eval_count", 0),
-                latency_ms=latency_ms,
-                raw_response=data
-            )
-            
-        except requests.exceptions.Timeout:
-            raise TimeoutError(f"Ollama request timed out after {self.timeout}s")
-        except requests.exceptions.ConnectionError:
-            raise ConnectionError(
-                f"Cannot connect to Ollama at {self.base_url}. "
-                "Make sure Ollama is running: `ollama serve`"
-            )
-    
-    def generate_json(
-        self,
-        prompt: str,
-        system_prompt: Optional[str] = None,
-        temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None
-    ) -> tuple[Dict, LLMResponse]:
-        """
-        Generate a JSON response from the LLM.
-        
-        Returns:
-            Tuple of (parsed_json, LLMResponse)
-            
-        Raises:
-            json.JSONDecodeError if response is not valid JSON
-        """
-        response = self.generate(
-            prompt=prompt,
-            system_prompt=system_prompt,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            json_mode=True
-        )
-        
-        # Try to parse JSON
-        content = response.content.strip()
-        
-        # Handle potential markdown code blocks
-        if content.startswith("```"):
-            # Extract content between code blocks
-            lines = content.split("\n")
-            content = "\n".join(lines[1:-1] if lines[-1] == "```" else lines[1:])
-        
-        parsed = json.loads(content)
-        
-        return parsed, response
-
-
-class LLMClient:
-    """
-    Unified LLM client interface.
-    
-    Supports:
-    - Ollama (REST API)
-    - llama-cpp-python (direct GGUF model loading)
-    """
-    
-    def __init__(
-        self,
-        provider: str = "ollama",
-        model: str = "llama3.2",
-        **kwargs
-    ):
-        """
-        Initialize LLM client.
-        
-        Args:
-            provider: "ollama" or "llama-cpp"
-            model: Model name (ollama) or path to GGUF file (llama-cpp)
-            **kwargs: Provider-specific arguments
-        """
-        self.provider = provider
-        self.model = model
-        
-        if provider == "ollama":
-            self._client = OllamaClient(model=model, **kwargs)
-        elif provider == "llama-cpp":
-            self._client = LlamaCppClient(model_path=model, **kwargs)
-        else:
-            raise ValueError(f"Unknown provider: {provider}. Use 'ollama' or 'llama-cpp'")
-    
-    def is_available(self) -> bool:
-        """Check if LLM is available."""
-        return self._client.is_available()
-    
-    def generate(self, prompt: str, **kwargs) -> LLMResponse:
-        """Generate text response."""
-        return self._client.generate(prompt, **kwargs)
-    
-    def generate_json(self, prompt: str, **kwargs) -> tuple[Dict, LLMResponse]:
-        """Generate JSON response."""
-        return self._client.generate_json(prompt, **kwargs)
-    
-    def chat(self, messages: list, **kwargs) -> LLMResponse:
-        """Chat completion."""
-        return self._client.chat(messages, **kwargs)
+# Convenience aliases
+def get_client(provider: str = "ollama", model: Optional[str] = None, **kwargs) -> LLMClient:
+    """Get an LLM client for the specified provider."""
+    return LLMClient(provider=provider, model=model, **kwargs)
 
 
 # Quick test
 if __name__ == "__main__":
-    print("Testing Ollama client...")
+    print("Testing LLM clients...\n")
     
-    client = OllamaClient(model="llama3.2")
+    # Test Ollama
+    print("=== Ollama ===")
+    try:
+        client = LLMClient(provider="ollama")
+        if client.is_available():
+            print(f"✓ Available, models: {client.list_models()[:3]}")
+            response = client.generate("Say hello in one word.")
+            print(f"  Response: {response.content}")
+            print(f"  Latency: {response.latency_ms:.0f}ms")
+        else:
+            print("✗ Not available")
+    except Exception as e:
+        print(f"✗ Error: {e}")
     
-    # Check availability
-    if client.is_available():
-        print(f"✓ Ollama is available with model {client.model}")
-        
-        # List models
-        models = client.list_models()
-        print(f"\nAvailable models:")
-        for m in models:
-            print(f"  - {m.get('name')}")
-        
-        # Test generation
-        print("\nTesting generation...")
-        response = client.generate(
-            prompt="What is log anomaly detection? Answer in one sentence.",
-            temperature=0.1
-        )
-        print(f"Response: {response.content}")
-        print(f"Tokens: {response.total_tokens}, Latency: {response.latency_ms:.0f}ms")
-        
-        # Test JSON generation
-        print("\nTesting JSON generation...")
-        try:
-            parsed, response = client.generate_json(
-                prompt='Return a JSON object with keys "status" and "message". Status should be "ok".',
-                system_prompt="You are a helpful assistant that always responds in valid JSON."
-            )
-            print(f"Parsed JSON: {parsed}")
-        except json.JSONDecodeError as e:
-            print(f"JSON parse error: {e}")
-            print(f"Raw response: {response.content}")
-    else:
-        print("✗ Ollama is not available")
-        print("  Start Ollama with: ollama serve")
-        print(f"  Pull model with: ollama pull {client.model}")
+    # Test OpenAI
+    print("\n=== OpenAI ===")
+    try:
+        client = LLMClient(provider="openai")
+        if client.is_available():
+            print(f"✓ Available")
+            response = client.generate("Say hello in one word.")
+            print(f"  Response: {response.content}")
+            print(f"  Latency: {response.latency_ms:.0f}ms, Cost: ${response.cost_usd:.6f}")
+        else:
+            print("✗ Not available (check API key)")
+    except Exception as e:
+        print(f"✗ Error: {e}")

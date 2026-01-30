@@ -10,7 +10,7 @@ from .evidence_store import EvidenceStore, EvidenceDoc, build_evidence_store
 from .retriever import BM25Retriever, RetrievalHit
 from .prompt_builder import PromptBuilder, TraceExplanation, Claim
 from .verifier import Verifier, VerificationResult
-from .llm_client import LLMClient, LLMResponse, OllamaClient, LlamaCppClient
+from .llm_client import LLMClient, LLMResponse, get_client
 
 __all__ = [
     # Data
@@ -28,5 +28,5 @@ __all__ = [
     # Verifier
     "Verifier", "VerificationResult",
     # LLM
-    "LLMClient", "LLMResponse", "OllamaClient", "LlamaCppClient",
+    "LLMClient", "LLMResponse", "get_client",
 ]
