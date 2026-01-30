@@ -1,6 +1,9 @@
 # Project description (local only)
 project-description/
 
+# Long-term memory (personal notes)
+long-term-mem/
+
 # Log files (large)
 logs/*.log
 logs/*.log.gz

@@ -1,0 +1,57 @@
+# Agentic Log Anomaly Detection Configuration
+
+# Dataset settings
+datasets:
+  BGL:
+    log_file: "./logs/BGL.log"
+    model_path: "./best_model/best_model_20250724_072857.pth"
+    windows_size: 10
+    step_size: 10
+    train_ratio: 0.7
+    
+  HDFS:
+    log_file: "./logs/HDFS.log"
+    label_file: "./logs/anomaly_label_HDFS.csv"
+    model_path: "./best_model_HDFS/best_model_HDFS20250804_201746.pth"
+    # HDFS uses block_id based sessions, not sliding window
+
+# Model hyperparameters (must match training)
+model:
+  vocab_size: 100264  # GPT4 BPE cl100k_base
+  embedding_dim: 128
+  ff_hidden_dim: 128
+  num_layers: 1
+  num_heads: 4
+  k: 32  # Linformer projection dimension
+  dropout: 0.5
+  max_token_length: 4096
+
+# RAG settings
+rag:
+  retriever: "bm25"  # Options: bm25, dense, hybrid
+  top_k: 5
+  min_score: 0.0
+
+# LLM settings (Ollama local)
+llm:
+  provider: "ollama"
+  model: "llama3.2"  # or llama3.1, mistral, etc.
+  base_url: "http://localhost:11434"
+  temperature: 0.1
+  max_tokens: 1024
+  timeout: 60
+
+# Gating settings
+gating:
+  mode: "explain_all"  # Options: explain_all, budgeted
+  # For budgeted mode:
+  budget_top_k_percent: 20  # Explain top 20% low-margin anomalies
+  margin_threshold: 0.5    # Or use fixed threshold
+
+# Output settings
+output:
+  results_dir: "./results/explanations"
+  save_format: "jsonl"
+
+# Reproducibility
+seed: 42

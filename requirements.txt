@@ -1,6 +1,8 @@
 # Generated 2025-08-25T10:51:26.977741Z
+# Updated 2026-01-30 for Agentic Explanation Pipeline
 # Python 3.12.11
-# Verify versions and remove comments where necessary
+
+# Core ML
 torch==2.7.1+cu128
 numpy==2.3.1
 pandas==2.3.1
@@ -8,5 +10,14 @@ scikit-learn==1.7.0
 tqdm==4.67.1
 tiktoken==0.9.0
 linformer==0.2.3
+
+# RAG / Retrieval
+rank-bm25>=0.2.2
+
+# LLM Client
+requests>=2.31.0
+
+# Utilities
 psutil==7.0.0
 matplotlib==3.10.3
+pyyaml>=6.0
