@@ -16,12 +16,21 @@ from .data_loader import Session
 from .normalizer import LogNormalizer, get_normalizer
 
 
+# Evidence types for multi-source evidence
+EVIDENCE_TYPES = {
+    "session": "Log session from training data",
+    "signature": "Auto-generated error signature card",
+    "profile": "Contrastive keyword profile",
+}
+
+
 @dataclass
 class EvidenceDoc:
     """A single evidence document in the corpus."""
     evidence_id: str
     session_id: str
     text: str  # Normalized text
+    evidence_type: str = "session"  # "session", "signature", or "profile"
     metadata: Dict[str, Any] = field(default_factory=dict)
     
     def to_dict(self) -> Dict:
@@ -29,6 +38,7 @@ class EvidenceDoc:
             "evidence_id": self.evidence_id,
             "session_id": self.session_id,
             "text": self.text,
+            "evidence_type": self.evidence_type,
             "metadata": self.metadata
         }
     
@@ -38,6 +48,7 @@ class EvidenceDoc:
             evidence_id=d["evidence_id"],
             session_id=d["session_id"],
             text=d["text"],
+            evidence_type=d.get("evidence_type", "session"),
             metadata=d.get("metadata", {})
         )
 
@@ -91,6 +102,7 @@ class EvidenceStore:
                 evidence_id=evidence_id,
                 session_id=session.session_id,
                 text=norm_result.normalized_text,
+                evidence_type="session",  # Session evidence type
                 metadata={
                     "label": session.label,  # For analysis only, not given to LLM
                     "dataset": self.dataset,
@@ -117,6 +129,10 @@ class EvidenceStore:
         """Get all documents with a specific label."""
         return [doc for doc in self.documents if doc.metadata.get("label") == label]
     
+    def get_documents_by_type(self, evidence_type: str) -> List[EvidenceDoc]:
+        """Get all documents with a specific evidence type."""
+        return [doc for doc in self.documents if doc.evidence_type == evidence_type]
+    
     def get_all_texts(self) -> List[str]:
         """Get all normalized texts (for building retriever index)."""
         return [doc.text for doc in self.documents]
@@ -133,12 +149,18 @@ class EvidenceStore:
         normal_docs = self.get_documents_by_label(0)
         anomaly_docs = self.get_documents_by_label(1)
         
+        # Count by evidence type
+        type_counts = {}
+        for etype in EVIDENCE_TYPES:
+            type_counts[etype] = len(self.get_documents_by_type(etype))
+        
         all_lengths = [doc.metadata.get("normalized_length", 0) for doc in self.documents]
         
         return {
             "total_documents": len(self.documents),
             "normal_documents": len(normal_docs),
             "anomaly_documents": len(anomaly_docs),
+            "by_evidence_type": type_counts,
             "avg_text_length": sum(all_lengths) / len(all_lengths) if all_lengths else 0,
             "min_text_length": min(all_lengths) if all_lengths else 0,
             "max_text_length": max(all_lengths) if all_lengths else 0,

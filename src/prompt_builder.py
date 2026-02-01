@@ -19,15 +19,24 @@ from .screener import ScreenerOutput
 # Trace Schema Definition
 # ============================================================
 
+# Claim types for forensic explanation
+CLAIM_TYPES = {
+    "observation": "Direct observation from query session (E0)",
+    "pattern_match": "Pattern matches known anomaly exemplars",
+    "contrast": "Differs from normal evidence (if available)",
+}
+
+
 @dataclass
 class Claim:
-    """A single claim in the explanation."""
+    """A single claim in the explanation with type annotation."""
+    type: str  # "observation", "pattern_match", or "contrast"
     claim: str
     evidence_ids: List[str]
     confidence: Optional[str] = None  # "high", "medium", "low"
     
     def to_dict(self) -> Dict:
-        d = {"claim": self.claim, "evidence_ids": self.evidence_ids}
+        d = {"type": self.type, "claim": self.claim, "evidence_ids": self.evidence_ids}
         if self.confidence:
             d["confidence"] = self.confidence
         return d
@@ -35,6 +44,7 @@ class Claim:
     @classmethod
     def from_dict(cls, d: Dict) -> "Claim":
         return cls(
+            type=d.get("type", "observation"),
             claim=d.get("claim", ""),
             evidence_ids=d.get("evidence_ids", []),
             confidence=d.get("confidence")
@@ -125,8 +135,13 @@ TRACE_SCHEMA = {
             "type": "array",
             "items": {
                 "type": "object",
-                "required": ["claim", "evidence_ids"],
+                "required": ["type", "claim", "evidence_ids"],
                 "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": ["observation", "pattern_match", "contrast"],
+                        "description": "Claim type: observation (from E0), pattern_match (matches anomaly exemplars), contrast (differs from normal)"
+                    },
                     "claim": {
                         "type": "string",
                         "description": "A specific claim about the anomaly"
@@ -134,11 +149,11 @@ TRACE_SCHEMA = {
                     "evidence_ids": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "List of evidence IDs (E1, E2, etc.) that support this claim"
+                        "description": "List of evidence IDs: E0 (query session), E1, E2, etc. (retrieved evidence)"
                     }
                 }
             },
-            "description": "List of specific claims, each backed by evidence"
+            "description": "List of typed claims, each backed by evidence"
         },
         "insufficient_evidence": {
             "type": "boolean",
@@ -152,23 +167,34 @@ TRACE_SCHEMA = {
 # Prompt Templates
 # ============================================================
 
-SYSTEM_PROMPT = """You are an expert log analyst specializing in system anomaly detection.
+SYSTEM_PROMPT = """You are an expert log analyst producing forensic, evidence-grounded explanations.
 Your task is to explain WHY a log session is anomalous based on the provided evidence.
 
-CRITICAL RULES:
-1. Every claim MUST reference specific evidence IDs (E1, E2, etc.)
-2. Only use information from the provided evidence - do not hallucinate
-3. If evidence is insufficient, set insufficient_evidence to true
-4. Be specific and technical in your analysis
-5. Output ONLY valid JSON matching the schema
+EVIDENCE IDs:
+- [E0] = The query session being analyzed
+- [E1], [E2], ... = Retrieved historical evidence (may include anomaly or normal sessions)
 
-You are explaining anomalies detected by a machine learning model. Your job is to provide
-human-understandable explanations grounded in evidence."""
+CLAIM TYPES (use the appropriate type for each claim):
+- "observation": Direct observation from query session E0 (e.g., "E0 contains KERNEL FATAL errors")
+- "pattern_match": Pattern matches known anomaly exemplars (e.g., "E0 shares error pattern with E1")
+- "contrast": Differs from normal evidence, if available (e.g., "Unlike E3 (normal), E0 shows FATAL not INFO")
+
+CRITICAL RULES:
+1. Every claim MUST have a type and reference specific evidence IDs
+2. Use "observation" type for claims about E0 alone
+3. Use "pattern_match" type when comparing E0 to anomaly evidence (E1, E2...)
+4. Use "contrast" type only when comparing E0 to normal evidence
+5. Only use information from the provided evidence - do not hallucinate
+6. If evidence is insufficient, set insufficient_evidence to true
+7. Output ONLY valid JSON matching the schema
+
+SCOPE LIMITATION: You produce forensic explanations (observations, pattern matches, contrasts).
+Do NOT infer root causes or remediation actions - that requires external verified knowledge."""
 
 
 EXPLANATION_PROMPT_TEMPLATE = """Analyze this LOG SESSION that was flagged as ANOMALOUS by our detection model.
 
-=== LOG SESSION TO EXPLAIN ===
+=== [E0] QUERY SESSION TO ANALYZE ===
 Session ID: {session_id}
 Anomaly Probability: {anomaly_prob:.2%}
 Confidence Margin: {margin:.4f}
@@ -177,21 +203,25 @@ Log Content:
 {log_content}
 
 === RETRIEVED EVIDENCE ===
-The following evidence sessions were retrieved from our corpus. Use these to support your explanation.
+The following evidence sessions were retrieved from our historical corpus for comparison.
 {evidence_block}
 
 === YOUR TASK ===
-Explain WHY this log session is anomalous. For EACH claim you make:
-1. Reference specific evidence IDs (E1, E2, etc.) that support it
-2. Be specific about what patterns or errors indicate the anomaly
+Explain WHY this log session is anomalous. For EACH claim:
+1. Specify the claim TYPE:
+   - "observation": What you directly observe in E0
+   - "pattern_match": How E0 matches anomaly evidence (E1, E2...)
+   - "contrast": How E0 differs from normal evidence (if any)
+2. Reference the evidence IDs that support the claim
+3. Be specific and technical
 
-Output your explanation as JSON with this structure:
+Output your explanation as JSON:
 {{
     "prediction": "anomaly",
-    "summary": "Brief 1-2 sentence summary of the anomaly",
+    "summary": "Brief 1-2 sentence summary",
     "claims": [
-        {{"claim": "Specific claim about the anomaly", "evidence_ids": ["E1", "E3"]}},
-        {{"claim": "Another claim", "evidence_ids": ["E2"]}}
+        {{"type": "observation", "claim": "E0 contains multiple KERNEL FATAL errors", "evidence_ids": ["E0"]}},
+        {{"type": "pattern_match", "claim": "Error pattern in E0 matches known anomaly E1", "evidence_ids": ["E0", "E1"]}}
     ],
     "insufficient_evidence": false
 }}
@@ -200,20 +230,26 @@ IMPORTANT: Output ONLY the JSON object, no other text."""
 
 
 def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int = 500) -> str:
-    """Format retrieved evidence for the prompt."""
+    """Format retrieved evidence for the prompt with type and label info."""
     if not hits:
         return "No evidence retrieved."
     
     lines = []
     for i, hit in enumerate(hits, 1):
         evidence_id = f"E{i}"
+        
+        # Get evidence type and label from metadata
+        evidence_type = hit.metadata.get("evidence_type", "session") if hit.metadata else "session"
+        label = hit.metadata.get("label", None) if hit.metadata else None
+        label_str = "anomaly" if label == 1 else "normal" if label == 0 else "unknown"
+        
         # Truncate long evidence
         text = hit.text
         if len(text) > max_chars_per_evidence:
             text = text[:max_chars_per_evidence] + "..."
         
-        lines.append(f"[{evidence_id}] (score: {hit.score:.2f})")
-        lines.append(f"Original ID: {hit.evidence_id}")
+        # Format header with type and label
+        lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f})")
         lines.append(text)
         lines.append("")  # Empty line separator
     
@@ -293,15 +329,20 @@ class PromptBuilder:
     
     def build_evidence_id_mapping(
         self,
+        session: Session,
         evidence_hits: List[RetrievalHit]
     ) -> Dict[str, str]:
         """
-        Build mapping from simple IDs (E1, E2) to original evidence IDs.
+        Build mapping from simple IDs (E0, E1, E2) to original evidence IDs.
+        
+        Args:
+            session: The query session (mapped to E0)
+            evidence_hits: Retrieved evidence (mapped to E1, E2, ...)
         
         Returns:
-            Dict mapping "E1" -> "E_BGL_00001234", etc.
+            Dict mapping "E0" -> query session_id, "E1" -> "E_BGL_00001234", etc.
         """
-        mapping = {}
+        mapping = {"E0": session.session_id}
         for i, hit in enumerate(evidence_hits[:self.max_evidence_items], 1):
             mapping[f"E{i}"] = hit.evidence_id
         return mapping

@@ -23,6 +23,7 @@ class RetrievalHit:
     score: float
     text: str
     rank: int
+    evidence_type: str = "session"  # "session", "signature", or "profile"
     metadata: Dict = None
     
     def to_dict(self) -> Dict:
@@ -31,6 +32,7 @@ class RetrievalHit:
             "score": self.score,
             "text": self.text,
             "rank": self.rank,
+            "evidence_type": self.evidence_type,
             "metadata": self.metadata
         }
 
@@ -141,6 +143,7 @@ class BM25Retriever:
                 score=float(score),
                 text=doc.text,
                 rank=rank,
+                evidence_type=doc.evidence_type,
                 metadata=doc.metadata
             ))
             

@@ -11,6 +11,7 @@ from .retriever import BM25Retriever, RetrievalHit
 from .prompt_builder import PromptBuilder, TraceExplanation, Claim
 from .verifier import Verifier, VerificationResult
 from .llm_client import LLMClient, LLMResponse, get_client
+from .signature_generator import SignatureGenerator, ErrorSignature, build_signatures_from_training
 
 __all__ = [
     # Data
@@ -29,4 +30,6 @@ __all__ = [
     "Verifier", "VerificationResult",
     # LLM
     "LLMClient", "LLMResponse", "get_client",
+    # Signatures
+    "SignatureGenerator", "ErrorSignature", "build_signatures_from_training",
 ]
