@@ -37,3 +37,4 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+results/test_run/evidence_store_BGL.json
