@@ -257,6 +257,130 @@ class BM25Retriever:
             "top_k": top_k
         }
     
+    def retrieve_mixed(
+        self,
+        query: str,
+        top_k_anomaly: int = 4,
+        top_k_normal: int = 1,
+        exclude_session_ids: Optional[List[str]] = None,
+        min_score: float = 0.0
+    ) -> List[RetrievalHit]:
+        """
+        Retrieve mixed evidence: anomaly exemplars + normal contrast examples.
+        
+        This enables contrast claims by providing normal evidence for comparison.
+        
+        Args:
+            query: Query text (will be normalized)
+            top_k_anomaly: Number of anomaly results to return
+            top_k_normal: Number of normal results to return (for contrast)
+            exclude_session_ids: Session IDs to exclude
+            min_score: Minimum score threshold
+            
+        Returns:
+            List of RetrievalHit objects (anomalies first, then normal)
+        """
+        if not self._built:
+            self.build_index()
+        
+        # Normalize and tokenize query
+        norm_result = self.normalizer.normalize_lines([query])
+        query_tokens = norm_result.normalized_text.lower().split()
+        
+        # Get BM25 scores
+        scores = self._bm25.get_scores(query_tokens)
+        
+        # Separate anomaly and normal docs
+        anomaly_scored = []
+        normal_scored = []
+        
+        for idx, score in enumerate(scores):
+            if score < min_score:
+                continue
+                
+            doc = self.evidence_store.documents[idx]
+            
+            # Exclude if session_id matches
+            if exclude_session_ids and doc.session_id in exclude_session_ids:
+                continue
+            
+            label = doc.metadata.get("label", -1)
+            if label == 1:  # Anomaly
+                anomaly_scored.append((idx, score))
+            elif label == 0:  # Normal
+                normal_scored.append((idx, score))
+            # Skip signature cards (label=-1) or unknown
+        
+        # Sort by score descending
+        anomaly_scored.sort(key=lambda x: x[1], reverse=True)
+        normal_scored.sort(key=lambda x: x[1], reverse=True)
+        
+        # Build results
+        results = []
+        rank = 1
+        
+        # Add top-k anomaly evidence
+        for idx, score in anomaly_scored[:top_k_anomaly]:
+            doc = self.evidence_store.documents[idx]
+            results.append(RetrievalHit(
+                evidence_id=doc.evidence_id,
+                score=float(score),
+                text=doc.text,
+                rank=rank,
+                evidence_type=doc.evidence_type,
+                metadata=doc.metadata
+            ))
+            rank += 1
+        
+        # Add top-k normal evidence (for contrast claims)
+        for idx, score in normal_scored[:top_k_normal]:
+            doc = self.evidence_store.documents[idx]
+            results.append(RetrievalHit(
+                evidence_id=doc.evidence_id,
+                score=float(score),
+                text=doc.text,
+                rank=rank,
+                evidence_type=doc.evidence_type,
+                metadata=doc.metadata
+            ))
+            rank += 1
+        
+        return results
+    
+    def retrieve_for_session_mixed(
+        self,
+        session: Session,
+        top_k_anomaly: int = 4,
+        top_k_normal: int = 1,
+        exclude_self: bool = True,
+        min_score: float = 0.0
+    ) -> List[RetrievalHit]:
+        """
+        Retrieve mixed evidence (anomaly + normal) for a session.
+        
+        Args:
+            session: Session object to find evidence for
+            top_k_anomaly: Number of anomaly results
+            top_k_normal: Number of normal results (for contrast)
+            exclude_self: Exclude the session itself from results
+            min_score: Minimum score threshold
+            
+        Returns:
+            List of RetrievalHit objects (anomalies first, then normal)
+        """
+        # Join session lines as query
+        query = "\n".join(session.lines)
+        
+        exclude_ids = [session.session_id] if exclude_self else None
+        
+        return self.retrieve_mixed(
+            query=query,
+            top_k_anomaly=top_k_anomaly,
+            top_k_normal=top_k_normal,
+            exclude_session_ids=exclude_ids,
+            min_score=min_score
+        )
+    
     def save_index(self, path: str) -> None:
         """Save the BM25 index to disk."""
         path = Path(path)
@@ -346,6 +470,18 @@ class Retriever:
     ) -> List[RetrievalHit]:
         """Retrieve top-k evidence for a session."""
         return self._retriever.retrieve_for_session(session, top_k, **kwargs)
+    
+    def retrieve_for_session_mixed(
+        self,
+        session: Session,
+        top_k_anomaly: int = 4,
+        top_k_normal: int = 1,
+        **kwargs
+    ) -> List[RetrievalHit]:
+        """Retrieve mixed evidence (anomaly + normal) for contrast claims."""
+        return self._retriever.retrieve_for_session_mixed(
+            session, top_k_anomaly, top_k_normal, **kwargs
+        )
     
     def batch_retrieve(
         self,

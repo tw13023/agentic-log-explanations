@@ -1,0 +1,36 @@
+{
+  "run_timestamp": "20260202_103617",
+  "dataset": "BGL",
+  "test_set": {
+    "total_sessions": 71221,
+    "predicted_anomalies": 5849,
+    "true_positives": 5844,
+    "false_positives": 5
+  },
+  "explanations": {
+    "total": 5849,
+    "json_parse_success": 5849,
+    "json_parse_failed": 0
+  },
+  "verification": {
+    "passed": 5830,
+    "failed": 19,
+    "pass_rate": 0.9967515814669174
+  },
+  "tokens": {
+    "total": 15524105,
+    "avg_per_explanation": 2654.1468627115746
+  },
+  "latency_ms": {
+    "total_time_s": 34069.26862239838,
+    "avg": 5824.802294819349,
+    "p50": 5999.1936683654785,
+    "p95": 7328.9201736450195
+  },
+  "config": {
+    "llm_provider": "ollama",
+    "llm_model": "llama3.1:8b",
+    "evidence_store_size": 332358,
+    "retrieval_top_k": 5
+  }
+}

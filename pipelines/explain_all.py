@@ -35,6 +35,9 @@ class PipelineConfig:
     
     # RAG settings
     top_k: int = 5
+    top_k_anomaly: int = 4  # Number of anomaly evidence to retrieve
+    top_k_normal: int = 1   # Number of normal evidence for contrast claims
+    use_mixed_retrieval: bool = True  # Enable mixed retrieval (anomaly + normal)
     retriever_method: str = "bm25"
     
     # LLM settings
@@ -57,6 +60,9 @@ class PipelineConfig:
             "log_file": self.log_file,
             "model_path": self.model_path,
             "top_k": self.top_k,
+            "top_k_anomaly": self.top_k_anomaly,
+            "top_k_normal": self.top_k_normal,
+            "use_mixed_retrieval": self.use_mixed_retrieval,
             "retriever_method": self.retriever_method,
             "llm_provider": self.llm_provider,
             "llm_model": self.llm_model,
@@ -347,17 +353,26 @@ class ExplainAllPipeline:
         screener_output: ScreenerOutput
     ) -> ExplanationResult:
         """Generate explanation for a single session."""
-        # Retrieve evidence
-        evidence_hits = self.retriever.retrieve_for_session(
-            session,
-            top_k=self.config.top_k
-        )
+        # Retrieve evidence (mixed or standard)
+        if self.config.use_mixed_retrieval:
+            # Mixed retrieval: anomaly exemplars + normal for contrast claims
+            evidence_hits = self.retriever.retrieve_for_session_mixed(
+                session,
+                top_k_anomaly=self.config.top_k_anomaly,
+                top_k_normal=self.config.top_k_normal
+            )
+        else:
+            # Standard retrieval: top-k any label
+            evidence_hits = self.retriever.retrieve_for_session(
+                session,
+                top_k=self.config.top_k
+            )
         
         # Build prompt
         system_prompt, user_prompt = self.prompt_builder.build_prompt(
             session, screener_output, evidence_hits
         )
-        evidence_id_mapping = self.prompt_builder.build_evidence_id_mapping(evidence_hits)
+        evidence_id_mapping = self.prompt_builder.build_evidence_id_mapping(session, evidence_hits)
         
         # Call LLM
         try:
