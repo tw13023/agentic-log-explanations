@@ -225,8 +225,44 @@ TRACE_SCHEMA = {
 # Prompt Templates
 # ============================================================
 
-SYSTEM_PROMPT = """You are an expert log analyst producing forensic, evidence-grounded explanations.
+# Dataset-specific signature examples
+SIGNATURE_EXAMPLES = {
+    "BGL": {
+        "examples": [
+            "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT",
+            "CIOD_APP_FATAL__CIOSTREAM_SOCKET_ERROR",
+            "RAS_KERNEL_FATAL__MACHINE_CHECK",
+        ],
+        "description": "BlueGene/L supercomputer RAS (Reliability, Availability, Serviceability) logs",
+        "components": "RAS, KERNEL, CIOD, APP, MMCS",
+        "severities": "FATAL, FAILURE, SEVERE, WARNING",
+    },
+    "HDFS": {
+        "examples": [
+            "DATANODE_ERROR__BLOCK_VERIFICATION_FAILED",
+            "NAMENODE_WARN__BLOCK_REPLICAS_MISSING",
+            "DATANODE_ERROR__WRITE_PIPELINE_FAILED",
+            "DATANODE_ERROR__PACKET_RESPONDER_EXCEPTION",
+            "BLOCK_ERROR__REPLICATION_INCOMPLETE",
+        ],
+        "description": "Hadoop Distributed File System logs",
+        "components": "DATANODE, NAMENODE, BLOCK, FSNamesystem, DataXceiver, PacketResponder",
+        "severities": "ERROR, WARN, FATAL",
+    },
+}
+
+
+def get_system_prompt(dataset: str = "BGL") -> str:
+    """Get dataset-specific system prompt."""
+    sig_info = SIGNATURE_EXAMPLES.get(dataset.upper(), SIGNATURE_EXAMPLES["BGL"])
+    sig_examples = ", ".join(sig_info["examples"][:3])
+    
+    return f"""You are an expert log analyst producing forensic, evidence-grounded explanations.
 Your task is to explain WHY a log session is anomalous based on the provided evidence.
+
+DATASET: {sig_info['description']}
+COMPONENTS IN LOGS: {sig_info['components']}
+SEVERITY LEVELS: {sig_info['severities']}
 
 EVIDENCE FORMAT:
 - Each evidence block has LINE NUMBERS: E0-L1, E0-L2, E1-L1, E1-L2, etc.
@@ -238,32 +274,61 @@ CLAIM TYPES (you MUST produce at least one of each type when evidence allows):
 - "pattern_match": Pattern matches anomaly exemplars - MUST name the signature
 - "contrast": Differs from normal evidence - MUST list "X has Y, Z lacks Y" explicitly
 
-=== CRITICAL FORMATTING RULES (MANDATORY) ===
+=== SIGNATURE NAMING ===
+Create a signature from the ACTUAL log content you see:
+- Format: COMPONENT_SEVERITY__ERROR_TYPE (double underscore)
+- Component: Extract from the log (DataNode, NameNode, FSNamesystem, PacketResponder, etc.)
+- Severity: Extract from the log (ERROR, WARN, FATAL, INFO with error context)
+- ErrorType: Describe what went wrong (BLOCK_WRITE_FAILURE, REPLICATION_INCOMPLETE, etc.)
 
-1. EVIDENCE SPANS: Every claim MUST reference evidence_spans with LINE NUMBERS (e.g., "E0-L8", "E1-L3")
-   - Do NOT just use evidence_ids like "E0" - you MUST cite specific lines
-   - Each claim needs at least 2 evidence_spans
+Example valid signatures for this dataset: {sig_examples}
+NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based on what you see in [E0].
 
-2. OBSERVATION CLAIMS must include QUANTIFIED details:
-   - BAD: "E0 contains multiple KERNEL FATAL errors"
-   - GOOD: "E0 contains 3 KERNEL FATAL errors concentrated in lines 8-12"
+=== OUTPUT JSON SCHEMA ===
+{{
+    "prediction": "anomaly",
+    "summary": "<SIGNATURE>: <quantified observation> at <line range>",
+    "signature": {{
+        "name": "<COMPONENT_SEVERITY__ERROR_TYPE from actual logs>",
+        "matched_evidence_ids": ["E1", "E2"]
+    }},
+    "claims": [
+        {{
+            "type": "observation",
+            "claim": "E0 contains <COUNT> <what> at lines <range>.",
+            "evidence_ids": ["E0"],
+            "evidence_spans": ["E0-L<n>", "E0-L<m>"]
+        }},
+        {{
+            "type": "pattern_match", 
+            "claim": "The pattern <keywords from logs> matches signature <YOUR SIGNATURE>.",
+            "evidence_ids": ["E0", "E1"],
+            "evidence_spans": ["E0-L<n>", "E1-L<m>"]
+        }},
+        {{
+            "type": "contrast",
+            "claim": "E0 has <X> at E0-L<n>; E<k> shows <Y> at E<k>-L<m>.",
+            "evidence_ids": ["E0", "E<k>"],
+            "evidence_spans": ["E0-L<n>", "E<k>-L<m>"]
+        }}
+    ],
+    "insufficient_evidence": false
+}}
 
-3. PATTERN_MATCH CLAIMS must output a SIGNATURE NAME:
-   - Format: COMPONENT_SEVERITY__ERROR_TYPE (use double underscore)
-   - Example: "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT"
-   - Example: "CIOD_APP_FATAL__CIOSTREAM_SOCKET_ERROR"
+=== CRITICAL RULES ===
+1. READ the actual [E0] log content - do NOT copy from examples
+2. IDENTIFY component and severity FROM THE LOGS 
+3. CREATE a unique signature that describes THIS specific anomaly
+4. QUANTIFY: count errors, specify line ranges
+5. CITE specific evidence_spans (E0-L8, E1-L3) for each claim
 
-4. CONTRAST CLAIMS must explicitly state the DIFFERENCE:
-   - BAD: "Unlike E3, E0 shows FATAL errors"
-   - GOOD: "E0 has 'FATAL + interrupt' at E0-L8; E3 shows 'INFO + corrected' at E3-L2"
-
-5. SUMMARY must be a forensic one-liner with the signature name and key metric.
-
-SCOPE LIMITATION: You produce forensic explanations only.
-Do NOT infer root causes or remediation actions."""
+SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 
 
-EXPLANATION_PROMPT_TEMPLATE = """Analyze this LOG SESSION that was flagged as ANOMALOUS by our detection model.
+def get_explanation_prompt_template(dataset: str = "BGL") -> str:
+    """Get dataset-specific explanation prompt template."""
+    # No example JSON here - it's now in the system prompt
+    return """Analyze this LOG SESSION that was flagged as ANOMALOUS by our detection model.
 
 === [E0] QUERY SESSION TO ANALYZE ===
 Session ID: {session_id}
@@ -279,43 +344,19 @@ Each line is prefixed with its span ID (e.g., E1-L3 = Evidence 1, Line 3).
 {evidence_block}
 
 === YOUR TASK ===
-Produce a forensic explanation with:
-1. A SIGNATURE name (COMPONENT_SEVERITY__ERROR_TYPE format)
-2. QUANTIFIED observations (counts, line ranges)
-3. SPECIFIC evidence_spans (E0-L8, E1-L3, etc.) for each claim
+Analyze [E0] and produce a forensic explanation:
+1. READ the actual log content in E0 carefully
+2. IDENTIFY the component (DataNode, NameNode, etc.) and severity (ERROR, WARN, INFO)
+3. CREATE a signature from what you see: COMPONENT_SEVERITY__ERROR_TYPE
+4. COUNT errors, note LINE NUMBERS (E0-L5, E0-L8, etc.)
+5. COMPARE with retrieved evidence to support your analysis
 
-Output your explanation as JSON:
-{{{{
-    "prediction": "anomaly",
-    "summary": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT: 3 FATAL errors in E0-L8 to E0-L12, matching signature from E1.",
-    "signature": {{{{
-        "name": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT",
-        "matched_evidence_ids": ["E1"]
-    }}}},
-    "claims": [
-        {{{{
-            "type": "observation",
-            "claim": "E0 contains 3 KERNEL FATAL errors with 'data storage interrupt' concentrated in lines 8-12.",
-            "evidence_ids": ["E0"],
-            "evidence_spans": ["E0-L8", "E0-L10", "E0-L12"]
-        }}}},
-        {{{{
-            "type": "pattern_match",
-            "claim": "The combination {{KERNEL FATAL + data storage interrupt + instruction address}} matches historical anomaly signature RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT.",
-            "evidence_ids": ["E0", "E1"],
-            "evidence_spans": ["E0-L8", "E0-L12", "E1-L3", "E1-L5"]
-        }}}},
-        {{{{
-            "type": "contrast",
-            "claim": "E0 has 'FATAL + interrupt' at E0-L8; normal E3 shows 'INFO + corrected' at E3-L2 without escalation.",
-            "evidence_ids": ["E0", "E3"],
-            "evidence_spans": ["E0-L8", "E3-L2", "E3-L4"]
-        }}}}
-    ],
-    "insufficient_evidence": false
-}}}}
+Output ONLY a valid JSON object with no additional text."""
 
-IMPORTANT: Output ONLY the JSON object, no other text."""
+
+# Keep old constants for backward compatibility
+SYSTEM_PROMPT = get_system_prompt("BGL")
+EXPLANATION_PROMPT_TEMPLATE = get_explanation_prompt_template("BGL")
 
 
 def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int = 500) -> str:
@@ -379,7 +420,8 @@ class PromptBuilder:
         self,
         max_log_lines: int = 20,
         max_chars_per_evidence: int = 500,
-        max_evidence_items: int = 5
+        max_evidence_items: int = 5,
+        dataset: str = "BGL"
     ):
         """
         Initialize prompt builder.
@@ -388,10 +430,16 @@ class PromptBuilder:
             max_log_lines: Maximum log lines to include from the session
             max_chars_per_evidence: Max characters per evidence item
             max_evidence_items: Maximum number of evidence items to include
+            dataset: Dataset type ("BGL" or "HDFS") for dataset-specific prompts
         """
         self.max_log_lines = max_log_lines
         self.max_chars_per_evidence = max_chars_per_evidence
         self.max_evidence_items = max_evidence_items
+        self.dataset = dataset.upper()
+        
+        # Get dataset-specific prompts
+        self._system_prompt = get_system_prompt(self.dataset)
+        self._explanation_template = get_explanation_prompt_template(self.dataset)
     
     def build_prompt(
         self,
@@ -423,8 +471,8 @@ class PromptBuilder:
             self.max_chars_per_evidence
         )
         
-        # Build user prompt
-        user_prompt = EXPLANATION_PROMPT_TEMPLATE.format(
+        # Build user prompt using dataset-specific template
+        user_prompt = self._explanation_template.format(
             session_id=session.session_id,
             anomaly_prob=screener_output.anomaly_prob,
             margin=screener_output.margin,
@@ -432,7 +480,7 @@ class PromptBuilder:
             evidence_block=evidence_block
         )
         
-        return SYSTEM_PROMPT, user_prompt
+        return self._system_prompt, user_prompt
     
     def build_evidence_id_mapping(
         self,

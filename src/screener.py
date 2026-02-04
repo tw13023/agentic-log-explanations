@@ -195,8 +195,8 @@ class Screener:
             "num_heads": 4,
             "k": 32,
             "dropout": 0.5,
-            "segment_vocab_size": 50,  # Max logs per block
-            "max_seq_len": 2549,  # Adjust if HDFS model differs
+            "segment_vocab_size": 298,  # Max logs per block (must match checkpoint)
+            "max_seq_len": 15166,  # Must match checkpoint position embedding size
         }
     }
     
@@ -401,21 +401,24 @@ class Screener:
         # Tokenize
         input_ids, segment_ids = self._tokenize_session(session.lines)
         
-        # Convert to tensors
+        # Convert to tensors - DO NOT pad to max_seq_len (causes signal dilution in mean pooling)
         input_ids_tensor = torch.tensor([input_ids], dtype=torch.long).to(self.device)
         segment_ids_tensor = torch.tensor([segment_ids], dtype=torch.long).to(self.device)
         
-        # Pad to max length
-        if input_ids_tensor.size(1) < self.max_seq_len:
-            pad_size = self.max_seq_len - input_ids_tensor.size(1)
-            input_ids_tensor = torch.nn.functional.pad(input_ids_tensor, (0, pad_size), value=0)
-            segment_ids_tensor = torch.nn.functional.pad(segment_ids_tensor, (0, pad_size), value=0)
+        # Only truncate if exceeds max_seq_len, do NOT pad up to max_seq_len
+        if input_ids_tensor.size(1) > self.max_seq_len:
+            input_ids_tensor = input_ids_tensor[:, :self.max_seq_len]
+            segment_ids_tensor = segment_ids_tensor[:, :self.max_seq_len]
+        
+        # Clamp segment_ids to valid range for embedding
+        segment_vocab_size = self._config.get("segment_vocab_size", 298)
+        segment_ids_tensor = torch.clamp(segment_ids_tensor, 0, segment_vocab_size - 1)
         
         attention_mask = (input_ids_tensor != 0).long()
         
-        # Inference
+        # Inference - pass position_ids=None so model generates them automatically
         with torch.no_grad():
-            logits = self.model(input_ids_tensor, segment_ids_tensor, attention_mask)
+            logits = self.model(input_ids_tensor, segment_ids_tensor, position_ids=None, attention_mask=attention_mask)
             probs = torch.softmax(logits, dim=1)
             pred = logits.argmax(dim=1).item()
         
@@ -467,26 +470,32 @@ class Screener:
                 batch_input_ids.append(torch.tensor(input_ids, dtype=torch.long))
                 batch_segment_ids.append(torch.tensor(segment_ids, dtype=torch.long))
             
-            # Pad batch
+            # Pad batch - only pad to max length within batch (NOT to max_seq_len)
+            # Padding to full max_seq_len causes signal dilution in mean pooling
             padded_input_ids = pad_sequence(batch_input_ids, batch_first=True, padding_value=0)
             padded_segment_ids = pad_sequence(batch_segment_ids, batch_first=True, padding_value=0)
             
-            # Truncate/pad to max_seq_len
-            if padded_input_ids.size(1) < self.max_seq_len:
-                pad_size = self.max_seq_len - padded_input_ids.size(1)
-                padded_input_ids = torch.nn.functional.pad(padded_input_ids, (0, pad_size), value=0)
-                padded_segment_ids = torch.nn.functional.pad(padded_segment_ids, (0, pad_size), value=0)
-            else:
+            # Only truncate if exceeds max_seq_len, do NOT pad up to max_seq_len
+            if padded_input_ids.size(1) > self.max_seq_len:
                 padded_input_ids = padded_input_ids[:, :self.max_seq_len]
                 padded_segment_ids = padded_segment_ids[:, :self.max_seq_len]
+            
+            # Clamp segment_ids to valid range for embedding (critical for HDFS)
+            segment_vocab_size = self.CONFIGS.get(self.dataset.upper(), {}).get("segment_vocab_size", 298)
+            padded_segment_ids = torch.clamp(padded_segment_ids, 0, segment_vocab_size - 1)
             
             padded_input_ids = padded_input_ids.to(self.device)
             padded_segment_ids = padded_segment_ids.to(self.device)
             attention_masks = (padded_input_ids != 0).long()
             
+            # Create position_ids (0, 1, 2, ..., seq_len-1)
+            batch_size_actual = padded_input_ids.size(0)
+            seq_len = padded_input_ids.size(1)
+            position_ids = torch.arange(seq_len, device=self.device).unsqueeze(0).expand(batch_size_actual, -1)
+            
             # Inference
             with torch.no_grad():
-                logits = self.model(padded_input_ids, padded_segment_ids, attention_masks)
+                logits = self.model(padded_input_ids, padded_segment_ids, position_ids, attention_masks)
                 probs = torch.softmax(logits, dim=1)
                 preds = logits.argmax(dim=1)
             
