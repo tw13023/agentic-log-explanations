@@ -1,0 +1,93 @@
+{
+  "session_id": "BGL_00442780",
+  "label": 1,
+  "screener": {
+    "session_id": "BGL_00442780",
+    "pred": 1,
+    "logits": [
+      -10.211799621582031,
+      10.187888145446777
+    ],
+    "prob": [
+      1.3820626865168606e-09,
+      1.0
+    ],
+    "margin": 0.9999999986179373,
+    "is_anomaly": true,
+    "confidence": 1.0
+  },
+  "evidence_ids": [
+    "E_BGL_00383860",
+    "E_BGL_00392820",
+    "E_BGL_00499060",
+    "E_BGL_00486760",
+    "E_BGL_00619630"
+  ],
+  "evidence_id_mapping": {
+    "E0": "BGL_00442780",
+    "E1": "E_BGL_00383860",
+    "E2": "E_BGL_00392820",
+    "E3": "E_BGL_00499060",
+    "E4": "E_BGL_00486760",
+    "E5": "E_BGL_00619630"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT: 3 FATAL errors in E0-L8 to E0-L12, matching signature from E1.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 3 KERNEL FATAL errors with 'data storage interrupt' concentrated in lines 8-12.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L8",
+          "E0-L10",
+          "E0-L12"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The combination {KERNEL FATAL + data storage interrupt + instruction address} matches historical anomaly signature RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT.",
+        "evidence_ids": [
+          "E0",
+          "E1"
+        ],
+        "evidence_spans": [
+          "E0-L8",
+          "E0-L12",
+          "E1-L3",
+          "E1-L5"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has 'FATAL + interrupt' at E0-L8; normal E3 shows 'INFO + corrected' at E3-L2 without escalation.",
+        "evidence_ids": [
+          "E0",
+          "E3"
+        ],
+        "evidence_spans": [
+          "E0-L8",
+          "E3-L2",
+          "E3-L4"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT",
+      "matched_evidence_ids": [
+        "E1"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2887,
+    "completion_tokens": 345,
+    "total_tokens": 3232,
+    "latency_ms": 13183.086156845093
+  },
+  "created_at": "2026-02-04T17:28:24.310332"
+}

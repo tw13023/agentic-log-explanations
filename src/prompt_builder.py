@@ -29,14 +29,20 @@ CLAIM_TYPES = {
 
 @dataclass
 class Claim:
-    """A single claim in the explanation with type annotation."""
+    """A single claim in the explanation with type annotation and span references."""
     type: str  # "observation", "pattern_match", or "contrast"
     claim: str
-    evidence_ids: List[str]
+    evidence_ids: List[str]  # Kept for backward compatibility
+    evidence_spans: List[str] = field(default_factory=list)  # NEW: ["E0-L8", "E1-L3"]
     confidence: Optional[str] = None  # "high", "medium", "low"
     
     def to_dict(self) -> Dict:
-        d = {"type": self.type, "claim": self.claim, "evidence_ids": self.evidence_ids}
+        d = {
+            "type": self.type,
+            "claim": self.claim,
+            "evidence_ids": self.evidence_ids,
+            "evidence_spans": self.evidence_spans
+        }
         if self.confidence:
             d["confidence"] = self.confidence
         return d
@@ -47,7 +53,30 @@ class Claim:
             type=d.get("type", "observation"),
             claim=d.get("claim", ""),
             evidence_ids=d.get("evidence_ids", []),
+            evidence_spans=d.get("evidence_spans", []),
             confidence=d.get("confidence")
+        )
+
+
+@dataclass
+class Signature:
+    """Anomaly signature for deduplication and clustering."""
+    name: str  # e.g., "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT"
+    matched_evidence_ids: List[str] = field(default_factory=list)
+    
+    def to_dict(self) -> Dict:
+        return {
+            "name": self.name,
+            "matched_evidence_ids": self.matched_evidence_ids
+        }
+    
+    @classmethod
+    def from_dict(cls, d: Dict) -> "Signature":
+        if d is None:
+            return cls(name="UNKNOWN", matched_evidence_ids=[])
+        return cls(
+            name=d.get("name", "UNKNOWN"),
+            matched_evidence_ids=d.get("matched_evidence_ids", [])
         )
 
 
@@ -57,27 +86,35 @@ class TraceExplanation:
     Structured explanation with traceable claims.
     
     This is the core output format that makes explanations verifiable.
-    Each claim must reference specific evidence IDs.
+    Each claim must reference specific evidence spans (line numbers).
     """
     prediction: str  # "anomaly" or "normal"
-    summary: str  # Brief summary of why this is anomalous
-    claims: List[Claim]
+    summary: str  # Brief forensic summary
+    signature: Optional[Signature] = None  # NEW: anomaly signature for clustering
+    claims: List[Claim] = field(default_factory=list)
     insufficient_evidence: bool = False
     raw_response: str = ""
     
     def to_dict(self) -> Dict:
-        return {
+        result = {
             "prediction": self.prediction,
             "summary": self.summary,
             "claims": [c.to_dict() for c in self.claims],
             "insufficient_evidence": self.insufficient_evidence
         }
+        if self.signature:
+            result["signature"] = self.signature.to_dict()
+        return result
     
     @classmethod
     def from_dict(cls, d: Dict) -> "TraceExplanation":
+        signature = None
+        if "signature" in d and d["signature"]:
+            signature = Signature.from_dict(d["signature"])
         return cls(
             prediction=d.get("prediction", "anomaly"),
             summary=d.get("summary", ""),
+            signature=signature,
             claims=[Claim.from_dict(c) for c in d.get("claims", [])],
             insufficient_evidence=d.get("insufficient_evidence", False),
             raw_response=d.get("raw_response", "")
@@ -120,7 +157,7 @@ class TraceExplanation:
 
 TRACE_SCHEMA = {
     "type": "object",
-    "required": ["prediction", "summary", "claims"],
+    "required": ["prediction", "summary", "signature", "claims"],
     "properties": {
         "prediction": {
             "type": "string",
@@ -129,13 +166,29 @@ TRACE_SCHEMA = {
         },
         "summary": {
             "type": "string",
-            "description": "A brief summary (1-2 sentences) explaining why this session is anomalous"
+            "description": "A brief forensic summary (1-2 sentences) with specific details"
+        },
+        "signature": {
+            "type": "object",
+            "required": ["name", "matched_evidence_ids"],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Anomaly signature name: COMPONENT_SEVERITY__ERROR_TYPE (e.g., RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT)"
+                },
+                "matched_evidence_ids": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Evidence IDs that match this signature"
+                }
+            },
+            "description": "Anomaly signature for clustering and deduplication"
         },
         "claims": {
             "type": "array",
             "items": {
                 "type": "object",
-                "required": ["type", "claim", "evidence_ids"],
+                "required": ["type", "claim", "evidence_ids", "evidence_spans"],
                 "properties": {
                     "type": {
                         "type": "string",
@@ -144,16 +197,21 @@ TRACE_SCHEMA = {
                     },
                     "claim": {
                         "type": "string",
-                        "description": "A specific claim about the anomaly"
+                        "description": "A specific, quantified claim about the anomaly"
                     },
                     "evidence_ids": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "List of evidence IDs: E0 (query session), E1, E2, etc. (retrieved evidence)"
+                        "description": "List of evidence IDs: E0, E1, E2, etc."
+                    },
+                    "evidence_spans": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Specific line references: E0-L8, E1-L3, etc."
                     }
                 }
             },
-            "description": "List of typed claims, each backed by evidence"
+            "description": "List of typed claims, each backed by specific evidence spans"
         },
         "insufficient_evidence": {
             "type": "boolean",
@@ -170,26 +228,39 @@ TRACE_SCHEMA = {
 SYSTEM_PROMPT = """You are an expert log analyst producing forensic, evidence-grounded explanations.
 Your task is to explain WHY a log session is anomalous based on the provided evidence.
 
-EVIDENCE IDs:
+EVIDENCE FORMAT:
+- Each evidence block has LINE NUMBERS: E0-L1, E0-L2, E1-L1, E1-L2, etc.
 - [E0] = The query session being analyzed
 - [E1], [E2], ... = Retrieved historical evidence (may include anomaly or normal sessions)
 
-CLAIM TYPES (use the appropriate type for each claim):
-- "observation": Direct observation from query session E0 (e.g., "E0 contains KERNEL FATAL errors")
-- "pattern_match": Pattern matches known anomaly exemplars (e.g., "E0 shares error pattern with E1")
-- "contrast": Differs from normal evidence, if available (e.g., "Unlike E3 (normal), E0 shows FATAL not INFO")
+CLAIM TYPES (you MUST produce at least one of each type when evidence allows):
+- "observation": Direct observation from E0 - MUST include COUNT or POSITION
+- "pattern_match": Pattern matches anomaly exemplars - MUST name the signature
+- "contrast": Differs from normal evidence - MUST list "X has Y, Z lacks Y" explicitly
 
-CRITICAL RULES:
-1. Every claim MUST have a type and reference specific evidence IDs
-2. Use "observation" type for claims about E0 alone
-3. Use "pattern_match" type when comparing E0 to anomaly evidence (E1, E2...)
-4. Use "contrast" type only when comparing E0 to normal evidence
-5. Only use information from the provided evidence - do not hallucinate
-6. If evidence is insufficient, set insufficient_evidence to true
-7. Output ONLY valid JSON matching the schema
+=== CRITICAL FORMATTING RULES (MANDATORY) ===
 
-SCOPE LIMITATION: You produce forensic explanations (observations, pattern matches, contrasts).
-Do NOT infer root causes or remediation actions - that requires external verified knowledge."""
+1. EVIDENCE SPANS: Every claim MUST reference evidence_spans with LINE NUMBERS (e.g., "E0-L8", "E1-L3")
+   - Do NOT just use evidence_ids like "E0" - you MUST cite specific lines
+   - Each claim needs at least 2 evidence_spans
+
+2. OBSERVATION CLAIMS must include QUANTIFIED details:
+   - BAD: "E0 contains multiple KERNEL FATAL errors"
+   - GOOD: "E0 contains 3 KERNEL FATAL errors concentrated in lines 8-12"
+
+3. PATTERN_MATCH CLAIMS must output a SIGNATURE NAME:
+   - Format: COMPONENT_SEVERITY__ERROR_TYPE (use double underscore)
+   - Example: "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT"
+   - Example: "CIOD_APP_FATAL__CIOSTREAM_SOCKET_ERROR"
+
+4. CONTRAST CLAIMS must explicitly state the DIFFERENCE:
+   - BAD: "Unlike E3, E0 shows FATAL errors"
+   - GOOD: "E0 has 'FATAL + interrupt' at E0-L8; E3 shows 'INFO + corrected' at E3-L2"
+
+5. SUMMARY must be a forensic one-liner with the signature name and key metric.
+
+SCOPE LIMITATION: You produce forensic explanations only.
+Do NOT infer root causes or remediation actions."""
 
 
 EXPLANATION_PROMPT_TEMPLATE = """Analyze this LOG SESSION that was flagged as ANOMALOUS by our detection model.
@@ -199,42 +270,60 @@ Session ID: {session_id}
 Anomaly Probability: {anomaly_prob:.2%}
 Confidence Margin: {margin:.4f}
 
-Log Content:
+Log Content (with line numbers):
 {log_content}
 
 === RETRIEVED EVIDENCE ===
 The following evidence sessions were retrieved from our historical corpus for comparison.
+Each line is prefixed with its span ID (e.g., E1-L3 = Evidence 1, Line 3).
 {evidence_block}
 
 === YOUR TASK ===
-Explain WHY this log session is anomalous. For EACH claim:
-1. Specify the claim TYPE:
-   - "observation": What you directly observe in E0
-   - "pattern_match": How E0 matches anomaly evidence (E1, E2...)
-   - "contrast": How E0 differs from normal evidence (if any)
-2. Reference the evidence IDs that support the claim
-3. Be specific and technical
+Produce a forensic explanation with:
+1. A SIGNATURE name (COMPONENT_SEVERITY__ERROR_TYPE format)
+2. QUANTIFIED observations (counts, line ranges)
+3. SPECIFIC evidence_spans (E0-L8, E1-L3, etc.) for each claim
 
 Output your explanation as JSON:
-{{
+{{{{
     "prediction": "anomaly",
-    "summary": "Brief 1-2 sentence summary",
+    "summary": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT: 3 FATAL errors in E0-L8 to E0-L12, matching signature from E1.",
+    "signature": {{{{
+        "name": "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT",
+        "matched_evidence_ids": ["E1"]
+    }}}},
     "claims": [
-        {{"type": "observation", "claim": "E0 contains multiple KERNEL FATAL errors", "evidence_ids": ["E0"]}},
-        {{"type": "pattern_match", "claim": "Error pattern in E0 matches known anomaly E1", "evidence_ids": ["E0", "E1"]}}
+        {{{{
+            "type": "observation",
+            "claim": "E0 contains 3 KERNEL FATAL errors with 'data storage interrupt' concentrated in lines 8-12.",
+            "evidence_ids": ["E0"],
+            "evidence_spans": ["E0-L8", "E0-L10", "E0-L12"]
+        }}}},
+        {{{{
+            "type": "pattern_match",
+            "claim": "The combination {{KERNEL FATAL + data storage interrupt + instruction address}} matches historical anomaly signature RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT.",
+            "evidence_ids": ["E0", "E1"],
+            "evidence_spans": ["E0-L8", "E0-L12", "E1-L3", "E1-L5"]
+        }}}},
+        {{{{
+            "type": "contrast",
+            "claim": "E0 has 'FATAL + interrupt' at E0-L8; normal E3 shows 'INFO + corrected' at E3-L2 without escalation.",
+            "evidence_ids": ["E0", "E3"],
+            "evidence_spans": ["E0-L8", "E3-L2", "E3-L4"]
+        }}}}
     ],
     "insufficient_evidence": false
-}}
+}}}}
 
 IMPORTANT: Output ONLY the JSON object, no other text."""
 
 
 def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int = 500) -> str:
-    """Format retrieved evidence for the prompt with type and label info."""
+    """Format retrieved evidence for the prompt with type, label, and LINE NUMBERS."""
     if not hits:
         return "No evidence retrieved."
     
-    lines = []
+    output_lines = []
     for i, hit in enumerate(hits, 1):
         evidence_id = f"E{i}"
         
@@ -243,17 +332,35 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
         label = hit.metadata.get("label", None) if hit.metadata else None
         label_str = "anomaly" if label == 1 else "normal" if label == 0 else "unknown"
         
-        # Truncate long evidence
-        text = hit.text
-        if len(text) > max_chars_per_evidence:
-            text = text[:max_chars_per_evidence] + "..."
-        
         # Format header with type and label
-        lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f})")
-        lines.append(text)
-        lines.append("")  # Empty line separator
+        output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f})")
+        
+        # Add line numbers to each line of evidence
+        text_lines = hit.text.split("\n")
+        char_count = 0
+        for line_num, line in enumerate(text_lines, 1):
+            if char_count + len(line) > max_chars_per_evidence:
+                output_lines.append(f"{evidence_id}-L{line_num}: ... (truncated)")
+                break
+            output_lines.append(f"{evidence_id}-L{line_num}: {line}")
+            char_count += len(line) + 1
+        
+        output_lines.append("")  # Empty line separator
     
-    return "\n".join(lines)
+    return "\n".join(output_lines)
+
+
+def format_query_session_with_lines(session_lines: List[str], max_lines: int = 20) -> str:
+    """Format the query session (E0) with line numbers."""
+    output = []
+    lines_to_show = session_lines[:max_lines]
+    for line_num, line in enumerate(lines_to_show, 1):
+        output.append(f"E0-L{line_num}: {line}")
+    
+    if len(session_lines) > max_lines:
+        output.append(f"... ({len(session_lines) - max_lines} more lines)")
+    
+    return "\n".join(output)
 
 
 # ============================================================
@@ -303,11 +410,11 @@ class PromptBuilder:
         Returns:
             Tuple of (system_prompt, user_prompt)
         """
-        # Format log content (truncate if needed)
-        log_lines = session.lines[:self.max_log_lines]
-        if len(session.lines) > self.max_log_lines:
-            log_lines.append(f"... ({len(session.lines) - self.max_log_lines} more lines)")
-        log_content = "\n".join(log_lines)
+        # Format log content WITH LINE NUMBERS
+        log_content = format_query_session_with_lines(
+            session.lines,
+            self.max_log_lines
+        )
         
         # Format evidence block
         evidence_to_use = evidence_hits[:self.max_evidence_items]

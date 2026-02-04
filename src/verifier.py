@@ -78,13 +78,18 @@ class Verifier:
     2. Claims contain keywords found in referenced evidence
     3. JSON structure is valid
     4. Evidence coverage is sufficient
+    5. Evidence spans are valid (NEW)
+    6. Span keyword matches (NEW)
+    7. Signature exists (NEW)
     """
     
     def __init__(
         self,
         min_evidence_coverage: float = 0.8,
         require_keyword_match: bool = True,
-        min_keyword_match_ratio: float = 0.3
+        min_keyword_match_ratio: float = 0.3,
+        require_spans: bool = True,
+        require_signature: bool = True
     ):
         """
         Initialize verifier.
@@ -93,16 +98,21 @@ class Verifier:
             min_evidence_coverage: Minimum fraction of claims with evidence
             require_keyword_match: Whether to check keyword matches
             min_keyword_match_ratio: Minimum keyword match ratio per claim
+            require_spans: Whether to require evidence_spans in claims
+            require_signature: Whether to require a signature
         """
         self.min_evidence_coverage = min_evidence_coverage
         self.require_keyword_match = require_keyword_match
         self.min_keyword_match_ratio = min_keyword_match_ratio
+        self.require_spans = require_spans
+        self.require_signature = require_signature
     
     def verify(
         self,
         explanation: TraceExplanation,
         evidence_hits: List[RetrievalHit],
-        evidence_id_mapping: Dict[str, str]
+        evidence_id_mapping: Dict[str, str],
+        query_session_text: Optional[str] = None
     ) -> VerificationResult:
         """
         Verify an explanation against its evidence.
@@ -111,6 +121,7 @@ class Verifier:
             explanation: The explanation to verify
             evidence_hits: The evidence that was provided
             evidence_id_mapping: Mapping from E1, E2 to original IDs
+            query_session_text: The raw text of E0 (query session) for keyword matching
             
         Returns:
             VerificationResult with all check outcomes
@@ -131,12 +142,30 @@ class Verifier:
         # Check 4: Keyword matching (if enabled)
         if self.require_keyword_match:
             keyword_issues = self._check_keyword_matches(
-                explanation, evidence_hits, evidence_id_mapping
+                explanation, evidence_hits, evidence_id_mapping, query_session_text
             )
             issues.extend(keyword_issues)
         
         # Check 5: Empty claims
         issues.append(self._check_empty_claims(explanation))
+        
+        # Check 6: Evidence spans validity (NEW)
+        if self.require_spans:
+            span_issues = self._check_evidence_spans(
+                explanation, evidence_hits, evidence_id_mapping
+            )
+            issues.extend(span_issues)
+        
+        # Check 7: Signature existence (NEW)
+        if self.require_signature:
+            issues.append(self._check_signature(explanation))
+        
+        # Check 8: Span keyword matching (NEW - stronger than evidence_id matching)
+        if self.require_spans and self.require_keyword_match:
+            span_kw_issues = self._check_span_keyword_matches(
+                explanation, evidence_hits, evidence_id_mapping, query_session_text
+            )
+            issues.extend(span_kw_issues)
         
         # Calculate summary
         total = len(issues)
@@ -244,13 +273,16 @@ class Verifier:
         self,
         explanation: TraceExplanation,
         evidence_hits: List[RetrievalHit],
-        evidence_id_mapping: Dict[str, str]
+        evidence_id_mapping: Dict[str, str],
+        query_session_text: Optional[str] = None
     ) -> List[VerificationIssue]:
         """Check that claims contain keywords from their referenced evidence."""
         issues = []
         
-        # Build evidence text lookup
+        # Build evidence text lookup (include E0 = query session)
         evidence_texts = {}
+        if query_session_text:
+            evidence_texts["E0"] = query_session_text.lower()
         for i, hit in enumerate(evidence_hits, 1):
             evidence_texts[f"E{i}"] = hit.text.lower()
         
@@ -330,6 +362,208 @@ class Verifier:
             status=VerificationStatus.PASS,
             message="All claims have sufficient content"
         )
+    
+    def _parse_span(self, span: str) -> Tuple[Optional[str], Optional[int]]:
+        """Parse a span like 'E0-L12' into (evidence_id, line_number)."""
+        if not span or '-L' not in span:
+            return None, None
+        try:
+            parts = span.split('-L')
+            evidence_id = parts[0]
+            line_num = int(parts[1])
+            return evidence_id, line_num
+        except (ValueError, IndexError):
+            return None, None
+    
+    def _build_evidence_lines(self, evidence_hits: List[RetrievalHit], query_session_text: str = None) -> Dict[str, List[str]]:
+        """Build a lookup of evidence_id -> list of lines."""
+        evidence_lines = {}
+        
+        # E0 is the query session (if provided)
+        if query_session_text:
+            evidence_lines["E0"] = query_session_text.split("\n")
+        
+        # E1, E2, ... are retrieved evidence
+        for i, hit in enumerate(evidence_hits, 1):
+            evidence_lines[f"E{i}"] = hit.text.split("\n")
+        
+        return evidence_lines
+    
+    def _check_evidence_spans(
+        self,
+        explanation: TraceExplanation,
+        evidence_hits: List[RetrievalHit],
+        evidence_id_mapping: Dict[str, str]
+    ) -> List[VerificationIssue]:
+        """Check that evidence_spans reference valid lines."""
+        issues = []
+        
+        # Build line count lookup
+        line_counts = {"E0": 100}  # Assume E0 has up to 100 lines (we don't have it here)
+        for i, hit in enumerate(evidence_hits, 1):
+            line_counts[f"E{i}"] = len(hit.text.split("\n"))
+        
+        valid_eids = set(evidence_id_mapping.keys())
+        
+        claims_without_spans = 0
+        invalid_spans = []
+        
+        for i, claim in enumerate(explanation.claims):
+            # Check if claim has evidence_spans
+            if not claim.evidence_spans:
+                claims_without_spans += 1
+                continue
+            
+            for span in claim.evidence_spans:
+                eid, line_num = self._parse_span(span)
+                
+                if eid is None:
+                    invalid_spans.append((i, span, "malformed"))
+                    continue
+                
+                if eid not in valid_eids:
+                    invalid_spans.append((i, span, f"unknown evidence_id {eid}"))
+                    continue
+                
+                if eid in line_counts and line_num > line_counts[eid]:
+                    invalid_spans.append((i, span, f"line {line_num} > max {line_counts[eid]}"))
+        
+        # Report issues
+        if claims_without_spans > 0:
+            issues.append(VerificationIssue(
+                check_name="evidence_spans_coverage",
+                status=VerificationStatus.WARNING,
+                message=f"{claims_without_spans}/{len(explanation.claims)} claims lack evidence_spans",
+                details={"claims_without_spans": claims_without_spans}
+            ))
+        
+        if invalid_spans:
+            issues.append(VerificationIssue(
+                check_name="evidence_spans_validity",
+                status=VerificationStatus.FAIL,
+                message=f"Found {len(invalid_spans)} invalid spans",
+                details={"invalid_spans": invalid_spans[:10]}  # Limit output
+            ))
+        else:
+            issues.append(VerificationIssue(
+                check_name="evidence_spans_validity",
+                status=VerificationStatus.PASS,
+                message="All evidence spans are valid"
+            ))
+        
+        return issues
+    
+    def _check_signature(
+        self,
+        explanation: TraceExplanation
+    ) -> VerificationIssue:
+        """Check that explanation has a signature."""
+        if not explanation.signature:
+            return VerificationIssue(
+                check_name="signature",
+                status=VerificationStatus.WARNING,
+                message="No signature provided"
+            )
+        
+        if not explanation.signature.name or explanation.signature.name == "UNKNOWN":
+            return VerificationIssue(
+                check_name="signature",
+                status=VerificationStatus.WARNING,
+                message="Signature name is missing or UNKNOWN"
+            )
+        
+        # Check signature format: should contain double underscore
+        if "__" not in explanation.signature.name:
+            return VerificationIssue(
+                check_name="signature",
+                status=VerificationStatus.WARNING,
+                message=f"Signature '{explanation.signature.name}' doesn't follow COMPONENT__ERROR_TYPE format",
+                details={"signature": explanation.signature.name}
+            )
+        
+        return VerificationIssue(
+            check_name="signature",
+            status=VerificationStatus.PASS,
+            message=f"Valid signature: {explanation.signature.name}"
+        )
+    
+    def _check_span_keyword_matches(
+        self,
+        explanation: TraceExplanation,
+        evidence_hits: List[RetrievalHit],
+        evidence_id_mapping: Dict[str, str],
+        query_session_text: Optional[str] = None
+    ) -> List[VerificationIssue]:
+        """Check that claim keywords appear in the specific referenced spans."""
+        issues = []
+        
+        # Build evidence lines lookup (include E0 = query session)
+        evidence_lines = {}
+        if query_session_text:
+            evidence_lines["E0"] = query_session_text.split("\n")
+        for i, hit in enumerate(evidence_hits, 1):
+            evidence_lines[f"E{i}"] = hit.text.split("\n")
+        
+        # Extract significant keywords
+        def extract_keywords(text: str) -> Set[str]:
+            stopwords = {
+                'this', 'that', 'with', 'from', 'have', 'been', 'were',
+                'they', 'their', 'which', 'there', 'about', 'would',
+                'could', 'should', 'these', 'those', 'being', 'other',
+                'contains', 'shows', 'matches', 'unlike', 'normal'
+            }
+            words = re.findall(r'\b[a-z]{4,}\b', text.lower())
+            return set(w for w in words if w not in stopwords)
+        
+        claims_with_span_match = 0
+        claims_checked = 0
+        
+        for i, claim in enumerate(explanation.claims):
+            if not claim.evidence_spans:
+                continue
+            
+            claims_checked += 1
+            claim_keywords = extract_keywords(claim.claim)
+            if not claim_keywords:
+                continue
+            
+            # Check if any keyword appears in any referenced span
+            found_match = False
+            for span in claim.evidence_spans:
+                eid, line_num = self._parse_span(span)
+                if eid is None or eid not in evidence_lines:
+                    continue
+                
+                lines = evidence_lines[eid]
+                if line_num <= len(lines):
+                    span_text = lines[line_num - 1].lower()
+                    for kw in claim_keywords:
+                        if kw in span_text:
+                            found_match = True
+                            break
+                if found_match:
+                    break
+            
+            if found_match:
+                claims_with_span_match += 1
+        
+        if claims_checked > 0:
+            match_rate = claims_with_span_match / claims_checked
+            if match_rate < 0.5:
+                issues.append(VerificationIssue(
+                    check_name="span_keyword_match",
+                    status=VerificationStatus.WARNING,
+                    message=f"Only {claims_with_span_match}/{claims_checked} claims have keywords in their spans",
+                    details={"match_rate": match_rate}
+                ))
+            else:
+                issues.append(VerificationIssue(
+                    check_name="span_keyword_match",
+                    status=VerificationStatus.PASS,
+                    message=f"{claims_with_span_match}/{claims_checked} claims have keywords in their spans"
+                ))
+        
+        return issues
     
     def verify_batch(
         self,

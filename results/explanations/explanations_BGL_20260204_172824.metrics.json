@@ -1,0 +1,52 @@
+{
+  "config": {
+    "dataset": "BGL",
+    "log_file": "./logs/BGL.log",
+    "model_path": "./best_model/best_model_20250724_072857.pth",
+    "top_k": 5,
+    "top_k_anomaly": 4,
+    "top_k_normal": 1,
+    "use_mixed_retrieval": true,
+    "retriever_method": "bm25",
+    "llm_provider": "ollama",
+    "llm_model": "llama3.1:8b",
+    "llm_temperature": 0.1,
+    "llm_max_tokens": 1024,
+    "max_sessions": 5
+  },
+  "metrics": {
+    "counts": {
+      "total_sessions": 5,
+      "anomaly_sessions": 1,
+      "explained_sessions": 1,
+      "successful_explanations": 1,
+      "failed_explanations": 0
+    },
+    "verification": {
+      "passed": 1,
+      "failed": 0,
+      "warnings": 0,
+      "pass_rate": 1.0
+    },
+    "signatures": {
+      "unique_count": 1,
+      "distribution": {
+        "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT": 1
+      }
+    },
+    "tokens": {
+      "total": 3232,
+      "avg_per_explanation": 3232.0
+    },
+    "latency": {
+      "avg_ms": 13183.086156845093,
+      "p95_ms": 13183.086156845093,
+      "total_llm_ms": 13183.086156845093
+    },
+    "rates": {
+      "trigger_rate": 0.2,
+      "success_rate": 1.0
+    },
+    "total_time_seconds": 19.145455360412598
+  }
+}

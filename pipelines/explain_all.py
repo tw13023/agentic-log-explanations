@@ -20,7 +20,7 @@ from src.normalizer import get_normalizer
 from src.screener import Screener, ScreenerOutput
 from src.evidence_store import EvidenceStore, build_evidence_store
 from src.retriever import Retriever, RetrievalHit
-from src.prompt_builder import PromptBuilder, TraceExplanation, ExplanationResult
+from src.prompt_builder import PromptBuilder, TraceExplanation, Claim, Signature, ExplanationResult
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
 
@@ -42,7 +42,7 @@ class PipelineConfig:
     
     # LLM settings
     llm_provider: str = "ollama"
-    llm_model: str = "llama3.2"
+    llm_model: str = "llama3.1:8b"
     llm_temperature: float = 0.1
     llm_max_tokens: int = 1024
     llm_timeout: int = 120
@@ -85,6 +85,10 @@ class PipelineMetrics:
     # Verification
     verification_passed: int = 0
     verification_failed: int = 0
+    verification_warnings: int = 0
+    
+    # Signatures (NEW)
+    signature_counts: Dict[str, int] = field(default_factory=dict)
     
     # Tokens & Latency
     total_tokens: int = 0
@@ -153,7 +157,12 @@ class PipelineMetrics:
             "verification": {
                 "passed": self.verification_passed,
                 "failed": self.verification_failed,
+                "warnings": self.verification_warnings,
                 "pass_rate": self.verification_pass_rate
+            },
+            "signatures": {
+                "unique_count": len(self.signature_counts),
+                "distribution": self.signature_counts
             },
             "tokens": {
                 "total": self.total_tokens,
@@ -326,19 +335,18 @@ class ExplainAllPipeline:
                 self.metrics.total_latency_ms += result.latency_ms
                 self.metrics.latencies.append(result.latency_ms)
                 
+                # Track signature (NEW)
+                if result.explanation.signature:
+                    sig_name = result.explanation.signature.name
+                    self.metrics.signature_counts[sig_name] = self.metrics.signature_counts.get(sig_name, 0) + 1
+                
             except Exception as e:
                 self.metrics.failed_explanations += 1
                 print(f"\n  ✗ Failed to explain {session.session_id}: {e}")
         
-        # Step 3: Verify explanations
+        # Step 3: Verify explanations (with E0 text for keyword matching)
         print(f"\n[Step 3] Verifying explanations...")
-        self.verifications, verify_summary = self.verifier.verify_batch(self.results)
-        
-        for v in self.verifications:
-            if v.passed:
-                self.metrics.verification_passed += 1
-            else:
-                self.metrics.verification_failed += 1
+        self._verify_all_explanations()
         
         self.metrics.end_time = time.time()
         
@@ -346,6 +354,25 @@ class ExplainAllPipeline:
         self._print_summary()
         
         return self
+    
+    def _verify_all_explanations(self) -> None:
+        """Verify all explanations with E0 text for accurate keyword matching."""
+        for result in self.results:
+            query_session_text = "\n".join(result.session.lines)
+            v = self.verifier.verify(
+                explanation=result.explanation,
+                evidence_hits=result.evidence_hits,
+                evidence_id_mapping=result.evidence_id_mapping,
+                query_session_text=query_session_text
+            )
+            v.session_id = result.session_id
+            self.verifications.append(v)
+            
+            if v.passed:
+                self.metrics.verification_passed += 1
+            else:
+                self.metrics.verification_failed += 1
+            self.metrics.verification_warnings += v.warning_checks
     
     def _explain_session(
         self,
@@ -419,25 +446,35 @@ class ExplainAllPipeline:
         
         m = self.metrics
         
-        print(f"\n📊 Sessions:")
+        print(f"\nSessions:")
         print(f"  Total: {m.total_sessions:,}")
         print(f"  Anomalies (trigger): {m.anomaly_sessions:,} ({m.trigger_rate:.1%})")
         
-        print(f"\n📝 Explanations:")
+        print(f"\nExplanations:")
         print(f"  Attempted: {m.explained_sessions:,}")
         print(f"  Successful: {m.successful_explanations:,} ({m.success_rate:.1%})")
         print(f"  Failed: {m.failed_explanations:,}")
         
-        print(f"\n✓ Verification:")
+        print(f"\nVerification:")
         print(f"  Passed: {m.verification_passed:,}")
         print(f"  Failed: {m.verification_failed:,}")
+        print(f"  Warnings: {m.verification_warnings:,}")
         print(f"  Pass rate: {m.verification_pass_rate:.1%}")
         
-        print(f"\n💰 Cost (tokens):")
+        # Signature distribution (NEW)
+        if m.signature_counts:
+            print(f"\nSignatures ({len(m.signature_counts)} unique):")
+            sorted_sigs = sorted(m.signature_counts.items(), key=lambda x: -x[1])
+            for sig_name, count in sorted_sigs[:10]:  # Top 10
+                print(f"  {sig_name}: {count:,}")
+            if len(sorted_sigs) > 10:
+                print(f"  ... and {len(sorted_sigs) - 10} more")
+        
+        print(f"\nTokens:")
         print(f"  Total: {m.total_tokens:,}")
         print(f"  Avg/explanation: {m.avg_tokens_per_explanation:.0f}")
         
-        print(f"\n⏱ Latency:")
+        print(f"\nLatency:")
         print(f"  Total LLM time: {m.total_latency_ms/1000:.1f}s")
         print(f"  Avg/explanation: {m.avg_latency_ms:.0f}ms")
         print(f"  P95: {m.p95_latency_ms:.0f}ms")
@@ -474,7 +511,7 @@ class ExplainAllPipeline:
 def run_explain_all_pipeline(
     dataset: str = "BGL",
     max_sessions: Optional[int] = None,
-    llm_model: str = "llama3.2"
+    llm_model: str = "llama3.1:8b"
 ) -> ExplainAllPipeline:
     """
     Convenience function to run the Explain-All pipeline.
@@ -519,7 +556,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Explain-All Pipeline")
     parser.add_argument("--dataset", type=str, default="BGL", choices=["BGL", "HDFS"])
     parser.add_argument("--max-sessions", type=int, default=None, help="Limit test sessions")
-    parser.add_argument("--llm-model", type=str, default="llama3.2", help="Ollama model")
+    parser.add_argument("--llm-model", type=str, default="llama3.1:8b", help="Ollama model")
     
     args = parser.parse_args()
     
