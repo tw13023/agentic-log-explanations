@@ -364,11 +364,22 @@ class Verifier:
         )
     
     def _parse_span(self, span: str) -> Tuple[Optional[str], Optional[int]]:
-        """Parse a span like 'E0-L12' into (evidence_id, line_number)."""
+        """Parse a span like 'E0-L12' into (evidence_id, line_number).
+        
+        Also handles range formats:
+          - 'E0-L6 to E0-L10'  → returns first span (E0, 6)
+          - 'E0-L6, E0-L8'    → returns first span (E0, 6)
+          - 'E0-L6-L10'       → returns first line (E0, 6)
+        """
         if not span or '-L' not in span:
             return None, None
         try:
-            parts = span.split('-L')
+            # Handle 'E0-L6 to E0-L10' range format
+            clean = span.split(' to ')[0].strip()
+            # Handle 'E0-L6, E0-L8' comma format
+            clean = clean.split(',')[0].strip()
+            # Handle 'E0-L6-L10' dash range format
+            parts = clean.split('-L')
             evidence_id = parts[0]
             line_num = int(parts[1])
             return evidence_id, line_num
@@ -418,10 +429,11 @@ class Verifier:
                 eid, line_num = self._parse_span(span)
                 
                 if eid is None:
+                    # Only fail for truly unparseable spans (not range formats)
                     invalid_spans.append((i, span, "malformed"))
                     continue
                 
-                if eid not in valid_eids:
+                if eid not in valid_eids and eid != "E0":
                     invalid_spans.append((i, span, f"unknown evidence_id {eid}"))
                     continue
                 

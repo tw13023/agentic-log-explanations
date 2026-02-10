@@ -18,11 +18,18 @@ import numpy as np
 from src.data_loader import Session, BGLDataLoader, HDFSDataLoader, get_data_loader
 from src.normalizer import get_normalizer
 from src.screener import Screener, ScreenerOutput
-from src.evidence_store import EvidenceStore, build_evidence_store
+from src.evidence_store import EvidenceStore, EvidenceDoc, build_evidence_store
 from src.retriever import Retriever, RetrievalHit
 from src.prompt_builder import PromptBuilder, TraceExplanation, Claim, Signature, ExplanationResult
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
+
+# Task tracker (optional)
+try:
+    from tasks import TaskTracker
+    _HAS_TRACKER = True
+except ImportError:
+    _HAS_TRACKER = False
 
 
 @dataclass
@@ -47,9 +54,15 @@ class PipelineConfig:
     llm_max_tokens: int = 1024
     llm_timeout: int = 120
     
+    # Patterns (data-driven signature cards)
+    patterns_dir: str = "./patterns"  # directory with {dataset}_patterns.json
+    
     # Output
     output_dir: str = "./results/explanations"
     save_evidence_store: bool = True
+    
+    # Task tracker integration
+    task_id: Optional[str] = None  # e.g. "bgl_full_run_v2"
     
     # Limits (for testing)
     max_sessions: Optional[int] = None  # None = process all
@@ -68,6 +81,8 @@ class PipelineConfig:
             "llm_model": self.llm_model,
             "llm_temperature": self.llm_temperature,
             "llm_max_tokens": self.llm_max_tokens,
+            "patterns_dir": self.patterns_dir,
+            "task_id": self.task_id,
             "max_sessions": self.max_sessions
         }
 
@@ -283,8 +298,11 @@ class ExplainAllPipeline:
         else:
             print(f"  ✓ LLM ({self.config.llm_model}) is available")
         
-        # 7. Verifier
-        self.verifier = Verifier()
+        # 7. Add data-driven signature cards
+        self._load_signature_cards()
+        
+        # 8. Verifier (min_keyword_match_ratio=0.0 to allow LLM abstractions)
+        self.verifier = Verifier(min_keyword_match_ratio=0.0)
         
         print("\n" + "="*60)
         print("SETUP COMPLETE")
@@ -292,8 +310,62 @@ class ExplainAllPipeline:
         
         return self
     
+    def _load_signature_cards(self) -> None:
+        """Load data-driven patterns from JSON and add as signature cards."""
+        dataset = self.config.dataset.lower()
+        patterns_file = Path(self.config.patterns_dir) / f"{dataset}_patterns.json"
+        
+        if not patterns_file.exists():
+            print(f"\n[7/7] No patterns file found at {patterns_file} — skipping signature cards")
+            return
+        
+        print(f"\n[7/7] Loading signature cards from {patterns_file}...")
+        with open(patterns_file, 'r') as f:
+            patterns = json.load(f)
+        
+        for pattern_id, info in patterns.items():
+            # BGL uses 'fingerprint', HDFS uses 'merge_key'
+            pattern_key = info.get('merge_key', info.get('fingerprint', 'N/A'))
+            sig_text = f"""ERROR SIGNATURE: {info['name']}
+Description: {info['description']}
+
+Key Indicators: {', '.join(info['keywords'])}
+Frequency: {info['frequency']} occurrences in training data
+
+Pattern Characteristics:
+  - Fingerprint: {pattern_key}
+"""
+            doc = EvidenceDoc(
+                evidence_id=f"E_SIG_{pattern_id}",
+                session_id=pattern_id,
+                text=sig_text,
+                evidence_type="signature",
+                metadata={
+                    "label": 1,
+                    "dataset": self.config.dataset,
+                    "signature_name": info['name'],
+                    "frequency": info['frequency'],
+                    "keywords": info['keywords'],
+                }
+            )
+            self.evidence_store.documents.append(doc)
+            self.evidence_store._id_to_doc[doc.evidence_id] = doc
+        
+        print(f"  Added {len(patterns)} signature cards")
+        print(f"  Evidence store now has {len(self.evidence_store.documents):,} documents")
+    
     def run(self) -> "ExplainAllPipeline":
         """Run the full pipeline."""
+        # Task tracker: mark running
+        tracker = None
+        if _HAS_TRACKER and self.config.task_id:
+            try:
+                tracker = TaskTracker()
+                tracker.pipeline_start(self.config.task_id)
+            except Exception as e:
+                print(f"  (task tracker warning: {e})")
+                tracker = None
+        
         self.metrics.start_time = time.time()
         
         print("\n" + "="*60)
@@ -352,6 +424,17 @@ class ExplainAllPipeline:
         
         # Print summary
         self._print_summary()
+        
+        # Task tracker: mark completed
+        if tracker and self.config.task_id:
+            try:
+                tracker.pipeline_complete(
+                    self.config.task_id,
+                    metrics=self.metrics.to_dict(),
+                    metrics_file="",  # filled in by save_results
+                )
+            except Exception as e:
+                print(f"  (task tracker warning: {e})")
         
         return self
     
@@ -505,6 +588,17 @@ class ExplainAllPipeline:
         
         print(f"📈 Metrics saved to: {metrics_path}")
         
+        # Update task tracker with metrics file path
+        if _HAS_TRACKER and self.config.task_id:
+            try:
+                tracker = TaskTracker()
+                task = tracker.get(self.config.task_id)
+                if task:
+                    task.metrics_file = str(metrics_path)
+                    tracker._save()
+            except Exception:
+                pass
+        
         return str(output_path)
 
 
@@ -531,7 +625,9 @@ def run_explain_all_pipeline(
             log_file="./logs/BGL.log",
             model_path="./best_model/best_model_20250724_072857.pth",
             llm_model=llm_model,
-            max_sessions=max_sessions
+            max_sessions=max_sessions,
+            output_dir="./results",
+            task_id="bgl_full_run_v2",
         )
     else:
         config = PipelineConfig(
@@ -539,7 +635,9 @@ def run_explain_all_pipeline(
             log_file="./logs/HDFS.log",
             model_path="./best_model_HDFS/best_model_HDFS20250804_201746.pth",
             llm_model=llm_model,
-            max_sessions=max_sessions
+            max_sessions=max_sessions,
+            output_dir="./results_HDFS",
+            task_id="hdfs_full_run",
         )
     
     pipeline = ExplainAllPipeline(config)

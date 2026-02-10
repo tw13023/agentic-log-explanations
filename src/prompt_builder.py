@@ -374,12 +374,14 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
         label = hit.metadata.get("label", None) if hit.metadata else None
         label_str = "anomaly" if label == 1 else "normal" if label == 0 else "unknown"
         
+        # Split text into lines first
+        text_lines = hit.text.split("\n")
+        
         # Format header with type, label, and total line count
         total_evidence_lines = len(text_lines)
         output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f}, {total_evidence_lines} lines: {evidence_id}-L1 to {evidence_id}-L{total_evidence_lines})")
         
         # Add line numbers to each line of evidence
-        text_lines = hit.text.split("\n")
         char_count = 0
         for line_num, line in enumerate(text_lines, 1):
             if char_count + len(line) > max_chars_per_evidence:

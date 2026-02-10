@@ -1,0 +1,648 @@
+{
+  "bgl_auto_01": {
+    "name": "Data Error Fatal Error",
+    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, tlb",
+    "keywords": [
+      "data",
+      "error",
+      "fatal",
+      "interrupt",
+      "tlb"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b",
+      "tlb"
+    ],
+    "frequency": 11052,
+    "fingerprint": "data+error+fatal+interrupt+tlb"
+  },
+  "bgl_auto_02": {
+    "name": "Data Fatal Interrupt Error",
+    "description": "Anomaly cluster characterised by: data, fatal, interrupt, storage",
+    "keywords": [
+      "data",
+      "fatal",
+      "interrupt",
+      "storage"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b",
+      "\\bstorage\\b"
+    ],
+    "frequency": 5196,
+    "fingerprint": "data+fatal+interrupt+storage"
+  },
+  "bgl_auto_03": {
+    "name": "App Been Ciod Error",
+    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, message, prefix, reading, socket",
+    "keywords": [
+      "app",
+      "been",
+      "ciod",
+      "ciostream",
+      "error",
+      "fatal",
+      "has",
+      "message",
+      "prefix",
+      "reading",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\berror\\b"
+    ],
+    "frequency": 4450,
+    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+message+prefix+reading+socket"
+  },
+  "bgl_auto_04": {
+    "name": "Fatal Error",
+    "description": "Anomaly cluster characterised by: fatal",
+    "keywords": [
+      "fatal"
+    ],
+    "patterns": [
+      "\\bfatal\\b"
+    ],
+    "frequency": 3941,
+    "fingerprint": "fatal"
+  },
+  "bgl_auto_05": {
+    "name": "Error Fatal Error",
+    "description": "Anomaly cluster characterised by: error, fatal",
+    "keywords": [
+      "error",
+      "fatal"
+    ],
+    "patterns": [
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 668,
+    "fingerprint": "error+fatal"
+  },
+  "bgl_auto_06": {
+    "name": "App Ciod Ciostream Error",
+    "description": "Anomaly cluster characterised by: app, ciod, ciostream, fatal, message, prefix, socket",
+    "keywords": [
+      "app",
+      "ciod",
+      "ciostream",
+      "fatal",
+      "message",
+      "prefix",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\bfatal\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 399,
+    "fingerprint": "app+ciod+ciostream+fatal+message+prefix+socket"
+  },
+  "bgl_auto_07": {
+    "name": "App Ciod Error Error",
+    "description": "Anomaly cluster characterised by: app, ciod, error, fatal",
+    "keywords": [
+      "app",
+      "ciod",
+      "error",
+      "fatal"
+    ],
+    "patterns": [
+      "app",
+      "\\bciod\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 388,
+    "fingerprint": "app+ciod+error+fatal"
+  },
+  "bgl_auto_08": {
+    "name": "Fatal Message Error",
+    "description": "Anomaly cluster characterised by: fatal, message",
+    "keywords": [
+      "fatal",
+      "message"
+    ],
+    "patterns": [
+      "\\bfatal\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 379,
+    "fingerprint": "fatal+message"
+  },
+  "bgl_auto_09": {
+    "name": "App Ciod Ciostream Error",
+    "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, reading, socket",
+    "keywords": [
+      "app",
+      "ciod",
+      "ciostream",
+      "error",
+      "fatal",
+      "message",
+      "prefix",
+      "reading",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 321,
+    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+reading+socket"
+  },
+  "bgl_auto_10": {
+    "name": "Error Fatal Interrupt Error",
+    "description": "Anomaly cluster characterised by: error, fatal, interrupt",
+    "keywords": [
+      "error",
+      "fatal",
+      "interrupt"
+    ],
+    "patterns": [
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b"
+    ],
+    "frequency": 206,
+    "fingerprint": "error+fatal+interrupt"
+  },
+  "bgl_auto_11": {
+    "name": "Data Error Fatal Error",
+    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt",
+    "keywords": [
+      "data",
+      "error",
+      "fatal",
+      "interrupt"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b"
+    ],
+    "frequency": 48,
+    "fingerprint": "data+error+fatal+interrupt"
+  },
+  "bgl_auto_12": {
+    "name": "App Been Ciod Error",
+    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, interrupt, message, prefix, reading, socket",
+    "keywords": [
+      "app",
+      "been",
+      "ciod",
+      "ciostream",
+      "error",
+      "fatal",
+      "has",
+      "interrupt",
+      "message",
+      "prefix",
+      "reading",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\berror\\b"
+    ],
+    "frequency": 47,
+    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+interrupt+message+prefix+reading+socket"
+  },
+  "bgl_auto_13": {
+    "name": "Fatal Interrupt Error",
+    "description": "Anomaly cluster characterised by: fatal, interrupt",
+    "keywords": [
+      "fatal",
+      "interrupt"
+    ],
+    "patterns": [
+      "\\bfatal\\b",
+      "\\binterrupt\\b"
+    ],
+    "frequency": 43,
+    "fingerprint": "fatal+interrupt"
+  },
+  "bgl_auto_14": {
+    "name": "Error Fatal Message Error",
+    "description": "Anomaly cluster characterised by: error, fatal, message",
+    "keywords": [
+      "error",
+      "fatal",
+      "message"
+    ],
+    "patterns": [
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 13,
+    "fingerprint": "error+fatal+message"
+  },
+  "bgl_auto_15": {
+    "name": "Data Error Fatal Error",
+    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, message, tlb",
+    "keywords": [
+      "data",
+      "error",
+      "fatal",
+      "interrupt",
+      "message",
+      "tlb"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 13,
+    "fingerprint": "data+error+fatal+interrupt+message+tlb"
+  },
+  "bgl_auto_16": {
+    "name": "App Been Ciod Error",
+    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, interrupt, message, prefix, reading, socket",
+    "keywords": [
+      "app",
+      "been",
+      "ciod",
+      "ciostream",
+      "data",
+      "error",
+      "fatal",
+      "has",
+      "interrupt",
+      "message",
+      "prefix",
+      "reading",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\bdata\\b"
+    ],
+    "frequency": 9,
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+interrupt+message+prefix+reading+socket"
+  },
+  "bgl_auto_17": {
+    "name": "Been Ciod Data Error",
+    "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has, socket",
+    "keywords": [
+      "been",
+      "ciod",
+      "data",
+      "error",
+      "fatal",
+      "has",
+      "socket"
+    ],
+    "patterns": [
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 9,
+    "fingerprint": "been+ciod+data+error+fatal+has+socket"
+  },
+  "bgl_auto_18": {
+    "name": "Error Fatal Socket Error",
+    "description": "Anomaly cluster characterised by: error, fatal, socket",
+    "keywords": [
+      "error",
+      "fatal",
+      "socket"
+    ],
+    "patterns": [
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\bsocket\\b"
+    ],
+    "frequency": 9,
+    "fingerprint": "error+fatal+socket"
+  },
+  "bgl_auto_19": {
+    "name": "App Been Ciod Error",
+    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket",
+    "keywords": [
+      "app",
+      "been",
+      "ciod",
+      "ciostream",
+      "data",
+      "error",
+      "fatal",
+      "has",
+      "message",
+      "prefix",
+      "reading",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\bdata\\b"
+    ],
+    "frequency": 7,
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket"
+  },
+  "bgl_auto_20": {
+    "name": "Ciod Fatal Error",
+    "description": "Anomaly cluster characterised by: ciod, fatal",
+    "keywords": [
+      "ciod",
+      "fatal"
+    ],
+    "patterns": [
+      "\\bciod\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 7,
+    "fingerprint": "ciod+fatal"
+  },
+  "bgl_auto_21": {
+    "name": "Data Error Fatal Error",
+    "description": "Anomaly cluster characterised by: data, error, fatal",
+    "keywords": [
+      "data",
+      "error",
+      "fatal"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 6,
+    "fingerprint": "data+error+fatal"
+  },
+  "bgl_auto_22": {
+    "name": "App Ciod Fatal Error",
+    "description": "Anomaly cluster characterised by: app, ciod, fatal",
+    "keywords": [
+      "app",
+      "ciod",
+      "fatal"
+    ],
+    "patterns": [
+      "app",
+      "\\bciod\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 5,
+    "fingerprint": "app+ciod+fatal"
+  },
+  "bgl_auto_23": {
+    "name": "Ciod Error Fatal Error",
+    "description": "Anomaly cluster characterised by: ciod, error, fatal",
+    "keywords": [
+      "ciod",
+      "error",
+      "fatal"
+    ],
+    "patterns": [
+      "\\bciod\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 5,
+    "fingerprint": "ciod+error+fatal"
+  },
+  "bgl_auto_24": {
+    "name": "Error Error",
+    "description": "Anomaly cluster characterised by: error",
+    "keywords": [
+      "error"
+    ],
+    "patterns": [
+      "\\berror\\b"
+    ],
+    "frequency": 5,
+    "fingerprint": "error"
+  },
+  "bgl_auto_25": {
+    "name": "Been Error Fatal Error",
+    "description": "Anomaly cluster characterised by: been, error, fatal, has, socket",
+    "keywords": [
+      "been",
+      "error",
+      "fatal",
+      "has",
+      "socket"
+    ],
+    "patterns": [
+      "\\bbeen\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "has",
+      "\\bsocket\\b"
+    ],
+    "frequency": 5,
+    "fingerprint": "been+error+fatal+has+socket"
+  },
+  "bgl_auto_26": {
+    "name": "App Ciod Ciostream Error",
+    "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, socket",
+    "keywords": [
+      "app",
+      "ciod",
+      "ciostream",
+      "error",
+      "fatal",
+      "message",
+      "prefix",
+      "socket"
+    ],
+    "patterns": [
+      "app",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 4,
+    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+socket"
+  },
+  "bgl_auto_27": {
+    "name": "Ciod Data Error Error",
+    "description": "Anomaly cluster characterised by: ciod, data, error, fatal, interrupt",
+    "keywords": [
+      "ciod",
+      "data",
+      "error",
+      "fatal",
+      "interrupt"
+    ],
+    "patterns": [
+      "\\bciod\\b",
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b"
+    ],
+    "frequency": 4,
+    "fingerprint": "ciod+data+error+fatal+interrupt"
+  },
+  "bgl_auto_28": {
+    "name": "Ciod Fatal Message Error",
+    "description": "Anomaly cluster characterised by: ciod, fatal, message",
+    "keywords": [
+      "ciod",
+      "fatal",
+      "message"
+    ],
+    "patterns": [
+      "\\bciod\\b",
+      "\\bfatal\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 4,
+    "fingerprint": "ciod+fatal+message"
+  },
+  "bgl_auto_29": {
+    "name": "Been Ciod Data Error",
+    "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has",
+    "keywords": [
+      "been",
+      "ciod",
+      "data",
+      "error",
+      "fatal",
+      "has"
+    ],
+    "patterns": [
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b"
+    ],
+    "frequency": 3,
+    "fingerprint": "been+ciod+data+error+fatal+has"
+  },
+  "bgl_auto_30": {
+    "name": "Been Data Error Error",
+    "description": "Anomaly cluster characterised by: been, data, error, has",
+    "keywords": [
+      "been",
+      "data",
+      "error",
+      "has"
+    ],
+    "patterns": [
+      "\\bbeen\\b",
+      "\\bdata\\b",
+      "\\berror\\b",
+      "has"
+    ],
+    "frequency": 3,
+    "fingerprint": "been+data+error+has"
+  },
+  "bgl_auto_31": {
+    "name": "App Been Ciod Error",
+    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket, tlb",
+    "keywords": [
+      "app",
+      "been",
+      "ciod",
+      "ciostream",
+      "data",
+      "error",
+      "fatal",
+      "has",
+      "message",
+      "prefix",
+      "reading",
+      "socket",
+      "tlb"
+    ],
+    "patterns": [
+      "app",
+      "\\bbeen\\b",
+      "\\bciod\\b",
+      "\\bciostream\\b",
+      "\\bdata\\b"
+    ],
+    "frequency": 3,
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket+tlb"
+  },
+  "bgl_auto_32": {
+    "name": "Data Fatal Interrupt Error",
+    "description": "Anomaly cluster characterised by: data, fatal, interrupt",
+    "keywords": [
+      "data",
+      "fatal",
+      "interrupt"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\bfatal\\b",
+      "\\binterrupt\\b"
+    ],
+    "frequency": 3,
+    "fingerprint": "data+fatal+interrupt"
+  },
+  "bgl_auto_33": {
+    "name": "Been Data Error Error",
+    "description": "Anomaly cluster characterised by: been, data, error, fatal, has, socket",
+    "keywords": [
+      "been",
+      "data",
+      "error",
+      "fatal",
+      "has",
+      "socket"
+    ],
+    "patterns": [
+      "\\bbeen\\b",
+      "\\bdata\\b",
+      "\\berror\\b",
+      "\\bfatal\\b",
+      "has"
+    ],
+    "frequency": 3,
+    "fingerprint": "been+data+error+fatal+has+socket"
+  },
+  "bgl_auto_34": {
+    "name": "Data Fatal Message Error",
+    "description": "Anomaly cluster characterised by: data, fatal, message",
+    "keywords": [
+      "data",
+      "fatal",
+      "message"
+    ],
+    "patterns": [
+      "\\bdata\\b",
+      "\\bfatal\\b",
+      "\\bmessage\\b"
+    ],
+    "frequency": 3,
+    "fingerprint": "data+fatal+message"
+  }
+}

@@ -1,0 +1,854 @@
+{
+  "hdfs_01": {
+    "name": "Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn",
+    "description": "Anomaly with tokens: ask+blockinfo+error+found+not+trying+unexpected+volumemap+warn",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "error",
+      "found",
+      "not",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "error",
+      "found",
+      "not",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 2477,
+    "merge_key": "ask+blockinfo+error+found+not+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_02": {
+    "name": "Ask",
+    "description": "receiving-received gap=0.8",
+    "keywords": [
+      "ask"
+    ],
+    "patterns": [
+      "ask"
+    ],
+    "frequency": 2425,
+    "merge_key": "ask",
+    "typically_missing": [
+      "size",
+      "updated",
+      "blockmap",
+      "added",
+      "addstoredblock",
+      "packetresponder",
+      "for",
+      "terminating",
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir",
+      "from",
+      "received"
+    ]
+  },
+  "hdfs_03": {
+    "name": "Write Pipeline + Exception + Ask + Could + Ioexception + Java + Not + Read + Stream",
+    "description": "exception detected; writeBlock operation present; receiving-received gap=2.0",
+    "keywords": [
+      "ask",
+      "could",
+      "exception",
+      "ioexception",
+      "java",
+      "not",
+      "read",
+      "stream",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "could",
+      "exception",
+      "ioexception",
+      "java",
+      "not",
+      "read",
+      "stream",
+      "writeblock"
+    ],
+    "frequency": 2260,
+    "merge_key": "ask+could+exception+ioexception+java+not+read+stream+writeblock",
+    "typically_missing": [
+      "size",
+      "updated",
+      "blockmap",
+      "added",
+      "addstoredblock",
+      "packetresponder",
+      "for",
+      "terminating",
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir"
+    ]
+  },
+  "hdfs_04": {
+    "name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted"
+    ],
+    "frequency": 1096,
+    "merge_key": "ask+datatransfer+read+replicate+starting+thread+transfer+transmitted",
+    "typically_missing": []
+  },
+  "hdfs_05": {
+    "name": "Exception + Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn",
+    "description": "exception detected; replication activity",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "frequency": 819,
+    "merge_key": "ask+datatransfer+exception+read+replicate+starting+thread+transfer+transmitted+warn",
+    "typically_missing": []
+  },
+  "hdfs_06": {
+    "name": "Exception + Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn",
+    "description": "exception detected",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 666,
+    "merge_key": "ask+blockinfo+error+exception+found+not+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_07": {
+    "name": "Exception + Any + Ask + Belong + But + Does + Not + Request + Warn",
+    "description": "exception detected",
+    "keywords": [
+      "any",
+      "ask",
+      "belong",
+      "but",
+      "does",
+      "exception",
+      "not",
+      "request",
+      "warn"
+    ],
+    "patterns": [
+      "any",
+      "ask",
+      "belong",
+      "but",
+      "does",
+      "exception",
+      "not",
+      "request",
+      "warn"
+    ],
+    "frequency": 574,
+    "merge_key": "any+ask+belong+but+does+exception+not+request+warn",
+    "typically_missing": []
+  },
+  "hdfs_08": {
+    "name": "Ask + Redundant + Request + Warn",
+    "description": "Anomaly with tokens: ask+redundant+request+warn",
+    "keywords": [
+      "ask",
+      "redundant",
+      "request",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "redundant",
+      "request",
+      "warn"
+    ],
+    "frequency": 511,
+    "merge_key": "ask+redundant+request+warn",
+    "typically_missing": []
+  },
+  "hdfs_09": {
+    "name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "found",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "found",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 399,
+    "merge_key": "ask+blockinfo+datatransfer+error+found+not+read+replicate+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_10": {
+    "name": "Any + Ask + Belong + But + Does + Not + Request",
+    "description": "Anomaly with tokens: any+ask+belong+but+does+not+request",
+    "keywords": [
+      "any",
+      "ask",
+      "belong",
+      "but",
+      "does",
+      "not",
+      "request"
+    ],
+    "patterns": [
+      "any",
+      "ask",
+      "belong",
+      "but",
+      "does",
+      "not",
+      "request"
+    ],
+    "frequency": 291,
+    "merge_key": "any+ask+belong+but+does+not+request",
+    "typically_missing": []
+  },
+  "hdfs_11": {
+    "name": "Exception + Ask + Redundant + Request + Warn",
+    "description": "exception detected",
+    "keywords": [
+      "ask",
+      "exception",
+      "redundant",
+      "request",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "redundant",
+      "request",
+      "warn"
+    ],
+    "frequency": 122,
+    "merge_key": "ask+exception+redundant+request+warn",
+    "typically_missing": []
+  },
+  "hdfs_12": {
+    "name": "Replication + Ask + Datatransfer + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Warn",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "read",
+      "redundant",
+      "replicate",
+      "request",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "read",
+      "redundant",
+      "replicate",
+      "request",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "frequency": 24,
+    "merge_key": "ask+datatransfer+read+redundant+replicate+request+starting+thread+transfer+transmitted+warn",
+    "typically_missing": []
+  },
+  "hdfs_13": {
+    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted",
+    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.3",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "writeblock"
+    ],
+    "frequency": 17,
+    "merge_key": "ask+datatransfer+exception+ioexception+java+read+replicate+starting+thread+transfer+transmitted+writeblock",
+    "typically_missing": []
+  },
+  "hdfs_14": {
+    "name": "Write Pipeline + Exception + Ask + Ioexception + Java",
+    "description": "exception detected; writeBlock operation present; receiving-received gap=2.3",
+    "keywords": [
+      "ask",
+      "exception",
+      "ioexception",
+      "java",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "ioexception",
+      "java",
+      "writeblock"
+    ],
+    "frequency": 14,
+    "merge_key": "ask+exception+ioexception+java+writeblock",
+    "typically_missing": [
+      "size",
+      "updated",
+      "blockmap",
+      "added",
+      "addstoredblock",
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir",
+      "from"
+    ]
+  },
+  "hdfs_15": {
+    "name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "found",
+      "not",
+      "read",
+      "redundant",
+      "replicate",
+      "request",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "found",
+      "not",
+      "read",
+      "redundant",
+      "replicate",
+      "request",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 11,
+    "merge_key": "ask+blockinfo+datatransfer+error+found+not+read+redundant+replicate+request+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_16": {
+    "name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn"
+    ],
+    "frequency": 10,
+    "merge_key": "ask+datatransfer+read+replicate+starting+thread+transfer+transmitted+warn",
+    "typically_missing": [
+      "invalidset",
+      "delete"
+    ]
+  },
+  "hdfs_17": {
+    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Not + Read + Starting + Thread + Transfer + Warn",
+    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=1.0",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn",
+      "writeblock"
+    ],
+    "frequency": 8,
+    "merge_key": "ask+datatransfer+exception+ioexception+java+not+read+replicate+starting+thread+transfer+warn+writeblock",
+    "typically_missing": []
+  },
+  "hdfs_18": {
+    "name": "Write Pipeline + Exception + Ask + Ioexception + Java + Read",
+    "description": "exception detected; writeBlock operation present; receiving-received gap=3.0",
+    "keywords": [
+      "ask",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "writeblock"
+    ],
+    "frequency": 6,
+    "merge_key": "ask+exception+ioexception+java+read+writeblock",
+    "typically_missing": [
+      "size",
+      "updated",
+      "blockmap",
+      "added",
+      "addstoredblock",
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir",
+      "from"
+    ]
+  },
+  "hdfs_19": {
+    "name": "Replication + Ask + Read + Starting + Thread + Transfer",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer"
+    ],
+    "patterns": [
+      "ask",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer"
+    ],
+    "frequency": 5,
+    "merge_key": "ask+read+replicate+starting+thread+transfer",
+    "typically_missing": [
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir"
+    ]
+  },
+  "hdfs_20": {
+    "name": "Exception + Ask + Warn",
+    "description": "exception detected",
+    "keywords": [
+      "ask",
+      "exception",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "warn"
+    ],
+    "frequency": 5,
+    "merge_key": "ask+exception+warn",
+    "typically_missing": []
+  },
+  "hdfs_21": {
+    "name": "Write Pipeline + Exception + Ask + Java",
+    "description": "exception detected; writeBlock operation present; receiving-received gap=1.0",
+    "keywords": [
+      "ask",
+      "exception",
+      "java",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "java",
+      "writeblock"
+    ],
+    "frequency": 4,
+    "merge_key": "ask+exception+java+writeblock",
+    "typically_missing": [
+      "size",
+      "updated",
+      "blockmap",
+      "added",
+      "addstoredblock",
+      "packetresponder",
+      "for",
+      "terminating",
+      "invalidset",
+      "delete",
+      "fsdataset",
+      "mnt",
+      "hadoop",
+      "file",
+      "deleting",
+      "current",
+      "subdir",
+      "from"
+    ]
+  },
+  "hdfs_22": {
+    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted + Warn",
+    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.5",
+    "keywords": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn",
+      "writeblock"
+    ],
+    "patterns": [
+      "ask",
+      "datatransfer",
+      "exception",
+      "ioexception",
+      "java",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "warn",
+      "writeblock"
+    ],
+    "frequency": 4,
+    "merge_key": "ask+datatransfer+exception+ioexception+java+read+replicate+starting+thread+transfer+transmitted+warn+writeblock",
+    "typically_missing": []
+  },
+  "hdfs_23": {
+    "name": "Exception + Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
+    "description": "exception detected; replication activity",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "datatransfer",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "transmitted",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 4,
+    "merge_key": "ask+blockinfo+datatransfer+error+exception+found+not+read+replicate+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_24": {
+    "name": "Replication + Ask + Read + Starting + Thread + Transfer + Warn",
+    "description": "replication activity",
+    "keywords": [
+      "ask",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn"
+    ],
+    "frequency": 4,
+    "merge_key": "ask+read+replicate+starting+thread+transfer+warn",
+    "typically_missing": []
+  },
+  "hdfs_25": {
+    "name": "Exception + Ask + Blockinfo + Error + Found + Not + Redundant + Request + Trying + Unexpected + Volumemap + Warn",
+    "description": "exception detected",
+    "keywords": [
+      "ask",
+      "blockinfo",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "redundant",
+      "request",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "blockinfo",
+      "error",
+      "exception",
+      "found",
+      "not",
+      "redundant",
+      "request",
+      "trying",
+      "unexpected",
+      "volumemap",
+      "warn"
+    ],
+    "frequency": 3,
+    "merge_key": "ask+blockinfo+error+exception+found+not+redundant+request+trying+unexpected+volumemap+warn",
+    "typically_missing": []
+  },
+  "hdfs_26": {
+    "name": "Exception + Replication + Ask + Read + Starting + Thread + Transfer + Warn",
+    "description": "exception detected; replication activity",
+    "keywords": [
+      "ask",
+      "exception",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn"
+    ],
+    "patterns": [
+      "ask",
+      "exception",
+      "read",
+      "replicate",
+      "starting",
+      "thread",
+      "transfer",
+      "warn"
+    ],
+    "frequency": 3,
+    "merge_key": "ask+exception+read+replicate+starting+thread+transfer+warn",
+    "typically_missing": []
+  }
+}

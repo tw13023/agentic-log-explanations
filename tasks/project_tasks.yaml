@@ -1,0 +1,116 @@
+# Task Monitor — Auto-updated by TaskTracker — also human-editable
+updated: '2026-02-10 00:00'
+tasks:
+- id: bgl_full_run_v1
+  name: BGL Full Run v1 (hand-crafted patterns)
+  status: completed
+  category: pipeline_a
+  dataset: BGL
+  created: '2026-02-02'
+  started: '2026-02-02 10:36'
+  completed: '2026-02-02 20:00'
+  metrics_file: results/pipeline_a_BGL_20260202_103617_metrics.json
+  metrics_summary:
+    total_explained: 5849
+    pass_rate: '99.7%'
+    avg_tokens: 2654
+    total_time_s: 34069
+  notes: >
+    Old run with SignatureGenerator hand-crafted patterns.
+    Superseded by v2 (data-driven patterns).
+
+- id: bgl_full_run_v2
+  name: BGL Full Run v2 (data-driven patterns)
+  status: pending
+  category: pipeline_a
+  dataset: BGL
+  depends_on: []
+  created: '2026-02-10'
+  notes: >
+    Rerun with 34 data-driven patterns from patterns/bgl_patterns.json.
+    Uses Verifier(min_keyword_match_ratio=0.0). Replaces v1 results.
+
+- id: hdfs_full_run
+  name: HDFS Full Run (data-driven patterns)
+  status: pending
+  category: pipeline_a
+  dataset: HDFS
+  depends_on: []
+  created: '2026-02-10'
+  notes: >
+    First full-scale HDFS run. 26 patterns from patterns/hdfs_patterns.json.
+    Results to results_HDFS/.
+
+- id: pipeline_b_design
+  name: "Pipeline B: margin gating design"
+  status: pending
+  category: pipeline_b
+  depends_on:
+  - bgl_full_run_v2
+  - hdfs_full_run
+  created: '2026-02-10'
+  notes: >
+    Implement budgeted explanation with margin-based gating.
+    Sweep K=10%,20%,50%,100%. Compare cost vs quality vs Pipeline A.
+
+- id: pipeline_b_bgl
+  name: "Pipeline B: BGL budgeted run"
+  status: pending
+  category: pipeline_b
+  dataset: BGL
+  depends_on:
+  - pipeline_b_design
+  created: '2026-02-10'
+
+- id: pipeline_b_hdfs
+  name: "Pipeline B: HDFS budgeted run"
+  status: pending
+  category: pipeline_b
+  dataset: HDFS
+  depends_on:
+  - pipeline_b_design
+  created: '2026-02-10'
+
+- id: topk_ablation
+  name: Top-k retrieval ablation (k=1,3,5,10)
+  status: pending
+  category: evaluation
+  depends_on:
+  - bgl_full_run_v2
+  created: '2026-02-10'
+  notes: >
+    Measure verification pass rate and explanation quality
+    with different retrieval depths.
+
+- id: error_analysis
+  name: Error analysis (4 failure categories)
+  status: pending
+  category: evaluation
+  depends_on:
+  - bgl_full_run_v2
+  - hdfs_full_run
+  created: '2026-02-10'
+  notes: >
+    Categorize failures: insufficient evidence, retrieval mismatch,
+    generic claims, verifier false-positive.
+
+- id: human_eval
+  name: Human evaluation (20 samples)
+  status: pending
+  category: evaluation
+  depends_on:
+  - bgl_full_run_v2
+  created: '2026-02-10'
+  notes: Sample 20 explanations for manual quality scoring.
+
+- id: paper_tables
+  name: Paper tables and figures
+  status: pending
+  category: paper
+  depends_on:
+  - bgl_full_run_v2
+  - hdfs_full_run
+  - topk_ablation
+  - error_analysis
+  - human_eval
+  created: '2026-02-10'

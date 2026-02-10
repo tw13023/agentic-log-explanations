@@ -92,117 +92,79 @@ class ErrorSignature:
         )
 
 
-# BGL-specific error patterns (domain knowledge)
-# These are extracted from BGL documentation and common HPC error patterns
+# BGL-specific error patterns — AUTO-GENERATED from training data
+# Discovery notebook: notebooks/05_signature_audit.ipynb
+# Source: 27,315 training anomalies → 34 patterns covering 99.8%
+# DO NOT hand-edit — regenerate from notebook if needed
 BGL_ERROR_PATTERNS = {
-    "memory_parity": {
-        "name": "Memory Parity Error",
-        "description": "Hardware memory error detected, often indicating failing DIMM or memory controller issues",
-        "keywords": ["parity", "memory", "error", "ecc", "correctable", "uncorrectable"],
-        "patterns": [r"memory.*parity", r"ecc.*error", r"dimm.*fail"],
-    },
-    "machine_check": {
-        "name": "Machine Check Exception",
-        "description": "Serious hardware error detected by CPU, may indicate CPU, memory, or bus failures",
-        "keywords": ["machine check", "mce", "exception", "fatal", "hardware"],
-        "patterns": [r"machine\s*check", r"mce", r"hardware\s*error"],
-    },
-    "kernel_panic": {
-        "name": "Kernel Panic",
-        "description": "Unrecoverable system error causing kernel to halt, often due to hardware or driver issues",
-        "keywords": ["panic", "kernel", "fatal", "crash", "oops"],
-        "patterns": [r"kernel\s*panic", r"oops", r"fatal\s*error"],
-    },
-    "torus_error": {
-        "name": "Torus Network Error",
-        "description": "Error in BGL's 3D torus interconnect network, may indicate network hardware or link issues",
-        "keywords": ["torus", "receiver", "sender", "network", "link", "pipe"],
-        "patterns": [r"torus.*error", r"torus.*receiver", r"torus.*sender"],
-    },
-    "tree_network": {
-        "name": "Tree Network Error",
-        "description": "Error in BGL's collective tree network, used for broadcasts and reductions",
-        "keywords": ["tree", "receiver", "sender", "collective", "sync"],
-        "patterns": [r"tree.*receiver", r"tree.*sender", r"tree.*error"],
-    },
-    "dma_error": {
-        "name": "DMA Error",
-        "description": "Direct Memory Access error, may indicate memory or I/O subsystem issues",
-        "keywords": ["dma", "transfer", "error", "fifo", "injection"],
-        "patterns": [r"dma.*error", r"dma.*fifo", r"injection.*error"],
-    },
-    "link_error": {
-        "name": "Link/Communication Error",
-        "description": "Communication link error between compute nodes or I/O nodes",
-        "keywords": ["link", "error", "timeout", "retransmit", "crc"],
-        "patterns": [r"link.*error", r"crc.*error", r"retransmit"],
-    },
-    "app_fatal": {
-        "name": "Application Fatal Error",
-        "description": "Application-level fatal error, job terminated abnormally",
-        "keywords": ["fatal", "terminated", "killed", "ciod", "abort"],
-        "patterns": [r"app.*fatal", r"job.*killed", r"ciod.*error"],
-    },
-    "core_dump": {
-        "name": "Core Dump Generated",
-        "description": "Process crashed and core file was generated for debugging",
-        "keywords": ["core", "generating", "dump", "signal", "segfault"],
-        "patterns": [r"generating\s*core", r"core\s*dump", r"segmentation"],
-    },
+    "bgl_auto_01": {"name": "Data Error Fatal Error", "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, tlb", "keywords": ["data", "error", "fatal", "interrupt", "tlb"], "patterns": [r"\bdata\b", r"\berror\b", r"\bfatal\b", r"\binterrupt\b", "tlb"]},
+    "bgl_auto_02": {"name": "Data Fatal Interrupt Error", "description": "Anomaly cluster characterised by: data, fatal, interrupt, storage", "keywords": ["data", "fatal", "interrupt", "storage"], "patterns": [r"\bdata\b", r"\bfatal\b", r"\binterrupt\b", r"\bstorage\b"]},
+    "bgl_auto_03": {"name": "App Been Ciod Error", "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, message, prefix, reading, socket", "keywords": ["app", "been", "ciod", "ciostream", "error", "fatal", "has", "message", "prefix", "reading", "socket"], "patterns": ["app", r"\bbeen\b", r"\bciod\b", r"\bciostream\b", r"\berror\b"]},
+    "bgl_auto_04": {"name": "Fatal Error", "description": "Anomaly cluster characterised by: fatal", "keywords": ["fatal"], "patterns": [r"\bfatal\b"]},
+    "bgl_auto_05": {"name": "Error Fatal Error", "description": "Anomaly cluster characterised by: error, fatal", "keywords": ["error", "fatal"], "patterns": [r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_06": {"name": "App Ciod Ciostream Error", "description": "Anomaly cluster characterised by: app, ciod, ciostream, fatal, message, prefix, socket", "keywords": ["app", "ciod", "ciostream", "fatal", "message", "prefix", "socket"], "patterns": ["app", r"\bciod\b", r"\bciostream\b", r"\bfatal\b", r"\bmessage\b"]},
+    "bgl_auto_07": {"name": "App Ciod Error Error", "description": "Anomaly cluster characterised by: app, ciod, error, fatal", "keywords": ["app", "ciod", "error", "fatal"], "patterns": ["app", r"\bciod\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_08": {"name": "Fatal Message Error", "description": "Anomaly cluster characterised by: fatal, message", "keywords": ["fatal", "message"], "patterns": [r"\bfatal\b", r"\bmessage\b"]},
+    "bgl_auto_09": {"name": "App Ciod Ciostream Error", "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, reading, socket", "keywords": ["app", "ciod", "ciostream", "error", "fatal", "message", "prefix", "reading", "socket"], "patterns": ["app", r"\bciod\b", r"\bciostream\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_10": {"name": "Error Fatal Interrupt Error", "description": "Anomaly cluster characterised by: error, fatal, interrupt", "keywords": ["error", "fatal", "interrupt"], "patterns": [r"\berror\b", r"\bfatal\b", r"\binterrupt\b"]},
+    "bgl_auto_11": {"name": "Data Error Fatal Error", "description": "Anomaly cluster characterised by: data, error, fatal, interrupt", "keywords": ["data", "error", "fatal", "interrupt"], "patterns": [r"\bdata\b", r"\berror\b", r"\bfatal\b", r"\binterrupt\b"]},
+    "bgl_auto_12": {"name": "App Been Ciod Error", "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, interrupt, message, prefix, reading, socket", "keywords": ["app", "been", "ciod", "ciostream", "error", "fatal", "has", "interrupt", "message", "prefix", "reading", "socket"], "patterns": ["app", r"\bbeen\b", r"\bciod\b", r"\bciostream\b", r"\berror\b"]},
+    "bgl_auto_13": {"name": "Fatal Interrupt Error", "description": "Anomaly cluster characterised by: fatal, interrupt", "keywords": ["fatal", "interrupt"], "patterns": [r"\bfatal\b", r"\binterrupt\b"]},
+    "bgl_auto_14": {"name": "Error Fatal Message Error", "description": "Anomaly cluster characterised by: error, fatal, message", "keywords": ["error", "fatal", "message"], "patterns": [r"\berror\b", r"\bfatal\b", r"\bmessage\b"]},
+    "bgl_auto_15": {"name": "Data Error Fatal Error", "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, message, tlb", "keywords": ["data", "error", "fatal", "interrupt", "message", "tlb"], "patterns": [r"\bdata\b", r"\berror\b", r"\bfatal\b", r"\binterrupt\b", r"\bmessage\b"]},
+    "bgl_auto_16": {"name": "App Been Ciod Error", "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, interrupt, message, prefix, reading, socket", "keywords": ["app", "been", "ciod", "ciostream", "data", "error", "fatal", "has", "interrupt", "message", "prefix", "reading", "socket"], "patterns": ["app", r"\bbeen\b", r"\bciod\b", r"\bciostream\b", r"\bdata\b"]},
+    "bgl_auto_17": {"name": "Been Ciod Data Error", "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has, socket", "keywords": ["been", "ciod", "data", "error", "fatal", "has", "socket"], "patterns": [r"\bbeen\b", r"\bciod\b", r"\bdata\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_18": {"name": "Error Fatal Socket Error", "description": "Anomaly cluster characterised by: error, fatal, socket", "keywords": ["error", "fatal", "socket"], "patterns": [r"\berror\b", r"\bfatal\b", r"\bsocket\b"]},
+    "bgl_auto_19": {"name": "App Been Ciod Error", "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket", "keywords": ["app", "been", "ciod", "ciostream", "data", "error", "fatal", "has", "message", "prefix", "reading", "socket"], "patterns": ["app", r"\bbeen\b", r"\bciod\b", r"\bciostream\b", r"\bdata\b"]},
+    "bgl_auto_20": {"name": "Ciod Fatal Error", "description": "Anomaly cluster characterised by: ciod, fatal", "keywords": ["ciod", "fatal"], "patterns": [r"\bciod\b", r"\bfatal\b"]},
+    "bgl_auto_21": {"name": "Data Error Fatal Error", "description": "Anomaly cluster characterised by: data, error, fatal", "keywords": ["data", "error", "fatal"], "patterns": [r"\bdata\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_22": {"name": "App Ciod Fatal Error", "description": "Anomaly cluster characterised by: app, ciod, fatal", "keywords": ["app", "ciod", "fatal"], "patterns": ["app", r"\bciod\b", r"\bfatal\b"]},
+    "bgl_auto_23": {"name": "Ciod Error Fatal Error", "description": "Anomaly cluster characterised by: ciod, error, fatal", "keywords": ["ciod", "error", "fatal"], "patterns": [r"\bciod\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_24": {"name": "Error Error", "description": "Anomaly cluster characterised by: error", "keywords": ["error"], "patterns": [r"\berror\b"]},
+    "bgl_auto_25": {"name": "Been Error Fatal Error", "description": "Anomaly cluster characterised by: been, error, fatal, has, socket", "keywords": ["been", "error", "fatal", "has", "socket"], "patterns": [r"\bbeen\b", r"\berror\b", r"\bfatal\b", "has", r"\bsocket\b"]},
+    "bgl_auto_26": {"name": "App Ciod Ciostream Error", "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, socket", "keywords": ["app", "ciod", "ciostream", "error", "fatal", "message", "prefix", "socket"], "patterns": ["app", r"\bciod\b", r"\bciostream\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_27": {"name": "Ciod Data Error Error", "description": "Anomaly cluster characterised by: ciod, data, error, fatal, interrupt", "keywords": ["ciod", "data", "error", "fatal", "interrupt"], "patterns": [r"\bciod\b", r"\bdata\b", r"\berror\b", r"\bfatal\b", r"\binterrupt\b"]},
+    "bgl_auto_28": {"name": "Ciod Fatal Message Error", "description": "Anomaly cluster characterised by: ciod, fatal, message", "keywords": ["ciod", "fatal", "message"], "patterns": [r"\bciod\b", r"\bfatal\b", r"\bmessage\b"]},
+    "bgl_auto_29": {"name": "Been Ciod Data Error", "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has", "keywords": ["been", "ciod", "data", "error", "fatal", "has"], "patterns": [r"\bbeen\b", r"\bciod\b", r"\bdata\b", r"\berror\b", r"\bfatal\b"]},
+    "bgl_auto_30": {"name": "Been Data Error Error", "description": "Anomaly cluster characterised by: been, data, error, has", "keywords": ["been", "data", "error", "has"], "patterns": [r"\bbeen\b", r"\bdata\b", r"\berror\b", "has"]},
+    "bgl_auto_31": {"name": "App Been Ciod Error", "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket, tlb", "keywords": ["app", "been", "ciod", "ciostream", "data", "error", "fatal", "has", "message", "prefix", "reading", "socket", "tlb"], "patterns": ["app", r"\bbeen\b", r"\bciod\b", r"\bciostream\b", r"\bdata\b"]},
+    "bgl_auto_32": {"name": "Data Fatal Interrupt Error", "description": "Anomaly cluster characterised by: data, fatal, interrupt", "keywords": ["data", "fatal", "interrupt"], "patterns": [r"\bdata\b", r"\bfatal\b", r"\binterrupt\b"]},
+    "bgl_auto_33": {"name": "Been Data Error Error", "description": "Anomaly cluster characterised by: been, data, error, fatal, has, socket", "keywords": ["been", "data", "error", "fatal", "has", "socket"], "patterns": [r"\bbeen\b", r"\bdata\b", r"\berror\b", r"\bfatal\b", "has"]},
+    "bgl_auto_34": {"name": "Data Fatal Message Error", "description": "Anomaly cluster characterised by: data, fatal, message", "keywords": ["data", "fatal", "message"], "patterns": [r"\bdata\b", r"\bfatal\b", r"\bmessage\b"]},
 }
 
 
-# HDFS-specific error patterns (domain knowledge)
-# HDFS anomalies are structurally distinct rather than lexically distinct.
-# Normal and anomaly sessions share the same vocabulary (INFO-level logs),
-# so patterns focus on structural indicators: duplicate operations, missing
-# acknowledgments, exceptions, and sequence anomalies.
+# HDFS-specific error patterns — AUTO-GENERATED from training data
+# Discovery notebook: notebooks/05_signature_audit.ipynb
+# Source: 11,786 training anomalies → 26 patterns covering 99.8%
+# DO NOT hand-edit — regenerate from notebook if needed
 HDFS_ERROR_PATTERNS = {
-    "write_pipeline_failed": {
-        "name": "Write Pipeline Failure",
-        "description": "Block write pipeline incomplete or failed — exception during writeBlock or broken pipeline between DataNodes",
-        "keywords": ["exception", "writeblock", "pipeline", "error", "failed"],
-        "patterns": [r"exception.*writeblock", r"pipeline.*error", r"got\s+exception"],
-    },
-    "replication_incomplete": {
-        "name": "Block Replication Incomplete",
-        "description": "Block received fewer replications than expected — Receiving block events without matching Received block confirmations",
-        "keywords": ["receiving block", "packetresponder", "terminating"],
-        "patterns": [r"receiving block.*\n.*receiving block", r"packetresponder.*terminating"],
-        "structural": "receives > received",
-    },
-    "block_serving_error": {
-        "name": "Block Serving Error",
-        "description": "DataNode failed to serve a block read request — IOException or connection reset when serving block data",
-        "keywords": ["exception", "serving", "ioexception", "connection reset"],
-        "patterns": [r"exception.*serving", r"ioexception", r"connection\s*reset"],
-    },
-    "addstoredblock_redundant": {
-        "name": "Redundant addStoredBlock",
-        "description": "NameNode received addStoredBlock for a block already known — indicates duplicate replication or stale block report",
-        "keywords": ["addstoredblock", "already", "redundant", "blockmap"],
-        "patterns": [r"addstoredblock.*already", r"redundant.*addstoredblock"],
-    },
-    "block_replication_excess": {
-        "name": "Block Over-Replication",
-        "description": "Block has more replicas than the target replication factor — multiple Receiving events to the same or overlapping destinations",
-        "keywords": ["receiving block", "addstoredblock", "replicas"],
-        "patterns": [r"addstoredblock.*blk_", r"receiving block"],
-        "structural": "addstoredblock_count > expected_replicas",
-    },
-    "missing_acknowledgment": {
-        "name": "Missing Block Acknowledgment",
-        "description": "Block write started but no Received confirmation — PacketResponder did not confirm block receipt, indicating write timeout or node failure",
-        "keywords": ["packetresponder", "receiving", "block"],
-        "patterns": [r"packetresponder", r"receiving block"],
-        "structural": "receiving_count > received_count",
-    },
-    "block_deletion_anomaly": {
-        "name": "Block Deletion Anomaly",
-        "description": "Block was deleted or invalidated unexpectedly — ask to delete or invalidate block events in session",
-        "keywords": ["delete", "invalidate", "removed", "block"],
-        "patterns": [r"delete\s+block", r"invalidate\s+block", r"block.*removed"],
-    },
+    "hdfs_01": {"name": "Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn", "description": "Anomaly with tokens: ask+blockinfo+error+found+not+trying+unexpected+volumemap+warn", "keywords": ["ask", "blockinfo", "error", "found", "not", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "error", "found", "not", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_02": {"name": "Ask", "description": "receiving-received gap=0.8", "keywords": ["ask"], "patterns": ["ask"]},
+    "hdfs_03": {"name": "Write Pipeline + Exception + Ask + Could + Ioexception + Java + Not + Read + Stream", "description": "exception detected; writeBlock operation present; receiving-received gap=2.0", "keywords": ["ask", "could", "exception", "ioexception", "java", "not", "read", "stream", "writeblock"], "patterns": ["ask", "could", "exception", "ioexception", "java", "not", "read", "stream", "writeblock"]},
+    "hdfs_04": {"name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted", "description": "replication activity", "keywords": ["ask", "datatransfer", "read", "replicate", "starting", "thread", "transfer", "transmitted"], "patterns": ["ask", "datatransfer", "read", "replicate", "starting", "thread", "transfer", "transmitted"]},
+    "hdfs_05": {"name": "Exception + Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn", "description": "exception detected; replication activity", "keywords": ["ask", "datatransfer", "exception", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn"], "patterns": ["ask", "datatransfer", "exception", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn"]},
+    "hdfs_06": {"name": "Exception + Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn", "description": "exception detected", "keywords": ["ask", "blockinfo", "error", "exception", "found", "not", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "error", "exception", "found", "not", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_07": {"name": "Exception + Any + Ask + Belong + But + Does + Not + Request + Warn", "description": "exception detected", "keywords": ["any", "ask", "belong", "but", "does", "exception", "not", "request", "warn"], "patterns": ["any", "ask", "belong", "but", "does", "exception", "not", "request", "warn"]},
+    "hdfs_08": {"name": "Ask + Redundant + Request + Warn", "description": "Anomaly with tokens: ask+redundant+request+warn", "keywords": ["ask", "redundant", "request", "warn"], "patterns": ["ask", "redundant", "request", "warn"]},
+    "hdfs_09": {"name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn", "description": "replication activity", "keywords": ["ask", "blockinfo", "datatransfer", "error", "found", "not", "read", "replicate", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "datatransfer", "error", "found", "not", "read", "replicate", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_10": {"name": "Any + Ask + Belong + But + Does + Not + Request", "description": "Anomaly with tokens: any+ask+belong+but+does+not+request", "keywords": ["any", "ask", "belong", "but", "does", "not", "request"], "patterns": ["any", "ask", "belong", "but", "does", "not", "request"]},
+    "hdfs_11": {"name": "Exception + Ask + Redundant + Request + Warn", "description": "exception detected", "keywords": ["ask", "exception", "redundant", "request", "warn"], "patterns": ["ask", "exception", "redundant", "request", "warn"]},
+    "hdfs_12": {"name": "Replication + Ask + Datatransfer + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Warn", "description": "replication activity", "keywords": ["ask", "datatransfer", "read", "redundant", "replicate", "request", "starting", "thread", "transfer", "transmitted", "warn"], "patterns": ["ask", "datatransfer", "read", "redundant", "replicate", "request", "starting", "thread", "transfer", "transmitted", "warn"]},
+    "hdfs_13": {"name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted", "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.3", "keywords": ["ask", "datatransfer", "exception", "ioexception", "java", "read", "replicate", "starting", "thread", "transfer", "transmitted", "writeblock"], "patterns": ["ask", "datatransfer", "exception", "ioexception", "java", "read", "replicate", "starting", "thread", "transfer", "transmitted", "writeblock"]},
+    "hdfs_14": {"name": "Write Pipeline + Exception + Ask + Ioexception + Java", "description": "exception detected; writeBlock operation present; receiving-received gap=2.3", "keywords": ["ask", "exception", "ioexception", "java", "writeblock"], "patterns": ["ask", "exception", "ioexception", "java", "writeblock"]},
+    "hdfs_15": {"name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn", "description": "replication activity", "keywords": ["ask", "blockinfo", "datatransfer", "error", "found", "not", "read", "redundant", "replicate", "request", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "datatransfer", "error", "found", "not", "read", "redundant", "replicate", "request", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_16": {"name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn", "description": "replication activity", "keywords": ["ask", "datatransfer", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn"], "patterns": ["ask", "datatransfer", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn"]},
+    "hdfs_17": {"name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Not + Read + Starting + Thread + Transfer + Warn", "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=1.0", "keywords": ["ask", "datatransfer", "exception", "ioexception", "java", "not", "read", "replicate", "starting", "thread", "transfer", "warn", "writeblock"], "patterns": ["ask", "datatransfer", "exception", "ioexception", "java", "not", "read", "replicate", "starting", "thread", "transfer", "warn", "writeblock"]},
+    "hdfs_18": {"name": "Write Pipeline + Exception + Ask + Ioexception + Java + Read", "description": "exception detected; writeBlock operation present; receiving-received gap=3.0", "keywords": ["ask", "exception", "ioexception", "java", "read", "writeblock"], "patterns": ["ask", "exception", "ioexception", "java", "read", "writeblock"]},
+    "hdfs_19": {"name": "Replication + Ask + Read + Starting + Thread + Transfer", "description": "replication activity", "keywords": ["ask", "read", "replicate", "starting", "thread", "transfer"], "patterns": ["ask", "read", "replicate", "starting", "thread", "transfer"]},
+    "hdfs_20": {"name": "Exception + Ask + Warn", "description": "exception detected", "keywords": ["ask", "exception", "warn"], "patterns": ["ask", "exception", "warn"]},
+    "hdfs_21": {"name": "Write Pipeline + Exception + Ask + Java", "description": "exception detected; writeBlock operation present; receiving-received gap=1.0", "keywords": ["ask", "exception", "java", "writeblock"], "patterns": ["ask", "exception", "java", "writeblock"]},
+    "hdfs_22": {"name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted + Warn", "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.5", "keywords": ["ask", "datatransfer", "exception", "ioexception", "java", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn", "writeblock"], "patterns": ["ask", "datatransfer", "exception", "ioexception", "java", "read", "replicate", "starting", "thread", "transfer", "transmitted", "warn", "writeblock"]},
+    "hdfs_23": {"name": "Exception + Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn", "description": "exception detected; replication activity", "keywords": ["ask", "blockinfo", "datatransfer", "error", "exception", "found", "not", "read", "replicate", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "datatransfer", "error", "exception", "found", "not", "read", "replicate", "starting", "thread", "transfer", "transmitted", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_24": {"name": "Replication + Ask + Read + Starting + Thread + Transfer + Warn", "description": "replication activity", "keywords": ["ask", "read", "replicate", "starting", "thread", "transfer", "warn"], "patterns": ["ask", "read", "replicate", "starting", "thread", "transfer", "warn"]},
+    "hdfs_25": {"name": "Exception + Ask + Blockinfo + Error + Found + Not + Redundant + Request + Trying + Unexpected + Volumemap + Warn", "description": "exception detected", "keywords": ["ask", "blockinfo", "error", "exception", "found", "not", "redundant", "request", "trying", "unexpected", "volumemap", "warn"], "patterns": ["ask", "blockinfo", "error", "exception", "found", "not", "redundant", "request", "trying", "unexpected", "volumemap", "warn"]},
+    "hdfs_26": {"name": "Exception + Replication + Ask + Read + Starting + Thread + Transfer + Warn", "description": "exception detected; replication activity", "keywords": ["ask", "exception", "read", "replicate", "starting", "thread", "transfer", "warn"], "patterns": ["ask", "exception", "read", "replicate", "starting", "thread", "transfer", "warn"]},
 }
 
 
