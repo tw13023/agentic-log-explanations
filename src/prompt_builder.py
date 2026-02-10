@@ -321,6 +321,7 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 3. CREATE a unique signature that describes THIS specific anomaly
 4. QUANTIFY: count errors, specify line ranges
 5. CITE specific evidence_spans (E0-L8, E1-L3) for each claim
+6. RESPECT LINE RANGES: Each evidence block shows its valid range (e.g., "10 lines: E0-L1 to E0-L10"). NEVER reference a line number beyond the stated maximum.
 
 SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 
@@ -373,8 +374,9 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
         label = hit.metadata.get("label", None) if hit.metadata else None
         label_str = "anomaly" if label == 1 else "normal" if label == 0 else "unknown"
         
-        # Format header with type and label
-        output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f})")
+        # Format header with type, label, and total line count
+        total_evidence_lines = len(text_lines)
+        output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f}, {total_evidence_lines} lines: {evidence_id}-L1 to {evidence_id}-L{total_evidence_lines})")
         
         # Add line numbers to each line of evidence
         text_lines = hit.text.split("\n")
@@ -392,14 +394,16 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
 
 
 def format_query_session_with_lines(session_lines: List[str], max_lines: int = 20) -> str:
-    """Format the query session (E0) with line numbers."""
-    output = []
+    """Format the query session (E0) with line numbers and total count."""
+    total_lines = len(session_lines)
+    output = [f"({total_lines} lines total, valid span range: E0-L1 to E0-L{total_lines})"]
+    
     lines_to_show = session_lines[:max_lines]
     for line_num, line in enumerate(lines_to_show, 1):
         output.append(f"E0-L{line_num}: {line}")
     
-    if len(session_lines) > max_lines:
-        output.append(f"... ({len(session_lines) - max_lines} more lines)")
+    if total_lines > max_lines:
+        output.append(f"... ({total_lines - max_lines} more lines, up to E0-L{total_lines})")
     
     return "\n".join(output)
 

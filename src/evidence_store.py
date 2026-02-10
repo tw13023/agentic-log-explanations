@@ -96,12 +96,19 @@ class EvidenceStore:
             # Normalize the session text
             norm_result = self.normalizer.normalize_session(session)
             
+            # Build evidence text — append structural summary for HDFS
+            evidence_text = norm_result.normalized_text
+            if self.dataset.upper() == "HDFS":
+                structural = self._build_structural_summary(session)
+                if structural:
+                    evidence_text = evidence_text + "\n" + structural
+            
             # Create evidence document
             evidence_id = f"E_{session.session_id}"
             doc = EvidenceDoc(
                 evidence_id=evidence_id,
                 session_id=session.session_id,
-                text=norm_result.normalized_text,
+                text=evidence_text,
                 evidence_type="session",  # Session evidence type
                 metadata={
                     "label": session.label,  # For analysis only, not given to LLM
@@ -120,6 +127,68 @@ class EvidenceStore:
         print(f"Evidence store built with {len(self.documents)} documents")
         
         return self
+    
+    @staticmethod
+    def _build_structural_summary(session: 'Session') -> str:
+        """
+        Build a structural summary for HDFS sessions.
+        
+        HDFS anomalies are structurally distinct (same vocabulary, different
+        sequence patterns). This injects discriminative tokens that BM25 can
+        use to differentiate anomaly from normal sessions.
+        
+        Returns:
+            Structural annotation string, e.g.:
+            "STRUCTURAL: receives=4 received=2 allocate=1 responder=3
+             INCOMPLETE_PIPELINE EXCESS_REPLICATION"
+        """
+        import re
+        text = "\n".join(session.lines).lower()
+        
+        # Count key HDFS operations
+        receives = len(re.findall(r'receiving block', text))
+        received = len(re.findall(r'received block', text))
+        allocate = len(re.findall(r'allocateblock|namesystem\.allocateblock', text))
+        addstoredblock = len(re.findall(r'addstoredblock', text))
+        responder = len(re.findall(r'packetresponder', text))
+        exceptions = len(re.findall(r'exception|error|failed', text))
+        writeblock = len(re.findall(r'writeblock', text))
+        delete = len(re.findall(r'delete block|invalidate', text))
+        
+        # Build counts line
+        parts = [
+            "STRUCTURAL:",
+            f"receives={receives}",
+            f"received={received}",
+            f"allocate={allocate}",
+            f"addstoredblock={addstoredblock}",
+            f"responder={responder}",
+            f"exceptions={exceptions}",
+        ]
+        
+        # Add discriminative tags based on structural anomalies
+        tags = []
+        if receives > 0 and received < receives:
+            tags.append("INCOMPLETE_PIPELINE")
+        if addstoredblock > 3:
+            tags.append("EXCESS_REPLICATION")
+        if exceptions > 0:
+            tags.append("HAS_EXCEPTION")
+        if writeblock > 0 and exceptions > 0:
+            tags.append("WRITE_FAILURE")
+        if delete > 0:
+            tags.append("BLOCK_DELETION")
+        if receives > 0 and responder == 0:
+            tags.append("MISSING_ACKNOWLEDGMENT")
+        if addstoredblock > 0 and allocate == 0:
+            tags.append("ORPHAN_BLOCK")
+        
+        if tags:
+            parts.extend(tags)
+        else:
+            parts.append("NORMAL_FLOW")
+        
+        return " ".join(parts)
     
     def get_document(self, evidence_id: str) -> Optional[EvidenceDoc]:
         """Get a document by its evidence_id."""

@@ -152,6 +152,60 @@ BGL_ERROR_PATTERNS = {
 }
 
 
+# HDFS-specific error patterns (domain knowledge)
+# HDFS anomalies are structurally distinct rather than lexically distinct.
+# Normal and anomaly sessions share the same vocabulary (INFO-level logs),
+# so patterns focus on structural indicators: duplicate operations, missing
+# acknowledgments, exceptions, and sequence anomalies.
+HDFS_ERROR_PATTERNS = {
+    "write_pipeline_failed": {
+        "name": "Write Pipeline Failure",
+        "description": "Block write pipeline incomplete or failed — exception during writeBlock or broken pipeline between DataNodes",
+        "keywords": ["exception", "writeblock", "pipeline", "error", "failed"],
+        "patterns": [r"exception.*writeblock", r"pipeline.*error", r"got\s+exception"],
+    },
+    "replication_incomplete": {
+        "name": "Block Replication Incomplete",
+        "description": "Block received fewer replications than expected — Receiving block events without matching Received block confirmations",
+        "keywords": ["receiving block", "packetresponder", "terminating"],
+        "patterns": [r"receiving block.*\n.*receiving block", r"packetresponder.*terminating"],
+        "structural": "receives > received",
+    },
+    "block_serving_error": {
+        "name": "Block Serving Error",
+        "description": "DataNode failed to serve a block read request — IOException or connection reset when serving block data",
+        "keywords": ["exception", "serving", "ioexception", "connection reset"],
+        "patterns": [r"exception.*serving", r"ioexception", r"connection\s*reset"],
+    },
+    "addstoredblock_redundant": {
+        "name": "Redundant addStoredBlock",
+        "description": "NameNode received addStoredBlock for a block already known — indicates duplicate replication or stale block report",
+        "keywords": ["addstoredblock", "already", "redundant", "blockmap"],
+        "patterns": [r"addstoredblock.*already", r"redundant.*addstoredblock"],
+    },
+    "block_replication_excess": {
+        "name": "Block Over-Replication",
+        "description": "Block has more replicas than the target replication factor — multiple Receiving events to the same or overlapping destinations",
+        "keywords": ["receiving block", "addstoredblock", "replicas"],
+        "patterns": [r"addstoredblock.*blk_", r"receiving block"],
+        "structural": "addstoredblock_count > expected_replicas",
+    },
+    "missing_acknowledgment": {
+        "name": "Missing Block Acknowledgment",
+        "description": "Block write started but no Received confirmation — PacketResponder did not confirm block receipt, indicating write timeout or node failure",
+        "keywords": ["packetresponder", "receiving", "block"],
+        "patterns": [r"packetresponder", r"receiving block"],
+        "structural": "receiving_count > received_count",
+    },
+    "block_deletion_anomaly": {
+        "name": "Block Deletion Anomaly",
+        "description": "Block was deleted or invalidated unexpectedly — ask to delete or invalidate block events in session",
+        "keywords": ["delete", "invalidate", "removed", "block"],
+        "patterns": [r"delete\s+block", r"invalidate\s+block", r"block.*removed"],
+    },
+}
+
+
 class SignatureGenerator:
     """
     Generates error signature cards from training anomaly sessions.
@@ -171,6 +225,8 @@ class SignatureGenerator:
         # Load dataset-specific patterns
         if dataset == "BGL":
             self.error_patterns = BGL_ERROR_PATTERNS
+        elif dataset == "HDFS":
+            self.error_patterns = HDFS_ERROR_PATTERNS
         else:
             # Default patterns for other datasets
             self.error_patterns = {}
