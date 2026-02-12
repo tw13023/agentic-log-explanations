@@ -207,7 +207,7 @@ TRACE_SCHEMA = {
                     "evidence_spans": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "Specific line references: E0-L8, E1-L3, etc."
+                        "description": "Specific line references.  EACH element must be exactly E<n>-L<line> (e.g. E0-L8) or a range E<n>-L<start> to E<n>-L<end> (e.g. E0-L5 to E0-L10).  NO other format."
                     }
                 }
             },
@@ -221,6 +221,7 @@ TRACE_SCHEMA = {
 }
 
 
+
 # ============================================================
 # Prompt Templates
 # ============================================================
@@ -229,25 +230,25 @@ TRACE_SCHEMA = {
 SIGNATURE_EXAMPLES = {
     "BGL": {
         "examples": [
-            "RAS_KERNEL_FATAL__DATA_STORAGE_INTERRUPT",
-            "CIOD_APP_FATAL__CIOSTREAM_SOCKET_ERROR",
-            "RAS_KERNEL_FATAL__MACHINE_CHECK",
+            "KERNEL__DATA_TLB_ERROR",
+            "KERNEL__DATA_STORAGE_INTERRUPT",
+            "APP__CIOD_STREAM_ERROR",
+            "KERNEL__LUSTRE_MOUNT_FAILED",
+            "KERNEL__KERNEL_TERMINATED",
         ],
         "description": "BlueGene/L supercomputer RAS (Reliability, Availability, Serviceability) logs",
-        "components": "RAS, KERNEL, CIOD, APP, MMCS",
-        "severities": "FATAL, FAILURE, SEVERE, WARNING",
+        "components": "KERNEL, APP, MMCS, LINKCARD",
     },
     "HDFS": {
         "examples": [
-            "DATANODE_ERROR__BLOCK_VERIFICATION_FAILED",
-            "NAMENODE_WARN__BLOCK_REPLICAS_MISSING",
-            "DATANODE_ERROR__WRITE_PIPELINE_FAILED",
-            "DATANODE_ERROR__PACKET_RESPONDER_EXCEPTION",
-            "BLOCK_ERROR__REPLICATION_INCOMPLETE",
+            "DATANODE__BLOCK_VERIFICATION_FAILED",
+            "NAMENODE__REPLICATION_INCOMPLETE",
+            "DATANODE__WRITE_PIPELINE_FAILURE",
+            "DATANODE__BLOCK_WRITE_FAILURE",
+            "DATANODE__BLOCK_RECEIVE_FAILURE",
         ],
         "description": "Hadoop Distributed File System logs",
-        "components": "DATANODE, NAMENODE, BLOCK, FSNamesystem, DataXceiver, PacketResponder",
-        "severities": "ERROR, WARN, FATAL",
+        "components": "DATANODE, NAMENODE, FSDATASET, BLOCKSCANNER",
     },
 }
 
@@ -262,7 +263,6 @@ Your task is to explain WHY a log session is anomalous based on the provided evi
 
 DATASET: {sig_info['description']}
 COMPONENTS IN LOGS: {sig_info['components']}
-SEVERITY LEVELS: {sig_info['severities']}
 
 EVIDENCE FORMAT:
 - Each evidence block has LINE NUMBERS: E0-L1, E0-L2, E1-L1, E1-L2, etc.
@@ -276,10 +276,12 @@ CLAIM TYPES (you MUST produce at least one of each type when evidence allows):
 
 === SIGNATURE NAMING ===
 Create a signature from the ACTUAL log content you see:
-- Format: COMPONENT_SEVERITY__ERROR_TYPE (double underscore)
-- Component: Extract from the log (DataNode, NameNode, FSNamesystem, PacketResponder, etc.)
-- Severity: Extract from the log (ERROR, WARN, FATAL, INFO with error context)
-- ErrorType: Describe what went wrong (BLOCK_WRITE_FAILURE, REPLICATION_INCOMPLETE, etc.)
+- Format: COMPONENT__ERROR_TYPE (double underscore separator, NO severity)
+- Component: Extract the ACTUAL component from the log.
+  For HDFS logs: DATANODE, NAMENODE, FSDATASET, BLOCKSCANNER (from dfs.* class names).
+  For BGL logs: KERNEL, APP, MMCS, LINKCARD (from the RAS subsystem field).
+- ErrorType: Describe what went wrong (e.g. DATA_TLB_ERROR, BLOCK_WRITE_FAILURE).
+- Do NOT include severity (WARN, ERROR, FATAL, INFO) in the signature — all sessions are already confirmed anomalies.
 
 Example valid signatures for this dataset: {sig_examples}
 NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based on what you see in [E0].
@@ -289,7 +291,7 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
     "prediction": "anomaly",
     "summary": "<SIGNATURE>: <quantified observation> at <line range>",
     "signature": {{
-        "name": "<COMPONENT_SEVERITY__ERROR_TYPE from actual logs>",
+        "name": "<COMPONENT__ERROR_TYPE from actual logs>",
         "matched_evidence_ids": ["E1", "E2"]
     }},
     "claims": [
@@ -297,19 +299,19 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
             "type": "observation",
             "claim": "E0 contains <COUNT> <what> at lines <range>.",
             "evidence_ids": ["E0"],
-            "evidence_spans": ["E0-L<n>", "E0-L<m>"]
+            "evidence_spans": ["E0-L3", "E0-L5 to E0-L9"]
         }},
         {{
             "type": "pattern_match", 
             "claim": "The pattern <keywords from logs> matches signature <YOUR SIGNATURE>.",
             "evidence_ids": ["E0", "E1"],
-            "evidence_spans": ["E0-L<n>", "E1-L<m>"]
+            "evidence_spans": ["E0-L4", "E1-L2"]
         }},
         {{
             "type": "contrast",
-            "claim": "E0 has <X> at E0-L<n>; E<k> shows <Y> at E<k>-L<m>.",
-            "evidence_ids": ["E0", "E<k>"],
-            "evidence_spans": ["E0-L<n>", "E<k>-L<m>"]
+            "claim": "E0 has <X> at E0-L7; E3 shows <Y> at E3-L2.",
+            "evidence_ids": ["E0", "E3"],
+            "evidence_spans": ["E0-L7", "E3-L2"]
         }}
     ],
     "insufficient_evidence": false
@@ -320,8 +322,9 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 2. IDENTIFY component and severity FROM THE LOGS 
 3. CREATE a unique signature that describes THIS specific anomaly
 4. QUANTIFY: count errors, specify line ranges
-5. CITE specific evidence_spans (E0-L8, E1-L3) for each claim
+5. CITE specific evidence_spans for each claim
 6. RESPECT LINE RANGES: Each evidence block shows its valid range (e.g., "10 lines: E0-L1 to E0-L10"). NEVER reference a line number beyond the stated maximum.
+7. SPAN FORMAT: Each evidence_span string MUST be either a single line "E0-L8" or a range with " to " separator "E0-L5 to E0-L10".  NEVER use "E0-L5-E0-L10", "E0-L5/E0-L10", or any other separator.
 
 SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 

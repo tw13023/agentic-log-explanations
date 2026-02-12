@@ -1,7 +1,7 @@
 {
   "hdfs_01": {
-    "name": "Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn",
-    "description": "Anomaly with tokens: ask+blockinfo+error+found+not+trying+unexpected+volumemap+warn",
+    "name": "DATANODE__BLOCK_VERIFICATION_FAILED",
+    "description": "Block info or volume map errors detected (2477 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -29,8 +29,8 @@
     "typically_missing": []
   },
   "hdfs_02": {
-    "name": "Ask",
-    "description": "receiving-received gap=0.8",
+    "name": "DATANODE__BLOCK_RECEIVE_INCOMPLETE",
+    "description": "Block receive started but pipeline incomplete (2425 sessions)",
     "keywords": [
       "ask"
     ],
@@ -40,30 +40,30 @@
     "frequency": 2425,
     "merge_key": "ask",
     "typically_missing": [
+      "blockmap",
+      "addstoredblock",
       "size",
       "updated",
-      "blockmap",
       "added",
-      "addstoredblock",
       "packetresponder",
       "for",
       "terminating",
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir",
       "from",
       "received"
     ]
   },
   "hdfs_03": {
-    "name": "Write Pipeline + Exception + Ask + Could + Ioexception + Java + Not + Read + Stream",
-    "description": "exception detected; writeBlock operation present; receiving-received gap=2.0",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (2260 sessions)",
     "keywords": [
       "ask",
       "could",
@@ -89,28 +89,28 @@
     "frequency": 2260,
     "merge_key": "ask+could+exception+ioexception+java+not+read+stream+writeblock",
     "typically_missing": [
+      "blockmap",
+      "addstoredblock",
       "size",
       "updated",
-      "blockmap",
       "added",
-      "addstoredblock",
       "packetresponder",
       "for",
       "terminating",
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir"
     ]
   },
   "hdfs_04": {
-    "name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (1096 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -136,8 +136,8 @@
     "typically_missing": []
   },
   "hdfs_05": {
-    "name": "Exception + Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn",
-    "description": "exception detected; replication activity",
+    "name": "DATANODE__REPLICATION_EXCEPTION",
+    "description": "Replication with exceptions detected (819 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -167,8 +167,8 @@
     "typically_missing": []
   },
   "hdfs_06": {
-    "name": "Exception + Ask + Blockinfo + Error + Found + Not + Trying + Unexpected + Volumemap + Warn",
-    "description": "exception detected",
+    "name": "DATANODE__BLOCK_VERIFICATION_FAILED",
+    "description": "Block verification/volume map errors with exceptions (666 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -198,8 +198,8 @@
     "typically_missing": []
   },
   "hdfs_07": {
-    "name": "Exception + Any + Ask + Belong + But + Does + Not + Request + Warn",
-    "description": "exception detected",
+    "name": "DATANODE__PACKET_RESPONDER_EXCEPTION",
+    "description": "Exception in DataNode packet handling (574 sessions)",
     "keywords": [
       "any",
       "ask",
@@ -227,8 +227,8 @@
     "typically_missing": []
   },
   "hdfs_08": {
-    "name": "Ask + Redundant + Request + Warn",
-    "description": "Anomaly with tokens: ask+redundant+request+warn",
+    "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
+    "description": "Redundant addStoredBlock requests for already-known blocks (511 sessions)",
     "keywords": [
       "ask",
       "redundant",
@@ -246,8 +246,8 @@
     "typically_missing": []
   },
   "hdfs_09": {
-    "name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (399 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -289,8 +289,8 @@
     "typically_missing": []
   },
   "hdfs_10": {
-    "name": "Any + Ask + Belong + But + Does + Not + Request",
-    "description": "Anomaly with tokens: any+ask+belong+but+does+not+request",
+    "name": "NAMENODE__ORPHAN_BLOCK",
+    "description": "addStoredBlock for blocks not belonging to any file (291 sessions)",
     "keywords": [
       "any",
       "ask",
@@ -314,8 +314,8 @@
     "typically_missing": []
   },
   "hdfs_11": {
-    "name": "Exception + Ask + Redundant + Request + Warn",
-    "description": "exception detected",
+    "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
+    "description": "Redundant addStoredBlock requests for already-known blocks (122 sessions)",
     "keywords": [
       "ask",
       "exception",
@@ -335,8 +335,8 @@
     "typically_missing": []
   },
   "hdfs_12": {
-    "name": "Replication + Ask + Datatransfer + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Warn",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (24 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -368,8 +368,8 @@
     "typically_missing": []
   },
   "hdfs_13": {
-    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted",
-    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.3",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (17 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -403,8 +403,8 @@
     "typically_missing": []
   },
   "hdfs_14": {
-    "name": "Write Pipeline + Exception + Ask + Ioexception + Java",
-    "description": "exception detected; writeBlock operation present; receiving-received gap=2.3",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (14 sessions)",
     "keywords": [
       "ask",
       "exception",
@@ -422,26 +422,26 @@
     "frequency": 14,
     "merge_key": "ask+exception+ioexception+java+writeblock",
     "typically_missing": [
+      "blockmap",
+      "addstoredblock",
       "size",
       "updated",
-      "blockmap",
       "added",
-      "addstoredblock",
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir",
       "from"
     ]
   },
   "hdfs_15": {
-    "name": "Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Redundant + Request + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (11 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -487,8 +487,8 @@
     "typically_missing": []
   },
   "hdfs_16": {
-    "name": "Replication + Ask + Datatransfer + Read + Starting + Thread + Transfer + Transmitted + Warn",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (10 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -514,13 +514,13 @@
     "frequency": 10,
     "merge_key": "ask+datatransfer+read+replicate+starting+thread+transfer+transmitted+warn",
     "typically_missing": [
-      "invalidset",
-      "delete"
+      "delete",
+      "invalidset"
     ]
   },
   "hdfs_17": {
-    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Not + Read + Starting + Thread + Transfer + Warn",
-    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=1.0",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (8 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -556,8 +556,8 @@
     "typically_missing": []
   },
   "hdfs_18": {
-    "name": "Write Pipeline + Exception + Ask + Ioexception + Java + Read",
-    "description": "exception detected; writeBlock operation present; receiving-received gap=3.0",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (6 sessions)",
     "keywords": [
       "ask",
       "exception",
@@ -577,26 +577,26 @@
     "frequency": 6,
     "merge_key": "ask+exception+ioexception+java+read+writeblock",
     "typically_missing": [
+      "blockmap",
+      "addstoredblock",
       "size",
       "updated",
-      "blockmap",
       "added",
-      "addstoredblock",
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir",
       "from"
     ]
   },
   "hdfs_19": {
-    "name": "Replication + Ask + Read + Starting + Thread + Transfer",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (5 sessions)",
     "keywords": [
       "ask",
       "read",
@@ -616,20 +616,20 @@
     "frequency": 5,
     "merge_key": "ask+read+replicate+starting+thread+transfer",
     "typically_missing": [
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir"
     ]
   },
   "hdfs_20": {
-    "name": "Exception + Ask + Warn",
-    "description": "exception detected",
+    "name": "DATANODE__PACKET_RESPONDER_EXCEPTION",
+    "description": "Exception in DataNode packet handling (5 sessions)",
     "keywords": [
       "ask",
       "exception",
@@ -645,8 +645,8 @@
     "typically_missing": []
   },
   "hdfs_21": {
-    "name": "Write Pipeline + Exception + Ask + Java",
-    "description": "exception detected; writeBlock operation present; receiving-received gap=1.0",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (4 sessions)",
     "keywords": [
       "ask",
       "exception",
@@ -662,29 +662,29 @@
     "frequency": 4,
     "merge_key": "ask+exception+java+writeblock",
     "typically_missing": [
+      "blockmap",
+      "addstoredblock",
       "size",
       "updated",
-      "blockmap",
       "added",
-      "addstoredblock",
       "packetresponder",
       "for",
       "terminating",
-      "invalidset",
       "delete",
-      "fsdataset",
-      "mnt",
+      "invalidset",
       "hadoop",
-      "file",
       "deleting",
+      "mnt",
       "current",
+      "fsdataset",
+      "file",
       "subdir",
       "from"
     ]
   },
   "hdfs_22": {
-    "name": "Write Pipeline + Exception + Replication + Ask + Datatransfer + Ioexception + Java + Read + Starting + Thread + Transfer + Transmitted + Warn",
-    "description": "exception detected; writeBlock operation present; replication activity; receiving-received gap=3.5",
+    "name": "DATANODE__WRITE_PIPELINE_FAILURE",
+    "description": "Write pipeline failures with exceptions (4 sessions)",
     "keywords": [
       "ask",
       "datatransfer",
@@ -720,8 +720,8 @@
     "typically_missing": []
   },
   "hdfs_23": {
-    "name": "Exception + Replication + Ask + Blockinfo + Datatransfer + Error + Found + Not + Read + Starting + Thread + Transfer + Transmitted + Trying + Unexpected + Volumemap + Warn",
-    "description": "exception detected; replication activity",
+    "name": "DATANODE__REPLICATION_EXCEPTION",
+    "description": "Replication with exceptions detected (4 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -765,8 +765,8 @@
     "typically_missing": []
   },
   "hdfs_24": {
-    "name": "Replication + Ask + Read + Starting + Thread + Transfer + Warn",
-    "description": "replication activity",
+    "name": "NAMENODE__REPLICATION_INCOMPLETE",
+    "description": "Block replication incomplete or triggered re-replication (4 sessions)",
     "keywords": [
       "ask",
       "read",
@@ -790,8 +790,8 @@
     "typically_missing": []
   },
   "hdfs_25": {
-    "name": "Exception + Ask + Blockinfo + Error + Found + Not + Redundant + Request + Trying + Unexpected + Volumemap + Warn",
-    "description": "exception detected",
+    "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
+    "description": "Redundant addStoredBlock requests for already-known blocks (3 sessions)",
     "keywords": [
       "ask",
       "blockinfo",
@@ -825,8 +825,8 @@
     "typically_missing": []
   },
   "hdfs_26": {
-    "name": "Exception + Replication + Ask + Read + Starting + Thread + Transfer + Warn",
-    "description": "exception detected; replication activity",
+    "name": "DATANODE__REPLICATION_EXCEPTION",
+    "description": "Replication with exceptions detected (3 sessions)",
     "keywords": [
       "ask",
       "exception",

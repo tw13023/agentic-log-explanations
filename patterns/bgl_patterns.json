@@ -1,7 +1,7 @@
 {
   "bgl_auto_01": {
-    "name": "Data Error Fatal Error",
-    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, tlb",
+    "name": "KERNEL__DATA_TLB_ERROR",
+    "description": "Data TLB (translation lookaside buffer) error interrupt (11052 sessions)",
     "keywords": [
       "data",
       "error",
@@ -20,8 +20,8 @@
     "fingerprint": "data+error+fatal+interrupt+tlb"
   },
   "bgl_auto_02": {
-    "name": "Data Fatal Interrupt Error",
-    "description": "Anomaly cluster characterised by: data, fatal, interrupt, storage",
+    "name": "KERNEL__DATA_STORAGE_INTERRUPT",
+    "description": "Data storage interrupt \u2014 memory/bus fault (5196 sessions)",
     "keywords": [
       "data",
       "fatal",
@@ -38,8 +38,8 @@
     "fingerprint": "data+fatal+interrupt+storage"
   },
   "bgl_auto_03": {
-    "name": "App Been Ciod Error",
-    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, message, prefix, reading, socket",
+    "name": "APP__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (4450 sessions)",
     "keywords": [
       "app",
       "been",
@@ -64,8 +64,8 @@
     "fingerprint": "app+been+ciod+ciostream+error+fatal+has+message+prefix+reading+socket"
   },
   "bgl_auto_04": {
-    "name": "Fatal Error",
-    "description": "Anomaly cluster characterised by: fatal",
+    "name": "KERNEL__FATAL_ERROR",
+    "description": "Fatal error \u2014 unrecoverable fault (3941 sessions)",
     "keywords": [
       "fatal"
     ],
@@ -76,8 +76,8 @@
     "fingerprint": "fatal"
   },
   "bgl_auto_05": {
-    "name": "Error Fatal Error",
-    "description": "Anomaly cluster characterised by: error, fatal",
+    "name": "KERNEL__HARDWARE_ERROR",
+    "description": "Hardware error detected (668 sessions)",
     "keywords": [
       "error",
       "fatal"
@@ -90,8 +90,8 @@
     "fingerprint": "error+fatal"
   },
   "bgl_auto_06": {
-    "name": "App Ciod Ciostream Error",
-    "description": "Anomaly cluster characterised by: app, ciod, ciostream, fatal, message, prefix, socket",
+    "name": "APP__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (399 sessions)",
     "keywords": [
       "app",
       "ciod",
@@ -112,8 +112,8 @@
     "fingerprint": "app+ciod+ciostream+fatal+message+prefix+socket"
   },
   "bgl_auto_07": {
-    "name": "App Ciod Error Error",
-    "description": "Anomaly cluster characterised by: app, ciod, error, fatal",
+    "name": "APP__CIOD_ERROR",
+    "description": "CIOD (compute I/O daemon) error (388 sessions)",
     "keywords": [
       "app",
       "ciod",
@@ -130,8 +130,8 @@
     "fingerprint": "app+ciod+error+fatal"
   },
   "bgl_auto_08": {
-    "name": "Fatal Message Error",
-    "description": "Anomaly cluster characterised by: fatal, message",
+    "name": "KERNEL__FATAL_MESSAGE",
+    "description": "Fatal message \u2014 unrecoverable error reported (379 sessions)",
     "keywords": [
       "fatal",
       "message"
@@ -144,8 +144,8 @@
     "fingerprint": "fatal+message"
   },
   "bgl_auto_09": {
-    "name": "App Ciod Ciostream Error",
-    "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, reading, socket",
+    "name": "APP__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (321 sessions)",
     "keywords": [
       "app",
       "ciod",
@@ -168,8 +168,8 @@
     "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+reading+socket"
   },
   "bgl_auto_10": {
-    "name": "Error Fatal Interrupt Error",
-    "description": "Anomaly cluster characterised by: error, fatal, interrupt",
+    "name": "KERNEL__PROGRAM_INTERRUPT",
+    "description": "Program interrupt exception (206 sessions)",
     "keywords": [
       "error",
       "fatal",
@@ -184,8 +184,8 @@
     "fingerprint": "error+fatal+interrupt"
   },
   "bgl_auto_11": {
-    "name": "Data Error Fatal Error",
-    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt",
+    "name": "KERNEL__DATA_INTERRUPT",
+    "description": "Data interrupt \u2014 memory or bus error (48 sessions)",
     "keywords": [
       "data",
       "error",
@@ -202,8 +202,8 @@
     "fingerprint": "data+error+fatal+interrupt"
   },
   "bgl_auto_12": {
-    "name": "App Been Ciod Error",
-    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, error, fatal, has, interrupt, message, prefix, reading, socket",
+    "name": "KERNEL__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (47 sessions)",
     "keywords": [
       "app",
       "been",
@@ -229,8 +229,8 @@
     "fingerprint": "app+been+ciod+ciostream+error+fatal+has+interrupt+message+prefix+reading+socket"
   },
   "bgl_auto_13": {
-    "name": "Fatal Interrupt Error",
-    "description": "Anomaly cluster characterised by: fatal, interrupt",
+    "name": "KERNEL__PROGRAM_INTERRUPT",
+    "description": "Program interrupt exception (43 sessions)",
     "keywords": [
       "fatal",
       "interrupt"
@@ -243,8 +243,8 @@
     "fingerprint": "fatal+interrupt"
   },
   "bgl_auto_14": {
-    "name": "Error Fatal Message Error",
-    "description": "Anomaly cluster characterised by: error, fatal, message",
+    "name": "KERNEL__FATAL_MESSAGE",
+    "description": "Fatal message \u2014 unrecoverable error reported (13 sessions)",
     "keywords": [
       "error",
       "fatal",
@@ -259,8 +259,8 @@
     "fingerprint": "error+fatal+message"
   },
   "bgl_auto_15": {
-    "name": "Data Error Fatal Error",
-    "description": "Anomaly cluster characterised by: data, error, fatal, interrupt, message, tlb",
+    "name": "KERNEL__DATA_TLB_ERROR",
+    "description": "Data TLB (translation lookaside buffer) error interrupt (13 sessions)",
     "keywords": [
       "data",
       "error",
@@ -280,8 +280,8 @@
     "fingerprint": "data+error+fatal+interrupt+message+tlb"
   },
   "bgl_auto_16": {
-    "name": "App Been Ciod Error",
-    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, interrupt, message, prefix, reading, socket",
+    "name": "KERNEL__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (9 sessions)",
     "keywords": [
       "app",
       "been",
@@ -308,8 +308,8 @@
     "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+interrupt+message+prefix+reading+socket"
   },
   "bgl_auto_17": {
-    "name": "Been Ciod Data Error",
-    "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has, socket",
+    "name": "KERNEL__CIOD_SOCKET_ERROR",
+    "description": "CIOD socket error (9 sessions)",
     "keywords": [
       "been",
       "ciod",
@@ -330,8 +330,8 @@
     "fingerprint": "been+ciod+data+error+fatal+has+socket"
   },
   "bgl_auto_18": {
-    "name": "Error Fatal Socket Error",
-    "description": "Anomaly cluster characterised by: error, fatal, socket",
+    "name": "KERNEL__HARDWARE_ERROR",
+    "description": "Hardware error detected (9 sessions)",
     "keywords": [
       "error",
       "fatal",
@@ -346,8 +346,8 @@
     "fingerprint": "error+fatal+socket"
   },
   "bgl_auto_19": {
-    "name": "App Been Ciod Error",
-    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket",
+    "name": "KERNEL__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (7 sessions)",
     "keywords": [
       "app",
       "been",
@@ -373,8 +373,8 @@
     "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket"
   },
   "bgl_auto_20": {
-    "name": "Ciod Fatal Error",
-    "description": "Anomaly cluster characterised by: ciod, fatal",
+    "name": "APP__CIOD_ERROR",
+    "description": "CIOD (compute I/O daemon) error (7 sessions)",
     "keywords": [
       "ciod",
       "fatal"
@@ -387,8 +387,8 @@
     "fingerprint": "ciod+fatal"
   },
   "bgl_auto_21": {
-    "name": "Data Error Fatal Error",
-    "description": "Anomaly cluster characterised by: data, error, fatal",
+    "name": "KERNEL__DATA_ERROR",
+    "description": "Data error \u2014 correctable or uncorrectable memory fault (6 sessions)",
     "keywords": [
       "data",
       "error",
@@ -403,8 +403,8 @@
     "fingerprint": "data+error+fatal"
   },
   "bgl_auto_22": {
-    "name": "App Ciod Fatal Error",
-    "description": "Anomaly cluster characterised by: app, ciod, fatal",
+    "name": "APP__CIOD_ERROR",
+    "description": "CIOD (compute I/O daemon) error (5 sessions)",
     "keywords": [
       "app",
       "ciod",
@@ -419,8 +419,8 @@
     "fingerprint": "app+ciod+fatal"
   },
   "bgl_auto_23": {
-    "name": "Ciod Error Fatal Error",
-    "description": "Anomaly cluster characterised by: ciod, error, fatal",
+    "name": "APP__CIOD_ERROR",
+    "description": "CIOD (compute I/O daemon) error (5 sessions)",
     "keywords": [
       "ciod",
       "error",
@@ -435,8 +435,8 @@
     "fingerprint": "ciod+error+fatal"
   },
   "bgl_auto_24": {
-    "name": "Error Error",
-    "description": "Anomaly cluster characterised by: error",
+    "name": "KERNEL__HARDWARE_ERROR",
+    "description": "Hardware error detected (5 sessions)",
     "keywords": [
       "error"
     ],
@@ -447,8 +447,8 @@
     "fingerprint": "error"
   },
   "bgl_auto_25": {
-    "name": "Been Error Fatal Error",
-    "description": "Anomaly cluster characterised by: been, error, fatal, has, socket",
+    "name": "KERNEL__HARDWARE_ERROR",
+    "description": "Hardware error detected (5 sessions)",
     "keywords": [
       "been",
       "error",
@@ -467,8 +467,8 @@
     "fingerprint": "been+error+fatal+has+socket"
   },
   "bgl_auto_26": {
-    "name": "App Ciod Ciostream Error",
-    "description": "Anomaly cluster characterised by: app, ciod, ciostream, error, fatal, message, prefix, socket",
+    "name": "KERNEL__CIOD_SOCKET_ERROR",
+    "description": "CIOD stream socket communication failure (4 sessions)",
     "keywords": [
       "app",
       "ciod",
@@ -490,8 +490,8 @@
     "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+socket"
   },
   "bgl_auto_27": {
-    "name": "Ciod Data Error Error",
-    "description": "Anomaly cluster characterised by: ciod, data, error, fatal, interrupt",
+    "name": "APP__CIOD_ERROR",
+    "description": "CIOD (compute I/O daemon) error (4 sessions)",
     "keywords": [
       "ciod",
       "data",
@@ -510,8 +510,8 @@
     "fingerprint": "ciod+data+error+fatal+interrupt"
   },
   "bgl_auto_28": {
-    "name": "Ciod Fatal Message Error",
-    "description": "Anomaly cluster characterised by: ciod, fatal, message",
+    "name": "KERNEL__CIOD_MESSAGE_ERROR",
+    "description": "CIOD message prefix read/write error (4 sessions)",
     "keywords": [
       "ciod",
       "fatal",
@@ -526,8 +526,8 @@
     "fingerprint": "ciod+fatal+message"
   },
   "bgl_auto_29": {
-    "name": "Been Ciod Data Error",
-    "description": "Anomaly cluster characterised by: been, ciod, data, error, fatal, has",
+    "name": "KERNEL__CIOD_SIGNAL_DELIVERED",
+    "description": "CIOD signal delivered \u2014 process killed or interrupted (3 sessions)",
     "keywords": [
       "been",
       "ciod",
@@ -547,8 +547,8 @@
     "fingerprint": "been+ciod+data+error+fatal+has"
   },
   "bgl_auto_30": {
-    "name": "Been Data Error Error",
-    "description": "Anomaly cluster characterised by: been, data, error, has",
+    "name": "KERNEL__DATA_ERROR",
+    "description": "Data error \u2014 correctable or uncorrectable memory fault (3 sessions)",
     "keywords": [
       "been",
       "data",
@@ -565,8 +565,8 @@
     "fingerprint": "been+data+error+has"
   },
   "bgl_auto_31": {
-    "name": "App Been Ciod Error",
-    "description": "Anomaly cluster characterised by: app, been, ciod, ciostream, data, error, fatal, has, message, prefix, reading, socket, tlb",
+    "name": "KERNEL__DATA_TLB_ERROR",
+    "description": "Data TLB (translation lookaside buffer) error interrupt (3 sessions)",
     "keywords": [
       "app",
       "been",
@@ -593,8 +593,8 @@
     "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket+tlb"
   },
   "bgl_auto_32": {
-    "name": "Data Fatal Interrupt Error",
-    "description": "Anomaly cluster characterised by: data, fatal, interrupt",
+    "name": "KERNEL__DATA_INTERRUPT",
+    "description": "Data interrupt \u2014 memory or bus error (3 sessions)",
     "keywords": [
       "data",
       "fatal",
@@ -609,8 +609,8 @@
     "fingerprint": "data+fatal+interrupt"
   },
   "bgl_auto_33": {
-    "name": "Been Data Error Error",
-    "description": "Anomaly cluster characterised by: been, data, error, fatal, has, socket",
+    "name": "KERNEL__DATA_ERROR",
+    "description": "Data error \u2014 correctable or uncorrectable memory fault (3 sessions)",
     "keywords": [
       "been",
       "data",
@@ -630,8 +630,8 @@
     "fingerprint": "been+data+error+fatal+has+socket"
   },
   "bgl_auto_34": {
-    "name": "Data Fatal Message Error",
-    "description": "Anomaly cluster characterised by: data, fatal, message",
+    "name": "KERNEL__FATAL_MESSAGE",
+    "description": "Fatal message \u2014 unrecoverable error reported (3 sessions)",
     "keywords": [
       "data",
       "fatal",

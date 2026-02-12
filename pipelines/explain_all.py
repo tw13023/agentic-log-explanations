@@ -24,13 +24,6 @@ from src.prompt_builder import PromptBuilder, TraceExplanation, Claim, Signature
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
 
-# Task tracker (optional)
-try:
-    from tasks import TaskTracker
-    _HAS_TRACKER = True
-except ImportError:
-    _HAS_TRACKER = False
-
 
 @dataclass
 class PipelineConfig:
@@ -61,9 +54,6 @@ class PipelineConfig:
     output_dir: str = "./results/explanations"
     save_evidence_store: bool = True
     
-    # Task tracker integration
-    task_id: Optional[str] = None  # e.g. "bgl_full_run_v2"
-    
     # Limits (for testing)
     max_sessions: Optional[int] = None  # None = process all
     
@@ -82,7 +72,6 @@ class PipelineConfig:
             "llm_temperature": self.llm_temperature,
             "llm_max_tokens": self.llm_max_tokens,
             "patterns_dir": self.patterns_dir,
-            "task_id": self.task_id,
             "max_sessions": self.max_sessions
         }
 
@@ -304,6 +293,9 @@ class ExplainAllPipeline:
         # 8. Verifier (min_keyword_match_ratio=0.0 to allow LLM abstractions)
         self.verifier = Verifier(min_keyword_match_ratio=0.0)
         
+        # 9. Normalizer (for post-processing LLM signature names)
+        self.normalizer = get_normalizer(self.config.dataset)
+        
         print("\n" + "="*60)
         print("SETUP COMPLETE")
         print("="*60)
@@ -356,16 +348,6 @@ Pattern Characteristics:
     
     def run(self) -> "ExplainAllPipeline":
         """Run the full pipeline."""
-        # Task tracker: mark running
-        tracker = None
-        if _HAS_TRACKER and self.config.task_id:
-            try:
-                tracker = TaskTracker()
-                tracker.pipeline_start(self.config.task_id)
-            except Exception as e:
-                print(f"  (task tracker warning: {e})")
-                tracker = None
-        
         self.metrics.start_time = time.time()
         
         print("\n" + "="*60)
@@ -425,17 +407,6 @@ Pattern Characteristics:
         # Print summary
         self._print_summary()
         
-        # Task tracker: mark completed
-        if tracker and self.config.task_id:
-            try:
-                tracker.pipeline_complete(
-                    self.config.task_id,
-                    metrics=self.metrics.to_dict(),
-                    metrics_file="",  # filled in by save_results
-                )
-            except Exception as e:
-                print(f"  (task tracker warning: {e})")
-        
         return self
     
     def _verify_all_explanations(self) -> None:
@@ -492,6 +463,12 @@ Pattern Characteristics:
             )
             explanation = TraceExplanation.from_dict(parsed_json)
             explanation.raw_response = llm_response.content
+            
+            # Normalize signature name (strip severity, canonical error types)
+            if explanation.signature and explanation.signature.name:
+                explanation.signature.name = self.normalizer.normalize_signature(
+                    explanation.signature.name
+                )
             
         except json.JSONDecodeError as e:
             # Try to salvage partial response
@@ -588,17 +565,6 @@ Pattern Characteristics:
         
         print(f"📈 Metrics saved to: {metrics_path}")
         
-        # Update task tracker with metrics file path
-        if _HAS_TRACKER and self.config.task_id:
-            try:
-                tracker = TaskTracker()
-                task = tracker.get(self.config.task_id)
-                if task:
-                    task.metrics_file = str(metrics_path)
-                    tracker._save()
-            except Exception:
-                pass
-        
         return str(output_path)
 
 
@@ -627,7 +593,6 @@ def run_explain_all_pipeline(
             llm_model=llm_model,
             max_sessions=max_sessions,
             output_dir="./results",
-            task_id="bgl_full_run_v2",
         )
     else:
         config = PipelineConfig(
@@ -637,7 +602,6 @@ def run_explain_all_pipeline(
             llm_model=llm_model,
             max_sessions=max_sessions,
             output_dir="./results_HDFS",
-            task_id="hdfs_full_run",
         )
     
     pipeline = ExplainAllPipeline(config)

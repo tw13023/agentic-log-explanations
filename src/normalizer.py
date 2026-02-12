@@ -173,32 +173,200 @@ class LogNormalizer:
         """
         return self.normalize_lines(session.lines)
 
+    def structural_summary(self, session) -> Optional[str]:
+        """
+        Build an optional structural summary for a session.
+
+        Subclasses override this to inject dataset-specific structural
+        annotations that help BM25 differentiate anomaly from normal sessions.
+
+        Returns:
+            A structural annotation string, or None if not applicable.
+        """
+        return None
+
+    def normalize_signature(self, name: str) -> str:
+        """
+        Normalize a signature name to canonical form.
+
+        Subclasses override this to fix LLM-generated signature names
+        (e.g. mapping wrong component prefixes to correct ones).
+
+        Returns:
+            Normalized signature name.
+        """
+        return name
+
 
 class BGLNormalizer(LogNormalizer):
     """
     BGL-specific normalizer with patterns tuned for BlueGene/L logs.
     """
-    
+
     BGL_PATTERNS = [
         # BGL-specific node identifiers (e.g., R00-M0-N0-C:J00-U00)
         (r'\bR\d{2}-M\d-N\d-C:J\d{2}-U\d{2}\b', '<NODE>'),
         (r'\bR\d{2}-M\d-N\d(?:-C)?(?:-J\d{2})?(?:-U\d{2})?\b', '<NODE>'),
-        
+
         # BGL core/processor IDs
         (r'\bcore\.\d+\b', 'core.<CORE>'),
-        
+
         # BGL-specific hex identifiers
         (r'\b[0-9a-fA-F]{8}\b', '<HEX8>'),
-        
+
         # DDR errors, memory locations
         (r'\bDDR\(\d+,\d+,\d+\)', 'DDR(<MEMLOC>)'),
-        
+
         # Torus coordinates
         (r'\(\d+,\d+,\d+\)', '(<COORD>)'),
     ]
-    
+
+    _VALID_COMPONENTS = {"KERNEL", "APP", "MMCS", "LINKCARD"}
+
+    # Maps error types to their correct BGL component
+    _COMPONENT_MAP = {
+        # CIOD-related → APP
+        "CIOD_STREAM_ERROR": "APP",
+        "CIOD_ERROR": "APP",
+        "CIOD_SOCKET_ERROR": "APP",
+        "CIOD_NODE_MAP_ERROR": "APP",
+        "CIOD_SIGNAL_RECEIVED": "APP",
+        "CIOD_MESSAGE_ERROR": "APP",
+        "LOGIN_CHDIR_FAILED": "APP",
+        "EXEC_FORMAT_ERROR": "APP",
+        "DEVICE_RESOURCE_BUSY": "APP",
+        # VPD / link-card → LINKCARD
+        "NODE_CARD_VPD_CHECK": "LINKCARD",
+        "MONITOR_FAILURE": "LINKCARD",
+    }
+
+    # Consolidate duplicate error types → canonical form
+    _ERROR_TYPE_CANONICAL = {
+        # TLB variations
+        "DATA_TLB_ERROR_INTERRUPT": "DATA_TLB_ERROR",
+        "TLB_ERROR": "DATA_TLB_ERROR",
+        # CIOD variations
+        "CIOD_SOCKET_ERROR": "CIOD_STREAM_ERROR",
+        "CIOD_ERROR": "CIOD_STREAM_ERROR",
+        "CIOD_UNEXPECTED_EOF": "CIOD_STREAM_ERROR",
+        # Machine check
+        "MACHINE_CHECK_INTERRUPT": "MACHINE_CHECK",
+        # Login
+        "LOGIN_CHDIR_FAILURE": "LOGIN_CHDIR_FAILED",
+        "CIOD_LOGIN_CHDIR_FAILED": "LOGIN_CHDIR_FAILED",
+        "CIOD_LOGIN_ERROR": "LOGIN_CHDIR_FAILED",
+        # Floating point
+        "FLOATING_POINT_INSTR_ENABLED": "FLOATING_POINT_ERROR",
+        "FLOATING_PT_EX_MODE_0_ENABLE": "FLOATING_POINT_ERROR",
+        # DDR
+        "DDR_ERRORS": "DDR_ERROR",
+        # VPD
+        "NODE_CARD_VPD_CHECK_FAILURE": "NODE_CARD_VPD_CHECK",
+        "VPD_CHECK_FAILURE": "NODE_CARD_VPD_CHECK",
+        # L3
+        "L3_MAJOR_INTERNAL_ERROR": "L3_INTERNAL_ERROR",
+        # Alignment
+        "INTEGER_ALIGNMENT_EXCEPTION": "INTEGER_ALIGNMENT_ERROR",
+    }
+
+    # Error type names where the FATAL_ prefix is part of the canonical name
+    _SEVERITY_PREFIX_SAFE = {"FATAL_ERROR", "FATAL_MESSAGE"}
+
     def __init__(self):
         super().__init__(custom_patterns=self.BGL_PATTERNS)
+
+    def normalize_signature(self, name: str) -> str:
+        """
+        Normalize a BGL signature name to canonical form.
+
+        Strips severity labels (INFO, WARN, ERROR, FATAL, WARNING, SEVERE)
+        from any position, handles RAS_ prefixes, collapses verbose
+        LLM-generated names, and maps to correct components.
+
+        Handles all LLM output patterns::
+
+            KERNEL__FATAL__DATA_TLB_ERROR          → KERNEL__DATA_TLB_ERROR
+            KERNEL__FATAL_data_TLB_ERROR           → KERNEL__DATA_TLB_ERROR
+            KERNEL__FATAL__data TLB error interrupt → KERNEL__DATA_TLB_ERROR
+            RAS_APP_FATAL__CIOD_STREAM_ERROR       → APP__CIOD_STREAM_ERROR
+            KERNEL__FATAL__kernel terminated for reason 1001
+                                                   → KERNEL__KERNEL_TERMINATED
+        """
+        if "__" not in name:
+            return name.upper()
+
+        severity_labels = {"INFO", "WARN", "ERROR", "FATAL", "WARNING", "SEVERE"}
+
+        # ── 1. Split on __ and strip pure severity segments ──
+        segments = [s.upper() for s in name.split("__")]
+        segments = [s for s in segments if s not in severity_labels]
+
+        if len(segments) < 2:
+            return name.upper()
+
+        # ── 2. Clean component prefix ──
+        prefix = segments[0]
+
+        # Strip RAS_ prefix  (RAS_APP_FATAL → APP_FATAL → APP)
+        if prefix.startswith("RAS_"):
+            prefix = prefix[4:]
+
+        # Strip severity suffix from component  (APP_FATAL → APP)
+        for suffix in ("_FATAL", "_INFO", "_WARN", "_ERROR", "_WARNING", "_SEVERE"):
+            if prefix.endswith(suffix):
+                prefix = prefix[: -len(suffix)]
+                break
+
+        # ── 3. Rejoin error type segments ──
+        error_type = "_".join(segments[1:]) if len(segments) > 2 else segments[1]
+
+        # Normalize whitespace and special characters
+        error_type = error_type.replace(" ", "_")
+        error_type = re.sub(r'[^A-Z0-9_]', '_', error_type)
+        error_type = re.sub(r'_+', '_', error_type)
+        error_type = error_type.strip('_')
+
+        # ── 4. Verbose pattern collapsing (before severity-prefix strip) ──
+        if ('KERNEL_TERMINATED' in error_type
+                or 'TERMINATED_FOR_REASON' in error_type):
+            error_type = "KERNEL_TERMINATED"
+        elif 'RTS_PANIC' in error_type:
+            error_type = "KERNEL_TERMINATED"
+        elif ('CIOSTREAM' in error_type
+              or ('CIOD' in error_type
+                  and 'ERROR_READING_MESSAGE' in error_type)):
+            error_type = "CIOD_STREAM_ERROR"
+        elif ('RECEIVING_PACKET' in error_type
+              and 'TREE_NETWORK' in error_type):
+            error_type = "NETWORK_RECEIVE_ERROR"
+        elif ('MOUNT' in error_type
+              and ('UNABLE' in error_type or 'FILESYSTEM' in error_type)):
+            error_type = "LUSTRE_MOUNT_FAILED"
+        elif ('BAD_MESSAGE_HEADER' in error_type
+              and error_type != 'BAD_MESSAGE_HEADER'):
+            error_type = "BAD_MESSAGE_HEADER"
+        elif error_type == "APP_FATAL":
+            error_type = "FATAL_ERROR"
+
+        # ── 5. Strip severity PREFIX from error type ──
+        #   FATAL_DATA_TLB_ERROR → DATA_TLB_ERROR
+        #   but keep FATAL_ERROR, FATAL_MESSAGE as-is
+        if error_type not in self._SEVERITY_PREFIX_SAFE:
+            for sev in ("FATAL_", "INFO_", "WARN_", "WARNING_",
+                        "ERROR_", "SEVERE_"):
+                if error_type.startswith(sev):
+                    error_type = error_type[len(sev):]
+                    break
+
+        # ── 6. Canonical error type ──
+        error_type = self._ERROR_TYPE_CANONICAL.get(error_type, error_type)
+
+        # ── 7. Determine correct component ──
+        component = self._COMPONENT_MAP.get(error_type, None)
+        if component is None:
+            component = prefix if prefix in self._VALID_COMPONENTS else "KERNEL"
+
+        return f"{component}__{error_type}"
 
 
 class HDFSNormalizer(LogNormalizer):
@@ -221,9 +389,182 @@ class HDFSNormalizer(LogNormalizer):
         (r'replicas=\d+', 'replicas=<NUM>'),
         (r'size=\d+', 'size=<SIZE>'),
     ]
-    
+
+    # Maps RAS_*-style prefixes to correct HDFS component names
+    _COMPONENT_MAP = {
+        "BLOCK_WRITE_FAILURE": "DATANODE",
+        "BLOCK_RECEIVING_FAILURE": "DATANODE",
+        "BLOCK_RECEIVING_ERROR": "DATANODE",
+        "BLOCK_RECEIVE_FAILURE": "DATANODE",
+        "BLOCK_RECEIVER_ERROR": "DATANODE",
+        "BLOCK_RECEIVE_INTERRUPT": "DATANODE",
+        "BLOCK_READ_FAILURE": "DATANODE",
+        "BLOCK_SERVING_FAILURE": "DATANODE",
+        "BLOCK_TRANSFER_FAILURE": "DATANODE",
+        "BLOCK_TRANSFER_TIMEOUT": "DATANODE",
+        "BLOCK_DELETE_FAILURE": "DATANODE",
+        "BLOCK_DELETION_FAILURE": "DATANODE",
+        "RETRANSMIT_REQUEST": "DATANODE",
+        "DATA_STORAGE_INTERRUPT": "FSDATASET",
+        "REPLICATION_INCOMPLETE": "NAMENODE",
+        "REDUNDANT_ADDSTOREDBLOCK_REQUEST": "NAMENODE",
+        "REDUNDANT_ADDSTOREDBLOCK": "NAMENODE",
+        "PENDING_REPLICATION_MONITOR_TIMED_OUT": "NAMENODE",
+        "PENDING_REPLICATION_TIMEOUT": "NAMENODE",
+    }
+
+    # Consolidate duplicate error types -> canonical form
+    _ERROR_TYPE_CANONICAL = {
+        "BLOCK_RECEIVING_FAILURE": "BLOCK_RECEIVE_FAILURE",
+        "BLOCK_RECEIVING_ERROR": "BLOCK_RECEIVE_FAILURE",
+        "BLOCK_RECEIVER_ERROR": "BLOCK_RECEIVE_FAILURE",
+        "BLOCK_RECEIVE_INTERRUPT": "BLOCK_RECEIVE_FAILURE",
+        "BLOCK_DELETE_FAILURE": "BLOCK_DELETION_FAILURE",
+        "BLOCK_DELETE_FAILED": "BLOCK_DELETION_FAILURE",
+        "BLOCK_DELETION_FAILED": "BLOCK_DELETION_FAILURE",
+        "REDUNDANT_ADDSTOREDBLOCK_REQUEST": "REDUNDANT_STORED_BLOCK",
+        "REDUNDANT_ADDSTOREDBLOCK": "REDUNDANT_STORED_BLOCK",
+        "PENDING_REPLICATION_MONITOR_TIMED_OUT": "PENDING_REPLICATION_TIMEOUT",
+        "BLOCK_REPLICATION_FAILURE": "BLOCK_REPLICATION_FAILED",
+        "BLOCK_REPLICATION_CONFLICT": "BLOCK_REPLICATION_FAILED",
+        "BLOCK_REPLICATION_OVERLAP": "BLOCK_REPLICATION_FAILED",
+        "BLOCK_REPLICAS_MISSING": "REPLICATION_INCOMPLETE",
+        "WRITE_BLOCK_FAILURE": "BLOCK_WRITE_FAILURE",
+        "WRITE_PIPELINE_FAILED": "WRITE_PIPELINE_FAILURE",
+        "BLOCK_REPLICATION_SUCCESSFUL": "BLOCK_DUPLICATION",
+        "RECEIVING_BLOCK_DUPLICATION": "BLOCK_DUPLICATION",
+        "BLOCK_READ_FAILURE": "BLOCK_SERVING_FAILURE",
+        "RECEIVING_EMPTY_PACKET": "BLOCK_RECEIVE_FAILURE",
+        "RECEIVING_BLOCK_FAILURE": "BLOCK_RECEIVE_FAILURE",
+        "BLOCK_RECEIVING_DUPLICATE": "BLOCK_DUPLICATION",
+        "WRITE_PIPELINE_EXCEPTION": "WRITE_PIPELINE_FAILURE",
+        "IO_EXCEPTION": "WRITE_PIPELINE_FAILURE",
+        "REDUNDANT_ADDSTOREDBLOCK_REQUEST_RECEIVED": "REDUNDANT_STORED_BLOCK",
+        "BLOCK_RECEIVING_FAILED": "BLOCK_RECEIVE_FAILURE",
+        "REDUNDANT_ADD_STORED_BLOCK_REQUEST": "REDUNDANT_STORED_BLOCK",
+    }
+
     def __init__(self):
         super().__init__(custom_patterns=self.HDFS_PATTERNS)
+
+    def structural_summary(self, session) -> Optional[str]:
+        """
+        Build a structural summary for HDFS sessions.
+
+        HDFS anomalies are structurally distinct (same vocabulary, different
+        sequence patterns). This injects discriminative tokens that BM25 can
+        use to differentiate anomaly from normal sessions.
+
+        Returns:
+            Structural annotation string, e.g.:
+            "STRUCTURAL: receives=4 received=2 allocate=1 responder=3
+             INCOMPLETE_PIPELINE EXCESS_REPLICATION"
+        """
+        text = "\n".join(session.lines).lower()
+
+        # Count key HDFS operations
+        receives = len(re.findall(r'receiving block', text))
+        received = len(re.findall(r'received block', text))
+        allocate = len(re.findall(r'allocateblock|namesystem\.allocateblock', text))
+        addstoredblock = len(re.findall(r'addstoredblock', text))
+        responder = len(re.findall(r'packetresponder', text))
+        exceptions = len(re.findall(r'exception|error|failed', text))
+        writeblock = len(re.findall(r'writeblock', text))
+        delete = len(re.findall(r'delete block|invalidate', text))
+
+        # Build counts line
+        parts = [
+            "STRUCTURAL:",
+            f"receives={receives}",
+            f"received={received}",
+            f"allocate={allocate}",
+            f"addstoredblock={addstoredblock}",
+            f"responder={responder}",
+            f"exceptions={exceptions}",
+        ]
+
+        # Add discriminative tags based on structural anomalies
+        tags = []
+        if receives > 0 and received < receives:
+            tags.append("INCOMPLETE_PIPELINE")
+        if addstoredblock > 3:
+            tags.append("EXCESS_REPLICATION")
+        if exceptions > 0:
+            tags.append("HAS_EXCEPTION")
+        if writeblock > 0 and exceptions > 0:
+            tags.append("WRITE_FAILURE")
+        if delete > 0:
+            tags.append("BLOCK_DELETION")
+        if receives > 0 and responder == 0:
+            tags.append("MISSING_ACKNOWLEDGMENT")
+        if addstoredblock > 0 and allocate == 0:
+            tags.append("ORPHAN_BLOCK")
+
+        if tags:
+            parts.extend(tags)
+        else:
+            parts.append("NORMAL_FLOW")
+
+        return " ".join(parts)
+
+    def normalize_signature(self, name: str) -> str:
+        """
+        Normalize an HDFS signature name to use correct component prefixes.
+
+        Strips severity labels (INFO, WARN, ERROR, FATAL) from any position,
+        maps to correct HDFS components, and consolidates duplicate error types
+        to canonical forms.
+
+        Handles all LLM output patterns:
+          - DATANODE_INFO__BLOCK_WRITE_FAILURE  (severity as prefix suffix)
+          - DATANODE__INFO__BLOCK_WRITE_FAILURE  (severity as middle segment)
+          - DATANODE__BLOCK_WRITE_FAILURE        (already clean)
+
+        Args:
+            name: Raw LLM-generated signature name
+
+        Returns:
+            Normalized name like "DATANODE__BLOCK_WRITE_FAILURE"
+        """
+        if "__" not in name:
+            return name
+
+        # Split into all segments and strip severity from any position
+        severity_labels = {"INFO", "WARN", "ERROR", "FATAL"}
+        segments = [s.upper() for s in name.split("__")]
+        segments = [s for s in segments if s not in severity_labels]
+
+        if len(segments) < 2:
+            # Degenerate — only one segment left after stripping
+            return name
+
+        # First segment is the component prefix (may have _INFO etc. as suffix)
+        prefix_upper = segments[0]
+        for suffix in ("_INFO", "_WARN", "_ERROR", "_FATAL"):
+            if prefix_upper.endswith(suffix):
+                prefix_upper = prefix_upper[: -len(suffix)]
+                break
+
+        # Remaining segments rejoin as the error type
+        error_upper = "_".join(segments[1:]) if len(segments) > 2 else segments[1]
+
+        # Normalize spaces to underscores (LLM sometimes uses spaces)
+        error_upper = error_upper.replace(" ", "_")
+
+        # --- Determine correct HDFS component ---
+        component = self._COMPONENT_MAP.get(error_upper, None)
+
+        if component is None:
+            valid_prefixes = ("DATANODE", "NAMENODE", "FSDATASET", "BLOCKSCANNER")
+            if prefix_upper in valid_prefixes:
+                component = prefix_upper
+            else:
+                component = "DATANODE"  # safe fallback
+
+        # --- Canonical error type ---
+        canonical_error = self._ERROR_TYPE_CANONICAL.get(error_upper, error_upper)
+
+        return f"{component}__{canonical_error}"
 
 
 def get_normalizer(dataset: str) -> LogNormalizer:

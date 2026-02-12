@@ -1,3 +1,6 @@
+# Task tracking (personal)
+task-tracking.md
+
 # Project description (local only)
 project-description/
 
@@ -39,3 +42,11 @@ ENV/
 Thumbs.db
 results/test_run/evidence_store_BGL.json
 results/explanations/evidence_store_*.json
+
+# Results (regeneratable)
+results/*.jsonl
+results/*.metrics.json
+results/evidence_store_*.json
+results_HDFS/*.jsonl
+results_HDFS/*.metrics.json
+results_HDFS/evidence_store_*.json

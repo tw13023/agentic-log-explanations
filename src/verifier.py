@@ -367,9 +367,11 @@ class Verifier:
         """Parse a span like 'E0-L12' into (evidence_id, line_number).
         
         Also handles range formats:
-          - 'E0-L6 to E0-L10'  → returns first span (E0, 6)
-          - 'E0-L6, E0-L8'    → returns first span (E0, 6)
-          - 'E0-L6-L10'       → returns first line (E0, 6)
+          - 'E0-L6 to E0-L10'       → returns first span (E0, 6)
+          - 'E0-L6, E0-L8'          → returns first span (E0, 6)
+          - 'E0-L6-L10'             → returns first line  (E0, 6)
+          - 'E0-L7-E0-L12'          → returns first span (E0, 7)
+          - 'E5-L3/E5-L4'           → returns first span (E5, 3)
         """
         if not span or '-L' not in span:
             return None, None
@@ -378,7 +380,14 @@ class Verifier:
             clean = span.split(' to ')[0].strip()
             # Handle 'E0-L6, E0-L8' comma format
             clean = clean.split(',')[0].strip()
-            # Handle 'E0-L6-L10' dash range format
+            # Handle 'E5-L3/E5-L4' slash format
+            clean = clean.split('/')[0].strip()
+            # Handle 'E0-L7-E0-L12' repeated-ID range format
+            # Regex: extract first occurrence of E{n}-L{n}
+            m = re.match(r'^(E\d+)-L(\d+)', clean)
+            if m:
+                return m.group(1), int(m.group(2))
+            # Fallback: split on -L
             parts = clean.split('-L')
             evidence_id = parts[0]
             line_num = int(parts[1])
