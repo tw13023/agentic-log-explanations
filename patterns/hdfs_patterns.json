@@ -26,7 +26,11 @@
     ],
     "frequency": 2477,
     "merge_key": "ask+blockinfo+error+found+not+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_02": {
     "name": "DATANODE__BLOCK_RECEIVE_INCOMPLETE",
@@ -59,7 +63,11 @@
       "subdir",
       "from",
       "received"
-    ]
+    ],
+    "discriminative_score": 0.0,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9998,
+    "normal_rate": 0.9998
   },
   "hdfs_03": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -106,7 +114,11 @@
       "fsdataset",
       "file",
       "subdir"
-    ]
+    ],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_04": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -133,7 +145,11 @@
     ],
     "frequency": 1096,
     "merge_key": "ask+datatransfer+read+replicate+starting+thread+transfer+transmitted",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9998,
+    "normal_rate": 0.9998
   },
   "hdfs_05": {
     "name": "DATANODE__REPLICATION_EXCEPTION",
@@ -164,7 +180,11 @@
     ],
     "frequency": 819,
     "merge_key": "ask+datatransfer+exception+read+replicate+starting+thread+transfer+transmitted+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_06": {
     "name": "DATANODE__BLOCK_VERIFICATION_FAILED",
@@ -195,7 +215,11 @@
     ],
     "frequency": 666,
     "merge_key": "ask+blockinfo+error+exception+found+not+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_07": {
     "name": "DATANODE__PACKET_RESPONDER_EXCEPTION",
@@ -224,7 +248,11 @@
     ],
     "frequency": 574,
     "merge_key": "any+ask+belong+but+does+exception+not+request+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_08": {
     "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
@@ -243,7 +271,11 @@
     ],
     "frequency": 511,
     "merge_key": "ask+redundant+request+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_09": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -286,7 +318,11 @@
     ],
     "frequency": 399,
     "merge_key": "ask+blockinfo+datatransfer+error+found+not+read+replicate+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_10": {
     "name": "NAMENODE__ORPHAN_BLOCK",
@@ -311,7 +347,11 @@
     ],
     "frequency": 291,
     "merge_key": "any+ask+belong+but+does+not+request",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_11": {
     "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
@@ -332,7 +372,11 @@
     ],
     "frequency": 122,
     "merge_key": "ask+exception+redundant+request+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_12": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -365,7 +409,11 @@
     ],
     "frequency": 24,
     "merge_key": "ask+datatransfer+read+redundant+replicate+request+starting+thread+transfer+transmitted+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_13": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -400,7 +448,11 @@
     ],
     "frequency": 17,
     "merge_key": "ask+datatransfer+exception+ioexception+java+read+replicate+starting+thread+transfer+transmitted+writeblock",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_14": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -437,7 +489,11 @@
       "file",
       "subdir",
       "from"
-    ]
+    ],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_15": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -484,7 +540,11 @@
     ],
     "frequency": 11,
     "merge_key": "ask+blockinfo+datatransfer+error+found+not+read+redundant+replicate+request+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_16": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -516,7 +576,11 @@
     "typically_missing": [
       "delete",
       "invalidset"
-    ]
+    ],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_17": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -553,7 +617,11 @@
     ],
     "frequency": 8,
     "merge_key": "ask+datatransfer+exception+ioexception+java+not+read+replicate+starting+thread+transfer+warn+writeblock",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_18": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -592,7 +660,11 @@
       "file",
       "subdir",
       "from"
-    ]
+    ],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_19": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -625,7 +697,11 @@
       "fsdataset",
       "file",
       "subdir"
-    ]
+    ],
+    "discriminative_score": 0.0,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9998,
+    "normal_rate": 0.9998
   },
   "hdfs_20": {
     "name": "DATANODE__PACKET_RESPONDER_EXCEPTION",
@@ -642,7 +718,11 @@
     ],
     "frequency": 5,
     "merge_key": "ask+exception+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_21": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -680,7 +760,11 @@
       "file",
       "subdir",
       "from"
-    ]
+    ],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_22": {
     "name": "DATANODE__WRITE_PIPELINE_FAILURE",
@@ -717,7 +801,11 @@
     ],
     "frequency": 4,
     "merge_key": "ask+datatransfer+exception+ioexception+java+read+replicate+starting+thread+transfer+transmitted+warn+writeblock",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_23": {
     "name": "DATANODE__REPLICATION_EXCEPTION",
@@ -762,7 +850,11 @@
     ],
     "frequency": 4,
     "merge_key": "ask+blockinfo+datatransfer+error+exception+found+not+read+replicate+starting+thread+transfer+transmitted+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_24": {
     "name": "NAMENODE__REPLICATION_INCOMPLETE",
@@ -787,7 +879,11 @@
     ],
     "frequency": 4,
     "merge_key": "ask+read+replicate+starting+thread+transfer+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0001,
+    "discriminative_level": "low",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.9998
   },
   "hdfs_25": {
     "name": "NAMENODE__REDUNDANT_STORED_BLOCK",
@@ -822,7 +918,11 @@
     ],
     "frequency": 3,
     "merge_key": "ask+blockinfo+error+exception+found+not+redundant+request+trying+unexpected+volumemap+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   },
   "hdfs_26": {
     "name": "DATANODE__REPLICATION_EXCEPTION",
@@ -849,6 +949,10 @@
     ],
     "frequency": 3,
     "merge_key": "ask+exception+read+replicate+starting+thread+transfer+warn",
-    "typically_missing": []
+    "typically_missing": [],
+    "discriminative_score": 0.0002,
+    "discriminative_level": "low",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.9998
   }
 }

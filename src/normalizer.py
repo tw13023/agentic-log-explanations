@@ -267,6 +267,14 @@ class BGLNormalizer(LogNormalizer):
         "L3_MAJOR_INTERNAL_ERROR": "L3_INTERNAL_ERROR",
         # Alignment
         "INTEGER_ALIGNMENT_EXCEPTION": "INTEGER_ALIGNMENT_ERROR",
+        # Verbose literal → canonical
+        "LINK_SEVERED": "LOAD_MESSAGE_ERROR",
+        "RECEIVING_PACKET": "TREE_NETWORK_PACKET_ERROR",
+        "ERROR_RECEIVING_PACKET": "TREE_NETWORK_PACKET_ERROR",
+        "CREATING_NODE_MAP": "NODE_MAP_ERROR",
+        "ERROR_CREATING_NODE_MAP": "NODE_MAP_ERROR",
+        "NODE_MAP_CREATION_ERROR": "NODE_MAP_ERROR",
+        "TERMINATION": "KERNEL_TERMINATED",
     }
 
     # Error type names where the FATAL_ prefix is part of the canonical name

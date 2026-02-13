@@ -454,7 +454,7 @@ class PromptBuilder:
         self,
         session: Session,
         screener_output: ScreenerOutput,
-        evidence_hits: List[RetrievalHit]
+        evidence_hits: List[RetrievalHit],
     ) -> tuple[str, str]:
         """
         Build the explanation prompt.
@@ -488,7 +488,7 @@ class PromptBuilder:
             log_content=log_content,
             evidence_block=evidence_block
         )
-        
+
         return self._system_prompt, user_prompt
     
     def build_evidence_id_mapping(

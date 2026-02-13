@@ -20,7 +20,8 @@ from src.normalizer import get_normalizer
 from src.screener import Screener, ScreenerOutput
 from src.evidence_store import EvidenceStore, EvidenceDoc, build_evidence_store
 from src.retriever import Retriever, RetrievalHit
-from src.prompt_builder import PromptBuilder, TraceExplanation, Claim, Signature, ExplanationResult
+from src.prompt_builder import (PromptBuilder, TraceExplanation, Claim, Signature,
+                                ExplanationResult)
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
 
@@ -314,7 +315,6 @@ class ExplainAllPipeline:
         print(f"\n[7/7] Loading signature cards from {patterns_file}...")
         with open(patterns_file, 'r') as f:
             patterns = json.load(f)
-        
         for pattern_id, info in patterns.items():
             # BGL uses 'fingerprint', HDFS uses 'merge_key'
             pattern_key = info.get('merge_key', info.get('fingerprint', 'N/A'))

@@ -17,7 +17,11 @@
       "tlb"
     ],
     "frequency": 11052,
-    "fingerprint": "data+error+fatal+interrupt+tlb"
+    "fingerprint": "data+error+fatal+interrupt+tlb",
+    "discriminative_score": 0.6905,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.3093
   },
   "bgl_auto_02": {
     "name": "KERNEL__DATA_STORAGE_INTERRUPT",
@@ -35,7 +39,11 @@
       "\\bstorage\\b"
     ],
     "frequency": 5196,
-    "fingerprint": "data+fatal+interrupt+storage"
+    "fingerprint": "data+fatal+interrupt+storage",
+    "discriminative_score": 0.8052,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1943
   },
   "bgl_auto_03": {
     "name": "APP__CIOD_SOCKET_ERROR",
@@ -61,7 +69,11 @@
       "\\berror\\b"
     ],
     "frequency": 4450,
-    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+message+prefix+reading+socket"
+    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+message+prefix+reading+socket",
+    "discriminative_score": 0.7359,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.264
   },
   "bgl_auto_04": {
     "name": "KERNEL__FATAL_ERROR",
@@ -73,7 +85,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 3941,
-    "fingerprint": "fatal"
+    "fingerprint": "fatal",
+    "discriminative_score": 0.8829,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9992,
+    "normal_rate": 0.1163
   },
   "bgl_auto_05": {
     "name": "KERNEL__HARDWARE_ERROR",
@@ -87,7 +103,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 668,
-    "fingerprint": "error+fatal"
+    "fingerprint": "error+fatal",
+    "discriminative_score": 0.7618,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9997,
+    "normal_rate": 0.2379
   },
   "bgl_auto_06": {
     "name": "APP__CIOD_SOCKET_ERROR",
@@ -109,7 +129,11 @@
       "\\bmessage\\b"
     ],
     "frequency": 399,
-    "fingerprint": "app+ciod+ciostream+fatal+message+prefix+socket"
+    "fingerprint": "app+ciod+ciostream+fatal+message+prefix+socket",
+    "discriminative_score": 0.8552,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1444
   },
   "bgl_auto_07": {
     "name": "APP__CIOD_ERROR",
@@ -127,7 +151,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 388,
-    "fingerprint": "app+ciod+error+fatal"
+    "fingerprint": "app+ciod+error+fatal",
+    "discriminative_score": 0.7359,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.264
   },
   "bgl_auto_08": {
     "name": "KERNEL__FATAL_MESSAGE",
@@ -141,7 +169,11 @@
       "\\bmessage\\b"
     ],
     "frequency": 379,
-    "fingerprint": "fatal+message"
+    "fingerprint": "fatal+message",
+    "discriminative_score": 0.8812,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9992,
+    "normal_rate": 0.118
   },
   "bgl_auto_09": {
     "name": "APP__CIOD_SOCKET_ERROR",
@@ -165,7 +197,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 321,
-    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+reading+socket"
+    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+reading+socket",
+    "discriminative_score": 0.7359,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.264
   },
   "bgl_auto_10": {
     "name": "KERNEL__PROGRAM_INTERRUPT",
@@ -181,7 +217,11 @@
       "\\binterrupt\\b"
     ],
     "frequency": 206,
-    "fingerprint": "error+fatal+interrupt"
+    "fingerprint": "error+fatal+interrupt",
+    "discriminative_score": 0.691,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9997,
+    "normal_rate": 0.3087
   },
   "bgl_auto_11": {
     "name": "KERNEL__DATA_INTERRUPT",
@@ -199,7 +239,11 @@
       "\\binterrupt\\b"
     ],
     "frequency": 48,
-    "fingerprint": "data+error+fatal+interrupt"
+    "fingerprint": "data+error+fatal+interrupt",
+    "discriminative_score": 0.6905,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.3093
   },
   "bgl_auto_12": {
     "name": "KERNEL__CIOD_SOCKET_ERROR",
@@ -226,7 +270,11 @@
       "\\berror\\b"
     ],
     "frequency": 47,
-    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+interrupt+message+prefix+reading+socket"
+    "fingerprint": "app+been+ciod+ciostream+error+fatal+has+interrupt+message+prefix+reading+socket",
+    "discriminative_score": 0.6651,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.3348
   },
   "bgl_auto_13": {
     "name": "KERNEL__PROGRAM_INTERRUPT",
@@ -240,7 +288,11 @@
       "\\binterrupt\\b"
     ],
     "frequency": 43,
-    "fingerprint": "fatal+interrupt"
+    "fingerprint": "fatal+interrupt",
+    "discriminative_score": 0.8091,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9993,
+    "normal_rate": 0.1902
   },
   "bgl_auto_14": {
     "name": "KERNEL__FATAL_MESSAGE",
@@ -256,7 +308,11 @@
       "\\bmessage\\b"
     ],
     "frequency": 13,
-    "fingerprint": "error+fatal+message"
+    "fingerprint": "error+fatal+message",
+    "discriminative_score": 0.7602,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9997,
+    "normal_rate": 0.2395
   },
   "bgl_auto_15": {
     "name": "KERNEL__DATA_TLB_ERROR",
@@ -277,7 +333,11 @@
       "\\bmessage\\b"
     ],
     "frequency": 13,
-    "fingerprint": "data+error+fatal+interrupt+message+tlb"
+    "fingerprint": "data+error+fatal+interrupt+message+tlb",
+    "discriminative_score": 0.6889,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.3109
   },
   "bgl_auto_16": {
     "name": "KERNEL__CIOD_SOCKET_ERROR",
@@ -305,7 +365,11 @@
       "\\bdata\\b"
     ],
     "frequency": 9,
-    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+interrupt+message+prefix+reading+socket"
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+interrupt+message+prefix+reading+socket",
+    "discriminative_score": 0.6646,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.3353
   },
   "bgl_auto_17": {
     "name": "KERNEL__CIOD_SOCKET_ERROR",
@@ -327,7 +391,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 9,
-    "fingerprint": "been+ciod+data+error+fatal+has+socket"
+    "fingerprint": "been+ciod+data+error+fatal+has+socket",
+    "discriminative_score": 0.7342,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.2658
   },
   "bgl_auto_18": {
     "name": "KERNEL__HARDWARE_ERROR",
@@ -343,7 +411,11 @@
       "\\bsocket\\b"
     ],
     "frequency": 9,
-    "fingerprint": "error+fatal+socket"
+    "fingerprint": "error+fatal+socket",
+    "discriminative_score": 0.7617,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9997,
+    "normal_rate": 0.2379
   },
   "bgl_auto_19": {
     "name": "KERNEL__CIOD_SOCKET_ERROR",
@@ -370,7 +442,11 @@
       "\\bdata\\b"
     ],
     "frequency": 7,
-    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket"
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket",
+    "discriminative_score": 0.7342,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.2658
   },
   "bgl_auto_20": {
     "name": "APP__CIOD_ERROR",
@@ -384,7 +460,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 7,
-    "fingerprint": "ciod+fatal"
+    "fingerprint": "ciod+fatal",
+    "discriminative_score": 0.8552,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1444
   },
   "bgl_auto_21": {
     "name": "KERNEL__DATA_ERROR",
@@ -400,7 +480,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 6,
-    "fingerprint": "data+error+fatal"
+    "fingerprint": "data+error+fatal",
+    "discriminative_score": 0.7601,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9998,
+    "normal_rate": 0.2397
   },
   "bgl_auto_22": {
     "name": "APP__CIOD_ERROR",
@@ -416,7 +500,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 5,
-    "fingerprint": "app+ciod+fatal"
+    "fingerprint": "app+ciod+fatal",
+    "discriminative_score": 0.8552,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1444
   },
   "bgl_auto_23": {
     "name": "APP__CIOD_ERROR",
@@ -432,7 +520,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 5,
-    "fingerprint": "ciod+error+fatal"
+    "fingerprint": "ciod+error+fatal",
+    "discriminative_score": 0.7359,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.264
   },
   "bgl_auto_24": {
     "name": "KERNEL__HARDWARE_ERROR",
@@ -444,7 +536,11 @@
       "\\berror\\b"
     ],
     "frequency": 5,
-    "fingerprint": "error"
+    "fingerprint": "error",
+    "discriminative_score": 0.4781,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.6338,
+    "normal_rate": 0.1557
   },
   "bgl_auto_25": {
     "name": "KERNEL__HARDWARE_ERROR",
@@ -464,7 +560,11 @@
       "\\bsocket\\b"
     ],
     "frequency": 5,
-    "fingerprint": "been+error+fatal+has+socket"
+    "fingerprint": "been+error+fatal+has+socket",
+    "discriminative_score": 0.7618,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.2381
   },
   "bgl_auto_26": {
     "name": "KERNEL__CIOD_SOCKET_ERROR",
@@ -487,7 +587,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 4,
-    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+socket"
+    "fingerprint": "app+ciod+ciostream+error+fatal+message+prefix+socket",
+    "discriminative_score": 0.7359,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.264
   },
   "bgl_auto_27": {
     "name": "APP__CIOD_ERROR",
@@ -507,7 +611,11 @@
       "\\binterrupt\\b"
     ],
     "frequency": 4,
-    "fingerprint": "ciod+data+error+fatal+interrupt"
+    "fingerprint": "ciod+data+error+fatal+interrupt",
+    "discriminative_score": 0.6647,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.3353
   },
   "bgl_auto_28": {
     "name": "KERNEL__CIOD_MESSAGE_ERROR",
@@ -523,7 +631,11 @@
       "\\bmessage\\b"
     ],
     "frequency": 4,
-    "fingerprint": "ciod+fatal+message"
+    "fingerprint": "ciod+fatal+message",
+    "discriminative_score": 0.8552,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1444
   },
   "bgl_auto_29": {
     "name": "KERNEL__CIOD_SIGNAL_DELIVERED",
@@ -544,7 +656,11 @@
       "\\bfatal\\b"
     ],
     "frequency": 3,
-    "fingerprint": "been+ciod+data+error+fatal+has"
+    "fingerprint": "been+ciod+data+error+fatal+has",
+    "discriminative_score": 0.7342,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.2657
   },
   "bgl_auto_30": {
     "name": "KERNEL__DATA_ERROR",
@@ -562,7 +678,11 @@
       "has"
     ],
     "frequency": 3,
-    "fingerprint": "been+data+error+has"
+    "fingerprint": "been+data+error+has",
+    "discriminative_score": 0.6549,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.8249,
+    "normal_rate": 0.17
   },
   "bgl_auto_31": {
     "name": "KERNEL__DATA_TLB_ERROR",
@@ -590,7 +710,11 @@
       "\\bdata\\b"
     ],
     "frequency": 3,
-    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket+tlb"
+    "fingerprint": "app+been+ciod+ciostream+data+error+fatal+has+message+prefix+reading+socket+tlb",
+    "discriminative_score": 0.7342,
+    "discriminative_level": "high",
+    "anomaly_rate": 1.0,
+    "normal_rate": 0.2658
   },
   "bgl_auto_32": {
     "name": "KERNEL__DATA_INTERRUPT",
@@ -606,7 +730,11 @@
       "\\binterrupt\\b"
     ],
     "frequency": 3,
-    "fingerprint": "data+fatal+interrupt"
+    "fingerprint": "data+fatal+interrupt",
+    "discriminative_score": 0.8052,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9996,
+    "normal_rate": 0.1943
   },
   "bgl_auto_33": {
     "name": "KERNEL__DATA_ERROR",
@@ -627,7 +755,11 @@
       "has"
     ],
     "frequency": 3,
-    "fingerprint": "been+data+error+fatal+has+socket"
+    "fingerprint": "been+data+error+fatal+has+socket",
+    "discriminative_score": 0.7601,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9999,
+    "normal_rate": 0.2398
   },
   "bgl_auto_34": {
     "name": "KERNEL__FATAL_MESSAGE",
@@ -643,6 +775,10 @@
       "\\bmessage\\b"
     ],
     "frequency": 3,
-    "fingerprint": "data+fatal+message"
+    "fingerprint": "data+fatal+message",
+    "discriminative_score": 0.876,
+    "discriminative_level": "high",
+    "anomaly_rate": 0.9995,
+    "normal_rate": 0.1235
   }
 }
