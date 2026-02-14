@@ -232,11 +232,16 @@ class BGLNormalizer(LogNormalizer):
         "CIOD_NODE_MAP_ERROR": "APP",
         "CIOD_SIGNAL_RECEIVED": "APP",
         "CIOD_MESSAGE_ERROR": "APP",
+        "CIOD_PROGRAM_IMAGE_ERROR": "APP",
         "LOGIN_CHDIR_FAILED": "APP",
         "EXEC_FORMAT_ERROR": "APP",
         "DEVICE_RESOURCE_BUSY": "APP",
         # VPD / link-card → LINKCARD
         "NODE_CARD_VPD_CHECK": "LINKCARD",
+        "NODE_CARD_STATUS_ERROR": "LINKCARD",
+        "HARDWARE_WARNING": "LINKCARD",
+        "DISCOVERY_ERROR": "LINKCARD",
+        "MIDPLANE_SWITCH_ERROR": "LINKCARD",
         "MONITOR_FAILURE": "LINKCARD",
     }
 
@@ -249,24 +254,83 @@ class BGLNormalizer(LogNormalizer):
         "CIOD_SOCKET_ERROR": "CIOD_STREAM_ERROR",
         "CIOD_ERROR": "CIOD_STREAM_ERROR",
         "CIOD_UNEXPECTED_EOF": "CIOD_STREAM_ERROR",
+        "CIOD_SIGNAL_ERROR": "CIOD_STREAM_ERROR",
+        "CIOD_SIGNAL_15": "CIOD_STREAM_ERROR",
+        "UNEXPECTED_EOF": "CIOD_STREAM_ERROR",
         # Machine check
         "MACHINE_CHECK_INTERRUPT": "MACHINE_CHECK",
+        "MACHINE_CHECK_STATUS_REGISTER": "MACHINE_CHECK",
+        "MACHINE_CHECK_ENABLE": "MACHINE_CHECK",
+        "MACHINE_CHECK_ENABLE_0": "MACHINE_CHECK",
         # Login
         "LOGIN_CHDIR_FAILURE": "LOGIN_CHDIR_FAILED",
+        "LOGIN_CHDIR_ERROR": "LOGIN_CHDIR_FAILED",
         "CIOD_LOGIN_CHDIR_FAILED": "LOGIN_CHDIR_FAILED",
         "CIOD_LOGIN_ERROR": "LOGIN_CHDIR_FAILED",
+        "CIOD_LOGIN_FAILED": "LOGIN_CHDIR_FAILED",
+        "CIOD_LOGIN_FAILURE": "LOGIN_CHDIR_FAILED",
         # Floating point
         "FLOATING_POINT_INSTR_ENABLED": "FLOATING_POINT_ERROR",
         "FLOATING_PT_EX_MODE_0_ENABLE": "FLOATING_POINT_ERROR",
+        "FLOATING_POINT_ALIGNMENT_EXCEPTIONS": "FLOATING_POINT_ERROR",
         # DDR
         "DDR_ERRORS": "DDR_ERROR",
+        "DDR_ERROR_APP_FATAL_CIOD_ERROR": "DDR_ERROR",
         # VPD
         "NODE_CARD_VPD_CHECK_FAILURE": "NODE_CARD_VPD_CHECK",
+        "NODE_CARD_VPD_CHECK_ERROR": "NODE_CARD_VPD_CHECK",
+        "NODE_CARD_VPD_CHECK_FAILED": "NODE_CARD_VPD_CHECK",
+        "NODE_VPD_CHECK_FAILURE": "NODE_CARD_VPD_CHECK",
         "VPD_CHECK_FAILURE": "NODE_CARD_VPD_CHECK",
-        # L3
+        "VPD_MISMATCH": "NODE_CARD_VPD_CHECK",
+        # L3 / EDRAM
         "L3_MAJOR_INTERNAL_ERROR": "L3_INTERNAL_ERROR",
+        "L3_EDRAM_ERROR": "EDRAM_ERROR",
         # Alignment
         "INTEGER_ALIGNMENT_EXCEPTION": "INTEGER_ALIGNMENT_ERROR",
+        "INTEGER_ALIGNMENT_EXCEPTIONS": "INTEGER_ALIGNMENT_ERROR",
+        # Parity errors → single canonical
+        "PARITY_ERROR_IN_READ_QUEUE_PLB": "PARITY_ERROR",
+        "PARITY_ERROR_IN_READ_QUEUE": "PARITY_ERROR",
+        "INSTRUCTION_CACHE_PARITY_ERROR": "PARITY_ERROR",
+        "D_CACHE_SEARCH_PARITY_ERROR": "PARITY_ERROR",
+        "L2_DCACHE_UNIT_DATA_PARITY_ERROR": "PARITY_ERROR",
+        # Interrupt _ENABLE suffixes
+        "EXTERNAL_INPUT_INTERRUPT_ENABLE": "EXTERNAL_INPUT_INTERRUPT",
+        "CRITICAL_INPUT_INTERRUPT_ENABLE": "CRITICAL_INPUT_INTERRUPT",
+        "CRITICAL_INPUT_INTERRUPT_ENABLE_0": "CRITICAL_INPUT_INTERRUPT",
+        # Missing fields
+        "MISSING_INVALID_FIELDS": "MISSING_OR_INVALID_FIELDS",
+        # IDO / libido proxy
+        "IDOPROXY_COMMUNICATION_FAILURE": "IDO_PROXY_COMMUNICATION_FAILURE",
+        "LIB_IDO_ERROR_1019_SOCKET_CLOSED": "IDO_PROXY_COMMUNICATION_FAILURE",
+        "LIBIDO_ERROR": "IDO_PROXY_COMMUNICATION_FAILURE",
+        # Torus / retransmission
+        "RETRANSMISSION_ERROR": "TORUS_RECEIVER_ERROR",
+        "TORUS_NON_RECOVERABLE_ERROR": "TORUS_RECEIVER_ERROR",
+        # Tree network
+        "TREE_RECEIVER_ERROR": "TREE_NETWORK_PACKET_ERROR",
+        "SENDING_PACKET_ON_TREE_NETWORK": "TREE_NETWORK_PACKET_ERROR",
+        # RTS
+        "RTS": "RTS_INTERNAL_ERROR",
+        "RTS_TREE_LINK_TRAINING_FAILED": "RTS_INTERNAL_ERROR",
+        "RTS_TREE_TORUS_LINK_TRAINING_FAILED": "RTS_INTERNAL_ERROR",
+        "RTS_TERMINATED": "KERNEL_TERMINATED",
+        "KERNEL_PANIC": "KERNEL_TERMINATED",
+        # Node card status
+        "NODE_CARD_STATUS": "NODE_CARD_STATUS_ERROR",
+        "NODE_CARD_NOT_FULLY_FUNCTIONAL": "NODE_CARD_STATUS_ERROR",
+        "NODE_CARD_POWER_MODULE_NOT_ACCESSIBLE": "NODE_CARD_STATUS_ERROR",
+        # Hardware severity variants → LINKCARD warning
+        "HARDWARE_SEVERE": "HARDWARE_WARNING",
+        # Register dumps
+        "GENERAL_PURPOSE_REGISTERS": "REGISTER_DUMP",
+        "GENERATING_CORE": "REGISTER_DUMP",
+        # CE/ECC symbol errors
+        "CE_SYM_10": "CE_SYM_ERROR",
+        # Icache prefetch
+        "ICACHE_PREFETCH_THRESHOLD_0": "ICACHE_PREFETCH_ERROR",
+        "ICACHE_PREFETCH_THRESHOLD_ERROR": "ICACHE_PREFETCH_ERROR",
         # Verbose literal → canonical
         "LINK_SEVERED": "LOAD_MESSAGE_ERROR",
         "RECEIVING_PACKET": "TREE_NETWORK_PACKET_ERROR",
@@ -275,10 +339,14 @@ class BGLNormalizer(LogNormalizer):
         "ERROR_CREATING_NODE_MAP": "NODE_MAP_ERROR",
         "NODE_MAP_CREATION_ERROR": "NODE_MAP_ERROR",
         "TERMINATION": "KERNEL_TERMINATED",
+        "CHECK_INITIAL_GLOBAL_INTERRUPT_VALUES": "EXTERNAL_INPUT_INTERRUPT",
     }
 
     # Error type names where the FATAL_ prefix is part of the canonical name
     _SEVERITY_PREFIX_SAFE = {"FATAL_ERROR", "FATAL_MESSAGE"}
+
+    # Severity-only error types that should map to a default
+    _SEVERITY_ONLY = {"FATAL": "FATAL_ERROR", "INFO": "INFO"}
 
     def __init__(self):
         super().__init__(custom_patterns=self.BGL_PATTERNS)
@@ -300,17 +368,30 @@ class BGLNormalizer(LogNormalizer):
             KERNEL__FATAL__kernel terminated for reason 1001
                                                    → KERNEL__KERNEL_TERMINATED
         """
+        upper = name.upper()
+
+        # Handle names without __ that match known patterns
         if "__" not in name:
-            return name.upper()
+            cleaned = re.sub(r'[^A-Z0-9_]', '_', upper).strip('_')
+            if 'RTS_PANIC' in cleaned:
+                return "KERNEL__KERNEL_TERMINATED"
+            return upper
 
         severity_labels = {"INFO", "WARN", "ERROR", "FATAL", "WARNING", "SEVERE"}
 
         # ── 1. Split on __ and strip pure severity segments ──
         segments = [s.upper() for s in name.split("__")]
-        segments = [s for s in segments if s not in severity_labels]
+        non_sev = [s for s in segments if s not in severity_labels]
+
+        if len(non_sev) < 2:
+            # All error-type segments were severity labels; keep the last one
+            # e.g. KERNEL__FATAL → prefix=KERNEL, error_type=FATAL
+            segments = [segments[0]] + [segments[-1]] if len(segments) >= 2 else segments
+        else:
+            segments = non_sev
 
         if len(segments) < 2:
-            return name.upper()
+            return upper
 
         # ── 2. Clean component prefix ──
         prefix = segments[0]
@@ -342,7 +423,9 @@ class BGLNormalizer(LogNormalizer):
             error_type = "KERNEL_TERMINATED"
         elif ('CIOSTREAM' in error_type
               or ('CIOD' in error_type
-                  and 'ERROR_READING_MESSAGE' in error_type)):
+                  and 'ERROR_READING_MESSAGE' in error_type)
+              or ('CIOD' in error_type
+                  and 'FAILED_TO_READ_MESSAGE_PREFIX' in error_type)):
             error_type = "CIOD_STREAM_ERROR"
         elif ('RECEIVING_PACKET' in error_type
               and 'TREE_NETWORK' in error_type):
@@ -355,6 +438,40 @@ class BGLNormalizer(LogNormalizer):
             error_type = "BAD_MESSAGE_HEADER"
         elif error_type == "APP_FATAL":
             error_type = "FATAL_ERROR"
+        # Coordinate exceeds dimension (any axis)
+        elif 'COORDINATE_EXCEEDS' in error_type:
+            error_type = "COORDINATE_EXCEEDS_DIMENSION"
+        # Midplane switch controller verbose names
+        elif 'MIDPLANESWITCHCONTROLLER' in error_type:
+            error_type = "MIDPLANE_SWITCH_ERROR"
+        # CIOD program image / loading errors (extremely verbose paths)
+        elif ('CIOD' in error_type
+              and ('PROGRAM_IMAGE' in error_type
+                   or 'ERROR_LOADING' in error_type)):
+            error_type = "CIOD_PROGRAM_IMAGE_ERROR"
+        # LR/CR/XER/CTR register dumps
+        elif ('LR_' in error_type and 'CR_' in error_type
+              and 'XER_' in error_type):
+            error_type = "REGISTER_DUMP"
+        # Torus sender retransmission verbose names
+        elif ('TORUS_SENDER' in error_type
+              and 'RETRANSMISSION' in error_type):
+            error_type = "TORUS_RECEIVER_ERROR"
+        # Duplicate canonical rank mapping (verbose node map error)
+        elif 'DUPLICATE_CANONICAL_RANK' in error_type:
+            error_type = "NODE_MAP_ERROR"
+            prefix = "APP"
+        # PrepareForService / nodecard shutdown
+        elif 'PREPAREFORSERVICE' in error_type:
+            error_type = "NODE_CARD_STATUS_ERROR"
+            prefix = "LINKCARD"
+
+        # ── 4b. Non-standard component prefix → fold into error type ──
+        _VALID = self._VALID_COMPONENTS
+        if prefix not in _VALID:
+            # e.g. HARDWARE__WARNING → error_type = HARDWARE_WARNING
+            error_type = f"{prefix}_{error_type}"
+            prefix = "KERNEL"
 
         # ── 5. Strip severity PREFIX from error type ──
         #   FATAL_DATA_TLB_ERROR → DATA_TLB_ERROR
@@ -367,6 +484,9 @@ class BGLNormalizer(LogNormalizer):
                     break
 
         # ── 6. Canonical error type ──
+        # Handle severity-only error types (e.g. KERNEL__FATAL → KERNEL__FATAL_ERROR)
+        if error_type in self._SEVERITY_ONLY:
+            error_type = self._SEVERITY_ONLY[error_type]
         error_type = self._ERROR_TYPE_CANONICAL.get(error_type, error_type)
 
         # ── 7. Determine correct component ──
