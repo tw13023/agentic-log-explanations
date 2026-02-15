@@ -70,9 +70,9 @@ Top 4 signatures account for 2,432 / 2,527 sessions (96.2%).
 
 ## Verification Failures (2 sessions)
 
-Two sessions (0.08% of 2,527) failed verification due to **invalid evidence span references**. Both correctly identified the `DATANODE__BLOCK_VERIFICATION_FAILED` signature and cited valid evidence IDs — the failures are formatting errors, not hallucinations.
+Two sessions (0.08% of 2,527) failed verification due to **malformed evidence span references**. Both correctly identified the `DATANODE__BLOCK_VERIFICATION_FAILED` signature and cited valid evidence IDs — the failures are formatting errors, not hallucinations.
 
-Both sessions cite evidence ID `E5`, which does not exist. The pipeline retrieves 5 evidence documents (E0–E4: 4 anomaly + 1 normal), so `E5` is an out-of-range reference the LLM fabricated.
+**Correction (2026-02-15):** The original analysis incorrectly stated that `E5` "does not exist." In fact, the pipeline retrieves 6 evidence documents per session: E0 (query session) + E1–E4 (TOP_K_ANOMALY=4) + E5 (TOP_K_NORMAL=1). The evidence_id_mapping for both sessions confirms E5 is present and valid. The actual failure is a **span formatting error**: the LLM wrote bare `E5` in the `evidence_spans` field instead of the required `E{n}-L{line}` format (e.g., `E5-L1 to E5-L35`). The verifier's `_parse_span()` method flags any span without `-L` as "malformed."
 
 ### HDFS_blk_6989094700274811196
 
@@ -81,12 +81,14 @@ Both sessions cite evidence ID `E5`, which does not exist. The pipeline retrieve
 | LLM Signature | `DATANODE__BLOCK_VERIFICATION_FAILED` |
 | LLM Summary | "DATANODE__BLOCK_VERIFICATION_FAILED: 2 errors at E0-L15 and E0-L8, E0-L5." |
 | Verification checks | 8 passed, 1 failed |
-| Failed check | `evidence_spans_validity`: E5 is malformed (does not exist) |
+| Failed check | `evidence_spans_validity`: bare `E5` span lacks `-L{n}` format |
 
 **LLM Claims:**
-1. (claim referencing `E0`)
-2. (claim referencing `E1`, `E2`)
-3. (claim referencing `E0`, **`E5`** — invalid)
+1. (observation) "E0 contains 2 DATANODE INFO errors at E0-L15, E0-L8, E0-L5" → citing E0
+2. (pattern_match) "Pattern matches DATANODE__BLOCK_VERIFICATION_FAILED" → citing E1, E2
+3. (contrast) "E0 has 2 errors; E5 shows no errors" → citing E0, **`E5`** (valid ID, malformed span)
+
+**Evidence mapping:** E0=target, E1–E4=anomaly exemplars, **E5=`E_HDFS_blk_2183710639830383686`** (normal contrast)
 
 **Actual log content (41 lines, showing key events):**
 
@@ -110,12 +112,14 @@ Both sessions cite evidence ID `E5`, which does not exist. The pipeline retrieve
 | LLM Signature | `DATANODE__BLOCK_VERIFICATION_FAILED` |
 | LLM Summary | "DATANODE__BLOCK_VERIFICATION_FAILED: 3 errors at E0-L6 to E0-L10, E0-L16 to E0-L17" |
 | Verification checks | 8 passed, 1 failed |
-| Failed check | `evidence_spans_validity`: E5 is malformed (does not exist) |
+| Failed check | `evidence_spans_validity`: bare `E5` span lacks `-L{n}` format |
 
 **LLM Claims:**
-1. (claim referencing `E0`)
-2. (claim referencing `E1`, `E2`)
-3. (claim referencing `E0`, **`E5`** — invalid)
+1. (observation) "E0 contains 3 DATANODE WARN errors at E0-L6, E0-L8, E0-L16" → citing E0
+2. (pattern_match) "Pattern matches DATANODE__BLOCK_VERIFICATION_FAILED" → citing E1, E2
+3. (contrast) "E0 has 3 errors; E5 shows no errors" → citing E0, **`E5`** (valid ID, malformed span)
+
+**Evidence mapping:** E0=target, E1–E4=anomaly exemplars, **E5=`E_HDFS_blk_-3817803451853801878`** (normal contrast)
 
 **Actual log content (27 lines, showing key events):**
 
@@ -137,13 +141,79 @@ Both sessions cite evidence ID `E5`, which does not exist. The pipeline retrieve
 
 ### Root Cause
 
-Both sessions failed the same check: the LLM referenced evidence ID `E5` which does not exist in the retrieval set (only E0–E4 are valid). This is a **formatting/hallucinated reference** error, not a reasoning failure:
+Both sessions failed the same check: the LLM used bare `E5` as an evidence span (e.g., `"E5"`) instead of the required `E{n}-L{line}` format. The verifier's `_parse_span()` method requires `-L` in every span string. E5 is a valid evidence ID in both sessions' mappings — it is the normal-contrast exemplar retrieved by the pipeline (TOP_K_NORMAL=1).
 
-1. **Correct signature** — both correctly identified `DATANODE__BLOCK_VERIFICATION_FAILED`
-2. **Correct grounding** — claims reference valid evidence (E0, E1, E2) alongside the invalid E5
-3. **Minor severity** — removing the `E5` reference would make both pass verification
+**Fix options:**
+1. (Recommended) Make the verifier tolerate bare evidence IDs as whole-document references
+2. Add prompt guidance explicitly showing the `-L{n}` format for contrast claims
+3. Accept as a known formatting limitation of the 8b model
 
-**Contrast with BGL:** The BGL full run's 2 verification failures were **confirmed hallucinations** (0% evidence coverage, wrong signature, fabricated claims about normal-severity messages). The HDFS failures are qualitatively different — correct identification with a spurious evidence reference.
+**Severity: Low** — correct identification with a minor formatting deviation.
+
+**Contrast with BGL:** The BGL full run's 2 verification failures were **confirmed hallucinations** (0% evidence coverage, wrong signature, fabricated claims about normal-severity messages). The HDFS failures are qualitatively different — correct identification with a formatting-only error.
+
+---
+
+## Singleton Investigation: DATANODE__BLOCK_VERIFICATION_SUCCEEDED
+
+**Session:** `HDFS_blk_-1478843903114016209` (label=1, verification **passed**)
+
+The SME assessment flagged this singleton as suspicious: if verification succeeded, why is the session anomalous? Investigation reveals a **log truncation artifact** that caused the LLM to misattribute the signature.
+
+### Root Cause: `max_log_lines=20` Truncation
+
+The session has **30 lines**, but `PromptBuilder` (default `max_log_lines=20`) only showed L1-L20 to the LLM. The actual anomaly is at **L27**, which was never visible.
+
+**Full session log content:**
+
+| Line | Content | Visible to LLM? |
+|------|---------|:---:|
+| L1–L4 | `Receiving block` (3 DataXceiver receives) + `NameSystem.allocateBlock` | ✅ |
+| L5–L10 | `PacketResponder` terminating + `Received block` (normal write pipeline) | ✅ |
+| L11–L13 | `NameSystem.addStoredBlock` (3 nodes → blockMap updated) | ✅ |
+| **L14** | **`INFO dfs.DataBlockScanner: Verification succeeded for blk_-1478843903114016209`** | ✅ |
+| L15 | `NameSystem: ask to replicate` | ✅ |
+| L16–L20 | Block transfer + receive + addStoredBlock (replication) | ✅ |
+| L21 | `addStoredBlock` (another node) | ❌ |
+| L22 | `FSDataset: Deleting block` | ❌ |
+| L23–L26 | `NameSystem.delete: added to invalidSet` (4 nodes) | ❌ |
+| **L27** | **`WARN dfs.FSDataset: Unexpected error trying to delete block blk_-1478843903114016209. BlockInfo not found in volumeMap.`** | ❌ |
+| L28–L30 | `FSDataset: Deleting block` (3 more deletions) | ❌ |
+
+### Three Problems Identified
+
+1. **Misattribution (moderate):** The LLM named the signature after L14 ("Verification succeeded") — the most distinctive event within the visible L1-L20. All other visible lines are routine INFO-level block operations. The correct anomaly signal is the WARN at L27 about `BlockInfo not found in volumeMap`, indicating a block metadata inconsistency during deletion.
+
+2. **Internal contradiction:** The `explanation.summary` says "DATANODE__BLOCK_VERIFICATION_**FAILED**" but `signature.name` says "DATANODE__BLOCK_VERIFICATION_**SUCCEEDED**". The LLM was internally inconsistent — the summary used the dominant anomaly pattern name while the signature used the literal log text.
+
+3. **Fabricated evidence matches:** Claim 2 (pattern_match) states the pattern matches at `E1-L14` and `E2-L14`. Actual content:
+   - E1-L14 (`E_HDFS_blk_6566051927569845875`): `INFO dfs.DataNode: Starting thread to transfer block` — no verification mention
+   - E2-L14 (`E_HDFS_blk_8844045896712965415`): `INFO dfs.FSNamesystem: ask to replicate` — no verification mention
+   
+   The LLM fabricated these evidence matches.
+
+### Impact Assessment
+
+- **1 session out of 2,527** (0.04%) — negligible population impact
+- **Verification passed** — the structural checks don't catch semantic misattribution
+- **Correct label prediction** — the session IS anomalous (label=1), just misnamed
+
+### Systemic Implication: `max_log_lines` Truncation
+
+This case demonstrates a real risk: when the anomaly signal appears late in a long session (beyond line 20), the LLM cannot identify it. Of the 2,527 HDFS anomalies, this is the only session where truncation caused a visible problem, suggesting most HDFS anomaly signals appear early in the block lifecycle. However, this is a known limitation that should be documented.
+
+**Possible mitigations:**
+1. Increase `max_log_lines` (cost: larger prompts, more tokens)
+2. Pre-filter to show only WARN/ERROR lines (cost: loses sequence context)
+3. Show first N + last M lines (cost: gap in middle)
+4. Weight tail lines more heavily (anomalies often cascade at end)
+
+### Normalizer Decision
+
+No normalizer mapping added. The singleton `DATANODE__BLOCK_VERIFICATION_SUCCEEDED` is retained as-is in the normalized results because:
+- It's a genuine pipeline artifact (truncation-caused misattribution), not a naming inconsistency
+- Mapping it to `DATANODE__BLOCK_VERIFICATION_FAILED` would mask the error
+- The `DATANODE__BLOCK_DELETE_ERROR` would be semantically correct but this 1 session doesn't warrant a new canonical name
 
 ---
 
@@ -194,4 +264,6 @@ Same gaps as BGL apply:
 
 ### HDFS-Specific Observation
 
-The `DATANODE__BLOCK_VERIFICATION_SUCCEEDED` signature (1 session) is suspicious — if verification succeeded, why is the session anomalous? This warrants manual inspection. It may be a case where the block was flagged for other reasons (e.g., replication delay) and the verification success message is incidental.
+~~The `DATANODE__BLOCK_VERIFICATION_SUCCEEDED` signature (1 session) is suspicious — if verification succeeded, why is the session anomalous?~~ **Resolved (2026-02-15):** Investigation confirms this is a `max_log_lines=20` truncation artifact. The session's actual anomaly (`WARN: BlockInfo not found in volumeMap`) is at L27, beyond the LLM's visibility window. The LLM named the signature after L14 (`Verification succeeded`), the most distinctive event in the visible L1-L20. See "Singleton Investigation" section above for full analysis.
+
+**Recommendation:** Consider increasing `max_log_lines` for sessions longer than 20 lines, or implementing a tail-aware truncation strategy to ensure late-appearing anomaly signals are not hidden.
