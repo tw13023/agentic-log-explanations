@@ -70,16 +70,80 @@ Top 4 signatures account for 2,432 / 2,527 sessions (96.2%).
 
 ## Verification Failures (2 sessions)
 
-Two sessions (0.08% of 2,527) failed verification due to **invalid span references** (malformed line number citations), not hallucinations. Both correctly identified the `DATANODE__BLOCK_VERIFICATION_FAILED` signature and cited valid evidence IDs.
+Two sessions (0.08% of 2,527) failed verification due to **invalid evidence span references**. Both correctly identified the `DATANODE__BLOCK_VERIFICATION_FAILED` signature and cited valid evidence IDs — the failures are formatting errors, not hallucinations.
 
-| Session ID | Signature | Issue | Checks |
-|------------|-----------|-------|--------|
-| HDFS_blk_6989094700274811196 | DATANODE__BLOCK_VERIFICATION_FAILED | 1 invalid span | 8 total, 1 failed |
-| HDFS_blk_9135407675197435306 | DATANODE__BLOCK_VERIFICATION_FAILED | 1 invalid span | 8 total, 1 failed |
+Both sessions cite evidence ID `E5`, which does not exist. The pipeline retrieves 5 evidence documents (E0–E4: 4 anomaly + 1 normal), so `E5` is an out-of-range reference the LLM fabricated.
 
-**Root cause:** The LLM produced malformed line span references (e.g., citing non-contiguous line ranges). The underlying signature identification and evidence grounding are correct — these are formatting errors, not reasoning failures.
+### HDFS_blk_6989094700274811196
 
-**Contrast with BGL:** The BGL full run had 2 verification failures that were confirmed hallucinations (0% evidence coverage, wrong signature). The HDFS failures are qualitatively different — correct identification with minor formatting issues.
+| Field | Value |
+|-------|-------|
+| LLM Signature | `DATANODE__BLOCK_VERIFICATION_FAILED` |
+| LLM Summary | "DATANODE__BLOCK_VERIFICATION_FAILED: 2 errors at E0-L15 and E0-L8, E0-L5." |
+| Verification checks | 8 passed, 1 failed |
+| Failed check | `evidence_spans_validity`: E5 is malformed (does not exist) |
+
+**LLM Claims:**
+1. (claim referencing `E0`)
+2. (claim referencing `E1`, `E2`)
+3. (claim referencing `E0`, **`E5`** — invalid)
+
+**Actual log content (41 lines, showing key events):**
+
+| Line | Content (truncated) |
+|------|---------------------|
+| L1–L3 | `Receiving block blk_6989094700274811196` (3 DataXceiver receives) |
+| L4 | `NameSystem.allocateBlock: /user/root/randtxt2/...` |
+| L5–L13 | `PacketResponder` terminating + `Received block` + `addStoredBlock` (normal write pipeline) |
+| L14 | `Served block blk_6989094700274811196 to /10.251.42.9` |
+| **L15** | **`WARN: Got exception while serving blk_6989094700274811196 to /10.250.13.188`** |
+| L16 | `Served block blk_6989094700274811196 to /10.251.91.32` |
+| L17–L25 | Replication requests, block transfers, block deletion (recovery sequence) |
+| L26–L41 | Additional replication, transfer, and verification events |
+
+**Analysis:** The LLM correctly identified the WARN-level serving exception at L15 as the anomaly trigger. The signature `DATANODE__BLOCK_VERIFICATION_FAILED` is appropriate — the block had a serving error that led to replication and recovery. The only issue is the spurious `E5` evidence reference.
+
+### HDFS_blk_9135407675197435306
+
+| Field | Value |
+|-------|-------|
+| LLM Signature | `DATANODE__BLOCK_VERIFICATION_FAILED` |
+| LLM Summary | "DATANODE__BLOCK_VERIFICATION_FAILED: 3 errors at E0-L6 to E0-L10, E0-L16 to E0-L17" |
+| Verification checks | 8 passed, 1 failed |
+| Failed check | `evidence_spans_validity`: E5 is malformed (does not exist) |
+
+**LLM Claims:**
+1. (claim referencing `E0`)
+2. (claim referencing `E1`, `E2`)
+3. (claim referencing `E0`, **`E5`** — invalid)
+
+**Actual log content (27 lines, showing key events):**
+
+| Line | Content (truncated) |
+|------|---------------------|
+| L1 | `NameSystem.allocateBlock: /user/root/randtxt2/...` |
+| L2–L4 | `Receiving block blk_9135407675197435306` (3 receives) |
+| L5–L13 | `PacketResponder` terminating + `Received block` + `addStoredBlock` (normal write) |
+| L14–L15 | `Served block` (2 successful serves) |
+| **L16** | **`WARN: Got exception while serving blk_9135407675197435306 to /10.251.71.240`** |
+| L17 | `Verification succeeded for blk_9135407675197435306` |
+| L18 | `Served block` (successful) |
+| **L19** | **`WARN: Got exception while serving blk_9135407675197435306 to /10.251.71.240`** |
+| L20 | `Served block` (successful) |
+| L21–L23 | `NameSystem.delete: blk_... is added to invalidSet` (3 nodes) |
+| L24–L25 | `Deleting block` (cleanup) |
+
+**Analysis:** Two WARN-level serving exceptions (L16, L19) to the same destination (`/10.251.71.240`), followed by block invalidation and deletion — a clear anomalous lifecycle. The LLM correctly identified the failure pattern. Note L17 shows "Verification succeeded" between the two errors, which is the incidental success message that spawned the singleton `DATANODE__BLOCK_VERIFICATION_SUCCEEDED` signature for a different session.
+
+### Root Cause
+
+Both sessions failed the same check: the LLM referenced evidence ID `E5` which does not exist in the retrieval set (only E0–E4 are valid). This is a **formatting/hallucinated reference** error, not a reasoning failure:
+
+1. **Correct signature** — both correctly identified `DATANODE__BLOCK_VERIFICATION_FAILED`
+2. **Correct grounding** — claims reference valid evidence (E0, E1, E2) alongside the invalid E5
+3. **Minor severity** — removing the `E5` reference would make both pass verification
+
+**Contrast with BGL:** The BGL full run's 2 verification failures were **confirmed hallucinations** (0% evidence coverage, wrong signature, fabricated claims about normal-severity messages). The HDFS failures are qualitatively different — correct identification with a spurious evidence reference.
 
 ---
 
