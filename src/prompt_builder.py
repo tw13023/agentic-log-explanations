@@ -400,38 +400,65 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
 
 def format_query_session_with_lines(
     session_lines: List[str],
-    max_lines: int = 40,
-    tail_lines: int = 10,
+    max_chars: int = 6000,
+    tail_ratio: float = 0.3,
 ) -> str:
-    """Format the query session (E0) with line numbers and total count.
+    """Format the query session (E0) with line numbers.
 
-    Uses a head+tail strategy so that anomaly signals appearing late in
-    a session (e.g. WARN at L27 in a 30-line session) are never hidden.
+    Dynamic strategy — adapts to the actual session length:
+      * If the full session fits within *max_chars*, show ALL lines.
+      * Otherwise, apply head+tail truncation using *tail_ratio* to
+        decide how many tail lines to keep so late-appearing anomaly
+        signals are never hidden.
 
-    If the session fits within *max_lines*, all lines are shown.
-    Otherwise the first ``max_lines - tail_lines`` lines and the last
-    ``tail_lines`` lines are shown, with a gap marker in between.
+    Args:
+        session_lines: The raw log lines for this session.
+        max_chars: Soft character budget for the formatted E0 block.
+            Default 6 000 chars ≈ ~1 500 tokens — leaves ample room
+            for the evidence block + system prompt within an 8 k
+            context window.
+        tail_ratio: Fraction of the displayable lines reserved for
+            the tail section (0.0–0.5). Default 0.3 means 30 % of
+            lines come from the end of the session.
     """
     total_lines = len(session_lines)
-    output = [f"({total_lines} lines total, valid span range: E0-L1 to E0-L{total_lines})"]
+    header = f"({total_lines} lines total, valid span range: E0-L1 to E0-L{total_lines})"
+    output: List[str] = [header]
 
-    if total_lines <= max_lines:
-        # Everything fits — show all lines
-        for line_num, line in enumerate(session_lines, 1):
-            output.append(f"E0-L{line_num}: {line}")
-    else:
-        head_count = max_lines - tail_lines
-        # Head section
-        for line_num, line in enumerate(session_lines[:head_count], 1):
-            output.append(f"E0-L{line_num}: {line}")
-        # Gap marker
-        gap = total_lines - max_lines
-        output.append(f"... ({gap} lines omitted, E0-L{head_count + 1} to E0-L{head_count + gap})")
-        # Tail section
-        tail_start = total_lines - tail_lines
-        for idx, line in enumerate(session_lines[tail_start:]):
-            line_num = tail_start + idx + 1
-            output.append(f"E0-L{line_num}: {line}")
+    # Fast path: build full output and check whether it fits.
+    full_output = [header]
+    for line_num, line in enumerate(session_lines, 1):
+        full_output.append(f"E0-L{line_num}: {line}")
+
+    if len("\n".join(full_output)) <= max_chars:
+        return "\n".join(full_output)
+
+    # --- Truncation needed — use head + tail ------------------
+    # Determine how many lines we can afford.
+    # Estimate avg chars per formatted line.
+    avg_line_len = len("\n".join(full_output)) / total_lines
+    affordable_lines = max(10, int(max_chars / avg_line_len))
+    affordable_lines = min(affordable_lines, total_lines)
+
+    tail_lines = max(3, int(affordable_lines * tail_ratio))
+    head_lines = affordable_lines - tail_lines
+
+    # Head section
+    for line_num, line in enumerate(session_lines[:head_lines], 1):
+        output.append(f"E0-L{line_num}: {line}")
+
+    # Gap marker
+    gap_start = head_lines + 1
+    gap_end = total_lines - tail_lines
+    gap = gap_end - gap_start + 1
+    if gap > 0:
+        output.append(f"... ({gap} lines omitted, E0-L{gap_start} to E0-L{gap_end})")
+
+    # Tail section
+    tail_start = total_lines - tail_lines
+    for idx, line in enumerate(session_lines[tail_start:]):
+        line_num = tail_start + idx + 1
+        output.append(f"E0-L{line_num}: {line}")
 
     return "\n".join(output)
 
@@ -450,8 +477,8 @@ class PromptBuilder:
     
     def __init__(
         self,
-        max_log_lines: int = 40,
-        tail_lines: int = 10,
+        max_log_chars: int = 6000,
+        tail_ratio: float = 0.3,
         max_chars_per_evidence: int = 500,
         max_evidence_items: int = 5,
         dataset: str = "BGL"
@@ -460,15 +487,17 @@ class PromptBuilder:
         Initialize prompt builder.
         
         Args:
-            max_log_lines: Maximum log lines to include (head + tail)
-            tail_lines: Lines reserved for the tail section so late anomaly
-                signals are never hidden (used only when session > max_log_lines)
+            max_log_chars: Soft character budget for the E0 log block.
+                Sessions that fit are shown in full; longer sessions
+                are dynamically truncated with a head+tail strategy.
+            tail_ratio: Fraction of displayable lines reserved for
+                the tail section when truncation is needed (0.0–0.5).
             max_chars_per_evidence: Max characters per evidence item
             max_evidence_items: Maximum number of evidence items to include
             dataset: Dataset type ("BGL" or "HDFS") for dataset-specific prompts
         """
-        self.max_log_lines = max_log_lines
-        self.tail_lines = tail_lines
+        self.max_log_chars = max_log_chars
+        self.tail_ratio = tail_ratio
         self.max_chars_per_evidence = max_chars_per_evidence
         self.max_evidence_items = max_evidence_items
         self.dataset = dataset.upper()
@@ -494,11 +523,11 @@ class PromptBuilder:
         Returns:
             Tuple of (system_prompt, user_prompt)
         """
-        # Format log content WITH LINE NUMBERS (head+tail strategy)
+        # Format log content WITH LINE NUMBERS (dynamic strategy)
         log_content = format_query_session_with_lines(
             session.lines,
-            self.max_log_lines,
-            self.tail_lines,
+            self.max_log_chars,
+            self.tail_ratio,
         )
         
         # Format evidence block
