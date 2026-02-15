@@ -372,8 +372,17 @@ class Verifier:
           - 'E0-L6-L10'             → returns first line  (E0, 6)
           - 'E0-L7-E0-L12'          → returns first span (E0, 7)
           - 'E5-L3/E5-L4'           → returns first span (E5, 3)
+          - 'E5'                    → whole-document ref  (E5, None)
         """
-        if not span or '-L' not in span:
+        if not span:
+            return None, None
+
+        # Handle bare evidence ID like 'E5' (whole-document reference)
+        bare_match = re.fullmatch(r'E(\d+)', span.strip())
+        if bare_match:
+            return f"E{bare_match.group(1)}", None
+
+        if '-L' not in span:
             return None, None
         try:
             # Handle 'E0-L6 to E0-L10' range format
@@ -446,7 +455,8 @@ class Verifier:
                     invalid_spans.append((i, span, f"unknown evidence_id {eid}"))
                     continue
                 
-                if eid in line_counts and line_num > line_counts[eid]:
+                # line_num is None for bare evidence ID refs (whole-document)
+                if line_num is not None and eid in line_counts and line_num > line_counts[eid]:
                     invalid_spans.append((i, span, f"line {line_num} > max {line_counts[eid]}"))
         
         # Report issues
@@ -556,7 +566,14 @@ class Verifier:
                     continue
                 
                 lines = evidence_lines[eid]
-                if line_num <= len(lines):
+                if line_num is None:
+                    # Bare evidence ID: whole-document reference — check all lines
+                    full_text = " ".join(lines).lower()
+                    for kw in claim_keywords:
+                        if kw in full_text:
+                            found_match = True
+                            break
+                elif line_num <= len(lines):
                     span_text = lines[line_num - 1].lower()
                     for kw in claim_keywords:
                         if kw in span_text:

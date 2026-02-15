@@ -309,9 +309,9 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
         }},
         {{
             "type": "contrast",
-            "claim": "E0 has <X> at E0-L7; E3 shows <Y> at E3-L2.",
+            "claim": "E0 has <X> at E0-L7; E3 shows no such errors.",
             "evidence_ids": ["E0", "E3"],
-            "evidence_spans": ["E0-L7", "E3-L2"]
+            "evidence_spans": ["E0-L7", "E3-L1 to E3-L20"]
         }}
     ],
     "insufficient_evidence": false
@@ -324,7 +324,7 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 4. QUANTIFY: count errors, specify line ranges
 5. CITE specific evidence_spans for each claim
 6. RESPECT LINE RANGES: Each evidence block shows its valid range (e.g., "10 lines: E0-L1 to E0-L10"). NEVER reference a line number beyond the stated maximum.
-7. SPAN FORMAT: Each evidence_span string MUST be either a single line "E0-L8" or a range with " to " separator "E0-L5 to E0-L10".  NEVER use "E0-L5-E0-L10", "E0-L5/E0-L10", or any other separator.
+7. SPAN FORMAT: Each evidence_span string MUST be either a single line "E0-L8" or a range with " to " separator "E0-L5 to E0-L10".  NEVER use bare evidence IDs ("E5"), "E0-L5-E0-L10", "E0-L5/E0-L10", or any other separator.  For contrast claims where normal evidence has NO errors, cite the full range: "E5-L1 to E5-L35".
 
 SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 
@@ -398,18 +398,41 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
     return "\n".join(output_lines)
 
 
-def format_query_session_with_lines(session_lines: List[str], max_lines: int = 20) -> str:
-    """Format the query session (E0) with line numbers and total count."""
+def format_query_session_with_lines(
+    session_lines: List[str],
+    max_lines: int = 40,
+    tail_lines: int = 10,
+) -> str:
+    """Format the query session (E0) with line numbers and total count.
+
+    Uses a head+tail strategy so that anomaly signals appearing late in
+    a session (e.g. WARN at L27 in a 30-line session) are never hidden.
+
+    If the session fits within *max_lines*, all lines are shown.
+    Otherwise the first ``max_lines - tail_lines`` lines and the last
+    ``tail_lines`` lines are shown, with a gap marker in between.
+    """
     total_lines = len(session_lines)
     output = [f"({total_lines} lines total, valid span range: E0-L1 to E0-L{total_lines})"]
-    
-    lines_to_show = session_lines[:max_lines]
-    for line_num, line in enumerate(lines_to_show, 1):
-        output.append(f"E0-L{line_num}: {line}")
-    
-    if total_lines > max_lines:
-        output.append(f"... ({total_lines - max_lines} more lines, up to E0-L{total_lines})")
-    
+
+    if total_lines <= max_lines:
+        # Everything fits — show all lines
+        for line_num, line in enumerate(session_lines, 1):
+            output.append(f"E0-L{line_num}: {line}")
+    else:
+        head_count = max_lines - tail_lines
+        # Head section
+        for line_num, line in enumerate(session_lines[:head_count], 1):
+            output.append(f"E0-L{line_num}: {line}")
+        # Gap marker
+        gap = total_lines - max_lines
+        output.append(f"... ({gap} lines omitted, E0-L{head_count + 1} to E0-L{head_count + gap})")
+        # Tail section
+        tail_start = total_lines - tail_lines
+        for idx, line in enumerate(session_lines[tail_start:]):
+            line_num = tail_start + idx + 1
+            output.append(f"E0-L{line_num}: {line}")
+
     return "\n".join(output)
 
 
@@ -427,7 +450,8 @@ class PromptBuilder:
     
     def __init__(
         self,
-        max_log_lines: int = 20,
+        max_log_lines: int = 40,
+        tail_lines: int = 10,
         max_chars_per_evidence: int = 500,
         max_evidence_items: int = 5,
         dataset: str = "BGL"
@@ -436,12 +460,15 @@ class PromptBuilder:
         Initialize prompt builder.
         
         Args:
-            max_log_lines: Maximum log lines to include from the session
+            max_log_lines: Maximum log lines to include (head + tail)
+            tail_lines: Lines reserved for the tail section so late anomaly
+                signals are never hidden (used only when session > max_log_lines)
             max_chars_per_evidence: Max characters per evidence item
             max_evidence_items: Maximum number of evidence items to include
             dataset: Dataset type ("BGL" or "HDFS") for dataset-specific prompts
         """
         self.max_log_lines = max_log_lines
+        self.tail_lines = tail_lines
         self.max_chars_per_evidence = max_chars_per_evidence
         self.max_evidence_items = max_evidence_items
         self.dataset = dataset.upper()
@@ -467,10 +494,11 @@ class PromptBuilder:
         Returns:
             Tuple of (system_prompt, user_prompt)
         """
-        # Format log content WITH LINE NUMBERS
+        # Format log content WITH LINE NUMBERS (head+tail strategy)
         log_content = format_query_session_with_lines(
             session.lines,
-            self.max_log_lines
+            self.max_log_lines,
+            self.tail_lines,
         )
         
         # Format evidence block
