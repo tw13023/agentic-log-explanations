@@ -1,0 +1,41 @@
+{
+  "dataset": "HDFS",
+  "run_mode": "full run",
+  "max_anomalies": null,
+  "results_file": "results_HDFS/explanations_HDFS_20260215_220648.jsonl",
+  "counts": {
+    "total_anomalies": 2527,
+    "total_test_sessions": 86260,
+    "successful": 2527,
+    "errors": 0
+  },
+  "verification": {
+    "passed": 2527,
+    "failed": 0,
+    "pass_rate": 1.0
+  },
+  "tokens": {
+    "total": 8461896,
+    "avg": 3348.5935892362486
+  },
+  "latency": {
+    "avg_ms": 10395.408653958211,
+    "p95_ms": 12361.637568473816,
+    "total_ms": 26269197.6685524
+  },
+  "signatures": {
+    "DATANODE__BLOCK_VERIFICATION_FAILED": 1675,
+    "DATANODE__BLOCK_WRITE_FAILURE": 485,
+    "DATANODE__WRITE_PIPELINE_FAILURE": 18,
+    "DATANODE__BLOCK_RECEIVE_FAILURE": 169,
+    "DATANODE__BLOCK_SERVING_FAILURE": 54,
+    "NAMENODE__REPLICATION_INCOMPLETE": 21,
+    "DATANODE__BLOCK_TRANSFER_FAILURE": 94,
+    "DATANODE__BLOCK_DUPLICATION": 3,
+    "DATANODE__REDUNDANT_STORED_BLOCK": 3,
+    "NAMENODE__REDUNDANT_STORED_BLOCK": 2,
+    "DATANODE__IO_ERROR": 1,
+    "DATANODE__REDUNDANT_ADD_STORED_BLOCK": 1,
+    "DATANODE__BLOCK_VERIFICATION_SUCCEEDED": 1
+  }
+}
