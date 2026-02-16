@@ -31,6 +31,7 @@ Each file is named `YYYY-MM-DD.md` and contains:
 
 | Date | Summary |
 |------|---------|
+| [2026-02-17](2026-02-17.md) | HDFS post-fix re-run (100% verification, 13 sigs), fix impact verification, BGL unaffected confirmation, llama3.1:8b model evaluation & recommendation |
 | [2026-02-14](2026-02-14.md) | BGL full run post-analysis: normalizer consolidation (116→56 sigs), hallucination investigation (2 confirmed), SME review, normalized JSONL; HDFS full run prepared |
 | [2026-02-13](2026-02-13.md) | Phase 1+2 prompt engineering tested & reverted (no benefit for 8B), 7 new BGL normalizer mappings, discriminative scores as paper metadata, 500-session BGL (29→27 sigs) + HDFS (8 sigs) validation |
 | [2026-02-12](2026-02-12.md) | BGL+HDFS signature normalizers, prompt alignment, pipeline wiring (71→24 BGL, 26→10 HDFS sigs) |
