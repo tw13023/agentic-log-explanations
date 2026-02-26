@@ -31,6 +31,8 @@ Each file is named `YYYY-MM-DD.md` and contains:
 
 | Date | Summary |
 |------|---------|
+| [2026-02-26](2026-02-26.md) | Pipeline B notebook full execution: BM25 cache (BGL 11h23m, HDFS 10h58m), retrospective simulation (72 eval points), key finding: uncertainty-only gating at B=0.20 achieves 94.6%/92.3% coverage with 80% cost savings, 8 paper figures generated |
+| [2026-02-24](2026-02-24.md) | Pipeline B gating mechanism design: formulations ($u(x)$, $n(x)$, gating score), edge case analysis, experiment design (6 strategies × 6 budgets × 2 datasets), thesis methodology formulations |
 | [2026-02-17](2026-02-17.md) | HDFS post-fix re-run (100% verification, 13 sigs), fix impact verification, BGL unaffected confirmation, llama3.1:8b model evaluation & recommendation |
 | [2026-02-14](2026-02-14.md) | BGL full run post-analysis: normalizer consolidation (116→56 sigs), hallucination investigation (2 confirmed), SME review, normalized JSONL; HDFS full run prepared |
 | [2026-02-13](2026-02-13.md) | Phase 1+2 prompt engineering tested & reverted (no benefit for 8B), 7 new BGL normalizer mappings, discriminative scores as paper metadata, 500-session BGL (29→27 sigs) + HDFS (8 sigs) validation |
