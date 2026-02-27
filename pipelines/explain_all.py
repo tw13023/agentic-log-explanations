@@ -2,7 +2,9 @@
 Explain-All Pipeline (Baseline)
 
 This is the baseline pipeline that explains ALL predicted anomalies.
-No gating/filtering - every anomaly detected by the Screener gets an explanation.
+Supports two gating modes (see src/gating.py):
+  Mode a (explain-all): every predicted anomaly is explained (default).
+  Mode b (top-K):       only the K most uncertain anomalies are explained.
 """
 
 import json
@@ -24,6 +26,7 @@ from src.prompt_builder import (PromptBuilder, TraceExplanation, Claim, Signatur
                                 ExplanationResult)
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
+from src.gating import GatingMode, GatingConfig, gate
 
 
 @dataclass
@@ -55,6 +58,10 @@ class PipelineConfig:
     output_dir: str = "./results/explanations"
     save_evidence_store: bool = True
     
+    # Gating
+    gating_mode: str = "explain_all"  # "explain_all" or "top_k"
+    gating_budget: float = 1.0         # fraction of anomalies to explain
+    
     # Limits (for testing)
     max_sessions: Optional[int] = None  # None = process all
     
@@ -73,7 +80,9 @@ class PipelineConfig:
             "llm_temperature": self.llm_temperature,
             "llm_max_tokens": self.llm_max_tokens,
             "patterns_dir": self.patterns_dir,
-            "max_sessions": self.max_sessions
+            "max_sessions": self.max_sessions,
+            "gating_mode": self.gating_mode,
+            "gating_budget": self.gating_budget,
         }
 
 
@@ -366,14 +375,19 @@ Pattern Characteristics:
         print("\n[Step 1] Running Screener...")
         screener_outputs = self.screener.screen_sessions(test_sessions)
         
-        # Get anomalies
-        anomaly_pairs = [
-            (session, output)
-            for session, output in zip(test_sessions, screener_outputs)
-            if output.is_anomaly
-        ]
-        self.metrics.anomaly_sessions = len(anomaly_pairs)
-        print(f"  Found {len(anomaly_pairs)} predicted anomalies ({len(anomaly_pairs)/len(test_sessions):.1%})")
+        # Get anomalies (apply gating)
+        gating_cfg = GatingConfig(
+            mode=GatingMode(self.config.gating_mode),
+            budget=self.config.gating_budget,
+        )
+        anomaly_pairs = gate(test_sessions, screener_outputs, gating_cfg)
+        all_anomalies = sum(1 for o in screener_outputs if o.is_anomaly)
+        self.metrics.anomaly_sessions = all_anomalies
+        if gating_cfg.mode == GatingMode.TOP_K and gating_cfg.budget < 1.0:
+            print(f"  Found {all_anomalies} predicted anomalies, "
+                  f"gated to {len(anomaly_pairs)} (B={gating_cfg.budget:.0%})")
+        else:
+            print(f"  Found {len(anomaly_pairs)} predicted anomalies ({len(anomaly_pairs)/len(test_sessions):.1%})")
         
         # Step 2: Explain each anomaly
         print(f"\n[Step 2] Explaining anomalies...")

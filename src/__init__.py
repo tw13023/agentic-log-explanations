@@ -12,6 +12,7 @@ from .prompt_builder import PromptBuilder, TraceExplanation, Claim
 from .verifier import Verifier, VerificationResult
 from .llm_client import LLMClient, LLMResponse, get_client
 from .signature_generator import SignatureGenerator, ErrorSignature, build_signatures_from_training
+from .gating import GatingMode, GatingConfig, gate
 
 __all__ = [
     # Data
@@ -32,4 +33,6 @@ __all__ = [
     "LLMClient", "LLMResponse", "get_client",
     # Signatures
     "SignatureGenerator", "ErrorSignature", "build_signatures_from_training",
+    # Gating
+    "GatingMode", "GatingConfig", "gate",
 ]
