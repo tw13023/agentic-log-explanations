@@ -1,0 +1,7063 @@
+{
+  "dataset": "BGL",
+  "total_evaluated": 532,
+  "avg_C": 4.95,
+  "avg_Co": 4.98,
+  "avg_E": 4.99,
+  "pct_Y": 100.0,
+  "scores": [
+    {
+      "session_id": "BGL_00442780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00299540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03520080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00251410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00294790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284640",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00327130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00274270",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04174030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02413970",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00328590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03085950",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00329180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00327960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00433250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00373750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04300310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00333280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03335310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00256060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00315370",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00256360",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00023490",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00374640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03522570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00352910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03339410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00362160",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00324290",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00512570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00341030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03311070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02974970",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00444380",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00437960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03026960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00302110",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00364400",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00389570",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04691440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02979730",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03374350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00507720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00318270",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04599410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00349930",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04173680",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01580380",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00850210",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00494630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00530830",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03661920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00367600",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00251760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00246640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03332020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03057800",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00245020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04676910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00223300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04695260",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00262860",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03105350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00320160",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00462190",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03378720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03101550",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00441640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00031670",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00232300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04294940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03522180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04301200",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00368150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03360640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00261340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03323560",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00398050",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284290",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04676040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01291020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00393830",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01997800",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00080760",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00372490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00256890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00347020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00296620",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00236840",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00313700",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00266390",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04674150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00398340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02243280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00317360",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00502600",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00826940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00493310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03323910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03374310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03662220",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00340710",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00488490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04238360",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00486200",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04296600",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_00255980",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00505350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00526240",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00276130",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00266030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00394910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00738540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03477000",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00503960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00434570",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04198030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00462120",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00341890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00307190",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00285540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03056440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00252580",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01510720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00228080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03069730",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04694440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00366120",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00320450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03373580",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00309490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00442880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00439590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00230790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00302840",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00317090",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00498230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00280620",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00350590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03085890",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00508360",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04674290",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03382410",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_04219390",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284840",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00465070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00524140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00355010",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00385980",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00383040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03057390",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00383780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00255460",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03480620",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00226050",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00362250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00318430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04617150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00369750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04647290",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00501630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00365770",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00442630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00305200",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00238580",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00341450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00078430",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00305510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00227850",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04056720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04681820",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00508930",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03046870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04677630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00317370",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00502680",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04283320",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00398500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00381760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04694690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03475900",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04303470",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00390030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04217130",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00368990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00328320",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00246440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00740650",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03529750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02956210",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00502940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04680800",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00268680",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00237230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00332580",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00313630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03469150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03371230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00444750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00396220",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00233570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00331920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00260740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00431760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03661870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00292080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02408590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04284860",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00240430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03055880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00526020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00250890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04303700",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03298600",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00344450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00826070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00239610",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03520220",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00333350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03352860",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03327790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02416450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04219260",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03017430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00368020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00509740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00232790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00297680",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04617280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04747660",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01511110",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00331650",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00372670",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00331080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00512580",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00429250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00346440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00338370",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01308780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02979590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00289810",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00374430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00429760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00244190",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00363820",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03588490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00354340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00363170",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00492060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00349780",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00465030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00260890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03376210",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03054550",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04694740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00512500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00436410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04101650",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00311530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00332490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00526950",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03375530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00301810",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03331410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00271060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02417460",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03051020",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00236300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00303990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04189050",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04297710",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00223730",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00360660",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04692690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04294810",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00305550",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03052490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00273160",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04118490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02417720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00726480",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_03335980",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00276530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00322540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03311660",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00512270",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03107480",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00238950",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00398820",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00371020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04301740",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03352920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03522110",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00739940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00369690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00442740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00373500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00247380",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01996570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04222570",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00527790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00429500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00317920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00302720",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00299320",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04258740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00288200",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04686510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00231090",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00384190",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03557150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00359120",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03046910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03530790",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04290340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03354610",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00318870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03391880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03106430",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00281980",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04595960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00324130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04211630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03099950",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00738310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03107340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00333990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03100270",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03522520",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00261140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00341770",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00253470",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00272660",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04222060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00315020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03363320",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04594040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00244540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00271090",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00022670",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03056990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04280380",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00870820",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00066120",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00503590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03353570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00258960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00304560",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03603520",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00528570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00396430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03085230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00443260",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00298260",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00271330",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00360140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00262250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03039960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03662520",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00259930",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00341220",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00233510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04117870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00229750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01579010",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00394780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00235040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00392920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00440110",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00256040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03101350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00523450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00297880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00319450",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00238610",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00283530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00430410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03645340",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01998510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00443420",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00319310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03304630",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00276100",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00348210",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03068540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03557630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00266770",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00307920",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04707240",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00464180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03341750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03082690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03034890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00299430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00292760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04221930",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03014280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03360660",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00371940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03312780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00505080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00343170",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00523410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00336060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03362840",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03036670",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_00017750",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00495740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00296930",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00275130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00242760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03321820",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04211140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03068470",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00245880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00249180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00246740",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00255370",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03045550",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00434050",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00498310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03594830",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00511270",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00259570",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00272490",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00278850",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04299820",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_00276570",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03056780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00262080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00295940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03529890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00390430",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00462940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03466620",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_04685880",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03298970",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00324340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03080130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02243300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00298790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03068180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03322910",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02998300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00337550",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00298870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04290860",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03544080",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "BGL_00241600",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03376990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00850560",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00870990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03508500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00512640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04293490",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02927780",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04679870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03588510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00262040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03329180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04695130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03379970",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00334460",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00366810",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00358300",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00260070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00504180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00497470",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00253370",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00278100",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00249500",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00504070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00385510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03341210",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00389040",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04300340",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03371760",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00522940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03054940",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00340000",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00339350",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00275750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03321730",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03543200",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00357640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00492310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00526710",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00315530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00262020",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03562020",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02737260",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01495190",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00276870",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00336560",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00740860",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00239820",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00023600",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03082330",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00335990",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00297000",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03051270",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02409810",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03057890",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03050690",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00336250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04259230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00236960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00338650",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00395150",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01509540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_01511250",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00311950",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03343070",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03109630",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00302140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00315170",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00491530",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03344440",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00333230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04607060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04594140",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00250730",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03363640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00302230",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00303470",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04297510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00243360",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00283510",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03099240",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    }
+  ]
+}

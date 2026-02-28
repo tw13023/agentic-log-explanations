@@ -651,10 +651,34 @@ class Verifier:
         errors.  If EVERY cited E0 line is a plain INFO line with no
         severity keyword, this check FAILs.
 
+        **Exception — structural anomalies**: If the entire session
+        contains zero severity keywords (e.g. HDFS block-lifecycle
+        anomalies where all lines are INFO), the anomaly is structural
+        (missing expected operations) rather than keyword-based.  In
+        that case the severity check is not applicable and we PASS.
+
         Returns:
             VerificationIssue with PASS/FAIL/WARNING status.
         """
         e0_lines = query_session_text.split("\n")
+
+        # --- Structural-anomaly bypass ---
+        # If the entire session has NO severity keywords at all, the
+        # anomaly is purely structural (e.g. INCOMPLETE_PIPELINE).
+        # Severity check is meaningless here — skip it.
+        session_has_any_severity = any(
+            any(kw in line for kw in self.SEVERITY_KEYWORDS)
+            for line in e0_lines
+        )
+        if not session_has_any_severity:
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.PASS,
+                message=(
+                    "Structural anomaly — session contains no severity "
+                    "keywords; severity check not applicable"
+                ),
+            )
 
         # Collect all cited E0 line numbers from claims
         cited_line_nums: set[int] = set()

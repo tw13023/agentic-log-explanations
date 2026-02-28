@@ -1,0 +1,8278 @@
+{
+  "dataset": "HDFS",
+  "total_evaluated": 505,
+  "avg_C": 3.94,
+  "avg_Co": 4.71,
+  "avg_E": 4.75,
+  "pct_Y": 98.8,
+  "scores": [
+    {
+      "session_id": "HDFS_blk_-9153926305989047396",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7334665610194699862",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8441115285408070385",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3718260222318245612",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6090496872275836686",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5865082043533599978",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5318472504952507422",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6018909213341932484",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7978980111588025205",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4864073536579855876",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8426563416414717720",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6161080640803369770",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2764024651408728769",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_759172498794246058",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1885202246542420947",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3826974775525298869",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8834028107409242953",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3368729281736867209",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4233244851246479423",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5775313858534270295",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2360091197416227915",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8416619017818158566",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3174751483965949562",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8240042894352190894",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4304286601821095292",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4851365440704819987",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6728871251989780271",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3476204018256066044",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3317433588311442721",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7816569269540514842",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6459932863338682522",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3778232642917876181",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6169396083077559363",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6713734174088294147",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3827478103929416609",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8453817838472150603",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7963243402010652895",
+      "C": 2.5,
+      "Co": 5.0,
+      "E": 4.0,
+      "avg": 3.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6191941085495574970",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6839932194994693802",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4685974758673810507",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4227086598234201415",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7278959895812041095",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8927862377800293097",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7760286989436032475",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_97166147087111921",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1267106044383236381",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1696901510261744230",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2551360023750316248",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3899910214759604449",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2049419735099256938",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1050539306216508795",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3989380527709653699",
+      "C": 3.0,
+      "Co": 3.0,
+      "E": 4.5,
+      "avg": 3.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5917639993834019319",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9053313828449682033",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8371411814331626787",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8682503297142485483",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3661881463166428296",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6952139270799788837",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6972151742097339407",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-366178905625301409",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8099058204787659409",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8143370377639295452",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_297122020465744633",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8415589348408995409",
+      "C": 3.0,
+      "Co": 4.5,
+      "E": 4.5,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3780360373776325901",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6533711349086671734",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7446144004322363437",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6397456143938019749",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3835785309090612020",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_629678453336956026",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4194781680352159869",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2178658399103082102",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8919643097922915396",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2565130857684426419",
+      "C": 2.5,
+      "Co": 3.0,
+      "E": 3.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 no E0 spans cited",
+          "-1.5 3 claim(s) with no spans"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-902093729938843119",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8004990602717510898",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2577564740050142351",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4331194387524846598",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6992288130439491197",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6108988464398509549",
+      "C": 1.5,
+      "Co": 3.0,
+      "E": 3.5,
+      "avg": 2.67,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9209043668482415835",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_354668273774119020",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2379784661603652308",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2736251498135196075",
+      "C": 4.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1353439439754851872",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1987890458622699972",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3528726131965651358",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-858557987190525359",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2896782034597806562",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8407532628114517548",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3300036585882136860",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6790856856964528481",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6627176676923715474",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7045714177094775631",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5856712022537566878",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3382458523663702923",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7289674447455988517",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4014392925001710803",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4852708256291475037",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5103408871134376667",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8135019579502454192",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7594704746556807673",
+      "C": 5.0,
+      "Co": 4.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-1.0 only 2 claim types: {'pat', 'obs'}"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-584025397987044462",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8244302516002394844",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4057318646085465708",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9055169951804696048",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3685973434120761323",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4396835266787370926",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6996199096562401850",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8196123613368771191",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7074044825293504204",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1731882498019314573",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4387899736154771888",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4568849013802524106",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7531455476437184619",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7400810418512993168",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2470477754781158643",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3231662434156895996",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1471131844387721033",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2811630697187331083",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8065120248309205717",
+      "C": 2.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6697646899110691161",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8507203918801163329",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6803756554630236254",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8429169411289176882",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-412985406350255481",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_983652668365853016",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6633065239491773817",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4627811447275985037",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5595153340256147257",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-749241521863009248",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8881973184776509781",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7935976669979851554",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8023523925726093934",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7176222791546391059",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6022842043407818516",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-865054261050798428",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7828242638974104160",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8070517105930106152",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5678421713208903711",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8748847738424564579",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6331155868418581826",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2165790865555143336",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8074764299476278402",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5211095676195649361",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3380171770825711325",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8426231508540624859",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2553461867104220550",
+      "C": 3.5,
+      "Co": 4.0,
+      "E": 4.5,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [
+          "-1.0 only 2 claim types: {'pat', 'obs'}"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1044957825428992508",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7612362880760959356",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2345487607101465338",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3970161090876979189",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5289304902810267941",
+      "C": 3.5,
+      "Co": 3.0,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2384697820059449479",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9111178935447269327",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8449993011615201897",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2265323277046402295",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2354461861052617696",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6328539187833233734",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7490899806982578090",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9138667875548009818",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8163387391852097103",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5703197246022264715",
+      "C": 1.5,
+      "Co": 5.0,
+      "E": 3.5,
+      "avg": 3.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6889695376760716450",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3338061113250311986",
+      "C": 2.5,
+      "Co": 3.0,
+      "E": 5.0,
+      "avg": 3.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9216586288937763843",
+      "C": 2.5,
+      "Co": 5.0,
+      "E": 4.0,
+      "avg": 3.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1154313373304210065",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5630381218784391256",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5712368743231010708",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7551184974331337151",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4533514693696084566",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3001250420627887994",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8752300758631579338",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6014665612863448582",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5845210025636819050",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7031579332935472564",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1187872898126458407",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7373311326748452044",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7390710706320943439",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8153093380423260913",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-185355346960823719",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4765927824833903849",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6389696100502224838",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1311915537745129809",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_527224723261014863",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2015500089175339579",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5990021014301275877",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7939498436940047197",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6652848916872735939",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8375890598928087213",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2323391683345232721",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9026173842402590672",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8592783146128373201",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5451046415766648763",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4457957945336968750",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5151700300292123080",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-442206245201765013",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3102755127307027778",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6181869731099218312",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7494477384120849189",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2352241728272657850",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3228013171659194424",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-398652983670437467",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7810569349065615212",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8690111168385984177",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3361553356564187925",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8070332857113825161",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5719919874029789718",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-716469796782878092",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5492131203535798033",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2011842322616172510",
+      "C": 3.0,
+      "Co": 4.5,
+      "E": 4.5,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3609861160995603508",
+      "C": 3.0,
+      "Co": 4.5,
+      "E": 4.5,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8895314640671734566",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4984040693216864503",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_299456457824703586",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8178334713387015260",
+      "C": 2.5,
+      "Co": 3.0,
+      "E": 3.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 no E0 spans cited",
+          "-1.5 3 claim(s) with no spans"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6858600474265219626",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3686492287186817014",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_436100681994313903",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4434546393212765676",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8129961643498538563",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_286504081805620638",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8479806752543745900",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4379423137719077761",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8102565672093755841",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4548478482896406081",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8924088331610259195",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3797374548863093047",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6809315202947192314",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6742283287258893437",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5153629726562998001",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2840381344531092349",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7430935863058292793",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1340637939534925227",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1773971505760178377",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9179356874703281551",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7470841433091757643",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5039149229458566782",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9057345255370657397",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7160764053931337311",
+      "C": 4.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4724928935907297394",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6989094700274811196",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-710059778909418295",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3894728656701939819",
+      "C": 5.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8493024014742530884",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8594937973291674981",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4011600843135842496",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3662628695837082582",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8060489060877532517",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5834774967091076302",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1775724589803596520",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3069703144109313028",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6571537665268674798",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6730152931449105524",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6737087059766380804",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6684765234936275653",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1851362687750819895",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4773901096166670369",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7503152519879637966",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8549276602649357445",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1719451574625225409",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8633947693400888963",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3190678729032779327",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6870097225442868101",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7981956777257738197",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8388642701725277995",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7144419070015550125",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6187936310686505484",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-141157622640736106",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1366827285427492843",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1277197068832649891",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8790616522432834237",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4376690347606181934",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_50009850012798656",
+      "C": 3.5,
+      "Co": 4.5,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5974670585151018741",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4945365052111730167",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6600536836939430439",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6431528625121178885",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7839389737454777327",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7351053115933941394",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7987068144171899025",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2089485938716318848",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3751336537278270930",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_330053598754886277",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2133443660243218875",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6656921730278789549",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5370502438478537318",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3800595472166056394",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1457772626057593336",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1340930022877531928",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5625205180245966277",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-963887220294303910",
+      "C": 5.0,
+      "Co": 3.0,
+      "E": 5.0,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8386989199878956344",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7795115229212776193",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1500920801329329022",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7366231733133175355",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9111983111267246692",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7632294272815869341",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6628464961619650480",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4061367177368592392",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5983006798728442046",
+      "C": 3.0,
+      "Co": 3.0,
+      "E": 4.0,
+      "avg": 3.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING",
+          "-0.5 1 claim(s) with no spans"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_52982050234241631",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3678863563775278735",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_40673432063145168",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6870017247061745051",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4496671715259754328",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4284099996556810257",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4313209704459823410",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1299933665571483460",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5595024889580471449",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1657411124077764356",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9053361956697310554",
+      "C": 2.5,
+      "Co": 3.0,
+      "E": 3.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 no E0 spans cited",
+          "-1.5 3 claim(s) with no spans"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3090641485054452497",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8028622691329764525",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8521172293850960104",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8208877410371365020",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6965282920818692830",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8223229324414002890",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1945616119157468300",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7238988765311307383",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8095512464329197839",
+      "C": 1.5,
+      "Co": 4.0,
+      "E": 3.5,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [
+          "-1.0 only 2 claim types: {'pat', 'obs'}"
+        ],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3907620519002497721",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6499028007442668846",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_766399086471411315",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4891625177110054544",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6240020657057666020",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5149120948524721004",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-800587171426481244",
+      "C": 5.0,
+      "Co": 4.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-1.0 only 2 claim types: {'pat', 'obs'}"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8209378702790988089",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1566923506523659022",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4894558020928927111",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8679174482132087440",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5629372052360313414",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6146889782726443960",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7838717305708826571",
+      "C": 4.0,
+      "Co": 3.0,
+      "E": 4.5,
+      "avg": 3.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5466622792143023081",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2059146012062963922",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2944668069257404117",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8170425582713356870",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4596773434159671513",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9126694151667606112",
+      "C": 3.0,
+      "Co": 4.5,
+      "E": 4.5,
+      "avg": 4.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-178307654062290873",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1299552851194772522",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8942177243914480208",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8023057939408558313",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7904143727935844068",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3387839675473728056",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6977580724986216880",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7431402709185493943",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3548437661554275506",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-12028040149844272",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5311492015514039917",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6958758037020501321",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4764362935321101162",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_433720143931444844",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8434507904897734617",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3371701595281520594",
+      "C": 2.0,
+      "Co": 5.0,
+      "E": 4.0,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5199373114019567205",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9066975219689833606",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8315753012739764497",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4584260656075541553",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5621173714159180536",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2663773345493262094",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6577011276713534044",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5510234811525269820",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5491613884333922218",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8704845539004007734",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6323025529026437750",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_583772744318809819",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6631606113484642939",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8872559280184694656",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_709085006146787464",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7160447974271620387",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2002628991946097893",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1044729100306559309",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5368668893474957015",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1971617520982816166",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5545740561950023737",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6003326584691059620",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5117199845906643255",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2380425631987325831",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2087483762587332298",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7278047132866576265",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6396150634158585629",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7471375420030602627",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8254791135193474574",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6612835971160793280",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8922322307316583481",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8332836013426864517",
+      "C": 1.5,
+      "Co": 3.0,
+      "E": 3.5,
+      "avg": 2.67,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6886995193342621083",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3979285085445334345",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4992142489380275774",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6742219136418282432",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5070976472572662147",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8805755931855731566",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_844104329351281298",
+      "C": 4.5,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_952460704509765744",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6935057013230713289",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8044289387765169497",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9174224644246303358",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2542041687234626664",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4467647194162140399",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5003155161819410895",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6709422392613462134",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7676871324168480817",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1374105571361447432",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5148151128480935440",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4684899218675531478",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-9135847444721299515",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8198631685745990741",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1541612089083514964",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6829412380479184131",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4184262965734141875",
+      "C": 3.0,
+      "Co": 4.5,
+      "E": 5.0,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL"
+        ],
+        "Co": [
+          "-0.5 duplicate claims detected"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1647655691949817240",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6237787423044680448",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8266956839135631201",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6841699930181626169",
+      "C": 3.5,
+      "Co": 3.0,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-9139390120172868222",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7200126463182290415",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4832547562770640289",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2742852126536126969",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8553668231871047222",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8119974979962302291",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8886236314753450253",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1582145719747166521",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7187357034223963563",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2300288411824384339",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6704413852589536931",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8032226246020759194",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7387813391003536886",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1881326724841792594",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7869314721563449517",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8975718954643926675",
+      "C": 5.0,
+      "Co": 4.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [
+          "-1.0 only 2 claim types: {'pat', 'obs'}"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4003546028036216758",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8444836064301695105",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1176572196452919848",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8074212168939615439",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_281348649977453375",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3588411987248750371",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8174646007617946149",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2453693887431218179",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7957392412711695075",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5760342986222609395",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7475411224736559720",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7145204279083936425",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7671420422446007445",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8963052321499171482",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7918922585982249092",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1551187502301450182",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5662935201176829710",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3339722182551346350",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2981635085495510991",
+      "C": 1.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.0,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8063626499660965441",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7981676599527810541",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6347935553767527569",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3313804920336937895",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8016087228711560607",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4587366287985357397",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8354796962152054377",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2849063049163130194",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4606816296018121129",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-837877224236148203",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4909391424474506547",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8817816844315170010",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6000030210324965260",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8727778946002636414",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-1053894180045313982",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3089841382498066259",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8239323489440610674",
+      "C": 1.0,
+      "Co": 3.0,
+      "E": 3.5,
+      "avg": 2.5,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)"
+        ],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2642494404508996097",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8168754982148627598",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6595221700367230702",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3594064500053542174",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6327639649529044852",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7011437493054291590",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8555801167998062634",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3113612857882744944",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4864164818610750192",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8172958788979792263",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7579606474647124807",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3054595277173650358",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2825423450580485622",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3646517331515187756",
+      "C": 2.5,
+      "Co": 2.5,
+      "E": 5.0,
+      "avg": 3.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5834201612437457641",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.5,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5347262724856941957",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6787521980063312347",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8669797986507852618",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-5839230097623251294",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7558860910266506705",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8911768737080407515",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2999921031439676603",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8555185156565623123",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3070394288562000197",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x3",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_2910997061721980351",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3231409100041065695",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8077352682567078510",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-7330662479947524815",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6102720776120543336",
+      "C": 3.5,
+      "Co": 5.0,
+      "E": 4.5,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.5 keyword_match WARNINGs x4"
+        ],
+        "Co": [],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8252324714480298425",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4760623740531330309",
+      "C": 4.0,
+      "Co": 2.5,
+      "E": 4.5,
+      "avg": 3.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-1.0 keyword_match WARNINGs x2"
+        ],
+        "Co": [
+          "-2.0 only 1 claim type(s)",
+          "-0.5 only 1 claim(s)"
+        ],
+        "E": [
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6757687595653348398",
+      "C": 3.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.33,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4690101219411104590",
+      "C": 1.0,
+      "Co": 5.0,
+      "E": 3.5,
+      "avg": 3.17,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.5 keyword_match WARNINGs x4",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": [
+          "-1.0 evidence_spans_validity FAIL",
+          "-0.5 span_keyword_match WARNING"
+        ]
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7904436157399818478",
+      "C": 4.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.67,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_7799896041613634042",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2777653517650651579",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    }
+  ]
+}

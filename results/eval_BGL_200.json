@@ -1,0 +1,272 @@
+{
+  "dataset": "BGL",
+  "total_evaluated": 20,
+  "avg_C": 4.97,
+  "avg_Co": 5.0,
+  "avg_E": 5.0,
+  "pct_Y": 100.0,
+  "scores": [
+    {
+      "session_id": "BGL_00442780",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00299540",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03520080",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00251410",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00294790",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00284640",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00327130",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00274270",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04174030",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_02413970",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00328590",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03085950",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00329180",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00327960",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00433250",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 keyword_match WARNINGs x1"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00373750",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_04300310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00333280",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_03335310",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "BGL_00256060",
+      "C": 5.0,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 5.0,
+      "Y": true,
+      "deductions": {
+        "C": [],
+        "Co": [],
+        "E": []
+      }
+    }
+  ]
+}
