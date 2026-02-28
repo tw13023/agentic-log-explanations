@@ -445,6 +445,7 @@ Pattern Characteristics:
             )
             v.session_id = result.session_id
             self.verifications.append(v)
+            result.verification = v.to_dict()
             
             if v.passed:
                 self.metrics.verification_passed += 1

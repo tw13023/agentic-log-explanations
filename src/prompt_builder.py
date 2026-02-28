@@ -683,6 +683,9 @@ class ExplanationResult:
     total_tokens: int = 0
     latency_ms: float = 0.0
     
+    # Verification (attached after verifier runs)
+    verification: Optional[Dict] = None
+    
     # Timestamps
     created_at: str = field(default_factory=lambda: datetime.now().isoformat())
     
@@ -708,7 +711,8 @@ class ExplanationResult:
                 "total_tokens": self.total_tokens,
                 "latency_ms": self.latency_ms
             },
-            "created_at": self.created_at
+            "created_at": self.created_at,
+            "verification": self.verification or {}
         }
     
     def to_json(self, indent: int = 2) -> str:

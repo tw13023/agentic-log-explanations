@@ -31,7 +31,7 @@ Each file is named `YYYY-MM-DD.md` and contains:
 
 | Date | Summary |
 |------|---------|
-| [2026-02-28](2026-02-28.md) | HDFS hallucination 根因分析完成：STRUCTURAL 不對稱、BM25 retrieval 失效、evidence 同質化、52% pure-INFO anomaly。制定 Phase 0-5 改進計畫（evidence store 重建、prompt 改進、verifier 強化、multi-LLM 比較 Llama vs GPT-4o）。Human eval: BGL 50/50 done, HDFS 10/50 done |
+| [2026-02-28](2026-02-28.md) | Human eval baseline (v1): BGL C=4.24/HDFS C=3.06. HDFS 根因分析 (6 層結構缺陷). Phase 1-4 fixes applied (prompt/verifier/normalizer). Auto-evaluator 建立. 500-anomaly scale eval: BGL C=4.95/100%Y (n=532), HDFS C=3.94/98.8%Y (n=505). Commit `31cc9a1` |
 | [2026-02-26](2026-02-26.md) | Pipeline B notebook full execution: BM25 cache (BGL 11h23m, HDFS 10h58m), retrospective simulation (72 eval points), key finding: uncertainty-only gating at B=0.20 achieves 94.6%/92.3% coverage with 80% cost savings, 8 paper figures generated |
 | [2026-02-24](2026-02-24.md) | Pipeline B gating mechanism design: formulations ($u(x)$, $n(x)$, gating score), edge case analysis, experiment design (6 strategies × 6 budgets × 2 datasets), thesis methodology formulations |
 | [2026-02-17](2026-02-17.md) | HDFS post-fix re-run (100% verification, 13 sigs), fix impact verification, BGL unaffected confirmation, llama3.1:8b model evaluation & recommendation |

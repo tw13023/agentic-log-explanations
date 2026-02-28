@@ -163,6 +163,11 @@ class AutoEvaluator:
             session_id = obj.get("session_id", "?")
             exp = obj.get("explanation", {})
             v = verif_map.get(session_id)
+            # Fall back to verification embedded in JSONL if no external verification
+            if v is None:
+                v_dict = obj.get("verification", {})
+                if v_dict and v_dict.get("issues"):
+                    v = self._verif_from_dict(v_dict)
             score = self._score_from_dict(session_id, exp, v)
             scores.append(score)
 
@@ -310,14 +315,15 @@ class AutoEvaluator:
         score = 5.0
 
         # Claim type diversity
+        # Accept LLM synonyms: comparison->con, structural->obs (structural observations)
         types_present = set()
         for c in claims:
             t = get_type(c)
-            if t in ("observation", "obs"):
+            if t in ("observation", "obs", "structural"):
                 types_present.add("obs")
             elif t in ("pattern_match", "pat"):
                 types_present.add("pat")
-            elif t in ("contrast", "con"):
+            elif t in ("contrast", "con", "comparison"):
                 types_present.add("con")
 
         if len(types_present) == 2:
@@ -410,6 +416,34 @@ class AutoEvaluator:
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
+
+    def _verif_from_dict(self, v_dict: Dict):
+        """Reconstruct a lightweight verification object from a JSONL dict.
+
+        Returns an object with .passed, .issues (each with .check_name,
+        .status, .details) -- enough for _issues_lookup().
+        """
+        from types import SimpleNamespace
+
+        issues = []
+        for iss_d in v_dict.get("issues", []):
+            ns = SimpleNamespace(
+                check_name=iss_d.get("check", ""),
+                status=SimpleNamespace(value=iss_d.get("status", "pass")),
+                message=iss_d.get("message", ""),
+                details=iss_d.get("details", {}),
+            )
+            issues.append(ns)
+
+        return SimpleNamespace(
+            session_id=v_dict.get("session_id", "?"),
+            passed=v_dict.get("passed", True),
+            issues=issues,
+            total_checks=v_dict.get("total_checks", 0),
+            passed_checks=v_dict.get("passed_checks", 0),
+            failed_checks=v_dict.get("failed_checks", 0),
+            warning_checks=v_dict.get("warning_checks", 0),
+        )
 
     def _issues_lookup(self, verification) -> Dict:
         """Convert VerificationResult into a flat lookup dict."""
