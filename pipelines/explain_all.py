@@ -64,6 +64,7 @@ class PipelineConfig:
     
     # Limits (for testing)
     max_sessions: Optional[int] = None  # None = process all
+    session_ids: Optional[List[str]] = None  # Filter to specific session IDs
     
     def to_dict(self) -> Dict:
         return {
@@ -375,7 +376,10 @@ Pattern Characteristics:
         
         # Get test sessions
         test_sessions = self.data_loader.get_test()
-        if self.config.max_sessions:
+        if self.config.session_ids:
+            id_set = set(self.config.session_ids)
+            test_sessions = [s for s in test_sessions if s.session_id in id_set]
+        elif self.config.max_sessions:
             test_sessions = test_sessions[:self.config.max_sessions]
         
         self.metrics.total_sessions = len(test_sessions)

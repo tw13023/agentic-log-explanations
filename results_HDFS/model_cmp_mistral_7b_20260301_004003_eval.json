@@ -1,0 +1,533 @@
+{
+  "model": "mistral:7b",
+  "tag": "mistral_7b",
+  "timestamp": "20260301_004003",
+  "avg_C": 1.875,
+  "avg_Co": 2.375,
+  "avg_E": 5.0,
+  "pct_Y": 12.5,
+  "verif_pass": 3,
+  "verif_total": 24,
+  "verif_rate": 12.5,
+  "avg_latency_ms": 8270.96821864446,
+  "total_tokens": 84589,
+  "cat_stats": {
+    "A-empty_claims": {
+      "n": 7,
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "verif_fail": 7
+    },
+    "B-empty_spans": {
+      "n": 3,
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "verif_fail": 3
+    },
+    "C-STRUCTURAL": {
+      "n": 8,
+      "C": 2.25,
+      "Co": 2.75,
+      "E": 5.0,
+      "verif_fail": 6
+    },
+    "D-keyword": {
+      "n": 6,
+      "C": 2.0,
+      "Co": 2.5,
+      "E": 5.0,
+      "verif_fail": 5
+    }
+  },
+  "results_file": "results_HDFS/model_cmp_mistral_7b_20260301_004003.jsonl",
+  "scores": [
+    {
+      "session_id": "HDFS_blk_7963243402010652895",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3661881463166428296",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2565130857684426419",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6108988464398509549",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4014392925001710803",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8065120248309205717",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_5703197246022264715",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3338061113250311986",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9216586288937763843",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-8178334713387015260",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_1340637939534925227",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_9053361956697310554",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8095512464329197839",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_3387839675473728056",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-6958758037020501321",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3371701595281520594",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8332836013426864517",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-4184262965734141875",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-9139390120172868222",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-2981635085495510991",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_8239323489440610674",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_-3646517331515187756",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_6757687595653348398",
+      "C": 1.5,
+      "Co": 2.0,
+      "E": 5.0,
+      "avg": 2.83,
+      "Y": false,
+      "deductions": {
+        "C": [
+          "-2.0 verification FAIL",
+          "-1.0 signature missing/UNKNOWN",
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [
+          "-2.0 only 0 claim type(s)",
+          "-0.5 summary too short (0 chars)",
+          "-0.5 only 0 claim(s)"
+        ],
+        "E": []
+      }
+    },
+    {
+      "session_id": "HDFS_blk_4690101219411104590",
+      "C": 4.5,
+      "Co": 5.0,
+      "E": 5.0,
+      "avg": 4.83,
+      "Y": true,
+      "deductions": {
+        "C": [
+          "-0.5 cited_severity WARNING"
+        ],
+        "Co": [],
+        "E": []
+      }
+    }
+  ]
+}

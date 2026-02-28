@@ -383,6 +383,10 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 5. CITE specific evidence_spans for each claim
 6. RESPECT LINE RANGES: Each evidence block shows its valid range (e.g., "10 lines: E0-L1 to E0-L10"). NEVER reference a line number beyond the stated maximum.
 7. SPAN FORMAT: Each evidence_span string MUST be either a single line "E0-L8" or a range with " to " separator "E0-L5 to E0-L10".  NEVER use bare evidence IDs ("E5"), "E0-L5-E0-L10", "E0-L5/E0-L10", or any other separator.  For contrast claims where normal evidence has NO errors, cite the full range: "E5-L1 to E5-L35".
+8. NEVER use "STRUCTURAL" as an evidence_span value.  The word STRUCTURAL describes a category of anomaly, NOT a line reference.  Always cite actual line numbers like "E0-L15" or "E0-L20 to E0-L25".
+9. evidence_spans MUST NOT be empty — every claim MUST cite at least one span in E<n>-L<line> format.
+10. You MUST output exactly 3 claims: one "observation", one "pattern_match", one "contrast".  Do NOT omit any claim type.
+11. Your claim text MUST include keywords that actually appear in the cited evidence lines (e.g., if E0-L8 says "Got exception while serving", your claim must mention "exception" or "serving").
 
 SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 
