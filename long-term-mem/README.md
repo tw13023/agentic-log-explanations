@@ -31,7 +31,9 @@ Each file is named `YYYY-MM-DD.md` and contains:
 
 | Date | Summary |
 |------|---------|
+| [2026-03-01](2026-03-01.md) | Prompt fix rules 8-11 A/B test (verif 54.2%->79.2%). 5-model comparison: llama3.1:8b wins (C=3.54, verif=79.2%), far ahead of qwen2.5:14b/gemma2:9b/phi3:14b/mistral:7b. Commit `1c3afac` |
 | [2026-02-28](2026-02-28.md) | Human eval baseline (v1): BGL C=4.24/HDFS C=3.06. HDFS 根因分析 (6 層結構缺陷). Phase 1-4 fixes applied (prompt/verifier/normalizer). Auto-evaluator 建立. 500-anomaly scale eval: BGL C=4.95/100%Y (n=532), HDFS C=3.94/98.8%Y (n=505). Commit `31cc9a1` |
+| [2026-02-27](2026-02-27.md) | `07_gating_analysis.ipynb` cell-by-cell review (Sections 6-9). 新增 Zipf side-by-side figure, 改善 Pareto + alpha sensitivity figures, Word-ready paper table. Notebook 33->36 cells |
 | [2026-02-26](2026-02-26.md) | Pipeline B notebook full execution: BM25 cache (BGL 11h23m, HDFS 10h58m), retrospective simulation (72 eval points), key finding: uncertainty-only gating at B=0.20 achieves 94.6%/92.3% coverage with 80% cost savings, 8 paper figures generated |
 | [2026-02-24](2026-02-24.md) | Pipeline B gating mechanism design: formulations ($u(x)$, $n(x)$, gating score), edge case analysis, experiment design (6 strategies × 6 budgets × 2 datasets), thesis methodology formulations |
 | [2026-02-17](2026-02-17.md) | HDFS post-fix re-run (100% verification, 13 sigs), fix impact verification, BGL unaffected confirmation, llama3.1:8b model evaluation & recommendation |
