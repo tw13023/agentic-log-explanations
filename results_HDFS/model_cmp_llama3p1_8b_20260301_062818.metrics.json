@@ -1,0 +1,61 @@
+{
+  "config": {
+    "dataset": "HDFS",
+    "log_file": "./logs/HDFS.log",
+    "model_path": "./best_model_HDFS/best_model_HDFS20250804_201746.pth",
+    "top_k": 5,
+    "top_k_anomaly": 4,
+    "top_k_normal": 1,
+    "use_mixed_retrieval": true,
+    "retriever_method": "bm25",
+    "llm_provider": "ollama",
+    "llm_model": "llama3.1:8b",
+    "llm_temperature": 0.1,
+    "llm_max_tokens": 1024,
+    "patterns_dir": "./patterns",
+    "max_sessions": null,
+    "gating_mode": "explain_all",
+    "gating_budget": 1.0
+  },
+  "metrics": {
+    "counts": {
+      "total_sessions": 24,
+      "anomaly_sessions": 24,
+      "explained_sessions": 24,
+      "successful_explanations": 24,
+      "failed_explanations": 0
+    },
+    "verification": {
+      "passed": 17,
+      "failed": 7,
+      "warnings": 68,
+      "pass_rate": 0.7083333333333334
+    },
+    "signatures": {
+      "unique_count": 7,
+      "distribution": {
+        "DATANODE__BLOCK_INFO_NOT_FOUND": 1,
+        "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION": 9,
+        "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION": 1,
+        "DATANODE__BLOCK_RECEIVE_FAILURE": 6,
+        "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION": 3,
+        "DATANODE__BLOCK_DELETION": 2,
+        "DATANODE__WRITE_FAILURE": 1
+      }
+    },
+    "tokens": {
+      "total": 79505,
+      "avg_per_explanation": 3312.7083333333335
+    },
+    "latency": {
+      "avg_ms": 7014.589329560597,
+      "p95_ms": 12620.879173278809,
+      "total_llm_ms": 168350.14390945435
+    },
+    "rates": {
+      "trigger_rate": 1.0,
+      "success_rate": 1.0
+    },
+    "total_time_seconds": 777.3102254867554
+  }
+}

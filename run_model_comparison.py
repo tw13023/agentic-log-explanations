@@ -84,13 +84,33 @@ for sid in EDGE_CASE_IDS[18:]:
 CAT_ORDER = ["A-empty_claims", "B-empty_spans", "C-STRUCTURAL", "D-keyword"]
 
 
+# Known OpenAI model prefixes
+OPENAI_PREFIXES = ("gpt-", "o1", "o3", "o4")
+
+
+def detect_provider(model_name: str) -> str:
+    """Detect provider from model name."""
+    if any(model_name.lower().startswith(p) for p in OPENAI_PREFIXES):
+        return "openai"
+    return "ollama"
+
+
 def model_tag(model_name: str) -> str:
-    """Convert model name to safe file tag, e.g. 'qwen2.5:14b' -> 'qwen2.5_14b'"""
+    """Convert model name to safe file tag, e.g. 'qwen2.5:14b' -> 'qwen2p5_14b'"""
     return model_name.replace(":", "_").replace(".", "p")
 
 
 def ensure_model_available(model_name: str) -> bool:
-    """Check if model is pulled; return True if available."""
+    """Check if model is pulled (Ollama) or API key set (OpenAI)."""
+    provider = detect_provider(model_name)
+    if provider == "openai":
+        from src.llm_client import LLMClient
+        client = LLMClient(provider="openai", model=model_name)
+        if client.is_available():
+            print(f"  [OK] {model_name} (OpenAI) is available")
+            return True
+        print(f"  [ERR] {model_name}: OpenAI API not reachable or key not set")
+        return False
     try:
         result = subprocess.run(
             ["ollama", "show", model_name],
@@ -121,12 +141,15 @@ def run_single_model(model_name: str, reuse_pipeline: Optional[ExplainAllPipelin
     print(f"MODEL: {model_name}")
     print(f"{'='*60}")
 
+    provider = detect_provider(model_name)
+
     # Configure pipeline
     config = PipelineConfig(
         dataset="HDFS",
         log_file="./logs/HDFS.log",
         model_path="./best_model_HDFS/best_model_HDFS20250804_201746.pth",
         output_dir="./results_HDFS",
+        llm_provider=provider,
         llm_model=model_name,
         session_ids=EDGE_CASE_IDS,
     )
@@ -148,13 +171,16 @@ def run_single_model(model_name: str, reuse_pipeline: Optional[ExplainAllPipelin
         # Only reinitialize the LLM client for the new model
         from src.llm_client import LLMClient
         pipeline.llm_client = LLMClient(
-            provider="ollama",
+            provider=provider,
             model=model_name,
         )
         # Check availability
         if not pipeline.llm_client.is_available():
             print(f"  [WARN] LLM ({model_name}) is not available!")
-            print(f"    Pull model with: ollama pull {model_name}")
+            if provider == "ollama":
+                print(f"    Pull model with: ollama pull {model_name}")
+            else:
+                print(f"    Check API key with: echo $OPENAI_API_KEY")
             return None, None
         print(f"  [OK] LLM ({model_name}) is available")
 

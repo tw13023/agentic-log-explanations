@@ -44,6 +44,12 @@ PRICING = {
     "gpt-4o-mini": {"input": 0.15, "output": 0.60},
     "gpt-4-turbo": {"input": 10.00, "output": 30.00},
     "gpt-4": {"input": 30.00, "output": 60.00},
+    "gpt-4.1": {"input": 2.00, "output": 8.00},
+    "gpt-4.1-mini": {"input": 0.40, "output": 1.60},
+    "gpt-4.1-nano": {"input": 0.10, "output": 0.40},
+    "gpt-5": {"input": 2.00, "output": 8.00},
+    "gpt-5.1": {"input": 2.00, "output": 8.00},
+    "gpt-5.2": {"input": 2.00, "output": 8.00},
     "gpt-3.5-turbo": {"input": 0.50, "output": 1.50},
 }
 
@@ -227,8 +233,17 @@ class LLMClient:
             "model": self.model,
             "messages": messages,
             "temperature": temperature if temperature is not None else self.temperature,
-            "max_tokens": max_tokens or self.max_tokens,
         }
+        
+        # Newer OpenAI models (o1, o3, o4, gpt-4.1+, gpt-5+) use max_completion_tokens
+        _max = max_tokens or self.max_tokens
+        _model_lower = self.model.lower()
+        if self.provider == "openai" and any(
+            tag in _model_lower for tag in ("o1", "o3", "o4", "gpt-4.1", "gpt-5")
+        ):
+            payload["max_completion_tokens"] = _max
+        else:
+            payload["max_tokens"] = _max
         
         if json_mode:
             payload["response_format"] = {"type": "json_object"}

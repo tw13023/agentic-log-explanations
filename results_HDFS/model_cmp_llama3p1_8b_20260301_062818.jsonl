@@ -1,0 +1,4461 @@
+{
+  "session_id": "HDFS_blk_7963243402010652895",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_INFO_NOT_FOUND",
+  "screener": {
+    "session_id": "HDFS_blk_7963243402010652895",
+    "pred": 1,
+    "logits": [
+      -7.275937080383301,
+      6.697725296020508
+    ],
+    "prob": [
+      8.537194844393525e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983118154887,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_8122219743087224472",
+    "E_HDFS_blk_6518127240336402935",
+    "E_HDFS_blk_8877440886592861613",
+    "E_HDFS_blk_6504350529270464980",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_7963243402010652895",
+    "E1": "E_HDFS_blk_8122219743087224472",
+    "E2": "E_HDFS_blk_6518127240336402935",
+    "E3": "E_HDFS_blk_8877440886592861613",
+    "E4": "E_HDFS_blk_6504350529270464980",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__BLOCK_DELETION: 1 error at lines E0-L19 to E0-L20, pattern match with E1-E2 and contrast with E5.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 1 WARN error at lines E0-L19 to E0-L20.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L19 to E0-L20"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'BlockInfo not found' matches signature DATANODE__WARN__BLOCK_INFO_NOT_FOUND.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L5 to E1-L10",
+          "E2-L5 to E2-L10"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has 1 error at lines E0-L19 to E0-L20; E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L19 to E0-L20",
+          "E5-L1 to E5-L35"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_INFO_NOT_FOUND",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3653,
+    "completion_tokens": 336,
+    "total_tokens": 3989,
+    "latency_ms": 21179.162740707397
+  },
+  "created_at": "2026-03-01T06:29:33.610853",
+  "verification": {
+    "session_id": "HDFS_blk_7963243402010652895",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 8,
+    "failed_checks": 0,
+    "warning_checks": 1,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_INFO_NOT_FOUND",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "pass",
+        "message": "2/3 claims have keywords in their spans",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/20 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081110 230639 32 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081110 230640 16652 INFO dfs.DataNode$DataXceiver: Receiving block blk_796324340"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081110 230640 16988 INFO dfs.DataNode$DataXceiver: Receiving block blk_796324340"
+            },
+            {
+              "line": 4,
+              "has_severity": false,
+              "snippet": "081110 230641 16819 INFO dfs.DataNode$DataXceiver: Receiving block blk_796324340"
+            },
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081110 230714 16653 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for blo"
+            },
+            {
+              "line": 6,
+              "has_severity": false,
+              "snippet": "081110 230714 16653 INFO dfs.DataNode$PacketResponder: Received block blk_796324"
+            },
+            {
+              "line": 7,
+              "has_severity": false,
+              "snippet": "081110 230714 16820 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for blo"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081110 230714 16820 INFO dfs.DataNode$PacketResponder: Received block blk_796324"
+            },
+            {
+              "line": 9,
+              "has_severity": false,
+              "snippet": "081110 230714 16989 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for blo"
+            },
+            {
+              "line": 10,
+              "has_severity": false,
+              "snippet": "081110 230714 16989 INFO dfs.DataNode$PacketResponder: Received block blk_796324"
+            },
+            {
+              "line": 11,
+              "has_severity": false,
+              "snippet": "081110 230714 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 12,
+              "has_severity": false,
+              "snippet": "081110 230714 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 13,
+              "has_severity": false,
+              "snippet": "081110 230714 33 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 14,
+              "has_severity": false,
+              "snippet": "081111 044351 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_7963243402"
+            },
+            {
+              "line": 15,
+              "has_severity": false,
+              "snippet": "081111 044351 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_7963243402"
+            },
+            {
+              "line": 16,
+              "has_severity": false,
+              "snippet": "081111 044351 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_7963243402"
+            },
+            {
+              "line": 17,
+              "has_severity": false,
+              "snippet": "081111 044520 19 INFO dfs.FSDataset: Deleting block blk_7963243402010652895 file"
+            },
+            {
+              "line": 18,
+              "has_severity": false,
+              "snippet": "081111 044644 19 INFO dfs.FSDataset: Deleting block blk_7963243402010652895 file"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081111 044745 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk"
+            },
+            {
+              "line": 20,
+              "has_severity": false,
+              "snippet": "081111 044933 18 INFO dfs.FSDataset: Deleting block blk_7963243402010652895 file"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-3661881463166428296",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-3661881463166428296",
+    "pred": 1,
+    "logits": [
+      -7.279728412628174,
+      6.701549053192139
+    ],
+    "prob": [
+      8.472430295114464e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983182919436,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-4695035015924931859",
+    "E_HDFS_blk_-3852666904495564061",
+    "E_HDFS_blk_-6957563860605574652",
+    "E_HDFS_blk_-6342748197145120596",
+    "E_HDFS_blk_1241292020494577039"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-3661881463166428296",
+    "E1": "E_HDFS_blk_-4695035015924931859",
+    "E2": "E_HDFS_blk_-3852666904495564061",
+    "E3": "E_HDFS_blk_-6957563860605574652",
+    "E4": "E_HDFS_blk_-6342748197145120596",
+    "E5": "E_HDFS_blk_1241292020494577039"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L5 to E0-L24",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L5 to E0-L24.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L5",
+          "E0-L8",
+          "E0-L15",
+          "E0-L19",
+          "E0-L21",
+          "E0-L24"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2751,
+    "completion_tokens": 96,
+    "total_tokens": 2847,
+    "latency_ms": 4044.283866882324
+  },
+  "created_at": "2026-03-01T06:30:09.405516",
+  "verification": {
+    "session_id": "HDFS_blk_-3661881463166428296",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L5 to E0-L24.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/6 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081110 011231 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081110 011231 4907 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for bloc"
+            },
+            {
+              "line": 15,
+              "has_severity": true,
+              "snippet": "081110 025439 6117 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 070136 7278 WARN dfs.DataNode$DataXceiver: 10.251.198.196:50010:Got excep"
+            },
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 080953 7876 WARN dfs.DataNode$DataXceiver: 10.251.198.196:50010:Got excep"
+            },
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 092228 8850 WARN dfs.DataNode$DataXceiver: 10.251.91.84:50010:Got excepti"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-2565130857684426419",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-2565130857684426419",
+    "pred": 1,
+    "logits": [
+      -7.222646713256836,
+      6.649109363555908
+    ],
+    "prob": [
+      9.453066240894259e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999981010190595,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-5057834626410636236",
+    "E_HDFS_blk_1907660568110402188",
+    "E_HDFS_blk_8824666674803543321",
+    "E_HDFS_blk_2316306390693545086",
+    "E_HDFS_blk_3789176478077302113"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-2565130857684426419",
+    "E1": "E_HDFS_blk_-5057834626410636236",
+    "E2": "E_HDFS_blk_1907660568110402188",
+    "E3": "E_HDFS_blk_8824666674803543321",
+    "E4": "E_HDFS_blk_2316306390693545086",
+    "E5": "E_HDFS_blk_3789176478077302113"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: 2 occurrences at E0-L22 to E0-L24",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L22 to E0-L24.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L22",
+          "E0-L24"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2647,
+    "completion_tokens": 75,
+    "total_tokens": 2722,
+    "latency_ms": 3031.6555500030518
+  },
+  "created_at": "2026-03-01T06:30:41.995235",
+  "verification": {
+    "session_id": "HDFS_blk_-2565130857684426419",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L22 to E0-L24.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "2/2 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 22,
+              "has_severity": true,
+              "snippet": "081110 124918 11589 WARN dfs.DataNode$DataXceiver: 10.250.10.223:50010:Got excep"
+            },
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 124942 11594 WARN dfs.DataNode$DataXceiver: 10.250.10.223:50010:Got excep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-6108988464398509549",
+  "label": 0,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-6108988464398509549",
+    "pred": 1,
+    "logits": [
+      -7.1344804763793945,
+      6.5697197914123535
+    ],
+    "prob": [
+      1.117739884648472e-06,
+      0.999998927116394
+    ],
+    "margin": 0.9999978093765094,
+    "is_anomaly": true,
+    "confidence": 0.999998927116394
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-5057834626410636236",
+    "E_HDFS_blk_1907660568110402188",
+    "E_HDFS_blk_8824666674803543321",
+    "E_HDFS_blk_2316306390693545086",
+    "E_HDFS_blk_3789176478077302113"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-6108988464398509549",
+    "E1": "E_HDFS_blk_-5057834626410636236",
+    "E2": "E_HDFS_blk_1907660568110402188",
+    "E3": "E_HDFS_blk_8824666674803543321",
+    "E4": "E_HDFS_blk_2316306390693545086",
+    "E5": "E_HDFS_blk_3789176478077302113"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: 2 occurrences at E0-L22 to E0-L24",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L22 to E0-L24.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L22",
+          "E0-L24"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2647,
+    "completion_tokens": 75,
+    "total_tokens": 2722,
+    "latency_ms": 3358.295679092407
+  },
+  "created_at": "2026-03-01T06:31:14.983978",
+  "verification": {
+    "session_id": "HDFS_blk_-6108988464398509549",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L22 to E0-L24.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "2/2 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 22,
+              "has_severity": true,
+              "snippet": "081110 125740 11532 WARN dfs.DataNode$DataXceiver: 10.251.215.70:50010:Got excep"
+            },
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 125918 11342 WARN dfs.DataNode$DataXceiver: 10.251.123.132:50010:Got exce"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-4014392925001710803",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-4014392925001710803",
+    "pred": 1,
+    "logits": [
+      -7.251359939575195,
+      6.676096439361572
+    ],
+    "prob": [
+      8.94092295311566e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999981522333883,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-4695035015924931859",
+    "E_HDFS_blk_-3852666904495564061",
+    "E_HDFS_blk_-6957563860605574652",
+    "E_HDFS_blk_-6342748197145120596",
+    "E_HDFS_blk_1241292020494577039"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-4014392925001710803",
+    "E1": "E_HDFS_blk_-4695035015924931859",
+    "E2": "E_HDFS_blk_-3852666904495564061",
+    "E3": "E_HDFS_blk_-6957563860605574652",
+    "E4": "E_HDFS_blk_-6342748197145120596",
+    "E5": "E_HDFS_blk_1241292020494577039"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: 5 occurrences at E0-L8 to E0-L24",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 5 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L8 to E0-L24.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L8",
+          "E0-L16",
+          "E0-L19",
+          "E0-L21",
+          "E0-L24"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2751,
+    "completion_tokens": 96,
+    "total_tokens": 2847,
+    "latency_ms": 3808.6161613464355
+  },
+  "created_at": "2026-03-01T06:31:50.561262",
+  "verification": {
+    "session_id": "HDFS_blk_-4014392925001710803",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 5 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L8 to E0-L24.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/5 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081110 011000 4867 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for bloc"
+            },
+            {
+              "line": 16,
+              "has_severity": true,
+              "snippet": "081110 025736 6137 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 070220 7403 WARN dfs.DataNode$DataXceiver: 10.251.122.65:50010:Got except"
+            },
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 081027 8029 WARN dfs.DataNode$DataXceiver: 10.251.122.65:50010:Got except"
+            },
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 092307 8612 WARN dfs.DataNode$DataXceiver: 10.251.67.113:50010:Got except"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_8065120248309205717",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION",
+  "screener": {
+    "session_id": "HDFS_blk_8065120248309205717",
+    "pred": 1,
+    "logits": [
+      -7.2729105949401855,
+      6.695465564727783
+    ],
+    "prob": [
+      8.582442774240917e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983072906957,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_6566051927569845875",
+    "E_HDFS_blk_6088340553673203130",
+    "E_HDFS_blk_8341035617999301583",
+    "E_HDFS_blk_8057274412426720425",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_8065120248309205717",
+    "E1": "E_HDFS_blk_6566051927569845875",
+    "E2": "E_HDFS_blk_6088340553673203130",
+    "E3": "E_HDFS_blk_8341035617999301583",
+    "E4": "E_HDFS_blk_8057274412426720425",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION: {'errors': 3} occurrences at E0-L5 to E0-L9",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains {'errors': 3} EXCESS_REPLICATION HAS_EXCEPTION BLOCK_DELETION events at E0-L5 to E0-L9.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L5",
+          "E0-L8",
+          "E0-L9"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2833,
+    "completion_tokens": 97,
+    "total_tokens": 2930,
+    "latency_ms": 3587.5816345214844
+  },
+  "created_at": "2026-03-01T06:32:28.285611",
+  "verification": {
+    "session_id": "HDFS_blk_8065120248309205717",
+    "passed": false,
+    "total_checks": 9,
+    "passed_checks": 5,
+    "failed_checks": 1,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains {'errors': 3} EXCESS_REPLICATION HAS_EXCEPTION BLOCK_DELETION events at E0-L5 to E0-L9.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION_BLOCK_DELETION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "fail",
+        "message": "0/3 cited E0 lines contain error/warning keywords — likely hallucination",
+        "details": {
+          "lines": [
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081111 070421 17687 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for blo"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081111 070421 22837 INFO dfs.DataNode$PacketResponder: Received block blk_806512"
+            },
+            {
+              "line": 9,
+              "has_severity": false,
+              "snippet": "081111 070421 22929 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for blo"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_5703197246022264715",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_5703197246022264715",
+    "pred": 1,
+    "logits": [
+      -7.1676764488220215,
+      6.599660873413086
+    ],
+    "prob": [
+      1.04935077160917e-06,
+      0.999998927116394
+    ],
+    "margin": 0.9999978777656224,
+    "is_anomaly": true,
+    "confidence": 0.999998927116394
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_7010746172340794576",
+    "E_HDFS_blk_8340881995241460958",
+    "E_HDFS_blk_8933910278056120347",
+    "E_HDFS_blk_8591525911569550677",
+    "E_HDFS_blk_9219246724277586736"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_5703197246022264715",
+    "E1": "E_HDFS_blk_7010746172340794576",
+    "E2": "E_HDFS_blk_8340881995241460958",
+    "E3": "E_HDFS_blk_8933910278056120347",
+    "E4": "E_HDFS_blk_8591525911569550677",
+    "E5": "E_HDFS_blk_9219246724277586736"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__WARN__BLOCK_RECEIVE_FAILURE at E0-L16 and E0-L20",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 3 WARN messages at lines E0-L16, E0-L20, and E0-L26.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L16",
+          "E0-L20 to E0-L27"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern of WARN messages at block receive failure is consistent with anomalies in evidence sessions E1, E2.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L16 to E1-L25",
+          "E2-L16 to E2-L26"
+        ]
+      },
+      {
+        "type": "exception",
+        "claim": "The presence of BLOCK_DELETION in the STRUCTURAL section indicates an issue with block deletion.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "STRUCTURAL"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3929,
+    "completion_tokens": 295,
+    "total_tokens": 4224,
+    "latency_ms": 9762.620687484741
+  },
+  "created_at": "2026-03-01T06:33:03.904624",
+  "verification": {
+    "session_id": "HDFS_blk_5703197246022264715",
+    "passed": false,
+    "total_checks": 9,
+    "passed_checks": 7,
+    "failed_checks": 1,
+    "warning_checks": 1,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 3 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "fail",
+        "message": "Found 1 invalid spans",
+        "details": {
+          "invalid_spans": [
+            [
+              2,
+              "STRUCTURAL",
+              "malformed"
+            ]
+          ]
+        }
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "pass",
+        "message": "2/3 claims have keywords in their spans",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 3/12 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 16,
+              "has_severity": true,
+              "snippet": "081110 171452 13685 WARN dfs.DataNode$DataXceiver: 10.251.214.130:50010:Got exce"
+            },
+            {
+              "line": 17,
+              "has_severity": false,
+              "snippet": "081110 212730 13 INFO dfs.DataBlockScanner: Verification succeeded for blk_57031"
+            },
+            {
+              "line": 18,
+              "has_severity": false,
+              "snippet": "081111 000540 17387 INFO dfs.DataNode$DataXceiver: 10.251.123.20:50010 Served bl"
+            },
+            {
+              "line": 19,
+              "has_severity": false,
+              "snippet": "081111 001151 17204 INFO dfs.DataNode$DataXceiver: 10.251.214.130:50010 Served b"
+            },
+            {
+              "line": 20,
+              "has_severity": true,
+              "snippet": "081111 001209 17139 WARN dfs.DataNode$DataXceiver: 10.250.13.188:50010:Got excep"
+            },
+            {
+              "line": 21,
+              "has_severity": false,
+              "snippet": "081111 023016 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_5703197246"
+            },
+            {
+              "line": 22,
+              "has_severity": false,
+              "snippet": "081111 023016 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_5703197246"
+            },
+            {
+              "line": 23,
+              "has_severity": false,
+              "snippet": "081111 023016 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_5703197246"
+            },
+            {
+              "line": 24,
+              "has_severity": false,
+              "snippet": "081111 023130 19 INFO dfs.FSDataset: Deleting block blk_5703197246022264715 file"
+            },
+            {
+              "line": 25,
+              "has_severity": false,
+              "snippet": "081111 023255 19 INFO dfs.FSDataset: Deleting block blk_5703197246022264715 file"
+            },
+            {
+              "line": 26,
+              "has_severity": true,
+              "snippet": "081111 023301 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk"
+            },
+            {
+              "line": 27,
+              "has_severity": false,
+              "snippet": "081111 023302 18 INFO dfs.FSDataset: Deleting block blk_5703197246022264715 file"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_3338061113250311986",
+  "label": 1,
+  "normalized_signature": "UNKNOWN",
+  "screener": {
+    "session_id": "HDFS_blk_3338061113250311986",
+    "pred": 1,
+    "logits": [
+      -7.245250701904297,
+      6.671095371246338
+    ],
+    "prob": [
+      9.04081275621138e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.999998142244408,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-1734950946473392399",
+    "E_HDFS_blk_6040456330307032992",
+    "E_HDFS_blk_6638764246480158119",
+    "E_HDFS_blk_896379480340635354",
+    "E_HDFS_blk_2183710639830383686"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_3338061113250311986",
+    "E1": "E_HDFS_blk_-1734950946473392399",
+    "E2": "E_HDFS_blk_6040456330307032992",
+    "E3": "E_HDFS_blk_6638764246480158119",
+    "E4": "E_HDFS_blk_896379480340635354",
+    "E5": "E_HDFS_blk_2183710639830383686"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE_INFO__EXCESS_REPLICATION: Receiving and replicating block <BLOCK> multiple times without errors.",
+    "claims": [],
+    "insufficient_evidence": false
+  },
+  "metrics": {
+    "prompt_tokens": 4083,
+    "completion_tokens": 226,
+    "total_tokens": 4309,
+    "latency_ms": 7912.009716033936
+  },
+  "created_at": "2026-03-01T06:33:41.816854",
+  "verification": {
+    "session_id": "HDFS_blk_3338061113250311986",
+    "passed": false,
+    "total_checks": 8,
+    "passed_checks": 3,
+    "failed_checks": 2,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "fail",
+        "message": "Missing required fields: ['claims']",
+        "details": {
+          "missing_fields": [
+            "claims"
+          ]
+        }
+      },
+      {
+        "check": "evidence_ids",
+        "status": "warning",
+        "message": "No evidence IDs referenced in any claim",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "fail",
+        "message": "Evidence coverage 0% below minimum 80%",
+        "details": {
+          "coverage": 0.0,
+          "minimum": 0.8,
+          "claims_with_evidence": 0,
+          "total_claims": 0
+        }
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "No signature provided",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "No E0 lines cited — cannot check severity",
+        "details": {}
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_9216586288937763843",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_9216586288937763843",
+    "pred": 1,
+    "logits": [
+      -7.3091254234313965,
+      6.726401329040527
+    ],
+    "prob": [
+      8.025054967220058e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983630294764,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-7375622819574353596",
+    "E_HDFS_blk_-8624293996098620088",
+    "E_HDFS_blk_4100385849809141638",
+    "E_HDFS_blk_8485464413120592258",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_9216586288937763843",
+    "E1": "E_HDFS_blk_-7375622819574353596",
+    "E2": "E_HDFS_blk_-8624293996098620088",
+    "E3": "E_HDFS_blk_4100385849809141638",
+    "E4": "E_HDFS_blk_8485464413120592258",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__ERROR__BLOCK_RECEIVE_FAILURE: 2 errors at lines E0-L4, E0-L4.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 errors at lines E0-L4, E0-L4.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L4",
+          "E0-L4"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'java.io.IOException: Could not read from stream' matches signature DATANODE__ERROR__BLOCK_RECEIVE_FAILURE.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L4",
+          "E2-L4"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has 2 errors at lines E0-L4, E0-L4; E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L4 to E0-L4",
+          "E5-L1 to E5-L35"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3004,
+    "completion_tokens": 319,
+    "total_tokens": 3323,
+    "latency_ms": 10458.352088928223
+  },
+  "created_at": "2026-03-01T06:33:56.468992",
+  "verification": {
+    "session_id": "HDFS_blk_9216586288937763843",
+    "passed": true,
+    "total_checks": 10,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 4,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 errors at lines E0-L4, E0-L4.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "lines",
+            "contains",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "keyword_match_claim_2",
+        "status": "warning",
+        "message": "Claim 2 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 has 2 errors at lines E0-L4, E0-L4; E5 shows no such errors.",
+          "evidence_ids": [
+            "E0",
+            "E5"
+          ],
+          "keywords_checked": [
+            "lines",
+            "such",
+            "shows",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 1/3 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.3333333333333333
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081110 015342 5974 INFO dfs.DataNode$DataXceiver: Receiving block blk_9216586288"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081110 015343 33 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081110 015343 6030 INFO dfs.DataNode$DataXceiver: Receiving block blk_9216586288"
+            },
+            {
+              "line": 4,
+              "has_severity": true,
+              "snippet": "081110 015346 5974 INFO dfs.DataNode$DataXceiver: writeBlock blk_921658628893776"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-8178334713387015260",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-8178334713387015260",
+    "pred": 1,
+    "logits": [
+      -7.146934986114502,
+      6.5818915367126465
+    ],
+    "prob": [
+      1.0905508815994835e-06,
+      0.999998927116394
+    ],
+    "margin": 0.9999978365655124,
+    "is_anomaly": true,
+    "confidence": 0.999998927116394
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_4286651941190704328",
+    "E_HDFS_blk_-7177169719287432601",
+    "E_HDFS_blk_5963008994422029005",
+    "E_HDFS_blk_-6016089134218712467",
+    "E_HDFS_blk_-3126063062706017167"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-8178334713387015260",
+    "E1": "E_HDFS_blk_4286651941190704328",
+    "E2": "E_HDFS_blk_-7177169719287432601",
+    "E3": "E_HDFS_blk_5963008994422029005",
+    "E4": "E_HDFS_blk_-6016089134218712467",
+    "E5": "E_HDFS_blk_-3126063062706017167"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: 2 occurrences at E0-L24 to E0-L26",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L24 to E0-L26.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L24",
+          "E0-L26"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2671,
+    "completion_tokens": 75,
+    "total_tokens": 2746,
+    "latency_ms": 3238.1227016448975
+  },
+  "created_at": "2026-03-01T06:34:29.993740",
+  "verification": {
+    "session_id": "HDFS_blk_-8178334713387015260",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L24 to E0-L26.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "2/2 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 124831 11515 WARN dfs.DataNode$DataXceiver: 10.251.73.188:50010:Got excep"
+            },
+            {
+              "line": 26,
+              "has_severity": true,
+              "snippet": "081110 124914 11522 WARN dfs.DataNode$DataXceiver: 10.251.73.188:50010:Got excep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_1340637939534925227",
+  "label": 1,
+  "normalized_signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_1340637939534925227",
+    "pred": 1,
+    "logits": [
+      -7.251348495483398,
+      6.67641019821167
+    ],
+    "prob": [
+      8.938212090470188e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999982717137641,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-4695035015924931859",
+    "E_HDFS_blk_-3852666904495564061",
+    "E_HDFS_blk_-6957563860605574652",
+    "E_HDFS_blk_-6342748197145120596",
+    "E_HDFS_blk_1241292020494577039"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_1340637939534925227",
+    "E1": "E_HDFS_blk_-4695035015924931859",
+    "E2": "E_HDFS_blk_-3852666904495564061",
+    "E3": "E_HDFS_blk_-6957563860605574652",
+    "E4": "E_HDFS_blk_-6342748197145120596",
+    "E5": "E_HDFS_blk_1241292020494577039"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L15 to E0-L25",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L15 to E0-L25.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L15",
+          "E0-L19",
+          "E0-L21",
+          "E0-L25"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2751,
+    "completion_tokens": 82,
+    "total_tokens": 2833,
+    "latency_ms": 3270.7903385162354
+  },
+  "created_at": "2026-03-01T06:35:04.730687",
+  "verification": {
+    "session_id": "HDFS_blk_1340637939534925227",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L15 to E0-L25.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 15,
+              "has_severity": true,
+              "snippet": "081110 034615 6326 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 070728 7252 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 081551 8153 WARN dfs.DataNode$DataXceiver: 10.251.31.242:50010:Got except"
+            },
+            {
+              "line": 25,
+              "has_severity": true,
+              "snippet": "081110 093912 8578 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_9053361956697310554",
+  "label": 1,
+  "normalized_signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_9053361956697310554",
+    "pred": 1,
+    "logits": [
+      -7.0745978355407715,
+      6.518618583679199
+    ],
+    "prob": [
+      1.248937792297511e-06,
+      0.9999988079071045
+    ],
+    "margin": 0.9999975589693122,
+    "is_anomaly": true,
+    "confidence": 0.9999988079071045
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_6986079198374183360",
+    "E_HDFS_blk_-3212506577755430484",
+    "E_HDFS_blk_-27706715190955553",
+    "E_HDFS_blk_-8219871489697458472",
+    "E_HDFS_blk_3252216847145757508"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_9053361956697310554",
+    "E1": "E_HDFS_blk_6986079198374183360",
+    "E2": "E_HDFS_blk_-3212506577755430484",
+    "E3": "E_HDFS_blk_-27706715190955553",
+    "E4": "E_HDFS_blk_-8219871489697458472",
+    "E5": "E_HDFS_blk_3252216847145757508"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L13 to E0-L24",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L13 to E0-L24.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L13",
+          "E0-L17",
+          "E0-L20",
+          "E0-L23",
+          "E0-L24"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2654,
+    "completion_tokens": 89,
+    "total_tokens": 2743,
+    "latency_ms": 3400.34818649292
+  },
+  "created_at": "2026-03-01T06:35:37.076912",
+  "verification": {
+    "session_id": "HDFS_blk_9053361956697310554",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L13 to E0-L24.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "5/5 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 13,
+              "has_severity": true,
+              "snippet": "081110 013348 31 WARN dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: Redund"
+            },
+            {
+              "line": 17,
+              "has_severity": true,
+              "snippet": "081110 041421 6782 WARN dfs.DataNode$DataXceiver: 10.250.7.146:50010:Got excepti"
+            },
+            {
+              "line": 20,
+              "has_severity": true,
+              "snippet": "081110 071049 7649 WARN dfs.DataNode$DataXceiver: 10.250.7.146:50010:Got excepti"
+            },
+            {
+              "line": 23,
+              "has_severity": true,
+              "snippet": "081110 081902 8250 WARN dfs.DataNode$DataXceiver: 10.250.13.240:50010:Got except"
+            },
+            {
+              "line": 24,
+              "has_severity": true,
+              "snippet": "081110 095109 9014 WARN dfs.DataNode$DataXceiver: 10.250.7.96:50010:Got exceptio"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_8095512464329197839",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_DELETION",
+  "screener": {
+    "session_id": "HDFS_blk_8095512464329197839",
+    "pred": 1,
+    "logits": [
+      -7.25637674331665,
+      6.680459499359131
+    ],
+    "prob": [
+      8.857446687215997e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999982797903044,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_8844045896712965415",
+    "E_HDFS_blk_6392882893075988933",
+    "E_HDFS_blk_8679212975633980951",
+    "E_HDFS_blk_6294946897809907529",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_8095512464329197839",
+    "E1": "E_HDFS_blk_8844045896712965415",
+    "E2": "E_HDFS_blk_6392882893075988933",
+    "E3": "E_HDFS_blk_8679212975633980951",
+    "E4": "E_HDFS_blk_6294946897809907529",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__BLOCK_DELETION: 2 errors at lines E0-L27 and E0-L29.",
+    "claims": [],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_DELETION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 4044,
+    "completion_tokens": 185,
+    "total_tokens": 4229,
+    "latency_ms": 7998.187303543091
+  },
+  "created_at": "2026-03-01T06:36:13.786725",
+  "verification": {
+    "session_id": "HDFS_blk_8095512464329197839",
+    "passed": false,
+    "total_checks": 8,
+    "passed_checks": 4,
+    "failed_checks": 2,
+    "warning_checks": 2,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "fail",
+        "message": "Missing required fields: ['claims']",
+        "details": {
+          "missing_fields": [
+            "claims"
+          ]
+        }
+      },
+      {
+        "check": "evidence_ids",
+        "status": "warning",
+        "message": "No evidence IDs referenced in any claim",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "fail",
+        "message": "Evidence coverage 0% below minimum 80%",
+        "details": {
+          "coverage": 0.0,
+          "minimum": 0.8,
+          "claims_with_evidence": 0,
+          "total_claims": 0
+        }
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_DELETION",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "No E0 lines cited — cannot check severity",
+        "details": {}
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_3387839675473728056",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_3387839675473728056",
+    "pred": 1,
+    "logits": [
+      -7.1789984703063965,
+      6.61000394821167
+    ],
+    "prob": [
+      1.0268614687447553e-06,
+      0.999998927116394
+    ],
+    "margin": 0.9999979002549253,
+    "is_anomaly": true,
+    "confidence": 0.999998927116394
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-2623416675652331272",
+    "E_HDFS_blk_-6174303957871642553",
+    "E_HDFS_blk_-8334887661989208421",
+    "E_HDFS_blk_5283274003068854918",
+    "E_HDFS_blk_1601611363884272747"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_3387839675473728056",
+    "E1": "E_HDFS_blk_-2623416675652331272",
+    "E2": "E_HDFS_blk_-6174303957871642553",
+    "E3": "E_HDFS_blk_-8334887661989208421",
+    "E4": "E_HDFS_blk_5283274003068854918",
+    "E5": "E_HDFS_blk_1601611363884272747"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__BLOCK_RECEIVE_FAILURE: 4 errors at lines E0-L9 to E0-L13, E0-L19 at E0-L21.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 4 BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, and one error at line E0-L19.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L9 to E0-L13",
+          "E0-L19"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'BLOCK_RECEIVE_FAILURE' matches signature DATANODE__BLOCK_RECEIVE_FAILURE.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L5 to E1-L10",
+          "E2-L3 to E2-L8"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, while E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L9 to E0-L13",
+          "E5-L1 to E5-L29"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3723,
+    "completion_tokens": 350,
+    "total_tokens": 4073,
+    "latency_ms": 12655.848741531372
+  },
+  "created_at": "2026-03-01T06:36:47.359962",
+  "verification": {
+    "session_id": "HDFS_blk_3387839675473728056",
+    "passed": true,
+    "total_checks": 11,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 5,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 4 BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, and one error at line E0-L19.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "line",
+            "lines",
+            "contains",
+            "error",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "keyword_match_claim_1",
+        "status": "warning",
+        "message": "Claim 1 has low keyword overlap with evidence",
+        "details": {
+          "claim": "The pattern 'BLOCK_RECEIVE_FAILURE' matches signature DATANODE__BLOCK_RECEIVE_FAILURE.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "keywords_checked": [
+            "pattern",
+            "matches",
+            "signature"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "keyword_match_claim_2",
+        "status": "warning",
+        "message": "Claim 2 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 has BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, while E5 shows no such errors.",
+          "evidence_ids": [
+            "E0",
+            "E5"
+          ],
+          "keywords_checked": [
+            "lines",
+            "such",
+            "shows",
+            "while",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/3 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/21 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081109 235040 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081109 235040 3926 INFO dfs.DataNode$DataXceiver: Receiving block blk_3387839675"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081109 235040 4325 INFO dfs.DataNode$DataXceiver: Receiving block blk_3387839675"
+            },
+            {
+              "line": 4,
+              "has_severity": false,
+              "snippet": "081109 235040 4393 INFO dfs.DataNode$DataXceiver: Receiving block blk_3387839675"
+            },
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081109 235123 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 6,
+              "has_severity": false,
+              "snippet": "081109 235123 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 7,
+              "has_severity": false,
+              "snippet": "081109 235123 33 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081109 235123 3927 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for bloc"
+            },
+            {
+              "line": 9,
+              "has_severity": false,
+              "snippet": "081109 235123 3927 INFO dfs.DataNode$PacketResponder: Received block blk_3387839"
+            },
+            {
+              "line": 10,
+              "has_severity": false,
+              "snippet": "081109 235123 4326 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for bloc"
+            },
+            {
+              "line": 11,
+              "has_severity": false,
+              "snippet": "081109 235123 4326 INFO dfs.DataNode$PacketResponder: Received block blk_3387839"
+            },
+            {
+              "line": 12,
+              "has_severity": false,
+              "snippet": "081109 235123 4394 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for bloc"
+            },
+            {
+              "line": 13,
+              "has_severity": false,
+              "snippet": "081109 235123 4394 INFO dfs.DataNode$PacketResponder: Received block blk_3387839"
+            },
+            {
+              "line": 14,
+              "has_severity": false,
+              "snippet": "081110 103139 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_3387839675"
+            },
+            {
+              "line": 15,
+              "has_severity": false,
+              "snippet": "081110 103139 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_3387839675"
+            },
+            {
+              "line": 16,
+              "has_severity": false,
+              "snippet": "081110 103139 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_3387839675"
+            },
+            {
+              "line": 17,
+              "has_severity": false,
+              "snippet": "081110 103537 19 INFO dfs.FSDataset: Deleting block blk_3387839675473728056 file"
+            },
+            {
+              "line": 18,
+              "has_severity": false,
+              "snippet": "081110 103624 19 INFO dfs.FSDataset: Deleting block blk_3387839675473728056 file"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 104629 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addSto"
+            },
+            {
+              "line": 20,
+              "has_severity": false,
+              "snippet": "081110 104629 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 21,
+              "has_severity": false,
+              "snippet": "081110 105342 19 INFO dfs.FSDataset: Deleting block blk_3387839675473728056 file"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-6958758037020501321",
+  "label": 1,
+  "normalized_signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-6958758037020501321",
+    "pred": 1,
+    "logits": [
+      -7.22029447555542,
+      6.648827075958252
+    ],
+    "prob": [
+      9.477998332840798e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999980985258503,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-4695035015924931859",
+    "E_HDFS_blk_-3852666904495564061",
+    "E_HDFS_blk_-6957563860605574652",
+    "E_HDFS_blk_-6342748197145120596",
+    "E_HDFS_blk_1241292020494577039"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-6958758037020501321",
+    "E1": "E_HDFS_blk_-4695035015924931859",
+    "E2": "E_HDFS_blk_-3852666904495564061",
+    "E3": "E_HDFS_blk_-6957563860605574652",
+    "E4": "E_HDFS_blk_-6342748197145120596",
+    "E5": "E_HDFS_blk_1241292020494577039"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L16 to E0-L25",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L16 to E0-L25.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L16",
+          "E0-L19",
+          "E0-L22",
+          "E0-L25"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2751,
+    "completion_tokens": 82,
+    "total_tokens": 2833,
+    "latency_ms": 4526.583671569824
+  },
+  "created_at": "2026-03-01T06:37:22.130451",
+  "verification": {
+    "session_id": "HDFS_blk_-6958758037020501321",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L16 to E0-L25.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_WARN_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 16,
+              "has_severity": true,
+              "snippet": "081110 041001 6432 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 071013 7313 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 22,
+              "has_severity": true,
+              "snippet": "081110 081842 8294 WARN dfs.DataNode$DataXceiver: 10.251.75.79:50010:Got excepti"
+            },
+            {
+              "line": 25,
+              "has_severity": true,
+              "snippet": "081110 094915 8904 WARN dfs.DataNode$DataXceiver: 10.251.199.159:50010:Got excep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-3371701595281520594",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_-3371701595281520594",
+    "pred": 1,
+    "logits": [
+      -7.307718276977539,
+      6.725062847137451
+    ],
+    "prob": [
+      8.047111350606428e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983608238381,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-7375622819574353596",
+    "E_HDFS_blk_-8624293996098620088",
+    "E_HDFS_blk_4100385849809141638",
+    "E_HDFS_blk_8485464413120592258",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-3371701595281520594",
+    "E1": "E_HDFS_blk_-7375622819574353596",
+    "E2": "E_HDFS_blk_-8624293996098620088",
+    "E3": "E_HDFS_blk_4100385849809141638",
+    "E4": "E_HDFS_blk_8485464413120592258",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__ERROR__BLOCK_RECEIVE_FAILURE: 2 errors at lines E0-L4 and E0-L4, with exceptions=2 in STRUCTURAL.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 BLOCK_RECEIVE_FAILURE errors at lines E0-L4 and E0-L4.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L4",
+          "E0-L4"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'java.io.IOException: Could not read from stream' matches signature DATANODE__ERROR__BLOCK_RECEIVE_FAILURE.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L4",
+          "E2-L4"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has exceptions=2 in STRUCTURAL, while E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "STRUCTURAL: receives=2 received=0 allocate=1 addstoredblock=0 responder=0 exceptions=2 INCOMPLETE_PIPELINE HAS_EXCEPTION WRITE_FAILURE MISSING_ACKNOWLEDGMENT",
+          "E5-L1 to E5-L35"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3004,
+    "completion_tokens": 351,
+    "total_tokens": 3355,
+    "latency_ms": 11205.342292785645
+  },
+  "created_at": "2026-03-01T06:37:37.352607",
+  "verification": {
+    "session_id": "HDFS_blk_-3371701595281520594",
+    "passed": false,
+    "total_checks": 9,
+    "passed_checks": 5,
+    "failed_checks": 1,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 BLOCK_RECEIVE_FAILURE errors at lines E0-L4 and E0-L4.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "lines",
+            "contains",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "fail",
+        "message": "Found 1 invalid spans",
+        "details": {
+          "invalid_spans": [
+            [
+              2,
+              "STRUCTURAL: receives=2 received=0 allocate=1 addstoredblock=0 responder=0 exceptions=2 INCOMPLETE_PIPELINE HAS_EXCEPTION WRITE_FAILURE MISSING_ACKNOWLEDGMENT",
+              "malformed"
+            ]
+          ]
+        }
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 1/3 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.3333333333333333
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081111 081631 24178 INFO dfs.DataNode$DataXceiver: Receiving block blk_-33717015"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081111 081631 29 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081111 081632 23895 INFO dfs.DataNode$DataXceiver: Receiving block blk_-33717015"
+            },
+            {
+              "line": 4,
+              "has_severity": true,
+              "snippet": "081111 081634 24178 INFO dfs.DataNode$DataXceiver: writeBlock blk_-3371701595281"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_8332836013426864517",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_8332836013426864517",
+    "pred": 1,
+    "logits": [
+      -7.017265319824219,
+      6.473576545715332
+    ],
+    "prob": [
+      1.3835702930009575e-06,
+      0.9999985694885254
+    ],
+    "margin": 0.9999971859182324,
+    "is_anomaly": true,
+    "confidence": 0.9999985694885254
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-5057834626410636236",
+    "E_HDFS_blk_1907660568110402188",
+    "E_HDFS_blk_8824666674803543321",
+    "E_HDFS_blk_2316306390693545086",
+    "E_HDFS_blk_3789176478077302113"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_8332836013426864517",
+    "E1": "E_HDFS_blk_-5057834626410636236",
+    "E2": "E_HDFS_blk_1907660568110402188",
+    "E3": "E_HDFS_blk_8824666674803543321",
+    "E4": "E_HDFS_blk_2316306390693545086",
+    "E5": "E_HDFS_blk_3789176478077302113"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: 2 occurrences at E0-L5 to E0-L8",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L5 to E0-L8.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L5",
+          "E0-L8"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2647,
+    "completion_tokens": 75,
+    "total_tokens": 2722,
+    "latency_ms": 3107.2142124176025
+  },
+  "created_at": "2026-03-01T06:38:10.141739",
+  "verification": {
+    "session_id": "HDFS_blk_8332836013426864517",
+    "passed": false,
+    "total_checks": 9,
+    "passed_checks": 5,
+    "failed_checks": 1,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 2 EXCESS_REPLICATION HAS_EXCEPTION events at E0-L5 to E0-L8.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "fail",
+        "message": "0/2 cited E0 lines contain error/warning keywords — likely hallucination",
+        "details": {
+          "lines": [
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081110 103647 8995 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for bloc"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081110 103647 9009 INFO dfs.DataNode$PacketResponder: Received block blk_8332836"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-4184262965734141875",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_-4184262965734141875",
+    "pred": 1,
+    "logits": [
+      -7.2987799644470215,
+      6.718106746673584
+    ],
+    "prob": [
+      8.176041319529759e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983479308412,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-6666459346391777174",
+    "E_HDFS_blk_-134529289252082377",
+    "E_HDFS_blk_6988482682277639827",
+    "E_HDFS_blk_-2108934459782718925",
+    "E_HDFS_blk_1601611363884272747"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-4184262965734141875",
+    "E1": "E_HDFS_blk_-6666459346391777174",
+    "E2": "E_HDFS_blk_-134529289252082377",
+    "E3": "E_HDFS_blk_6988482682277639827",
+    "E4": "E_HDFS_blk_-2108934459782718925",
+    "E5": "E_HDFS_blk_1601611363884272747"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__RECEIVING_BLOCK_FAILURE: 3 receiving blocks failed at E0-L2, E0-L4, and E0-L10; redundant addStoredBlock request received for <BLOCK> on <DATANODE> size <IPV6> at E0-L13",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 3 receiving block failures at lines E0-L2, E0-L4, and E0-L10.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L2",
+          "E0-L4 to E0-L10"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'receiving block failure' matches signature DATANODE__RECEIVING_BLOCK_FAILURE.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L3",
+          "E2-L5"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has a redundant addStoredBlock request at E0-L13; E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L13",
+          "E5-L1 to E5-L29"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3667,
+    "completion_tokens": 351,
+    "total_tokens": 4018,
+    "latency_ms": 11687.083005905151
+  },
+  "created_at": "2026-03-01T06:38:42.217906",
+  "verification": {
+    "session_id": "HDFS_blk_-4184262965734141875",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 8,
+    "failed_checks": 0,
+    "warning_checks": 1,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "pass",
+        "message": "3/3 claims have keywords in their spans",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/20 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081110 001014 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081110 001014 4677 INFO dfs.DataNode$DataXceiver: Receiving block blk_-418426296"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081110 001014 4705 INFO dfs.DataNode$DataXceiver: Receiving block blk_-418426296"
+            },
+            {
+              "line": 4,
+              "has_severity": false,
+              "snippet": "081110 001014 4750 INFO dfs.DataNode$DataXceiver: Receiving block blk_-418426296"
+            },
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081110 001037 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 6,
+              "has_severity": false,
+              "snippet": "081110 001037 34 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 7,
+              "has_severity": false,
+              "snippet": "081110 001037 4678 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for bloc"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081110 001037 4678 INFO dfs.DataNode$PacketResponder: Received block blk_-418426"
+            },
+            {
+              "line": 9,
+              "has_severity": false,
+              "snippet": "081110 001037 4706 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for bloc"
+            },
+            {
+              "line": 10,
+              "has_severity": false,
+              "snippet": "081110 001037 4706 INFO dfs.DataNode$PacketResponder: Received block blk_-418426"
+            },
+            {
+              "line": 11,
+              "has_severity": false,
+              "snippet": "081110 001037 4751 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for bloc"
+            },
+            {
+              "line": 12,
+              "has_severity": false,
+              "snippet": "081110 001037 4751 INFO dfs.DataNode$PacketResponder: Received block blk_-418426"
+            },
+            {
+              "line": 13,
+              "has_severity": true,
+              "snippet": "081110 001041 30 WARN dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: Redund"
+            },
+            {
+              "line": 14,
+              "has_severity": false,
+              "snippet": "081110 001041 34 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 15,
+              "has_severity": false,
+              "snippet": "081110 103150 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_-418426296"
+            },
+            {
+              "line": 16,
+              "has_severity": false,
+              "snippet": "081110 103150 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_-418426296"
+            },
+            {
+              "line": 17,
+              "has_severity": false,
+              "snippet": "081110 103150 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_-418426296"
+            },
+            {
+              "line": 18,
+              "has_severity": false,
+              "snippet": "081110 103511 19 INFO dfs.FSDataset: Deleting block blk_-4184262965734141875 fil"
+            },
+            {
+              "line": 19,
+              "has_severity": false,
+              "snippet": "081110 103532 19 INFO dfs.FSDataset: Deleting block blk_-4184262965734141875 fil"
+            },
+            {
+              "line": 20,
+              "has_severity": false,
+              "snippet": "081110 103537 19 INFO dfs.FSDataset: Deleting block blk_-4184262965734141875 fil"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-9139390120172868222",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-9139390120172868222",
+    "pred": 1,
+    "logits": [
+      -7.2019219398498535,
+      6.630767822265625
+    ],
+    "prob": [
+      9.82967094387277e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999980633585892,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_2189616806076056370",
+    "E_HDFS_blk_-8491965419341656449",
+    "E_HDFS_blk_-8427157186346518866",
+    "E_HDFS_blk_6989377882518604195",
+    "E_HDFS_blk_6937712548866091907"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-9139390120172868222",
+    "E1": "E_HDFS_blk_2189616806076056370",
+    "E2": "E_HDFS_blk_-8491965419341656449",
+    "E3": "E_HDFS_blk_-8427157186346518866",
+    "E4": "E_HDFS_blk_6989377882518604195",
+    "E5": "E_HDFS_blk_6937712548866091907"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L21 to E0-L27",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L21 to E0-L27.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L21",
+          "E0-L23",
+          "E0-L25",
+          "E0-L27"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2737,
+    "completion_tokens": 82,
+    "total_tokens": 2819,
+    "latency_ms": 3522.886037826538
+  },
+  "created_at": "2026-03-01T06:39:16.714379",
+  "verification": {
+    "session_id": "HDFS_blk_-9139390120172868222",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L21 to E0-L27.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 040748 6713 WARN dfs.DataNode$DataXceiver: 10.250.19.16:50010:Got excepti"
+            },
+            {
+              "line": 23,
+              "has_severity": true,
+              "snippet": "081110 070955 7307 WARN dfs.DataNode$DataXceiver: 10.251.203.129:50010:Got excep"
+            },
+            {
+              "line": 25,
+              "has_severity": true,
+              "snippet": "081110 081832 8216 WARN dfs.DataNode$DataXceiver: 10.251.111.130:50010:Got excep"
+            },
+            {
+              "line": 27,
+              "has_severity": true,
+              "snippet": "081110 094647 8843 WARN dfs.DataNode$DataXceiver: 10.251.111.130:50010:Got excep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-2981635085495510991",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-2981635085495510991",
+    "pred": 1,
+    "logits": [
+      -7.276671886444092,
+      6.69965124130249
+    ],
+    "prob": [
+      8.514509772794554e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983140839959,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-4695035015924931859",
+    "E_HDFS_blk_-3852666904495564061",
+    "E_HDFS_blk_-6957563860605574652",
+    "E_HDFS_blk_-6342748197145120596",
+    "E_HDFS_blk_1241292020494577039"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-2981635085495510991",
+    "E1": "E_HDFS_blk_-4695035015924931859",
+    "E2": "E_HDFS_blk_-3852666904495564061",
+    "E3": "E_HDFS_blk_-6957563860605574652",
+    "E4": "E_HDFS_blk_-6342748197145120596",
+    "E5": "E_HDFS_blk_1241292020494577039"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L15 to E0-L23",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L15 to E0-L23.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L15",
+          "E0-L18",
+          "E0-L21",
+          "E0-L23"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2751,
+    "completion_tokens": 82,
+    "total_tokens": 2833,
+    "latency_ms": 3324.3863582611084
+  },
+  "created_at": "2026-03-01T06:39:51.701980",
+  "verification": {
+    "session_id": "HDFS_blk_-2981635085495510991",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L15 to E0-L23.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "4/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 15,
+              "has_severity": true,
+              "snippet": "081110 032612 6244 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 18,
+              "has_severity": true,
+              "snippet": "081110 070507 7208 WARN dfs.DataNode$DataXceiver: 10.251.106.10:50010:Got except"
+            },
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 081321 8153 WARN dfs.DataNode$DataXceiver: 10.251.214.18:50010:Got except"
+            },
+            {
+              "line": 23,
+              "has_severity": true,
+              "snippet": "081110 093155 8737 WARN dfs.DataNode$DataXceiver: 10.251.74.192:50010:Got except"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_8239323489440610674",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_DELETION",
+  "screener": {
+    "session_id": "HDFS_blk_8239323489440610674",
+    "pred": 1,
+    "logits": [
+      -7.1741180419921875,
+      6.606980323791504
+    ],
+    "prob": [
+      1.035009972838452e-06,
+      0.999998927116394
+    ],
+    "margin": 0.9999978921064212,
+    "is_anomaly": true,
+    "confidence": 0.999998927116394
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_8327990107264021334",
+    "E_HDFS_blk_9149074988619727961",
+    "E_HDFS_blk_9049863164616766759",
+    "E_HDFS_blk_8788565503562530469",
+    "E_HDFS_blk_7427874433313384419"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_8239323489440610674",
+    "E1": "E_HDFS_blk_8327990107264021334",
+    "E2": "E_HDFS_blk_9149074988619727961",
+    "E3": "E_HDFS_blk_9049863164616766759",
+    "E4": "E_HDFS_blk_8788565503562530469",
+    "E5": "E_HDFS_blk_7427874433313384419"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__WARN__BLOCK_DELETION: 4 errors at lines E0-L16, E0-L17, E0-L21, E0-L28",
+    "claims": [],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_DELETION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 4028,
+    "completion_tokens": 189,
+    "total_tokens": 4217,
+    "latency_ms": 6754.970073699951
+  },
+  "created_at": "2026-03-01T06:40:25.696709",
+  "verification": {
+    "session_id": "HDFS_blk_8239323489440610674",
+    "passed": false,
+    "total_checks": 8,
+    "passed_checks": 4,
+    "failed_checks": 2,
+    "warning_checks": 2,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "fail",
+        "message": "Missing required fields: ['claims']",
+        "details": {
+          "missing_fields": [
+            "claims"
+          ]
+        }
+      },
+      {
+        "check": "evidence_ids",
+        "status": "warning",
+        "message": "No evidence IDs referenced in any claim",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "fail",
+        "message": "Evidence coverage 0% below minimum 80%",
+        "details": {
+          "coverage": 0.0,
+          "minimum": 0.8,
+          "claims_with_evidence": 0,
+          "total_claims": 0
+        }
+      },
+      {
+        "check": "keyword_match",
+        "status": "pass",
+        "message": "Claims have sufficient keyword overlap with evidence",
+        "details": {}
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_DELETION",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "No E0 lines cited — cannot check severity",
+        "details": {}
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_-3646517331515187756",
+  "label": 1,
+  "normalized_signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+  "screener": {
+    "session_id": "HDFS_blk_-3646517331515187756",
+    "pred": 1,
+    "logits": [
+      -7.237418174743652,
+      6.664704322814941
+    ],
+    "prob": [
+      9.170320822704525e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999981292936013,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-7716493588056776950",
+    "E_HDFS_blk_-875258379733599572",
+    "E_HDFS_blk_4676538132306471800",
+    "E_HDFS_blk_3053231712287123757",
+    "E_HDFS_blk_6937712548866091907"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_-3646517331515187756",
+    "E1": "E_HDFS_blk_-7716493588056776950",
+    "E2": "E_HDFS_blk_-875258379733599572",
+    "E3": "E_HDFS_blk_4676538132306471800",
+    "E4": "E_HDFS_blk_3053231712287123757",
+    "E5": "E_HDFS_blk_6937712548866091907"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION: ? occurrences at E0-L21 to E0-L25",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L21 to E0-L25.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L21",
+          "E0-L23",
+          "E0-L25"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION",
+      "matched_evidence_ids": []
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 2694,
+    "completion_tokens": 75,
+    "total_tokens": 2769,
+    "latency_ms": 3303.9283752441406
+  },
+  "created_at": "2026-03-01T06:40:59.530417",
+  "verification": {
+    "session_id": "HDFS_blk_-3646517331515187756",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 3,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 1 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains ? EXCESS_REPLICATION HAS_EXCEPTION events at E0-L21 to E0-L25.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "contains",
+            "events"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "warning",
+        "message": "Signature 'DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION' doesn't follow COMPONENT__ERROR_TYPE format",
+        "details": {
+          "signature": "DataNode_INFO_EXCESS_REPLICATION_HAS_EXCEPTION"
+        }
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/1 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "pass",
+        "message": "3/3 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 21,
+              "has_severity": true,
+              "snippet": "081110 045639 6904 WARN dfs.DataNode$DataXceiver: 10.250.11.85:50010:Got excepti"
+            },
+            {
+              "line": 23,
+              "has_severity": true,
+              "snippet": "081110 071554 7710 WARN dfs.DataNode$DataXceiver: 10.250.11.85:50010:Got excepti"
+            },
+            {
+              "line": 25,
+              "has_severity": true,
+              "snippet": "081110 082412 8001 WARN dfs.DataNode$DataXceiver: 10.251.202.134:50010:Got excep"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_6757687595653348398",
+  "label": 1,
+  "normalized_signature": "DATANODE__BLOCK_RECEIVE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_6757687595653348398",
+    "pred": 1,
+    "logits": [
+      -7.233937740325928,
+      6.659862518310547
+    ],
+    "prob": [
+      9.246952004104969e-07,
+      0.9999990463256836
+    ],
+    "margin": 0.9999981216304832,
+    "is_anomaly": true,
+    "confidence": 0.9999990463256836
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-2623416675652331272",
+    "E_HDFS_blk_-6174303957871642553",
+    "E_HDFS_blk_-8334887661989208421",
+    "E_HDFS_blk_5283274003068854918",
+    "E_HDFS_blk_1601611363884272747"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_6757687595653348398",
+    "E1": "E_HDFS_blk_-2623416675652331272",
+    "E2": "E_HDFS_blk_-6174303957871642553",
+    "E3": "E_HDFS_blk_-8334887661989208421",
+    "E4": "E_HDFS_blk_5283274003068854918",
+    "E5": "E_HDFS_blk_1601611363884272747"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__BLOCK_RECEIVE_FAILURE: 4 errors at lines E0-L9 to E0-L13, E0-L19",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 4 BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, E0-L19.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L9",
+          "E0-L10",
+          "E0-L11",
+          "E0-L12",
+          "E0-L13"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'BLOCK_RECEIVE_FAILURE' matches signature DATANODE__BLOCK_RECEIVE_FAILURE.",
+        "evidence_ids": [
+          "E1",
+          "E2"
+        ],
+        "evidence_spans": [
+          "E1-L9 to E1-L13",
+          "E2-L9 to E2-L13"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, E0-L19; E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L9 to E0-L13",
+          "E0-L19",
+          "E5-L1 to E5-L29"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__BLOCK_RECEIVE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3723,
+    "completion_tokens": 363,
+    "total_tokens": 4086,
+    "latency_ms": 12422.718286514282
+  },
+  "created_at": "2026-03-01T06:41:33.761636",
+  "verification": {
+    "session_id": "HDFS_blk_6757687595653348398",
+    "passed": true,
+    "total_checks": 11,
+    "passed_checks": 6,
+    "failed_checks": 0,
+    "warning_checks": 5,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 4 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_0",
+        "status": "warning",
+        "message": "Claim 0 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 contains 4 BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, E0-L19.",
+          "evidence_ids": [
+            "E0"
+          ],
+          "keywords_checked": [
+            "lines",
+            "contains",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "keyword_match_claim_1",
+        "status": "warning",
+        "message": "Claim 1 has low keyword overlap with evidence",
+        "details": {
+          "claim": "The pattern 'BLOCK_RECEIVE_FAILURE' matches signature DATANODE__BLOCK_RECEIVE_FAILURE.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ],
+          "keywords_checked": [
+            "pattern",
+            "matches",
+            "signature"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "keyword_match_claim_2",
+        "status": "warning",
+        "message": "Claim 2 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 has BLOCK_RECEIVE_FAILURE errors at lines E0-L9 to E0-L13, E0-L19; E5 shows no such errors.",
+          "evidence_ids": [
+            "E0",
+            "E5"
+          ],
+          "keywords_checked": [
+            "lines",
+            "such",
+            "shows",
+            "errors"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__BLOCK_RECEIVE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "warning",
+        "message": "Only 0/3 claims have keywords in their spans",
+        "details": {
+          "match_rate": 0.0
+        }
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/21 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081109 234802 33 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081109 234802 3884 INFO dfs.DataNode$DataXceiver: Receiving block blk_6757687595"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081109 234802 4317 INFO dfs.DataNode$DataXceiver: Receiving block blk_6757687595"
+            },
+            {
+              "line": 4,
+              "has_severity": false,
+              "snippet": "081109 234802 4328 INFO dfs.DataNode$DataXceiver: Receiving block blk_6757687595"
+            },
+            {
+              "line": 5,
+              "has_severity": false,
+              "snippet": "081109 234833 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 6,
+              "has_severity": false,
+              "snippet": "081109 234833 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 7,
+              "has_severity": false,
+              "snippet": "081109 234833 32 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 8,
+              "has_severity": false,
+              "snippet": "081109 234833 3885 INFO dfs.DataNode$PacketResponder: PacketResponder 0 for bloc"
+            },
+            {
+              "line": 9,
+              "has_severity": false,
+              "snippet": "081109 234833 3885 INFO dfs.DataNode$PacketResponder: Received block blk_6757687"
+            },
+            {
+              "line": 10,
+              "has_severity": false,
+              "snippet": "081109 234833 4318 INFO dfs.DataNode$PacketResponder: PacketResponder 1 for bloc"
+            },
+            {
+              "line": 11,
+              "has_severity": false,
+              "snippet": "081109 234833 4318 INFO dfs.DataNode$PacketResponder: Received block blk_6757687"
+            },
+            {
+              "line": 12,
+              "has_severity": false,
+              "snippet": "081109 234833 4329 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for bloc"
+            },
+            {
+              "line": 13,
+              "has_severity": false,
+              "snippet": "081109 234833 4329 INFO dfs.DataNode$PacketResponder: Received block blk_6757687"
+            },
+            {
+              "line": 14,
+              "has_severity": false,
+              "snippet": "081110 103128 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_6757687595"
+            },
+            {
+              "line": 15,
+              "has_severity": false,
+              "snippet": "081110 103128 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_6757687595"
+            },
+            {
+              "line": 16,
+              "has_severity": false,
+              "snippet": "081110 103128 30 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_6757687595"
+            },
+            {
+              "line": 17,
+              "has_severity": false,
+              "snippet": "081110 103752 19 INFO dfs.FSDataset: Deleting block blk_6757687595653348398 file"
+            },
+            {
+              "line": 18,
+              "has_severity": false,
+              "snippet": "081110 103959 19 INFO dfs.FSDataset: Deleting block blk_6757687595653348398 file"
+            },
+            {
+              "line": 19,
+              "has_severity": true,
+              "snippet": "081110 104629 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addSto"
+            },
+            {
+              "line": 20,
+              "has_severity": false,
+              "snippet": "081110 104629 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockM"
+            },
+            {
+              "line": 21,
+              "has_severity": false,
+              "snippet": "081110 104659 19 INFO dfs.FSDataset: Deleting block blk_6757687595653348398 file"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+{
+  "session_id": "HDFS_blk_4690101219411104590",
+  "label": 1,
+  "normalized_signature": "DATANODE__WRITE_FAILURE",
+  "screener": {
+    "session_id": "HDFS_blk_4690101219411104590",
+    "pred": 1,
+    "logits": [
+      -7.295209884643555,
+      6.714456081390381
+    ],
+    "prob": [
+      8.235288078140002e-07,
+      0.9999991655349731
+    ],
+    "margin": 0.9999983420061653,
+    "is_anomaly": true,
+    "confidence": 0.9999991655349731
+  },
+  "evidence_ids": [
+    "E_HDFS_blk_-7375622819574353596",
+    "E_HDFS_blk_-8624293996098620088",
+    "E_HDFS_blk_4100385849809141638",
+    "E_HDFS_blk_8485464413120592258",
+    "E_HDFS_blk_-3817803451853801878"
+  ],
+  "evidence_id_mapping": {
+    "E0": "HDFS_blk_4690101219411104590",
+    "E1": "E_HDFS_blk_-7375622819574353596",
+    "E2": "E_HDFS_blk_-8624293996098620088",
+    "E3": "E_HDFS_blk_4100385849809141638",
+    "E4": "E_HDFS_blk_8485464413120592258",
+    "E5": "E_HDFS_blk_-3817803451853801878"
+  },
+  "explanation": {
+    "prediction": "anomaly",
+    "summary": "DATANODE__WRITE_FAILURE: 2 errors at lines E0-L4 and E0-L4, INCOMPLETE_PIPELINE at line E0-L4.",
+    "claims": [
+      {
+        "type": "observation",
+        "claim": "E0 contains 2 writeBlock exceptions at lines E0-L4 and E0-L4.",
+        "evidence_ids": [
+          "E0"
+        ],
+        "evidence_spans": [
+          "E0-L4",
+          "E0-L4"
+        ]
+      },
+      {
+        "type": "pattern_match",
+        "claim": "The pattern 'writeBlock received exception java.io.IOException' matches signature DATANODE__WRITE_FAILURE.",
+        "evidence_ids": [
+          "E0",
+          "E1"
+        ],
+        "evidence_spans": [
+          "E0-L4",
+          "E1-L4"
+        ]
+      },
+      {
+        "type": "contrast",
+        "claim": "E0 has INCOMPLETE_PIPELINE at line E0-L4; E5 shows no such errors.",
+        "evidence_ids": [
+          "E0",
+          "E5"
+        ],
+        "evidence_spans": [
+          "E0-L4 to E0-L4",
+          "E5-L1 to E5-L35"
+        ]
+      }
+    ],
+    "insufficient_evidence": false,
+    "signature": {
+      "name": "DATANODE__WRITE_FAILURE",
+      "matched_evidence_ids": [
+        "E1",
+        "E2"
+      ]
+    }
+  },
+  "metrics": {
+    "prompt_tokens": 3004,
+    "completion_tokens": 312,
+    "total_tokens": 3316,
+    "latency_ms": 10789.156198501587
+  },
+  "created_at": "2026-03-01T06:41:48.683624",
+  "verification": {
+    "session_id": "HDFS_blk_4690101219411104590",
+    "passed": true,
+    "total_checks": 9,
+    "passed_checks": 7,
+    "failed_checks": 0,
+    "warning_checks": 2,
+    "issues": [
+      {
+        "check": "structure",
+        "status": "pass",
+        "message": "All required fields present",
+        "details": {}
+      },
+      {
+        "check": "evidence_ids",
+        "status": "pass",
+        "message": "All 3 evidence IDs are valid",
+        "details": {}
+      },
+      {
+        "check": "evidence_coverage",
+        "status": "pass",
+        "message": "Evidence coverage 100% meets minimum",
+        "details": {}
+      },
+      {
+        "check": "keyword_match_claim_2",
+        "status": "warning",
+        "message": "Claim 2 has low keyword overlap with evidence",
+        "details": {
+          "claim": "E0 has INCOMPLETE_PIPELINE at line E0-L4; E5 shows no such errors.",
+          "evidence_ids": [
+            "E0",
+            "E5"
+          ],
+          "keywords_checked": [
+            "errors",
+            "such",
+            "line",
+            "shows"
+          ],
+          "match_ratio": 0.0
+        }
+      },
+      {
+        "check": "empty_claims",
+        "status": "pass",
+        "message": "All claims have sufficient content",
+        "details": {}
+      },
+      {
+        "check": "evidence_spans_validity",
+        "status": "pass",
+        "message": "All evidence spans are valid",
+        "details": {}
+      },
+      {
+        "check": "signature",
+        "status": "pass",
+        "message": "Valid signature: DATANODE__WRITE_FAILURE",
+        "details": {}
+      },
+      {
+        "check": "span_keyword_match",
+        "status": "pass",
+        "message": "2/3 claims have keywords in their spans",
+        "details": {}
+      },
+      {
+        "check": "cited_severity",
+        "status": "warning",
+        "message": "Only 1/4 cited E0 lines contain error/warning keywords",
+        "details": {
+          "lines": [
+            {
+              "line": 1,
+              "has_severity": false,
+              "snippet": "081110 112554 10047 INFO dfs.DataNode$DataXceiver: Receiving block blk_469010121"
+            },
+            {
+              "line": 2,
+              "has_severity": false,
+              "snippet": "081110 112554 32 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/r"
+            },
+            {
+              "line": 3,
+              "has_severity": false,
+              "snippet": "081110 112555 10080 INFO dfs.DataNode$DataXceiver: Receiving block blk_469010121"
+            },
+            {
+              "line": 4,
+              "has_severity": true,
+              "snippet": "081110 112559 10047 INFO dfs.DataNode$DataXceiver: writeBlock blk_46901012194111"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "config": {
+    "dataset": "HDFS",
+    "log_file": "./logs/HDFS.log",
+    "model_path": "./best_model_HDFS/best_model_HDFS20250804_201746.pth",
+    "top_k": 5,
+    "top_k_anomaly": 4,
+    "top_k_normal": 1,
+    "use_mixed_retrieval": true,
+    "retriever_method": "bm25",
+    "llm_provider": "openai",
+    "llm_model": "gpt-5.1",
+    "llm_temperature": 0.1,
+    "llm_max_tokens": 1024,
+    "patterns_dir": "./patterns",
+    "max_sessions": null,
+    "gating_mode": "explain_all",
+    "gating_budget": 1.0
+  },
+  "metrics": {
+    "counts": {
+      "total_sessions": 24,
+      "anomaly_sessions": 24,
+      "explained_sessions": 24,
+      "successful_explanations": 24,
+      "failed_explanations": 0
+    },
+    "verification": {
+      "passed": 24,
+      "failed": 0,
+      "warnings": 24,
+      "pass_rate": 1.0
+    },
+    "signatures": {
+      "unique_count": 11,
+      "distribution": {
+        "FSDATASET__BLOCK_DELETION_METADATA_MISMATCH": 3,
+        "DATANODE__BLOCK_SERVE_EXCEPTION": 7,
+        "DATANODE__SERVE_BLOCK_EXCEPTION": 3,
+        "NAMENODE__EXCESS_REPLICATION": 1,
+        "DATANODE__BLOCK_WRITE_STREAM_READ_FAILURE": 3,
+        "DATANODE__SERVE_BLOCK_EXCEPTION_AND_REDUNDANT_INVALIDATION": 1,
+        "NAMENODE__EXCESS_REPLICATION_INVALID_BLOCK": 1,
+        "DATANODE__SERVE_BLOCK_EXCEPTION_EXCESS_REPLICATION": 2,
+        "NAMENODE__EXCESS_REPLICATION_REDUNDANT_ADD": 1,
+        "DATANODE__SERVE_BLOCK_EXCEPTION_FSDATASET_BLOCKINFO_NOT_FOUND": 1,
+        "NAMENODE__EXCESS_REPLICATION_METADATA_INCONSISTENCY": 1
+      }
+    },
+    "tokens": {
+      "total": 107838,
+      "avg_per_explanation": 4493.25
+    },
+    "latency": {
+      "avg_ms": 5050.762246052424,
+      "p95_ms": 7337.165057659148,
+      "total_llm_ms": 121218.29390525818
+    },
+    "rates": {
+      "trigger_rate": 1.0,
+      "success_rate": 1.0
+    },
+    "total_time_seconds": 719.1294593811035
+  }
+}
