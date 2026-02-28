@@ -539,6 +539,10 @@ class HDFSNormalizer(LogNormalizer):
         "REDUNDANT_ADDSTOREDBLOCK": "NAMENODE",
         "PENDING_REPLICATION_MONITOR_TIMED_OUT": "NAMENODE",
         "PENDING_REPLICATION_TIMEOUT": "NAMENODE",
+        # Structural anomaly tags
+        "INCOMPLETE_PIPELINE": "NAMENODE",
+        "MISSING_ACKNOWLEDGMENT": "DATANODE",
+        "EXCESS_REPLICATION": "NAMENODE",
     }
 
     # Consolidate duplicate error types -> canonical form
@@ -570,6 +574,10 @@ class HDFSNormalizer(LogNormalizer):
         "REDUNDANT_ADDSTOREDBLOCK_REQUEST_RECEIVED": "REDUNDANT_STORED_BLOCK",
         "BLOCK_RECEIVING_FAILED": "BLOCK_RECEIVE_FAILURE",
         "REDUNDANT_ADD_STORED_BLOCK_REQUEST": "REDUNDANT_STORED_BLOCK",
+        # Structural anomaly tags (from structural_summary)
+        "INCOMPLETE_PIPELINE": "INCOMPLETE_PIPELINE",
+        "MISSING_ACKNOWLEDGMENT": "MISSING_ACKNOWLEDGMENT",
+        "EXCESS_REPLICATION": "EXCESS_REPLICATION",
     }
 
     def __init__(self):

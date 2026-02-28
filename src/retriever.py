@@ -172,8 +172,12 @@ class BM25Retriever:
         Returns:
             List of RetrievalHit objects
         """
-        # Join session lines as query
+        # Join session lines as query + append structural summary
+        # so BM25 can match on structural tokens (e.g. INCOMPLETE_PIPELINE)
         query = "\n".join(session.lines)
+        structural = self.normalizer.structural_summary(session)
+        if structural:
+            query = query + "\n" + structural
         
         exclude_ids = [session.session_id] if exclude_self else None
         
@@ -368,8 +372,11 @@ class BM25Retriever:
         Returns:
             List of RetrievalHit objects (anomalies first, then normal)
         """
-        # Join session lines as query
+        # Join session lines as query + append structural summary
         query = "\n".join(session.lines)
+        structural = self.normalizer.structural_summary(session)
+        if structural:
+            query = query + "\n" + structural
         
         exclude_ids = [session.session_id] if exclude_self else None
         

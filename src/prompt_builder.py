@@ -71,9 +71,11 @@ class Signature:
         }
     
     @classmethod
-    def from_dict(cls, d: Dict) -> "Signature":
+    def from_dict(cls, d) -> "Signature":
         if d is None:
             return cls(name="UNKNOWN", matched_evidence_ids=[])
+        if isinstance(d, str):
+            return cls(name=d, matched_evidence_ids=[])
         return cls(
             name=d.get("name", "UNKNOWN"),
             matched_evidence_ids=d.get("matched_evidence_ids", [])
@@ -108,6 +110,27 @@ class TraceExplanation:
     
     @classmethod
     def from_dict(cls, d: Dict) -> "TraceExplanation":
+        # Handle alternate LLM schemas (component/severity/count format)
+        if "prediction" not in d and "component" in d:
+            comp = d.get("component", "UNKNOWN")
+            err_type = d.get("error_type", "unknown_error")
+            count = d.get("count", "?")
+            sig_name = d.get("signature", f"{comp}__{err_type}".upper().replace(" ", "_"))
+            line_nums = d.get("line_numbers", [])
+            span_str = f"{line_nums[0]} to {line_nums[-1]}" if len(line_nums) >= 2 else ", ".join(line_nums)
+            return cls(
+                prediction="anomaly",
+                summary=f"{sig_name}: {count} occurrences at {span_str}",
+                signature=Signature.from_dict(sig_name),
+                claims=[Claim(
+                    type="observation",
+                    claim=f"E0 contains {count} {err_type} events at {span_str}.",
+                    evidence_ids=["E0"],
+                    evidence_spans=line_nums,
+                )],
+                insufficient_evidence=d.get("insufficient_evidence", False),
+            )
+
         signature = None
         if "signature" in d and d["signature"]:
             signature = Signature.from_dict(d["signature"])
@@ -241,11 +264,11 @@ SIGNATURE_EXAMPLES = {
     },
     "HDFS": {
         "examples": [
-            "DATANODE__BLOCK_VERIFICATION_FAILED",
-            "NAMENODE__REPLICATION_INCOMPLETE",
-            "DATANODE__WRITE_PIPELINE_FAILURE",
             "DATANODE__BLOCK_WRITE_FAILURE",
+            "NAMENODE__INCOMPLETE_PIPELINE",
             "DATANODE__BLOCK_RECEIVE_FAILURE",
+            "NAMENODE__REDUNDANT_STORED_BLOCK",
+            "DATANODE__SERVING_EXCEPTION",
         ],
         "description": "Hadoop Distributed File System logs",
         "components": "DATANODE, NAMENODE, FSDATASET, BLOCKSCANNER",
@@ -258,12 +281,47 @@ def get_system_prompt(dataset: str = "BGL") -> str:
     sig_info = SIGNATURE_EXAMPLES.get(dataset.upper(), SIGNATURE_EXAMPLES["BGL"])
     sig_examples = ", ".join(sig_info["examples"][:3])
     
+    # --- HDFS-specific analysis guidance (Phase 2a) ---
+    if dataset.upper() == "HDFS":
+        analysis_guidance = """
+=== HDFS ANOMALY ANALYSIS PROCEDURE ===
+HDFS anomalies fall into two categories. Follow this procedure IN ORDER:
+
+STEP 1 — Scan for EXPLICIT errors:
+  Look for lines containing WARN, ERROR, FATAL, IOException, "exception",
+  "Got exception while serving", "Receiving empty packet", "Redundant
+  addStoredBlock", "BlockInfo not found", "does not belong to any file".
+  If you find ANY such lines, cite THOSE lines as the anomaly evidence.
+  Do NOT cite normal INFO lines (Receiving block, Received block,
+  PacketResponder, writeBlock, allocateBlock) as errors — these are
+  routine HDFS operations that appear in EVERY session.
+
+STEP 2 — If NO explicit errors exist, check the STRUCTURAL line:
+  E0 may end with a "STRUCTURAL:" line showing operation counts and tags
+  like INCOMPLETE_PIPELINE, MISSING_ACKNOWLEDGMENT, EXCESS_REPLICATION.
+  If you see these tags, the anomaly is STRUCTURAL — the block lifecycle
+  is incomplete (e.g. "Receiving block" without a corresponding "Received
+  block").  Explain the structural gap; do NOT fabricate line-level errors.
+
+CRITICAL: Normal HDFS operations you must NEVER call errors:
+  - "Receiving block" (routine start of block transfer)
+  - "Received block" (successful block receipt)
+  - "PacketResponder ... for block ... terminating" (normal close)
+  - "writeBlock ... received exception" is an ERROR — but plain
+    "writeBlock" without exception is normal.
+
+If ALL lines are normal INFO with no structural tags, set
+  "insufficient_evidence": true.
+"""
+    else:
+        analysis_guidance = ""
+    
     return f"""You are an expert log analyst producing forensic, evidence-grounded explanations.
 Your task is to explain WHY a log session is anomalous based on the provided evidence.
 
 DATASET: {sig_info['description']}
 COMPONENTS IN LOGS: {sig_info['components']}
-
+{analysis_guidance}
 EVIDENCE FORMAT:
 - Each evidence block has LINE NUMBERS: E0-L1, E0-L2, E1-L1, E1-L2, etc.
 - [E0] = The query session being analyzed
@@ -321,7 +379,7 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 1. READ the actual [E0] log content - do NOT copy from examples
 2. IDENTIFY component and severity FROM THE LOGS 
 3. CREATE a unique signature that describes THIS specific anomaly
-4. QUANTIFY: count errors, specify line ranges
+4. QUANTIFY: count errors, specify line ranges (L1 to L10 = 10 lines inclusive, not 9)
 5. CITE specific evidence_spans for each claim
 6. RESPECT LINE RANGES: Each evidence block shows its valid range (e.g., "10 lines: E0-L1 to E0-L10"). NEVER reference a line number beyond the stated maximum.
 7. SPAN FORMAT: Each evidence_span string MUST be either a single line "E0-L8" or a range with " to " separator "E0-L5 to E0-L10".  NEVER use bare evidence IDs ("E5"), "E0-L5-E0-L10", "E0-L5/E0-L10", or any other separator.  For contrast claims where normal evidence has NO errors, cite the full range: "E5-L1 to E5-L35".
@@ -375,6 +433,12 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
         # Get evidence type and label from metadata
         evidence_type = hit.metadata.get("evidence_type", "session") if hit.metadata else "session"
         label = hit.metadata.get("label", None) if hit.metadata else None
+        # Label indicates whether this reference evidence is an anomaly
+        # exemplar or a normal session.  This is NOT leakage — labels are
+        # on E1-E5 (reference evidence), not on E0 (query session).
+        # The LLM uses these labels to generate pattern_match claims
+        # (comparing E0 against known anomalies) and contrast claims
+        # (comparing E0 against normal sessions).
         label_str = "anomaly" if label == 1 else "normal" if label == 0 else "unknown"
         
         # Split text into lines first
@@ -402,6 +466,7 @@ def format_query_session_with_lines(
     session_lines: List[str],
     max_chars: int = 6000,
     tail_ratio: float = 0.3,
+    structural_summary: Optional[str] = None,
 ) -> str:
     """Format the query session (E0) with line numbers.
 
@@ -420,6 +485,10 @@ def format_query_session_with_lines(
         tail_ratio: Fraction of the displayable lines reserved for
             the tail section (0.0–0.5). Default 0.3 means 30 % of
             lines come from the end of the session.
+        structural_summary: Optional structural annotation string
+            (e.g. from HDFSNormalizer.structural_summary()).  When
+            provided it is appended after the log lines so the LLM
+            sees the same structural tags that appear in E1-E5.
     """
     total_lines = len(session_lines)
     header = f"({total_lines} lines total, valid span range: E0-L1 to E0-L{total_lines})"
@@ -431,6 +500,8 @@ def format_query_session_with_lines(
         full_output.append(f"E0-L{line_num}: {line}")
 
     if len("\n".join(full_output)) <= max_chars:
+        if structural_summary:
+            full_output.append(structural_summary)
         return "\n".join(full_output)
 
     # --- Truncation needed — use head + tail ------------------
@@ -460,6 +531,8 @@ def format_query_session_with_lines(
         line_num = tail_start + idx + 1
         output.append(f"E0-L{line_num}: {line}")
 
+    if structural_summary:
+        output.append(structural_summary)
     return "\n".join(output)
 
 
@@ -481,7 +554,8 @@ class PromptBuilder:
         tail_ratio: float = 0.3,
         max_chars_per_evidence: int = 500,
         max_evidence_items: int = 5,
-        dataset: str = "BGL"
+        dataset: str = "BGL",
+        normalizer=None,
     ):
         """
         Initialize prompt builder.
@@ -495,12 +569,16 @@ class PromptBuilder:
             max_chars_per_evidence: Max characters per evidence item
             max_evidence_items: Maximum number of evidence items to include
             dataset: Dataset type ("BGL" or "HDFS") for dataset-specific prompts
+            normalizer: Optional LogNormalizer instance for structural
+                summary injection into E0.  When provided, E0 will
+                include the same STRUCTURAL tags that appear in E1-E5.
         """
         self.max_log_chars = max_log_chars
         self.tail_ratio = tail_ratio
         self.max_chars_per_evidence = max_chars_per_evidence
         self.max_evidence_items = max_evidence_items
         self.dataset = dataset.upper()
+        self.normalizer = normalizer
         
         # Get dataset-specific prompts
         self._system_prompt = get_system_prompt(self.dataset)
@@ -523,11 +601,27 @@ class PromptBuilder:
         Returns:
             Tuple of (system_prompt, user_prompt)
         """
+        # Build structural summary (if normalizer available)
+        structural = None
+        if self.normalizer is not None:
+            structural = self.normalizer.structural_summary(session)
+
+        # Normalize E0 lines so they use the same representation as E1-E5.
+        # Only for HDFS: block IDs are true noise that normalization helps.
+        # BGL: normalization is too aggressive (replaces timestamps/IPs with
+        # <NUM> tokens), causing the 8B model to produce a simplified schema.
+        if self.normalizer is not None and self.dataset.upper() == "HDFS":
+            norm_result = self.normalizer.normalize_lines(session.lines)
+            display_lines = norm_result.normalized_text.split("\n")
+        else:
+            display_lines = session.lines
+
         # Format log content WITH LINE NUMBERS (dynamic strategy)
         log_content = format_query_session_with_lines(
-            session.lines,
+            display_lines,
             self.max_log_chars,
             self.tail_ratio,
+            structural_summary=structural,
         )
         
         # Format evidence block
@@ -594,9 +688,16 @@ class ExplanationResult:
     
     def to_dict(self) -> Dict:
         """Convert to dictionary for serialization."""
+        # Extract normalized signature (already canonicalized in-place by pipeline)
+        sig_name = "UNKNOWN"
+        if (self.explanation and self.explanation.signature
+                and self.explanation.signature.name):
+            sig_name = self.explanation.signature.name
+        
         return {
             "session_id": self.session_id,
             "label": self.session.label,  # Ground truth (for analysis only)
+            "normalized_signature": sig_name,
             "screener": self.screener_output.to_dict(),
             "evidence_ids": [h.evidence_id for h in self.evidence_hits],
             "evidence_id_mapping": self.evidence_id_mapping,

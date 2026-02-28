@@ -81,7 +81,21 @@ class Verifier:
     5. Evidence spans are valid (NEW)
     6. Span keyword matches (NEW)
     7. Signature exists (NEW)
+    8. Cited severity check — E0 lines actually contain errors (NEW)
     """
+    
+    # Keywords that indicate a genuine anomaly in log lines
+    SEVERITY_KEYWORDS = [
+        'WARN', 'ERROR', 'FATAL',
+        'exception', 'Exception', 'IOException',
+        'Could not read from stream',
+        'Got exception while serving',
+        'Redundant addStoredBlock',
+        'BlockInfo not found',
+        'does not belong to any file',
+        'Receiving empty packet',
+        'failed', 'FAILED',
+    ]
     
     def __init__(
         self,
@@ -89,7 +103,9 @@ class Verifier:
         require_keyword_match: bool = True,
         min_keyword_match_ratio: float = 0.3,
         require_spans: bool = True,
-        require_signature: bool = True
+        require_signature: bool = True,
+        check_cited_severity: bool = True,
+        dataset: str = "BGL",
     ):
         """
         Initialize verifier.
@@ -100,12 +116,17 @@ class Verifier:
             min_keyword_match_ratio: Minimum keyword match ratio per claim
             require_spans: Whether to require evidence_spans in claims
             require_signature: Whether to require a signature
+            check_cited_severity: Whether to check that cited E0 lines
+                contain genuine error/warning keywords (Phase 3a)
+            dataset: Dataset name (severity check is most useful for HDFS)
         """
         self.min_evidence_coverage = min_evidence_coverage
         self.require_keyword_match = require_keyword_match
         self.min_keyword_match_ratio = min_keyword_match_ratio
         self.require_spans = require_spans
         self.require_signature = require_signature
+        self.check_cited_severity = check_cited_severity
+        self.dataset = dataset.upper()
     
     def verify(
         self,
@@ -151,8 +172,10 @@ class Verifier:
         
         # Check 6: Evidence spans validity (NEW)
         if self.require_spans:
+            e0_lines = len(query_session_text.split("\n")) if query_session_text else 0
             span_issues = self._check_evidence_spans(
-                explanation, evidence_hits, evidence_id_mapping
+                explanation, evidence_hits, evidence_id_mapping,
+                query_session_lines=e0_lines,
             )
             issues.extend(span_issues)
         
@@ -166,6 +189,12 @@ class Verifier:
                 explanation, evidence_hits, evidence_id_mapping, query_session_text
             )
             issues.extend(span_kw_issues)
+        
+        # Check 9: Cited severity — do cited E0 lines actually contain errors? (Phase 3a)
+        if self.check_cited_severity and query_session_text:
+            issues.append(self._check_cited_severity(
+                explanation, query_session_text
+            ))
         
         # Calculate summary
         total = len(issues)
@@ -377,6 +406,9 @@ class Verifier:
         if not span:
             return None, None
 
+        # Coerce to string (LLM sometimes returns int in spans list)
+        span = str(span)
+
         # Handle bare evidence ID like 'E5' (whole-document reference)
         bare_match = re.fullmatch(r'E(\d+)', span.strip())
         if bare_match:
@@ -422,13 +454,17 @@ class Verifier:
         self,
         explanation: TraceExplanation,
         evidence_hits: List[RetrievalHit],
-        evidence_id_mapping: Dict[str, str]
+        evidence_id_mapping: Dict[str, str],
+        query_session_lines: int = 0,
     ) -> List[VerificationIssue]:
         """Check that evidence_spans reference valid lines."""
         issues = []
         
-        # Build line count lookup
-        line_counts = {"E0": 100}  # Assume E0 has up to 100 lines (we don't have it here)
+        # Build line count lookup — use actual E0 line count if available
+        if query_session_lines > 0:
+            line_counts = {"E0": query_session_lines}
+        else:
+            line_counts = {"E0": 100}  # Fallback for backward compatibility
         for i, hit in enumerate(evidence_hits, 1):
             line_counts[f"E{i}"] = len(hit.text.split("\n"))
         
@@ -603,6 +639,108 @@ class Verifier:
         
         return issues
     
+    def _check_cited_severity(
+        self,
+        explanation: TraceExplanation,
+        query_session_text: str,
+    ) -> VerificationIssue:
+        """Check that cited E0 lines contain genuine error/warning keywords.
+
+        This catches the most common HDFS hallucination pattern: the LLM
+        cites normal INFO lines (Receiving block, PacketResponder) as
+        errors.  If EVERY cited E0 line is a plain INFO line with no
+        severity keyword, this check FAILs.
+
+        Returns:
+            VerificationIssue with PASS/FAIL/WARNING status.
+        """
+        e0_lines = query_session_text.split("\n")
+
+        # Collect all cited E0 line numbers from claims
+        cited_line_nums: set[int] = set()
+        for claim in explanation.claims:
+            for span in (claim.evidence_spans or []):
+                span = str(span)  # LLM sometimes returns int
+                eid, line_num = self._parse_span(span)
+                if eid == "E0" and line_num is not None:
+                    cited_line_nums.add(line_num)
+                # Handle ranges like "E0-L5 to E0-L10"
+                if " to " in span:
+                    parts = span.split(" to ")
+                    if len(parts) == 2:
+                        _, start = self._parse_span(parts[0].strip())
+                        _, end = self._parse_span(parts[1].strip())
+                        if start is not None and end is not None:
+                            for n in range(start, end + 1):
+                                cited_line_nums.add(n)
+
+        if not cited_line_nums:
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.WARNING,
+                message="No E0 lines cited — cannot check severity",
+            )
+
+        # Check which cited lines contain severity keywords
+        lines_with_severity = 0
+        lines_checked = 0
+        severity_details: list[dict] = []
+
+        for ln in sorted(cited_line_nums):
+            if 1 <= ln <= len(e0_lines):
+                lines_checked += 1
+                line_text = e0_lines[ln - 1]
+                has_kw = any(kw in line_text for kw in self.SEVERITY_KEYWORDS)
+                if has_kw:
+                    lines_with_severity += 1
+                severity_details.append({
+                    "line": ln,
+                    "has_severity": has_kw,
+                    "snippet": line_text[:80],
+                })
+
+        if lines_checked == 0:
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.WARNING,
+                message="All cited E0 line numbers are out of range",
+                details={"cited": sorted(cited_line_nums), "e0_total": len(e0_lines)},
+            )
+
+        severity_ratio = lines_with_severity / lines_checked
+
+        if severity_ratio == 0.0:
+            # ALL cited lines are normal INFO — classic hallucination
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.FAIL,
+                message=(
+                    f"0/{lines_checked} cited E0 lines contain error/warning keywords "
+                    f"— likely hallucination"
+                ),
+                details={"lines": severity_details},
+            )
+        elif severity_ratio < 0.5:
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.WARNING,
+                message=(
+                    f"Only {lines_with_severity}/{lines_checked} cited E0 lines "
+                    f"contain error/warning keywords"
+                ),
+                details={"lines": severity_details},
+            )
+        else:
+            return VerificationIssue(
+                check_name="cited_severity",
+                status=VerificationStatus.PASS,
+                message=(
+                    f"{lines_with_severity}/{lines_checked} cited E0 lines "
+                    f"contain error/warning keywords"
+                ),
+                details={"lines": severity_details},
+            )
+
     def verify_batch(
         self,
         results: List[ExplanationResult]

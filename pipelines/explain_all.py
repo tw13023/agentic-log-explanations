@@ -268,20 +268,29 @@ class ExplainAllPipeline:
                 save_path=str(evidence_path) if self.config.save_evidence_store else None
             )
         
-        # 4. Retriever
-        print(f"\n[4/6] Building Retriever...")
+        # 4. Normalizer (needed by PromptBuilder and Retriever)
+        self.normalizer = get_normalizer(self.config.dataset)
+        
+        # 5. Signature cards — add BEFORE building BM25 index so cards are searchable
+        self._load_signature_cards()
+        
+        # 6. Retriever — build index AFTER signature cards are in the evidence store
+        print(f"\n[4/7] Building Retriever...")
         self.retriever = Retriever(
             self.evidence_store,
             method=self.config.retriever_method
         )
         self.retriever.build_index()
         
-        # 5. Prompt Builder
-        print(f"\n[5/6] Initializing Prompt Builder...")
-        self.prompt_builder = PromptBuilder()
+        # 7. Prompt Builder (with normalizer for structural summary injection)
+        print(f"\n[5/7] Initializing Prompt Builder...")
+        self.prompt_builder = PromptBuilder(
+            dataset=self.config.dataset,
+            normalizer=self.normalizer,
+        )
         
-        # 6. LLM Client
-        print(f"\n[6/6] Initializing LLM Client...")
+        # 8. LLM Client
+        print(f"\n[6/7] Initializing LLM Client...")
         self.llm_client = LLMClient(
             provider=self.config.llm_provider,
             model=self.config.llm_model,
@@ -291,20 +300,17 @@ class ExplainAllPipeline:
         )
         
         if not self.llm_client.is_available():
-            print(f"  ⚠ WARNING: LLM ({self.config.llm_model}) is not available!")
+            print(f"  [WARN] LLM ({self.config.llm_model}) is not available!")
             print(f"    Start Ollama with: ollama serve")
             print(f"    Pull model with: ollama pull {self.config.llm_model}")
         else:
-            print(f"  ✓ LLM ({self.config.llm_model}) is available")
+            print(f"  [OK] LLM ({self.config.llm_model}) is available")
         
-        # 7. Add data-driven signature cards
-        self._load_signature_cards()
-        
-        # 8. Verifier (min_keyword_match_ratio=0.0 to allow LLM abstractions)
-        self.verifier = Verifier(min_keyword_match_ratio=0.0)
-        
-        # 9. Normalizer (for post-processing LLM signature names)
-        self.normalizer = get_normalizer(self.config.dataset)
+        # 9. Verifier (keyword match at 0.15 — catch pure-hallucination)
+        self.verifier = Verifier(
+            min_keyword_match_ratio=0.15,
+            dataset=self.config.dataset,
+        )
         
         print("\n" + "="*60)
         print("SETUP COMPLETE")
@@ -313,15 +319,19 @@ class ExplainAllPipeline:
         return self
     
     def _load_signature_cards(self) -> None:
-        """Load data-driven patterns from JSON and add as signature cards."""
+        """Load data-driven patterns from JSON and add as signature cards.
+        
+        IMPORTANT: Must be called BEFORE retriever.build_index() so that
+        signature cards are included in the BM25 index and can be retrieved.
+        """
         dataset = self.config.dataset.lower()
         patterns_file = Path(self.config.patterns_dir) / f"{dataset}_patterns.json"
         
         if not patterns_file.exists():
-            print(f"\n[7/7] No patterns file found at {patterns_file} — skipping signature cards")
+            print(f"\n[SIG] No patterns file found at {patterns_file} -- skipping signature cards")
             return
         
-        print(f"\n[7/7] Loading signature cards from {patterns_file}...")
+        print(f"\n[SIG] Loading signature cards from {patterns_file}...")
         with open(patterns_file, 'r') as f:
             patterns = json.load(f)
         for pattern_id, info in patterns.items():
