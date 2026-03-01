@@ -27,6 +27,7 @@ from src.prompt_builder import (PromptBuilder, TraceExplanation, Claim, Signatur
 from src.llm_client import LLMClient, LLMResponse
 from src.verifier import Verifier, VerificationResult
 from src.gating import GatingMode, GatingConfig, gate
+from src.config_loader import load_config, get_llm_kwargs
 
 
 @dataclass
@@ -45,10 +46,10 @@ class PipelineConfig:
     retriever_method: str = "bm25"
     
     # LLM settings
-    llm_provider: str = "ollama"
-    llm_model: str = "llama3.1:8b"
+    llm_provider: str = "openai"
+    llm_model: str = "gpt-5.1"
     llm_temperature: float = 0.1
-    llm_max_tokens: int = 1024
+    llm_max_tokens: int = 2048
     llm_timeout: int = 120
     
     # Patterns (data-driven signature cards)
@@ -66,6 +67,55 @@ class PipelineConfig:
     max_sessions: Optional[int] = None  # None = process all
     session_ids: Optional[List[str]] = None  # Filter to specific session IDs
     
+    @classmethod
+    def from_config(
+        cls,
+        dataset: str,
+        config_path: Optional[str] = None,
+        **overrides,
+    ) -> "PipelineConfig":
+        """Create a PipelineConfig with LLM/RAG settings from configs/config.yaml.
+
+        Args:
+            dataset:     "BGL" or "HDFS"
+            config_path: Override path to config file (default: configs/config.yaml)
+            **overrides: Any PipelineConfig field to override after loading.
+
+        Example:
+            config = PipelineConfig.from_config("BGL")
+            config = PipelineConfig.from_config("HDFS", max_sessions=100)
+        """
+        cfg = load_config(config_path)
+        llm = cfg.get("llm",      {})
+        rag = cfg.get("rag",      {})
+        ds  = cfg.get("datasets", {}).get(dataset.upper(), {})
+
+        dataset_up = dataset.upper()
+        if dataset_up == "BGL":
+            default_log   = "./logs/BGL.log"
+            default_model = "./best_model/best_model_20250724_072857.pth"
+            default_out   = "./results"
+        else:
+            default_log   = "./logs/HDFS.log"
+            default_model = "./best_model_HDFS/best_model_HDFS20250804_201746.pth"
+            default_out   = "./results_HDFS"
+
+        kwargs = dict(
+            dataset=dataset_up,
+            log_file=ds.get("log_file",   default_log),
+            model_path=ds.get("model_path", default_model),
+            output_dir=default_out,
+            llm_provider=llm.get("provider",    "openai"),
+            llm_model=llm.get("model",       "gpt-5.1"),
+            llm_temperature=llm.get("temperature", 0.1),
+            llm_max_tokens=llm.get("max_tokens",  2048),
+            llm_timeout=llm.get("timeout",     120),
+            top_k=rag.get("top_k", 5),
+            retriever_method=rag.get("retriever", "bm25"),
+        )
+        kwargs.update(overrides)
+        return cls(**kwargs)
+
     def to_dict(self) -> Dict:
         return {
             "dataset": self.dataset,
@@ -302,8 +352,11 @@ class ExplainAllPipeline:
         
         if not self.llm_client.is_available():
             print(f"  [WARN] LLM ({self.config.llm_model}) is not available!")
-            print(f"    Start Ollama with: ollama serve")
-            print(f"    Pull model with: ollama pull {self.config.llm_model}")
+            if self.config.llm_provider == "ollama":
+                print(f"    Start Ollama with: ollama serve")
+                print(f"    Pull model with: ollama pull {self.config.llm_model}")
+            else:
+                print(f"    Check API key and network connectivity for provider: {self.config.llm_provider}")
         else:
             print(f"  [OK] LLM ({self.config.llm_model}) is available")
         
@@ -600,44 +653,28 @@ Pattern Characteristics:
 def run_explain_all_pipeline(
     dataset: str = "BGL",
     max_sessions: Optional[int] = None,
-    llm_model: str = "llama3.1:8b"
+    config_path: Optional[str] = None,
 ) -> ExplainAllPipeline:
     """
     Convenience function to run the Explain-All pipeline.
-    
+    LLM settings are read from configs/config.yaml (llm.provider, llm.model, ...).
+    To switch models, edit configs/config.yaml instead of changing code.
+
     Args:
-        dataset: "BGL" or "HDFS"
+        dataset:      "BGL" or "HDFS"
         max_sessions: Limit number of test sessions (for testing)
-        llm_model: Ollama model to use
-        
+        config_path:  Override path to config file (default: configs/config.yaml)
+
     Returns:
         Completed pipeline object
     """
-    # Set paths based on dataset
-    if dataset.upper() == "BGL":
-        config = PipelineConfig(
-            dataset="BGL",
-            log_file="./logs/BGL.log",
-            model_path="./best_model/best_model_20250724_072857.pth",
-            llm_model=llm_model,
-            max_sessions=max_sessions,
-            output_dir="./results",
-        )
-    else:
-        config = PipelineConfig(
-            dataset="HDFS",
-            log_file="./logs/HDFS.log",
-            model_path="./best_model_HDFS/best_model_HDFS20250804_201746.pth",
-            llm_model=llm_model,
-            max_sessions=max_sessions,
-            output_dir="./results_HDFS",
-        )
-    
+    config = PipelineConfig.from_config(
+        dataset, config_path=config_path, max_sessions=max_sessions
+    )
     pipeline = ExplainAllPipeline(config)
     pipeline.setup()
     pipeline.run()
     pipeline.save_results()
-    
     return pipeline
 
 
@@ -647,12 +684,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Explain-All Pipeline")
     parser.add_argument("--dataset", type=str, default="BGL", choices=["BGL", "HDFS"])
     parser.add_argument("--max-sessions", type=int, default=None, help="Limit test sessions")
-    parser.add_argument("--llm-model", type=str, default="llama3.1:8b", help="Ollama model")
-    
+    parser.add_argument("--config", type=str, default=None,
+                        help="Path to config.yaml (default: configs/config.yaml)")
+
     args = parser.parse_args()
-    
+
     run_explain_all_pipeline(
         dataset=args.dataset,
         max_sessions=args.max_sessions,
-        llm_model=args.llm_model
+        config_path=args.config,
     )
