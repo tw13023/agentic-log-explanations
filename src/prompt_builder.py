@@ -387,6 +387,7 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
 9. evidence_spans MUST NOT be empty — every claim MUST cite at least one span in E<n>-L<line> format.
 10. You MUST output exactly 3 claims: one "observation", one "pattern_match", one "contrast".  Do NOT omit any claim type.
 11. Your claim text MUST include keywords that actually appear in the cited evidence lines (e.g., if E0-L8 says "Got exception while serving", your claim must mention "exception" or "serving").
+12. NEVER use placeholder line numbers such as "Lx", "L?", "L??", or "Lnn".  Every span MUST have a concrete numeric line number (e.g., "E1-L3").  If you cannot determine the exact line, OMIT that span entirely rather than guessing.
 
 SCOPE: You produce forensic explanations only. Do NOT infer root causes or remediation."""
 
