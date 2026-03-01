@@ -1,0 +1,67 @@
+{
+  "config": {
+    "dataset": "HDFS",
+    "log_file": "./logs/HDFS.log",
+    "model_path": "./best_model_HDFS/best_model_HDFS20250804_201746.pth",
+    "top_k": 5,
+    "top_k_anomaly": 4,
+    "top_k_normal": 1,
+    "use_mixed_retrieval": true,
+    "retriever_method": "bm25",
+    "llm_provider": "openai",
+    "llm_model": "gpt-4.1-mini",
+    "llm_temperature": 0.1,
+    "llm_max_tokens": 1024,
+    "patterns_dir": "./patterns",
+    "max_sessions": null,
+    "gating_mode": "explain_all",
+    "gating_budget": 1.0
+  },
+  "metrics": {
+    "counts": {
+      "total_sessions": 24,
+      "anomaly_sessions": 24,
+      "explained_sessions": 24,
+      "successful_explanations": 24,
+      "failed_explanations": 0
+    },
+    "verification": {
+      "passed": 22,
+      "failed": 2,
+      "warnings": 24,
+      "pass_rate": 0.9166666666666666
+    },
+    "signatures": {
+      "unique_count": 13,
+      "distribution": {
+        "FSDATASET__BLOCK_DELETION_ERROR": 1,
+        "DATANODE__BLOCK_SERVE_EXCEPTION": 8,
+        "DATANODE__EXCEPTION_WHILE_SERVING": 3,
+        "DATANODE__BLOCK_DELETION_FAILURE": 2,
+        "NAMENODE__PENDING_REPLICATION_TIMEOUT": 1,
+        "DATANODE__WRITE_PIPELINE_FAILURE": 2,
+        "DATANODE__EXCEPTION": 1,
+        "NAMENODE__BLOCK_BELONGS_TO_NO_FILE": 1,
+        "DATANODE__WRITEBLOCK_FAILURE": 1,
+        "DATANODE__EXCEPTION_DURING_BLOCK_SERVING": 1,
+        "NAMENODE__REDUNDANT_STORED_BLOCK": 1,
+        "DATANODE__DATA_XCEIVER_GOT_EXCEPTION": 1,
+        "NAMENODE__BLOCKMAP_INCONSISTENCY": 1
+      }
+    },
+    "tokens": {
+      "total": 102381,
+      "avg_per_explanation": 4265.875
+    },
+    "latency": {
+      "avg_ms": 5430.766612291336,
+      "p95_ms": 7597.840952873229,
+      "total_llm_ms": 130338.39869499207
+    },
+    "rates": {
+      "trigger_rate": 1.0,
+      "success_rate": 1.0
+    },
+    "total_time_seconds": 704.2758705615997
+  }
+}

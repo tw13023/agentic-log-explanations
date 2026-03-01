@@ -1,0 +1,48 @@
+[
+  {
+    "model": "gpt-4.1-mini",
+    "tag": "gpt-4p1-mini",
+    "timestamp": "20260301_075207",
+    "avg_C": 4.333333333333333,
+    "avg_Co": 5.0,
+    "avg_E": 4.916666666666667,
+    "pct_Y": 100.0,
+    "verif_pass": 22,
+    "verif_total": 24,
+    "verif_rate": 91.66666666666666,
+    "avg_latency_ms": 5430.766612291336,
+    "total_tokens": 102381,
+    "cat_stats": {
+      "A-empty_claims": {
+        "n": 7,
+        "C": 4.5,
+        "Co": 5.0,
+        "E": 5.0,
+        "verif_fail": 0
+      },
+      "B-empty_spans": {
+        "n": 3,
+        "C": 4.5,
+        "Co": 5.0,
+        "E": 5.0,
+        "verif_fail": 0
+      },
+      "C-STRUCTURAL": {
+        "n": 8,
+        "C": 4.25,
+        "Co": 5.0,
+        "E": 4.875,
+        "verif_fail": 1
+      },
+      "D-keyword": {
+        "n": 6,
+        "C": 4.166666666666667,
+        "Co": 5.0,
+        "E": 4.833333333333333,
+        "verif_fail": 1
+      }
+    },
+    "results_file": "results_HDFS/model_cmp_gpt-4p1-mini_20260301_075207.jsonl",
+    "eval_file": "results_HDFS/model_cmp_gpt-4p1-mini_20260301_075207_eval.json"
+  }
+]
