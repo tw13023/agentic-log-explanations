@@ -38,6 +38,9 @@ Thumbs.db
 results/test_run/evidence_store_BGL.json
 results/explanations/evidence_store_*.json
 
+# Project description / design docs (local only)
+project-description/
+
 # Results (regeneratable)
 results/*.jsonl
 results/*.metrics.json
