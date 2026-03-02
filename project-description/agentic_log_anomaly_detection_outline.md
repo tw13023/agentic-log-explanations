@@ -12,9 +12,12 @@
 ---
 
 ## 二、研究問題（Research Questions）
-- **RQ1（Traceable Explanation）**：在維持高偵測效能下，能否為異常 session 產出「可追溯、可驗證」的解釋？
-- **RQ2（Evidence-grounded Faithfulness）**：透過檢索證據（RAG）+ 結構化輸出，能否提升解釋可信度、降低幻覺？
-- **RQ3（Cost-Aware Trade-off）**：在固定 LLM 預算下（觸發率/成本限制），不同 gating 策略如何影響解釋品質與成本？
+
+- **RQ1（Traceable Explanation Quality）**: To what extent can the Screener–Reasoner framework produce traceable, evidence-grounded explanations for anomalous log sessions, as measured by structured output compliance, evidence citation coverage, and human-evaluated explanation quality?
+
+- **RQ2（RAG Contribution to Explanation Faithfulness）**: How does retrieval-augmented evidence grounding affect the faithfulness and groundedness of LLM-generated anomaly explanations compared to a no-retrieval baseline, and to what degree does structured output enforcement reduce unsupported claims?
+
+- **RQ3（Cost-Quality Trade-off under Confidence-Based Gating）**: Under a fixed LLM inference budget, how do confidence-based gating strategies affect the trade-off between explanation coverage, per-session quality, and operational cost, as measured by trigger rate, token consumption, and explanation quality metrics?
 
 ---
 
@@ -68,25 +71,35 @@
 ---
 
 ## 七、評估指標（不只 F1）
-### 7.1 Detection（基本盤）
-- F1 / Precision / Recall（Screener）
 
-### 7.2 Explanation Quality（核心貢獻）
-- **Evidence coverage**：claim 是否都有 evidence id（目標接近 100%）
-- **Faithfulness / support rate**：claim 是否被 evidence 支持（抽樣人工或規則檢查）
+### 7.1 Detection Performance（addresses RQ1 baseline）
+- F1 / Precision / Recall（Screener, reported on BGL and HDFS test sets）
 
-### 7.3 Cost & Latency（agentic/cost-aware 必備）
-- Trigger rate（解釋觸發率）
-- Avg tokens per explained session
-- Avg / P95 latency
-- Top-k 對成本與品質的影響（ablation）
+### 7.2 Explanation Quality（addresses RQ1 & RQ2）
+- **Structured output compliance rate**: percentage of sessions with valid JSON output matching the trace schema
+- **Verification pass rate**: percentage of explanations passing all automated verifier checks (evidence span validity, claim grounding, signature consistency)
+- **Evidence citation coverage**: fraction of claims that cite at least one valid evidence ID
+- **Human evaluation score**: Likert-scale ratings for correctness, faithfulness, and usefulness (sampled subset)
+- **RAG ablation — faithfulness delta**: difference in verification pass rate and citation coverage between RAG-on and no-retrieval conditions (addresses RQ2)
+
+### 7.3 Cost & Latency（addresses RQ3）
+- Trigger rate: fraction of sessions that receive LLM explanation under a given gating budget
+- Token consumption: total and average tokens per explained session
+- Avg / P95 latency per session
+- Cost-quality Pareto curve: explanation quality vs. token budget across gating thresholds
+- Unique signature yield: number of distinct anomaly signatures discovered at each budget level
 
 ---
 
 ## 八、論文貢獻點（Contributions）
-- 提出以 AllLinLog 為 Screener、LLM 為 Reasoner 的混合式流程，聚焦於「可追溯解釋」而非再追 F1。
-- 建立 evidence-grounded explanation：RAG + trace schema，使解釋可追溯、可驗證。
-- 提出 cost-aware 的 gating 實驗設計（Explain-All baseline + Budgeted Explain），量化成本–品質權衡。
+
+1. **Screener–Reasoner framework** — We propose a hybrid pipeline that decouples anomaly *detection* (AllLinLog linear self-attention screener) from anomaly *explanation* (LLM reasoner), preserving near-perfect detection performance (BGL F1 ≈ 0.999, HDFS F1 ≈ 0.997) while enabling post-hoc traceable explanations. *(answers RQ1)*
+
+2. **Evidence-grounded explanation with automated verification** — We introduce a RAG-backed trace schema that requires every LLM-generated claim to cite specific evidence IDs, and an automated multi-check verifier that enforces grounding at scale. Ablation experiments quantify the faithfulness gain of retrieval augmentation over a no-retrieval baseline. *(answers RQ2)*
+
+3. **Cost-aware gating and cost-quality trade-off analysis** — We evaluate a confidence-based gating strategy (logit-margin gating) against an explain-all baseline, producing a cost-quality Pareto analysis that guides practitioners in balancing operational LLM cost against explanation coverage and quality. *(answers RQ3)*
+
+4. **Large-scale empirical evaluation** — We report full-dataset explanation results on BGL (6,295 anomaly sessions) and HDFS (full test set), including token cost, latency distribution, and a taxonomy of 360+ automatically discovered anomaly signatures.
 
 ---
 
