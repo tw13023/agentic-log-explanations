@@ -85,8 +85,9 @@ class Verifier:
     """
     
     # Keywords that indicate a genuine anomaly in log lines
+    # Note: 'SEVERE' covers BGL-format "HARDWARE SEVERE" / "KERNEL SEVERE" entries
     SEVERITY_KEYWORDS = [
-        'WARN', 'ERROR', 'FATAL',
+        'WARN', 'ERROR', 'FATAL', 'SEVERE',
         'exception', 'Exception', 'IOException',
         'Could not read from stream',
         'Got exception while serving',
