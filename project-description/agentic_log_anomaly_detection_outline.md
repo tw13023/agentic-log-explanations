@@ -4,10 +4,21 @@
 
 ---
 
-## 一、研究動機與定位
-- **既有成果**：AllLinLog（Linear Self-Attention Screener）在 BGL/HDFS 上偵測效能接近飽和（BGL≈0.999、HDFS≈0.997）。
-- **新瓶頸**：accuracy 飽和後，實務痛點轉為「**為什麼異常**、**能否信任**、**能否追溯**」。
-- **研究目標**：本研究不以提升 F1 為主，而是提供 **可追溯、可驗證的異常解釋**，並量化其成本/延遲影響。
+## 一、研究動機與定位（Introduction Arguments）
+
+### Problem Context
+Modern large-scale computing systems generate massive volumes of runtime logs that serve as the primary diagnostic record for system health and failure events. Automated log-based anomaly detection has emerged as a critical component of AIOps pipelines, enabling operators to surface abnormal behavior without manual inspection of millions of log lines. Recent neural approaches, including log-parsing-free and self-attention-based methods, have pushed detection accuracy to near-ceiling levels on established benchmarks: AllLinLog, a linear self-attention screener, achieves F1 ≈ 0.999 on BGL and F1 ≈ 0.997 on HDFS, leaving little room for further improvement in binary classification performance.
+
+### The Explainability Gap
+Despite these advances, state-of-the-art anomaly detectors remain fundamentally opaque: they identify *that* an anomaly occurred, but provide no account of *why* it occurred, *which* log evidence supports the decision, or *how* the incident relates to previously observed failure patterns. In operational practice, this opacity forces site reliability engineers to re-examine raw logs manually after every alert, negating much of the productivity gain promised by automated detection. Furthermore, without a traceable justification, anomaly alerts are difficult to audit, challenge in incident post-mortems, or feed into downstream root-cause analysis pipelines. As detection accuracy approaches saturation, the central bottleneck shifts from *Can the system detect anomalies?* to *Can the system explain them in a trustworthy and actionable way?*
+
+### Limitations of Existing Explanation Approaches
+Prior work on log explanation either relies on template-based summarization—which lacks semantic depth and fails on novel log patterns—or applies general-purpose LLMs without grounding outputs in concrete log evidence, making explanations susceptible to hallucination and unverifiable in production settings. Neither line of work provides a mechanism to (i) anchor every explanatory claim to specific, retrievable log evidence, (ii) enforce a structured, machine-verifiable output format, or (iii) operate within a controllable inference cost envelope.
+
+### Our Approach and Positioning
+This paper proposes the **Screener–Reasoner** framework, a two-stage hybrid pipeline that decouples anomaly *detection* from anomaly *explanation*. The Screener (AllLinLog) performs efficient, high-accuracy session-level classification across all incoming log sessions. The Reasoner, an LLM augmented with retrieval from a training-set evidence store, is invoked selectively on flagged anomalies to produce structured, evidence-grounded explanations in which every claim cites verifiable evidence spans. A confidence-based gating mechanism further controls when the Reasoner is engaged, enabling cost-quality trade-off analysis under realistic operational budgets.
+
+The goal of this work is therefore **not** to improve detection F1—a metric already near saturation—but to establish that anomaly detection systems can be augmented to produce traceable, verifiable explanations at scale, and to quantify the conditions under which such explanations are faithful, cost-effective, and practically deployable.
 
 ---
 
