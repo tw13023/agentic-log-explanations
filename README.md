@@ -197,6 +197,25 @@ Each anomaly explanation is a structured JSON trace:
 
 ## Results
 
+### Human Evaluation — GPT-5.1 (2026-03-04)
+
+Manual evaluation of 100 sampled sessions per dataset on four dimensions: Correctness, Completeness, Evidence Grounding (Likert 1–5), and Actionable (Y/N). Stratified by signature to ensure coverage. Evaluated in `notebooks/09_human_evaluation.ipynb`.
+
+**HDFS (100/100 complete):**
+
+| Dimension | Mean | Std | Distribution |
+|-----------|------|-----|--------------|
+| Correctness | 4.99 | 0.10 | 4:1, 5:99 |
+| Completeness | 4.99 | 0.10 | 4:1, 5:99 |
+| Evidence Grounding | 4.04 | 0.45 | 3:8, 4:80, 5:12 |
+| Actionable | 100% | — | Y:100 |
+
+Evidence grounding scores were slightly lower than correctness and completeness. The gap arises because each reference evidence document carries a compact outcome label (e.g., `exceptions=0`, `NORMAL_FLOW`) but does not enumerate which log operations occurred. The model occasionally treated a "normal outcome" label as proof that certain operations were absent from the reference session, whereas those operations were actually present — they simply completed without error. This led to contrast claims that were directionally correct but overstated at the event level.
+
+**BGL (0/100 — in progress):** Evaluation begins 2026-03-05.
+
+---
+
 ### BGL Full Pipeline Run (2026-02-02)
 
 | Metric | Value |
