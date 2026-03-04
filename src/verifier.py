@@ -664,20 +664,31 @@ class Verifier:
         e0_lines = query_session_text.split("\n")
 
         # --- Structural-anomaly bypass ---
-        # If the entire session has NO severity keywords at all, the
-        # anomaly is purely structural (e.g. INCOMPLETE_PIPELINE).
+        # If every line that contains a severity keyword is still at
+        # INFO level, the anomaly is structural (e.g. INCOMPLETE_PIPELINE,
+        # excess-replication deletion with "Receiving empty packet").
         # Severity check is meaningless here — skip it.
-        session_has_any_severity = any(
-            any(kw in line for kw in self.SEVERITY_KEYWORDS)
-            for line in e0_lines
-        )
-        if not session_has_any_severity:
+        #
+        # Note: we check for *non-INFO* severity lines.  A SEVERITY_KEYWORD
+        # that appears only inside an INFO-level message (e.g.
+        # "Receiving empty packet") is a structural signal, not a genuine
+        # error/warning, so the bypass still applies.
+        severity_lines = [
+            line for line in e0_lines
+            if any(kw in line for kw in self.SEVERITY_KEYWORDS)
+        ]
+        non_info_severity_lines = [
+            line for line in severity_lines
+            if " INFO " not in line
+        ]
+        session_has_real_severity = bool(non_info_severity_lines)
+        if not session_has_real_severity:
             return VerificationIssue(
                 check_name="cited_severity",
                 status=VerificationStatus.PASS,
                 message=(
-                    "Structural anomaly — session contains no severity "
-                    "keywords; severity check not applicable"
+                    "Structural anomaly — all severity keywords appear in "
+                    "INFO-level lines; severity check not applicable"
                 ),
             )
 
