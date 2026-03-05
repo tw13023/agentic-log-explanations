@@ -1,0 +1,30 @@
+{
+  "prediction": "anomaly",
+  "summary": "KERNEL__DATA_STORAGE_INTERRUPT: 10 clustered 'data storage interrupt'
+    FATAL kernel events across multiple J-nodes at E0-L1 to E0-L10.",
+  "signature": {
+    "name": "KERNEL__DATA_STORAGE_INTERRUPT",
+    "matched_evidence_ids": ["E1", "E2", "E3", "E4"]
+  },
+  "claims": [
+    {
+      "type": "observation",
+      "claim": "E0 contains 10 KERNEL FATAL 'data storage interrupt' records
+        spanning nodes J14-U11 to J04-U01 at lines E0-L1 to E0-L10.",
+      "evidence_spans": ["E0-L1 to E0-L10"]
+    },
+    {
+      "type": "pattern_match",
+      "claim": "Pattern 'RAS KERNEL FATAL data storage interrupt' in E0 matches
+        signature KERNEL__DATA_STORAGE_INTERRUPT also seen in E1 and E2.",
+      "evidence_spans": ["E0-L1 to E0-L4", "E1-L1 to E1-L4", "E2-L1 to E2-L4"]
+    },
+    {
+      "type": "contrast",
+      "claim": "E0 has 'data storage interrupt' at E0-L1 to E0-L10; E5 shows
+        'data store interrupt caused by icbi' and lacks the exact wording.",
+      "evidence_spans": ["E0-L1 to E0-L10", "E5-L1 to E5-L4"]
+    }
+  ],
+  "insufficient_evidence": false
+}

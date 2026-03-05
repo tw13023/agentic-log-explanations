@@ -212,7 +212,24 @@ Manual evaluation of 100 sampled sessions per dataset on four dimensions: Correc
 
 Evidence grounding scores were slightly lower than correctness and completeness. The gap arises because each reference evidence document carries a compact outcome label (e.g., `exceptions=0`, `NORMAL_FLOW`) but does not enumerate which log operations occurred. The model occasionally treated a "normal outcome" label as proof that certain operations were absent from the reference session, whereas those operations were actually present — they simply completed without error. This led to contrast claims that were directionally correct but overstated at the event level.
 
-**BGL (0/100 — in progress):** Evaluation begins 2026-03-05.
+**BGL (100/100 complete):**
+
+| Dimension | Mean | Std | Distribution |
+|-----------|------|-----|--------------|
+| Correctness | 4.99 | 0.10 | 4:1, 5:99 |
+| Completeness | 5.00 | 0.00 | 5:100 |
+| Evidence Grounding | 4.80 | 0.40 | 4:20, 5:80 |
+| Actionable | 100% | — | Y:100 |
+
+BGL achieved higher evidence grounding than HDFS (4.80 vs 4.04). The 20 E=4 cases all involved contrast claims (Claim 3) mischaracterizing evidence session E5 — typically overstating differences between the anomalous session and normal exemplars. Three error patterns: (A) E5 content mischaracterization (n=12), (B) line count errors in prose (n=5), (C) logical contradictions between claims (n=3). All 20 cases scored 4, none scored ≤3.
+
+**Overall (200 sessions):**
+
+| Dataset | n | Correctness | Completeness | Evid. Grounding | Actionable |
+|---------|:---:|:---:|:---:|:---:|:---:|
+| BGL | 100 | 4.99 ± 0.10 | 5.00 ± 0.00 | 4.80 ± 0.40 | 100% |
+| HDFS | 100 | 4.99 ± 0.10 | 4.99 ± 0.10 | 4.04 ± 0.45 | 100% |
+| Overall | 200 | 4.99 ± 0.10 | 5.00 ± 0.07 | 4.42 ± 0.57 | 100% |
 
 ---
 
