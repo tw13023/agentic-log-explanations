@@ -1,5 +1,5 @@
 {
-  "timestamp": "20260306_224752",
+  "timestamp": "20260307_074721",
   "research_question": "RQ3: Cost-Quality Trade-off Under Confidence-Based Gating",
   "data_sources": {
     "BGL": "/home/dave/agentic-log-explanations/results/explanations_BGL_20260301_112519.jsonl",
@@ -14,7 +14,7 @@
     1.0
   ],
   "strategies": [
-    "Oracle",
+    "Upper Bound",
     "Uncertainty",
     "Novelty",
     "Combined",
@@ -174,7 +174,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3444621091679915,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.1,
       "dataset": "BGL"
     },
@@ -330,7 +330,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3394228223457771,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.2,
       "dataset": "BGL"
     },
@@ -486,7 +486,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3382768361581921,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.3,
       "dataset": "BGL"
     },
@@ -642,7 +642,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.33778201461709567,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.5,
       "dataset": "BGL"
     },
@@ -798,7 +798,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.33771093694838666,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.75,
       "dataset": "BGL"
     },
@@ -954,7 +954,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.33762245168122845,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 1.0,
       "dataset": "BGL"
     },
@@ -1110,7 +1110,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.32539682539682535,
       "insufficient_evidence_rate": 0.003968253968253968,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.1,
       "dataset": "HDFS"
     },
@@ -1266,7 +1266,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.32673267326732675,
       "insufficient_evidence_rate": 0.0019801980198019802,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.2,
       "dataset": "HDFS"
     },
@@ -1422,7 +1422,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3232189973614776,
       "insufficient_evidence_rate": 0.0013192612137203166,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.3,
       "dataset": "HDFS"
     },
@@ -1578,7 +1578,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3227764581683822,
       "insufficient_evidence_rate": 0.000791765637371338,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.5,
       "dataset": "HDFS"
     },
@@ -1734,7 +1734,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.3218997361477572,
       "insufficient_evidence_rate": 0.0005277044854881266,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 0.75,
       "dataset": "HDFS"
     },
@@ -1890,7 +1890,7 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.320670096293365,
       "insufficient_evidence_rate": 0.0003957261574990107,
-      "strategy": "Oracle",
+      "strategy": "Upper Bound",
       "budget": 1.0,
       "dataset": "HDFS"
     }
