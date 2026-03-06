@@ -1,0 +1,41 @@
+{
+  "phase0": {
+    "dataset": "HDFS",
+    "n_sessions": 2527,
+    "faithfulness_mean": 1.0,
+    "faithfulness_std": 0.0,
+    "faithfulness_median": 1.0,
+    "faithfulness_perfect_rate": 1.0,
+    "context_precision_at_4_mean": 0.9537000395726157,
+    "context_precision_at_4_std": 0.20859997628055374,
+    "evidence_utilization": 0.43826671943015433,
+    "verification_pass_rate": 0.998417095370004
+  },
+  "phase1": {
+    "train_corpus_size": 402542,
+    "whole_corpus_size": 575061,
+    "n_compared": 100,
+    "anomaly_overlap_mean": 3.47,
+    "anomaly_overlap_rate": 0.8675,
+    "top1_anomaly_match_rate": 0.86,
+    "e5_normal_match_rate": 0.91,
+    "new_docs_in_top4_mean": 0.31
+  },
+  "phase2": {
+    "n_sampled": 300,
+    "n_matched": 299,
+    "n_signatures": 168,
+    "total_cost_usd": 2.7797019999999986,
+    "rag_on_faithfulness": 1.0,
+    "no_rag_faithfulness": 1.0,
+    "faithfulness_delta": 0.0,
+    "rag_on_grounding_breadth": 0.6577480490523968,
+    "no_rag_grounding_breadth": 0.0,
+    "grounding_breadth_delta": 0.6577480490523968,
+    "no_rag_claims_per_session": 3.0,
+    "rag_on_claims_per_session": 3.0,
+    "no_rag_insufficient_evidence": 2,
+    "no_rag_phantom_citations": 0,
+    "no_rag_e0_only_claims": 897
+  }
+}
