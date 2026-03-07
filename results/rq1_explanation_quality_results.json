@@ -1,0 +1,100 @@
+{
+  "rq": "RQ1",
+  "title": "Traceable Explanation Quality",
+  "model": "GPT-5.1",
+  "screener": {
+    "BGL": {
+      "test_sessions": 71220,
+      "normal_p": 0.99979,
+      "normal_r": 0.99985,
+      "normal_f1": 0.99982,
+      "anomaly_p": 0.99829,
+      "anomaly_r": 0.99761,
+      "anomaly_f1": 0.99795,
+      "accuracy": 0.99966,
+      "macro_f1": 0.99888,
+      "weighted_f1": 0.99966,
+      "TP": 5840,
+      "TN": 65356,
+      "FP": 10,
+      "FN": 14
+    },
+    "HDFS": {
+      "test_sessions": 86260,
+      "normal_p": 0.99952,
+      "normal_r": 0.99992,
+      "normal_f1": 0.99972,
+      "anomaly_p": 0.99719,
+      "anomaly_r": 0.98416,
+      "anomaly_f1": 0.99064,
+      "accuracy": 0.99946,
+      "macro_f1": 0.99518,
+      "weighted_f1": 0.99945,
+      "TP": 2486,
+      "TN": 83727,
+      "FP": 7,
+      "FN": 40
+    }
+  },
+  "pipeline": {
+    "BGL": {
+      "anomalies_explained": 6295,
+      "verification_pass_rate": 1.0,
+      "unique_signatures": 360,
+      "singleton_rate": 0.575,
+      "avg_tokens": 3990.0702144559173,
+      "avg_latency_ms": 5768.582712761271,
+      "p95_latency_ms": 9597.402262687683
+    },
+    "HDFS": {
+      "anomalies_explained": 2527,
+      "verification_pass_rate": 0.998417095370004,
+      "unique_signatures": 168,
+      "singleton_rate": 0.43452380952380953,
+      "avg_tokens": 4340.495449149189,
+      "avg_latency_ms": 8159.248319217514,
+      "p95_latency_ms": 13810.595917701721
+    }
+  },
+  "human_eval": {
+    "BGL": {
+      "n": 100,
+      "correctness": {
+        "mean": 4.99,
+        "std": 0.09949874371066199
+      },
+      "completeness": {
+        "mean": 5.0,
+        "std": 0.0
+      },
+      "evidence_grounding": {
+        "mean": 4.8,
+        "std": 0.39999999999999997
+      },
+      "actionable_pct": 100.0
+    },
+    "HDFS": {
+      "n": 100,
+      "correctness": {
+        "mean": 4.99,
+        "std": 0.09949874371066199
+      },
+      "completeness": {
+        "mean": 4.99,
+        "std": 0.09949874371066199
+      },
+      "evidence_grounding": {
+        "mean": 4.04,
+        "std": 0.44542114902640173
+      },
+      "actionable_pct": 100.0
+    }
+  },
+  "key_findings": [
+    "100% structured output compliance across 8,822 sessions",
+    "Verification pass: BGL 100%, HDFS 99.84%",
+    "360 BGL + 168 HDFS unique anomaly signatures (Zipf distribution)",
+    "Human eval: Correctness 4.99/5, Completeness 5.00/5, Actionable 100%",
+    "Evidence Grounding: BGL 4.80 vs HDFS 4.04 (gap from compact HDFS evidence)"
+  ]
+}
