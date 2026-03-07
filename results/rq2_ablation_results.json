@@ -1,5 +1,5 @@
 {
-  "timestamp": "20260307_105955",
+  "timestamp": "20260307_115206",
   "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
   "revision_note": "Reframed from faithfulness (trivially 1.0) to grounding breadth as discriminating metric. Faithfulness retained as control metric confirming verifier effectiveness.",
   "key_finding": "RAG enables ~67% of claims to cite external anomaly patterns (E1-E4). Without RAG, 0% -- claims can only self-reference query session (E0).",
@@ -27,7 +27,7 @@
   "phase2": {
     "n_sampled": 369,
     "n_signatures": 360,
-    "total_cost_usd": 3.1229339999999963,
+    "total_cost_usd": 3.0487419999999985,
     "rag_on_faithfulness": 1.0,
     "no_rag_faithfulness": 1.0,
     "faithfulness_delta": 0.0,
@@ -36,8 +36,8 @@
     "grounding_breadth_delta": 0.6657633242999097,
     "no_rag_claims_per_session": 3.0,
     "rag_on_claims_per_session": 3.0,
-    "no_rag_insufficient_evidence": 7,
-    "no_rag_phantom_citations": 1,
-    "no_rag_e0_only_claims": 1106
+    "no_rag_insufficient_evidence": 4,
+    "no_rag_phantom_citations": 2,
+    "no_rag_e0_only_claims": 1105
   }
 }

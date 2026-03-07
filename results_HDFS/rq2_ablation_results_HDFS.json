@@ -1,5 +1,5 @@
 {
-  "timestamp": "20260307_110014",
+  "timestamp": "20260307_130652",
   "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
   "revision_note": "Reframed from faithfulness to grounding breadth as discriminating metric.",
   "phase0": {
@@ -25,19 +25,19 @@
   },
   "phase2": {
     "n_sampled": 300,
-    "n_matched": 299,
+    "n_matched": 300,
     "n_signatures": 168,
-    "total_cost_usd": 2.7797019999999986,
+    "total_cost_usd": 2.812598,
     "rag_on_faithfulness": 1.0,
     "no_rag_faithfulness": 1.0,
     "faithfulness_delta": 0.0,
-    "rag_on_grounding_breadth": 0.6577480490523968,
+    "rag_on_grounding_breadth": 0.6577777777777777,
     "no_rag_grounding_breadth": 0.0,
-    "grounding_breadth_delta": 0.6577480490523968,
+    "grounding_breadth_delta": 0.6577777777777777,
     "no_rag_claims_per_session": 3.0,
     "rag_on_claims_per_session": 3.0,
-    "no_rag_insufficient_evidence": 2,
+    "no_rag_insufficient_evidence": 1,
     "no_rag_phantom_citations": 0,
-    "no_rag_e0_only_claims": 897
+    "no_rag_e0_only_claims": 900
   }
 }
