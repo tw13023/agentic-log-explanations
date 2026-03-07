@@ -1,10 +1,13 @@
 {
+  "timestamp": "20260307_105955",
+  "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
+  "revision_note": "Reframed from faithfulness (trivially 1.0) to grounding breadth as discriminating metric. Faithfulness retained as control metric confirming verifier effectiveness.",
+  "key_finding": "RAG enables ~67% of claims to cite external anomaly patterns (E1-E4). Without RAG, 0% -- claims can only self-reference query session (E0).",
   "phase0": {
     "dataset": "BGL",
     "n_sessions": 6295,
     "faithfulness_mean": 1.0,
     "faithfulness_std": 0.0,
-    "faithfulness_median": 1.0,
     "faithfulness_perfect_rate": 1.0,
     "context_precision_at_4_mean": 0.9799355749713178,
     "context_precision_at_4_std": 0.09472827439461126,
@@ -15,11 +18,11 @@
     "train_corpus_size": 332356,
     "whole_corpus_size": 474796,
     "n_compared": 100,
-    "anomaly_overlap_mean": 3.53,
     "anomaly_overlap_rate": 0.8825,
     "top1_anomaly_match_rate": 0.85,
     "e5_normal_match_rate": 0.57,
-    "new_docs_in_top4_mean": 0.47
+    "new_docs_in_top4_mean": 0.47,
+    "conclusion": "Overlap >85% -- train-only corpus sufficient."
   },
   "phase2": {
     "n_sampled": 369,

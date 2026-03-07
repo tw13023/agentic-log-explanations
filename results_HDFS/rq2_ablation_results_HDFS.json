@@ -1,10 +1,12 @@
 {
+  "timestamp": "20260307_110014",
+  "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
+  "revision_note": "Reframed from faithfulness to grounding breadth as discriminating metric.",
   "phase0": {
     "dataset": "HDFS",
     "n_sessions": 2527,
     "faithfulness_mean": 1.0,
     "faithfulness_std": 0.0,
-    "faithfulness_median": 1.0,
     "faithfulness_perfect_rate": 1.0,
     "context_precision_at_4_mean": 0.9537000395726157,
     "context_precision_at_4_std": 0.20859997628055374,
@@ -15,11 +17,11 @@
     "train_corpus_size": 402542,
     "whole_corpus_size": 575061,
     "n_compared": 100,
-    "anomaly_overlap_mean": 3.47,
     "anomaly_overlap_rate": 0.8675,
     "top1_anomaly_match_rate": 0.86,
     "e5_normal_match_rate": 0.91,
-    "new_docs_in_top4_mean": 0.31
+    "new_docs_in_top4_mean": 0.31,
+    "conclusion": "Overlap >85% -- train-only corpus sufficient."
   },
   "phase2": {
     "n_sampled": 300,
