@@ -1,6 +1,7 @@
 {
-  "timestamp": "20260307_074721",
+  "timestamp": "20260307_101819",
   "research_question": "RQ3: Cost-Quality Trade-off Under Confidence-Based Gating",
+  "revision_note": "Stratified removed (requires post-LLM signature knowledge, not deployable as gating). Upper Bound retained as theoretical reference.",
   "data_sources": {
     "BGL": "/home/dave/agentic-log-explanations/results/explanations_BGL_20260301_112519.jsonl",
     "HDFS": "/home/dave/agentic-log-explanations/results_HDFS/explanations_HDFS_20260303_162016.jsonl"
@@ -18,8 +19,16 @@
     "Uncertainty",
     "Novelty",
     "Combined",
-    "Stratified",
     "Random"
+  ],
+  "deployable_strategies": [
+    "Random",
+    "Uncertainty",
+    "Novelty",
+    "Combined"
+  ],
+  "privileged_strategies": [
+    "Upper Bound"
   ],
   "simulation_results": [
     {
@@ -123,32 +132,6 @@
       "grounding_breadth": 0.3396926338102809,
       "insufficient_evidence_rate": 0.0,
       "strategy": "Combined",
-      "budget": 0.1,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 629.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 2539746.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.8988853664211379,
-      "avg_tokens": 4037.751987281399,
-      "total_latency_ms": 4055893.3889865875,
-      "avg_latency_ms": 6448.161190757691,
-      "p95_latency_ms": 10629.761695861816,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.34393216746157923,
-      "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
       "budget": 0.1,
       "dataset": "BGL"
     },
@@ -292,32 +275,6 @@
       "coverage_min": NaN,
       "coverage_max": NaN,
       "missing_sigs": "set()",
-      "total_tokens": 5043146.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.7992177722202519,
-      "avg_tokens": 4005.6759332803813,
-      "total_latency_ms": 7562507.573127747,
-      "avg_latency_ms": 6006.757405184866,
-      "p95_latency_ms": 9967.21577644348,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.33968758273762245,
-      "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
-      "budget": 0.2,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 1259.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
       "total_tokens": 5038935.0,
       "total_tokens_full": 25117492.0,
       "token_savings": 0.7993854243090831,
@@ -435,32 +392,6 @@
       "grounding_breadth": 0.3354519774011299,
       "insufficient_evidence_rate": 0.0,
       "strategy": "Combined",
-      "budget": 0.3,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 1888.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 7549736.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.699423174893417,
-      "avg_tokens": 3998.8008474576272,
-      "total_latency_ms": 11149136.142730713,
-      "avg_latency_ms": 5905.262787463302,
-      "p95_latency_ms": 9939.047026634214,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.33810028248587565,
-      "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
       "budget": 0.3,
       "dataset": "BGL"
     },
@@ -604,32 +535,6 @@
       "coverage_min": NaN,
       "coverage_max": NaN,
       "missing_sigs": "set()",
-      "total_tokens": 12562565.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.4998479545648905,
-      "avg_tokens": 3991.9176993962506,
-      "total_latency_ms": 18282630.598545074,
-      "avg_latency_ms": 5809.542611549118,
-      "p95_latency_ms": 9661.309838294981,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.3375701726512022,
-      "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
-      "budget": 0.5,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 3147.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
       "total_tokens": 12557056.0,
       "total_tokens_full": 25117492.0,
       "token_savings": 0.5000672837877285,
@@ -747,32 +652,6 @@
       "grounding_breadth": 0.3359457742003813,
       "insufficient_evidence_rate": 0.0,
       "strategy": "Combined",
-      "budget": 0.75,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 4721.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 18839216.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.2499563252573147,
-      "avg_tokens": 3990.5138741791993,
-      "total_latency_ms": 27295346.91953659,
-      "avg_latency_ms": 5781.687549149881,
-      "p95_latency_ms": 9623.03376197815,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.33771093694838666,
-      "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
       "budget": 0.75,
       "dataset": "BGL"
     },
@@ -928,32 +807,6 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.33762245168122845,
       "insufficient_evidence_rate": 0.0,
-      "strategy": "Stratified",
-      "budget": 1.0,
-      "dataset": "BGL"
-    },
-    {
-      "n_selected": 6295.0,
-      "n_total": 6295.0,
-      "unique_sigs": 360.0,
-      "total_unique_sigs": 360.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 25117492.0,
-      "total_tokens_full": 25117492.0,
-      "token_savings": 0.0,
-      "avg_tokens": 3990.0702144559173,
-      "total_latency_ms": 36313228.1768322,
-      "avg_latency_ms": 5768.582712761271,
-      "p95_latency_ms": 9597.402262687683,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.33762245168122845,
-      "insufficient_evidence_rate": 0.0,
       "strategy": "Upper Bound",
       "budget": 1.0,
       "dataset": "BGL"
@@ -1059,32 +912,6 @@
       "grounding_breadth": 0.3425925925925925,
       "insufficient_evidence_rate": 0.0,
       "strategy": "Combined",
-      "budget": 0.1,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 252.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 1190451.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.8914657081340341,
-      "avg_tokens": 4724.011904761905,
-      "total_latency_ms": 2184035.881996155,
-      "avg_latency_ms": 8666.809055540296,
-      "p95_latency_ms": 14346.915304660795,
-      "vpr": 1.0,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.328042328042328,
-      "insufficient_evidence_rate": 0.003968253968253968,
-      "strategy": "Stratified",
       "budget": 0.1,
       "dataset": "HDFS"
     },
@@ -1228,32 +1055,6 @@
       "coverage_min": NaN,
       "coverage_max": NaN,
       "missing_sigs": "set()",
-      "total_tokens": 2225487.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.7971007159455427,
-      "avg_tokens": 4406.90495049505,
-      "total_latency_ms": 4224407.804250717,
-      "avg_latency_ms": 8365.163968813302,
-      "p95_latency_ms": 13869.306659698477,
-      "vpr": 0.998019801980198,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.32871287128712867,
-      "insufficient_evidence_rate": 0.0019801980198019802,
-      "strategy": "Stratified",
-      "budget": 0.2,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 505.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
       "total_tokens": 2246582.0,
       "total_tokens_full": 10968432.0,
       "token_savings": 0.7951774693046372,
@@ -1371,32 +1172,6 @@
       "grounding_breadth": 0.34124890061565527,
       "insufficient_evidence_rate": 0.0,
       "strategy": "Combined",
-      "budget": 0.3,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 758.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 3314336.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.6978295530300047,
-      "avg_tokens": 4372.474934036939,
-      "total_latency_ms": 6316106.123447418,
-      "avg_latency_ms": 8332.593830405565,
-      "p95_latency_ms": 13913.680219650269,
-      "vpr": 0.9986807387862797,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.3245382585751979,
-      "insufficient_evidence_rate": 0.0013192612137203166,
-      "strategy": "Stratified",
       "budget": 0.3,
       "dataset": "HDFS"
     },
@@ -1540,32 +1315,6 @@
       "coverage_min": NaN,
       "coverage_max": NaN,
       "missing_sigs": "set()",
-      "total_tokens": 5493274.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.49917417548834697,
-      "avg_tokens": 4349.3855898654,
-      "total_latency_ms": 10396956.683635712,
-      "avg_latency_ms": 8231.953035341023,
-      "p95_latency_ms": 13750.691699981682,
-      "vpr": 0.9984164687252574,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.3222486144101346,
-      "insufficient_evidence_rate": 0.000791765637371338,
-      "strategy": "Stratified",
-      "budget": 0.5,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 1263.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
       "total_tokens": 5535078.0,
       "total_tokens_full": 10968432.0,
       "token_savings": 0.49536287410999125,
@@ -1683,32 +1432,6 @@
       "grounding_breadth": 0.3187335092348285,
       "insufficient_evidence_rate": 0.0005277044854881266,
       "strategy": "Combined",
-      "budget": 0.75,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 1895.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 8226927.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.24994502404719288,
-      "avg_tokens": 4341.386279683377,
-      "total_latency_ms": 15614774.337053299,
-      "avg_latency_ms": 8239.986457547915,
-      "p95_latency_ms": 13935.925149917603,
-      "vpr": 0.9984168865435357,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.3210202286719437,
-      "insufficient_evidence_rate": 0.0005277044854881266,
-      "strategy": "Stratified",
       "budget": 0.75,
       "dataset": "HDFS"
     },
@@ -1864,32 +1587,6 @@
       "faithfulness": 1.0,
       "grounding_breadth": 0.320670096293365,
       "insufficient_evidence_rate": 0.0003957261574990107,
-      "strategy": "Stratified",
-      "budget": 1.0,
-      "dataset": "HDFS"
-    },
-    {
-      "n_selected": 2527.0,
-      "n_total": 2527.0,
-      "unique_sigs": 168.0,
-      "total_unique_sigs": 168.0,
-      "coverage": 1.0,
-      "coverage_std": NaN,
-      "coverage_min": NaN,
-      "coverage_max": NaN,
-      "missing_sigs": "set()",
-      "total_tokens": 10968432.0,
-      "total_tokens_full": 10968432.0,
-      "token_savings": 0.0,
-      "avg_tokens": 4340.495449149189,
-      "total_latency_ms": 20618420.50266266,
-      "avg_latency_ms": 8159.248319217514,
-      "p95_latency_ms": 13810.595917701721,
-      "vpr": 0.998417095370004,
-      "avg_claims": 3.0,
-      "faithfulness": 1.0,
-      "grounding_breadth": 0.320670096293365,
-      "insufficient_evidence_rate": 0.0003957261574990107,
       "strategy": "Upper Bound",
       "budget": 1.0,
       "dataset": "HDFS"
@@ -1898,6 +1595,183 @@
   "alpha_sensitivity": [
     {
       "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.0,
+      "coverage": 0.20277777777777778,
+      "avg_tokens": 3978.5174603174605,
+      "grounding_breadth": 0.33544973544973544
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.1,
+      "coverage": 0.20555555555555555,
+      "avg_tokens": 3980.4031746031746,
+      "grounding_breadth": 0.33544973544973544
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.2,
+      "coverage": 0.20833333333333334,
+      "avg_tokens": 3980.904761904762,
+      "grounding_breadth": 0.33544973544973544
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.3,
+      "coverage": 0.22777777777777777,
+      "avg_tokens": 3982.5,
+      "grounding_breadth": 0.33756613756613757
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.4,
+      "coverage": 0.25,
+      "avg_tokens": 3986.4714285714285,
+      "grounding_breadth": 0.33862433862433866
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.5,
+      "coverage": 0.2611111111111111,
+      "avg_tokens": 3988.55873015873,
+      "grounding_breadth": 0.3396825396825397
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.6,
+      "coverage": 0.2833333333333333,
+      "avg_tokens": 3993.311111111111,
+      "grounding_breadth": 0.3391534391534392
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.7,
+      "coverage": 0.2972222222222222,
+      "avg_tokens": 3997.4460317460316,
+      "grounding_breadth": 0.3396825396825397
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.8,
+      "coverage": 0.31666666666666665,
+      "avg_tokens": 4002.41746031746,
+      "grounding_breadth": 0.34021164021164024
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 0.9,
+      "coverage": 0.3333333333333333,
+      "avg_tokens": 4006.05873015873,
+      "grounding_breadth": 0.3417989417989418
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.1,
+      "alpha": 1.0,
+      "coverage": 0.46944444444444444,
+      "avg_tokens": 4110.046031746032,
+      "grounding_breadth": 0.36984126984126986
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.0,
+      "coverage": 0.023809523809523808,
+      "avg_tokens": 3313.7549407114625,
+      "grounding_breadth": 0.3570487483530961
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.1,
+      "coverage": 0.023809523809523808,
+      "avg_tokens": 3313.209486166008,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.2,
+      "coverage": 0.023809523809523808,
+      "avg_tokens": 3313.209486166008,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.3,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.4,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.5,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.6,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.7,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.8,
+      "coverage": 0.02976190476190476,
+      "avg_tokens": 3319.316205533597,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 0.9,
+      "coverage": 0.041666666666666664,
+      "avg_tokens": 3328.707509881423,
+      "grounding_breadth": 0.3425559947299077
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.1,
+      "alpha": 1.0,
+      "coverage": 0.4583333333333333,
+      "avg_tokens": 4886.837944664032,
+      "grounding_breadth": 0.3188405797101449
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.0,
       "coverage": 0.21388888888888888,
       "avg_tokens": 3946.86656076251,
@@ -1905,6 +1779,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.1,
       "coverage": 0.21666666666666667,
       "avg_tokens": 3947.847498014297,
@@ -1912,6 +1787,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.2,
       "coverage": 0.21944444444444444,
       "avg_tokens": 3947.99285146942,
@@ -1919,6 +1795,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.3,
       "coverage": 0.2388888888888889,
       "avg_tokens": 3947.722795869738,
@@ -1926,6 +1803,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.4,
       "coverage": 0.2611111111111111,
       "avg_tokens": 3949.0150913423354,
@@ -1933,6 +1811,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.5,
       "coverage": 0.2722222222222222,
       "avg_tokens": 3949.289118347895,
@@ -1940,6 +1819,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.6,
       "coverage": 0.2972222222222222,
       "avg_tokens": 3950.4622716441622,
@@ -1947,6 +1827,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.7,
       "coverage": 0.3111111111111111,
       "avg_tokens": 3951.3741064336773,
@@ -1954,6 +1835,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.8,
       "coverage": 0.33055555555555555,
       "avg_tokens": 3952.6965845909453,
@@ -1961,6 +1843,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 0.9,
       "coverage": 0.34444444444444444,
       "avg_tokens": 3953.6243050039716,
@@ -1968,6 +1851,7 @@
     },
     {
       "dataset": "BGL",
+      "budget": 0.2,
       "alpha": 1.0,
       "coverage": 0.7472222222222222,
       "avg_tokens": 4073.207307386815,
@@ -1975,6 +1859,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.0,
       "coverage": 0.02976190476190476,
       "avg_tokens": 3381.710891089109,
@@ -1982,6 +1867,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.1,
       "coverage": 0.02976190476190476,
       "avg_tokens": 3380.4376237623765,
@@ -1989,6 +1875,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.2,
       "coverage": 0.02976190476190476,
       "avg_tokens": 3380.4376237623765,
@@ -1996,6 +1883,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.3,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2003,6 +1891,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.4,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2010,6 +1899,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.5,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2017,6 +1907,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.6,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2024,6 +1915,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.7,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2031,6 +1923,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.8,
       "coverage": 0.03571428571428571,
       "avg_tokens": 3382.980198019802,
@@ -2038,6 +1931,7 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 0.9,
       "coverage": 0.047619047619047616,
       "avg_tokens": 3386.3683168316834,
@@ -2045,10 +1939,187 @@
     },
     {
       "dataset": "HDFS",
+      "budget": 0.2,
       "alpha": 1.0,
       "coverage": 0.625,
       "avg_tokens": 4866.49900990099,
       "grounding_breadth": 0.32211221122112205
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.0,
+      "coverage": 0.21388888888888888,
+      "avg_tokens": 3950.5495552731895,
+      "grounding_breadth": 0.3337568826768318
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.1,
+      "coverage": 0.21666666666666667,
+      "avg_tokens": 3950.695997458704,
+      "grounding_breadth": 0.3337568826768318
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.2,
+      "coverage": 0.21944444444444444,
+      "avg_tokens": 3950.7385641677256,
+      "grounding_breadth": 0.3337568826768318
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.3,
+      "coverage": 0.2388888888888889,
+      "avg_tokens": 3950.611499364676,
+      "grounding_breadth": 0.3341804320203304
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.4,
+      "coverage": 0.2611111111111111,
+      "avg_tokens": 3951.048919949174,
+      "grounding_breadth": 0.3343922066920796
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.5,
+      "coverage": 0.2722222222222222,
+      "avg_tokens": 3951.19250317662,
+      "grounding_breadth": 0.33460398136382885
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.6,
+      "coverage": 0.2972222222222222,
+      "avg_tokens": 3951.6458068614993,
+      "grounding_breadth": 0.3344980940279543
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.7,
+      "coverage": 0.3111111111111111,
+      "avg_tokens": 3952.0848157560354,
+      "grounding_breadth": 0.33460398136382885
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.8,
+      "coverage": 0.33055555555555555,
+      "avg_tokens": 3952.580368487929,
+      "grounding_breadth": 0.3347098686997035
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 0.9,
+      "coverage": 0.34444444444444444,
+      "avg_tokens": 3952.9647395171537,
+      "grounding_breadth": 0.3350275307073274
+    },
+    {
+      "dataset": "BGL",
+      "budget": 0.5,
+      "alpha": 1.0,
+      "coverage": 0.9138888888888889,
+      "avg_tokens": 4006.090216010165,
+      "grounding_breadth": 0.341698432867429
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.0,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3759.8829113924053,
+      "grounding_breadth": 0.32779535864978904
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.1,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.3243670886077,
+      "grounding_breadth": 0.3270042194092827
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.2,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.3243670886077,
+      "grounding_breadth": 0.3270042194092827
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.3,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.3243670886077,
+      "grounding_breadth": 0.3270042194092827
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.4,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.3243670886077,
+      "grounding_breadth": 0.3270042194092827
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.5,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.3243670886077,
+      "grounding_breadth": 0.3270042194092827
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.6,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.2990506329115,
+      "grounding_breadth": 0.32674050632911394
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.7,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.2990506329115,
+      "grounding_breadth": 0.32674050632911394
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.8,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.2990506329115,
+      "grounding_breadth": 0.32674050632911394
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 0.9,
+      "coverage": 0.16071428571428573,
+      "avg_tokens": 3760.2990506329115,
+      "grounding_breadth": 0.32674050632911394
+    },
+    {
+      "dataset": "HDFS",
+      "budget": 0.5,
+      "alpha": 1.0,
+      "coverage": 0.9523809523809523,
+      "avg_tokens": 4787.772943037975,
+      "grounding_breadth": 0.3151371308016878
     }
   ]
 }
