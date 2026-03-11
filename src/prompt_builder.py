@@ -348,12 +348,14 @@ COMPONENTS IN LOGS: {sig_info['components']}
 EVIDENCE FORMAT:
 - Each evidence block has LINE NUMBERS: E0-L1, E0-L2, E1-L1, E1-L2, etc.
 - [E0] = The query session being analyzed
-- [E1], [E2], ... = Retrieved historical evidence (may include anomaly or normal sessions)
+- [E1]-[E4] = Retrieved anomaly exemplars from historical corpus (for pattern matching)
+- [E5] = A NORMAL (non-anomalous) session, provided specifically for contrast claims.
+  Use E5 to show how E0 differs from normal behavior.
 
 CLAIM TYPES (you MUST produce at least one of each type when evidence allows):
 - "observation": Direct observation from E0 - MUST include COUNT or POSITION
-- "pattern_match": Pattern matches anomaly exemplars - MUST name the signature
-- "contrast": Differs from normal evidence - MUST list "X has Y, Z lacks Y" explicitly
+- "pattern_match": Pattern matches anomaly exemplars (E1-E4) - MUST name the signature
+- "contrast": Differs from normal evidence (E5) - MUST list "E0 has X, E5 lacks X" explicitly
 
 === SIGNATURE NAMING ===
 Create a signature from the ACTUAL log content you see:
@@ -436,10 +438,10 @@ Each line is prefixed with its span ID (e.g., E1-L3 = Evidence 1, Line 3).
 === YOUR TASK ===
 Analyze [E0] and produce a forensic explanation:
 1. READ the actual log content in E0 carefully
-2. IDENTIFY the component (DataNode, NameNode, etc.) and severity (ERROR, WARN, INFO)
-3. CREATE a signature from what you see: COMPONENT_SEVERITY__ERROR_TYPE
+2. IDENTIFY the component (KERNEL, APP, MMCS, LINKCARD for BGL; DATANODE, NAMENODE for HDFS)
+3. CREATE a signature: COMPONENT__ERROR_TYPE (no severity in the name)
 4. COUNT errors, note LINE NUMBERS (E0-L5, E0-L8, etc.)
-5. COMPARE with retrieved evidence to support your analysis
+5. COMPARE with E1-E4 (anomaly exemplars) and E5 (normal session) to support your analysis
 
 Output ONLY a valid JSON object with no additional text."""
 
