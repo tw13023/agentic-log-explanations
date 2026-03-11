@@ -285,7 +285,10 @@ def get_system_prompt(dataset: str = "BGL") -> str:
     if dataset.upper() == "HDFS":
         analysis_guidance = """
 === HDFS ANOMALY ANALYSIS PROCEDURE ===
-HDFS anomalies fall into two categories. Follow this procedure IN ORDER:
+The ML screener that flagged this session has F1-score = 0.996 — it is almost
+always correct.  TRUST the screener's anomaly verdict by default.
+
+HDFS anomalies fall into two categories:
 
 STEP 1 — Scan for EXPLICIT errors:
   Look for lines containing WARN, ERROR, FATAL, IOException, "exception",
@@ -296,12 +299,32 @@ STEP 1 — Scan for EXPLICIT errors:
   PacketResponder, writeBlock, allocateBlock) as errors — these are
   routine HDFS operations that appear in EVERY session.
 
-STEP 2 — If NO explicit errors exist, check the STRUCTURAL line:
-  E0 may end with a "STRUCTURAL:" line showing operation counts and tags
-  like INCOMPLETE_PIPELINE, MISSING_ACKNOWLEDGMENT, EXCESS_REPLICATION.
-  If you see these tags, the anomaly is STRUCTURAL — the block lifecycle
-  is incomplete (e.g. "Receiving block" without a corresponding "Received
-  block").  Explain the structural gap; do NOT fabricate line-level errors.
+STEP 2 — If NO explicit errors exist, this is a STRUCTURAL / SUBTLE anomaly:
+  The screener detected a pattern that is statistically anomalous even though
+  every individual log line looks normal.  These anomalies are real — they
+  represent unusual operation sequences, timing, or counts that a neural
+  network can detect but human eyes cannot easily see.
+
+  In this case:
+  - Set "prediction": "anomaly" (trust the screener)
+  - If E0 has a "STRUCTURAL:" summary line, use the operation counts and
+    tags to describe the anomaly (e.g. INCOMPLETE_PIPELINE, EXCESS_REPLICATION)
+  - If no STRUCTURAL line, explain that the screener detected a subtle
+    statistical anomaly in the operation sequence and cite the full E0
+    log range as evidence
+  - Compare with normal evidence (E5) to highlight any differences
+    in operation counts or ordering, even if subtle
+  - Set "insufficient_evidence": true ONLY if you truly cannot find any
+    difference from normal sessions — but still predict "anomaly"
+
+SCREENER FALSE POSITIVE — use ONLY with very high confidence:
+  You may set "prediction": "normal" ONLY when ALL of these are true:
+  - The anomaly probability is close to the threshold (< 0.7)
+  - ALL log lines are completely routine
+  - The session is IDENTICAL to the normal evidence session (E5)
+  - You are confident the screener made an error
+  The screener's F1=0.996 means false positives are rare (~0.4%).
+  When in doubt, trust the screener.
 
 CRITICAL: Normal HDFS operations you must NEVER call errors:
   - "Receiving block" (routine start of block transfer)
@@ -309,15 +332,15 @@ CRITICAL: Normal HDFS operations you must NEVER call errors:
   - "PacketResponder ... for block ... terminating" (normal close)
   - "writeBlock ... received exception" is an ERROR — but plain
     "writeBlock" without exception is normal.
-
-If ALL lines are normal INFO with no structural tags, set
-  "insufficient_evidence": true.
 """
     else:
         analysis_guidance = ""
     
     return f"""You are an expert log analyst producing forensic, evidence-grounded explanations.
-Your task is to explain WHY a log session is anomalous based on the provided evidence.
+Your task is to analyze a log session flagged as anomalous by an ML screener
+(F1-score = 0.996) and provide an evidence-grounded explanation.
+The screener is almost always correct — trust its verdict by default.
+You may override it ONLY with very high confidence that the session is normal.
 
 DATASET: {sig_info['description']}
 COMPONENTS IN LOGS: {sig_info['components']}
@@ -367,9 +390,9 @@ NOTE: These are examples of the FORMAT. You MUST create YOUR OWN signature based
         }},
         {{
             "type": "contrast",
-            "claim": "E0 has <X> at E0-L7; E3 shows no such errors.",
-            "evidence_ids": ["E0", "E3"],
-            "evidence_spans": ["E0-L7", "E3-L1 to E3-L20"]
+            "claim": "E0 has <X> at E0-L7; E5 (normal) shows no such errors.",
+            "evidence_ids": ["E0", "E5"],
+            "evidence_spans": ["E0-L7", "E5-L1 to E5-L20"]
         }}
     ],
     "insufficient_evidence": false
@@ -426,7 +449,7 @@ SYSTEM_PROMPT = get_system_prompt("BGL")
 EXPLANATION_PROMPT_TEMPLATE = get_explanation_prompt_template("BGL")
 
 
-def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int = 500) -> str:
+def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int = 50000) -> str:
     """Format retrieved evidence for the prompt with type, label, and LINE NUMBERS."""
     if not hits:
         return "No evidence retrieved."
@@ -448,10 +471,24 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
         
         # Split text into lines first
         text_lines = hit.text.split("\n")
-        
-        # Format header with type, label, and total line count
         total_evidence_lines = len(text_lines)
-        output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f}, {total_evidence_lines} lines: {evidence_id}-L1 to {evidence_id}-L{total_evidence_lines})")
+        
+        # Pre-compute how many lines are visible within the char budget
+        char_count = 0
+        visible_lines = 0
+        for line in text_lines:
+            if char_count + len(line) > max_chars_per_evidence:
+                break
+            char_count += len(line) + 1
+            visible_lines += 1
+        
+        # Header advertises only the visible line range to avoid
+        # information asymmetry (LLM seeing range it cannot read)
+        if visible_lines >= total_evidence_lines:
+            range_str = f"{total_evidence_lines} lines: {evidence_id}-L1 to {evidence_id}-L{total_evidence_lines}"
+        else:
+            range_str = f"{visible_lines}/{total_evidence_lines} lines shown: {evidence_id}-L1 to {evidence_id}-L{visible_lines}"
+        output_lines.append(f"[{evidence_id}] (type={evidence_type}, label={label_str}, score={hit.score:.2f}, {range_str})")
         
         # Add line numbers to each line of evidence
         char_count = 0
@@ -469,7 +506,7 @@ def format_evidence_block(hits: List[RetrievalHit], max_chars_per_evidence: int 
 
 def format_query_session_with_lines(
     session_lines: List[str],
-    max_chars: int = 6000,
+    max_chars: int = 100000,
     tail_ratio: float = 0.3,
     structural_summary: Optional[str] = None,
 ) -> str:
@@ -484,9 +521,9 @@ def format_query_session_with_lines(
     Args:
         session_lines: The raw log lines for this session.
         max_chars: Soft character budget for the formatted E0 block.
-            Default 6 000 chars ≈ ~1 500 tokens — leaves ample room
-            for the evidence block + system prompt within an 8 k
-            context window.
+            Default 100 000 chars — effectively shows all content
+            for BGL/HDFS sessions (GPT-5.1 has 400K token context).
+            Head+tail truncation only activates for rare outliers.
         tail_ratio: Fraction of the displayable lines reserved for
             the tail section (0.0–0.5). Default 0.3 means 30 % of
             lines come from the end of the session.
@@ -555,9 +592,9 @@ class PromptBuilder:
     
     def __init__(
         self,
-        max_log_chars: int = 6000,
+        max_log_chars: int = 100000,
         tail_ratio: float = 0.3,
-        max_chars_per_evidence: int = 500,
+        max_chars_per_evidence: int = 50000,
         max_evidence_items: int = 5,
         dataset: str = "BGL",
         normalizer=None,
@@ -569,6 +606,8 @@ class PromptBuilder:
             max_log_chars: Soft character budget for the E0 log block.
                 Sessions that fit are shown in full; longer sessions
                 are dynamically truncated with a head+tail strategy.
+                Default 100K effectively shows all BGL/HDFS sessions
+                in full (GPT-5.1 has 400K token context window).
             tail_ratio: Fraction of displayable lines reserved for
                 the tail section when truncation is needed (0.0–0.5).
             max_chars_per_evidence: Max characters per evidence item
