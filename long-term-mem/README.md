@@ -31,6 +31,8 @@ Each file is named `YYYY-MM-DD.md` and contains:
 
 | Date | Summary |
 |------|---------|
+| [2026-03-12](2026-03-12.md) | HDFS GPT-5.1 post-fix full run：100% verification（前次 99.84%），sigs 168→95，tokens 翻倍（E5 prompt 修正）。HDFS human evaluation 50/50 完成（C=5/Co=5/EG≥4/Y 全部），EG=4 off-by-one STRUCTURAL pattern（8 筆），BGL 待 post-fix run |
+| [2026-03-11](2026-03-11.md) | Codebase 審計：E3→E5 prompt example 修正、nb03 normalizer wiring、E5 explicit normal description。Commits `465958c` `23f8dfb` |
 | [2026-03-04](2026-03-04.md) | HDFS verif failure 根因分析：`Receiving empty packet`（INFO 行）誤觸 bypass；`cited_severity` bypass 改為檢查 non-INFO severity lines。Commit `a3cddcb`，4 筆 FAIL → 0，zero regression |
 | [2026-03-03](2026-03-03.md) | PPT 第一稿完成（8 元件）。HDFS GPT-5.1 full run：2,527/2,527，168 sigs，4 verif fail（待分析）。Commits `cf4e5af` `2e45206` |
 | [2026-03-01](2026-03-01.md) | Prompt fix rules 8-11 A/B test (verif 54.2%->79.2%). 5-model comparison: llama3.1:8b wins (C=3.54, verif=79.2%), far ahead of qwen2.5:14b/gemma2:9b/phi3:14b/mistral:7b. Commit `1c3afac` |
