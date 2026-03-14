@@ -248,46 +248,70 @@ class LLMClient:
         if json_mode:
             payload["response_format"] = {"type": "json_object"}
         
-        try:
-            response = self._session.post(
-                f"{self.base_url}/chat/completions",
-                json=payload,
-                timeout=self.timeout,
-            )
-            response.raise_for_status()
-            
-            data = response.json()
-            latency_ms = (time.time() - start_time) * 1000
-            
-            # Extract usage (OpenAI format)
-            usage = data.get("usage", {})
-            prompt_tokens = usage.get("prompt_tokens", 0)
-            completion_tokens = usage.get("completion_tokens", 0)
-            
-            return LLMResponse(
-                content=data["choices"][0]["message"]["content"],
-                model=self.model,
-                prompt_tokens=prompt_tokens,
-                completion_tokens=completion_tokens,
-                total_tokens=usage.get("total_tokens", prompt_tokens + completion_tokens),
-                latency_ms=latency_ms,
-                cost_usd=self._calculate_cost(prompt_tokens, completion_tokens),
-                raw_response=data,
-            )
-            
-        except requests.exceptions.HTTPError as e:
-            error_msg = str(e)
-            if e.response is not None:
-                try:
-                    error_data = e.response.json()
-                    error_msg = error_data.get("error", {}).get("message", error_msg)
-                except:
-                    pass
-            raise RuntimeError(f"LLM API error: {error_msg}")
-        except requests.exceptions.Timeout:
-            raise RuntimeError(f"LLM API timeout after {self.timeout}s")
-        except Exception as e:
-            raise RuntimeError(f"LLM API error: {e}")
+        max_retries = 3
+        retry_delay = 2.0  # seconds, doubles each retry
+
+        for attempt in range(max_retries + 1):
+            try:
+                response = self._session.post(
+                    f"{self.base_url}/chat/completions",
+                    json=payload,
+                    timeout=self.timeout,
+                )
+                response.raise_for_status()
+                
+                data = response.json()
+                latency_ms = (time.time() - start_time) * 1000
+                
+                # Extract usage (OpenAI format)
+                usage = data.get("usage", {})
+                prompt_tokens = usage.get("prompt_tokens", 0)
+                completion_tokens = usage.get("completion_tokens", 0)
+                
+                return LLMResponse(
+                    content=data["choices"][0]["message"]["content"],
+                    model=self.model,
+                    prompt_tokens=prompt_tokens,
+                    completion_tokens=completion_tokens,
+                    total_tokens=usage.get("total_tokens", prompt_tokens + completion_tokens),
+                    latency_ms=latency_ms,
+                    cost_usd=self._calculate_cost(prompt_tokens, completion_tokens),
+                    raw_response=data,
+                )
+                
+            except requests.exceptions.HTTPError as e:
+                status = e.response.status_code if e.response is not None else 0
+                error_msg = str(e)
+                if e.response is not None:
+                    try:
+                        error_data = e.response.json()
+                        error_msg = error_data.get("error", {}).get("message", error_msg)
+                    except Exception:
+                        pass
+                # Retry on transient errors: 429/500/502/503 and the known
+                # "could not parse the JSON body" 400 from OpenAI
+                is_transient = status in (429, 500, 502, 503) or (
+                    status == 400 and "could not parse" in error_msg.lower()
+                )
+                if is_transient and attempt < max_retries:
+                    wait = retry_delay * (2 ** attempt)
+                    time.sleep(wait)
+                    continue
+                raise RuntimeError(f"LLM API error: {error_msg}")
+            except requests.exceptions.Timeout:
+                if attempt < max_retries:
+                    wait = retry_delay * (2 ** attempt)
+                    time.sleep(wait)
+                    continue
+                raise RuntimeError(f"LLM API timeout after {self.timeout}s")
+            except requests.exceptions.ConnectionError:
+                if attempt < max_retries:
+                    wait = retry_delay * (2 ** attempt)
+                    time.sleep(wait)
+                    continue
+                raise RuntimeError(f"LLM API connection error")
+            except Exception as e:
+                raise RuntimeError(f"LLM API error: {e}")
     
     def generate_json(
         self,

@@ -39,6 +39,7 @@ results/test_run/evidence_store_BGL.json
 results/explanations/evidence_store_*.json
 
 # Results (regeneratable)
+results/human_eval_postfix_prepared.json
 results/*.jsonl
 results/*.metrics.json
 results/evidence_store_*.json

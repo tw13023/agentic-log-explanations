@@ -416,9 +416,9 @@ class Screener:
         
         attention_mask = (input_ids_tensor != 0).long()
         
-        # Inference - pass position_ids=None so model generates them automatically
+        
         with torch.no_grad():
-            logits = self.model(input_ids_tensor, segment_ids_tensor, position_ids=None, attention_mask=attention_mask)
+            logits = self.model(input_ids_tensor, segment_ids_tensor, attention_mask)
             probs = torch.softmax(logits, dim=1)
             pred = logits.argmax(dim=1).item()
         
@@ -488,14 +488,9 @@ class Screener:
             padded_segment_ids = padded_segment_ids.to(self.device)
             attention_masks = (padded_input_ids != 0).long()
             
-            # Create position_ids (0, 1, 2, ..., seq_len-1)
-            batch_size_actual = padded_input_ids.size(0)
-            seq_len = padded_input_ids.size(1)
-            position_ids = torch.arange(seq_len, device=self.device).unsqueeze(0).expand(batch_size_actual, -1)
-            
-            # Inference
+        
             with torch.no_grad():
-                logits = self.model(padded_input_ids, padded_segment_ids, position_ids, attention_masks)
+                logits = self.model(padded_input_ids, padded_segment_ids, attention_masks)
                 probs = torch.softmax(logits, dim=1)
                 preds = logits.argmax(dim=1)
             
