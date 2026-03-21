@@ -1,7 +1,7 @@
 
-# AllLinLog — Explainable Log-Based Anomaly Detection with Linear Self-Attention
+# Explainable Log-Based Anomaly Detection with Linear Self-Attention
 
-This repository implements **AllLinLog**, a framework for log-based anomaly detection using linear self-attention (Linformer), extended with an agentic **Screener–Reasoner** pipeline that produces evidence-grounded, traceable explanations for detected anomalies.
+This repository implements **Screener-Reasoner**, a framework for log-based anomaly detection using linear self-attention (Linformer) producing evidence-grounded, traceable explanations for detected anomalies.
 
 The AllLinLog screener achieves near-perfect detection (BGL F1 ≈ 0.999, HDFS F1 ≈ 0.997). The research focus of this project is producing **structured, verifiable explanations** via RAG-augmented LLM reasoning — not improving detection accuracy.
 
