@@ -1,6 +1,11 @@
 # Task tracking (personal)
 task-tracking.md
 
+# Private research notes and unpublished paper drafts
+long-term-mem/
+project-description/
+allinlog_architecture.pptx
+
 
 # Log files (large)
 logs/*.log
