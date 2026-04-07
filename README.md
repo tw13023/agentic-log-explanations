@@ -307,11 +307,37 @@ All settings are centralized in `configs/config.yaml`:
 
 ## LLM Requirements
 
-The explanation pipeline requires access to an LLM. Default: **OpenAI GPT-5.1** (set `llm.provider: "openai"` in config and provide an API key in a `.env` file).
+The explanation pipeline requires access to an LLM. Default: **OpenAI GPT-5.1**.
 
-```bash
-# .env file
-OPENAI_API_KEY=your-key-here
+> The screener scripts (`BGL_screener.py`, `HDFS_screener.py`) do **not** call any LLM and require no API key.
+
+### Setting up the API key
+
+1. Copy the provided example file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Open `.env` and replace the placeholder with your real key:
+
+   ```
+   OPENAI_API_KEY=sk-your-api-key-here
+   ```
+
+3. The `.env` file is loaded automatically at runtime via `python-dotenv`. It is listed in `.gitignore` and will never be committed to the repository.
+
+> You can also export the key as a shell environment variable instead of using a file:
+> ```bash
+> export OPENAI_API_KEY=sk-your-api-key-here
+> ```
+
+The active model can be changed without touching code — edit `llm.model` in `configs/config.yaml`:
+
+```yaml
+llm:
+  provider: "openai"
+  model: "gpt-5.1"   # change to e.g. gpt-4o
 ```
 
 **Ollama (local alternative):** Set `llm.provider: "ollama"` and `llm.model: "llama3.1:8b"` in config.
