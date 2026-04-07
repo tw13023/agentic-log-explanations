@@ -416,9 +416,9 @@ class Screener:
         
         attention_mask = (input_ids_tensor != 0).long()
         
-        
         with torch.no_grad():
-            logits = self.model(input_ids_tensor, segment_ids_tensor, attention_mask)
+            position_ids = torch.arange(input_ids_tensor.size(1), device=input_ids_tensor.device).unsqueeze(0).expand(input_ids_tensor.size(0), -1)
+            logits = self.model(input_ids_tensor, segment_ids_tensor, position_ids, attention_mask)
             probs = torch.softmax(logits, dim=1)
             pred = logits.argmax(dim=1).item()
         

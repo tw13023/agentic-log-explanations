@@ -272,8 +272,8 @@ def evaluate_test_set(model, test_loader, device):
     with torch.no_grad():
         for batch in tqdm(test_loader, desc="Running Inference", mininterval=1.0, dynamic_ncols=True):
             input_ids, segment_ids, attention_masks, labels = [b.to(device) for b in batch]
-            # NOTE: model was trained with attention_masks in the position_ids slot — must replicate here.
-            logits = model(input_ids, segment_ids, attention_masks)
+            position_ids = torch.arange(input_ids.size(1), device=input_ids.device).unsqueeze(0).expand(input_ids.size(0), -1)
+            logits = model(input_ids, segment_ids, position_ids, attention_masks)
             probs  = torch.softmax(logits, dim=1)
             preds  = logits.argmax(dim=1)
 
@@ -295,8 +295,8 @@ def screen_hdfs_logs(log_messages, model, tokenizer, device, max_len=18000, max_
     attention_mask     = (input_ids_tensor != 0).long()
 
     with torch.no_grad():
-        # NOTE: model was trained with attention_masks in the position_ids slot — must replicate here.
-        logits = model(input_ids_tensor, segment_ids_tensor, attention_mask)
+        position_ids = torch.arange(input_ids_tensor.size(1), device=input_ids_tensor.device).unsqueeze(0).expand(input_ids_tensor.size(0), -1)
+        logits = model(input_ids_tensor, segment_ids_tensor, position_ids, attention_mask)
         probs  = torch.softmax(logits, dim=1)
         pred   = logits.argmax(dim=1).item()
 
@@ -445,8 +445,8 @@ def main():
         attention_mask = (input_ids_t != 0).long()
 
         with torch.no_grad():
-            # NOTE: model was trained with attention_masks in the position_ids slot — must replicate here.
-            logits = model(input_ids_t, segment_ids_t, attention_mask)
+            position_ids = torch.arange(input_ids_t.size(1), device=input_ids_t.device).unsqueeze(0).expand(input_ids_t.size(0), -1)
+            logits = model(input_ids_t, segment_ids_t, position_ids, attention_mask)
             probs  = torch.softmax(logits, dim=1)
             pred   = "Anomalous" if logits.argmax(dim=1).item() == 1 else "Normal"
 
