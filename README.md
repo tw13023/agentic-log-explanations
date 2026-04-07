@@ -75,11 +75,11 @@ Raw Logs → DataLoader (Session objects)
 │   ├── 10_gpt51_explanation_audit.ipynb  # GPT-5.1 explanation audit
 │   ├── 11_rq2_rag_ablation.ipynb    # RQ2: RAG ablation study
 │   ├── 12_rq3_cost_quality_gating.ipynb  # RQ3: Cost-quality gating analysis
-│   └── 13_rq1_explanation_quality.ipynb  # RQ1: Explanation quality metrics
+│   ├── 13_rq1_explanation_quality.ipynb  # RQ1: Explanation quality metrics
+│   ├── 14_BGL_screener.ipynb        # BGL screener inference testing
+│   └── 15_HDFS_screener.ipynb       # HDFS screener inference testing
 ├── allinlog_BGL_inMem_GPT4BPE.ipynb # BGL model training notebook
 ├── allinlog_HDFS_inMEM_GPT4BPE.ipynb # HDFS model training notebook
-├── BGL_screener.ipynb               # BGL screener inference testing
-├── HDFS_screener.ipynb              # HDFS screener inference testing
 ├── best_model/                      # Pretrained BGL model
 ├── best_model_HDFS/                 # Pretrained HDFS model
 ├── logs/                            # Log datasets (compressed; see below)
