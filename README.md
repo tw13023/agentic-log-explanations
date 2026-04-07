@@ -122,17 +122,17 @@ pip install -r requirements.txt --extra-index-url https://download.pytorch.org/w
 
 ### 3. Prepare log files
 
+Log files are **not included** in this repository (too large for GitHub and not redistributable). Download them from the [LogHub dataset collection](https://github.com/logpai/loghub) and place them in the `logs/` directory.
+
 **BGL:**
 
-`BGL.log` is not included in this repository (too large for GitHub and not redistributable). Download it from the [LogHub dataset collection](https://github.com/logpai/loghub) and place it at `logs/BGL.log`.
+Download `BGL.log` from LogHub and place it at `logs/BGL.log`.
 
 **HDFS:**
 
-The HDFS log is split into compressed chunks and included in the repository. Reconstruct it with:
+Download `HDFS_v1.tar.gz` (or equivalent) from LogHub. Extract it and place `HDFS.log` at `logs/HDFS.log`. The anomaly label file (`anomaly_label.csv`) should be placed at `logs/anomaly_label_HDFS.csv`.
 
-```bash
-cat logs/HDFS_part_*.gz | gunzip > logs/HDFS.log
-```
+> The `logs/` directory is intentionally empty in the repository. All files in it are gitignored.
 
 ### 4. Run the explanation pipeline
 

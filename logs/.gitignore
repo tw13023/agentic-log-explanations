@@ -1,4 +1,5 @@
-*.log
-HDFS.log
-HDFS_part_*
-!HDFS_part_*.gz
+# Ignore everything in this directory — log files are not distributed with the repo
+*
+# Keep this file and the placeholder so the empty directory is tracked
+!.gitignore
+!.gitkeep

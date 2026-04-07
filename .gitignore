@@ -7,12 +7,10 @@ project-description/
 allinlog_architecture.pptx
 
 
-# Log files (large)
-logs/*.log
-
-# Keep compressed files (BGL.log.gz included; HDFS_part_*.gz tracked via logs/.gitignore)
-# Keep the label file (small)
-!logs/anomaly_label_HDFS.csv
+# Log files (large, not redistributable — see README for download instructions)
+logs/*
+!logs/.gitignore
+!logs/.gitkeep
 
 # Python
 __pycache__/
