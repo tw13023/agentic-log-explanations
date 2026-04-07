@@ -56,14 +56,26 @@ Raw Logs → DataLoader (Session objects)
 │   ├── retriever.py                 # BM25 evidence retrieval with mixed-mode support
 │   ├── prompt_builder.py            # Prompt assembly + TraceExplanation schema
 │   ├── llm_client.py                # Unified LLM client (Ollama / OpenAI compatible)
+│   ├── gating.py                    # Gating logic (explain_all / top_k modes)
+│   ├── config_loader.py             # YAML config loader and validation
 │   └── verifier.py                  # 8-check faithfulness verification
 ├── pipelines/
-│   └── explain_all.py               # End-to-end Explain-All pipeline (CLI + API)
+│   ├── explain_all.py               # End-to-end Explain-All pipeline (CLI + API)
+│   └── auto_evaluator.py            # Automated evaluation of explanation outputs
 ├── notebooks/
 │   ├── 01_pipeline_test.ipynb       # Initial component testing
 │   ├── 02_pipeline_walkthrough.ipynb # Step-by-step interactive walkthrough
-│   ├── 03_pipeline_complete.ipynb   # Complete BGL pipeline run
-│   └── 04_pipeline_HDFS.ipynb       # Complete HDFS pipeline run
+│   ├── 03_pipeline_BGL.ipynb        # Complete BGL pipeline run
+│   ├── 04_pipeline_HDFS.ipynb       # Complete HDFS pipeline run
+│   ├── 05_signature_audit.ipynb     # Signature card review and audit
+│   ├── 06_full_run.ipynb            # Full dataset pipeline execution
+│   ├── 07_gating_analysis.ipynb     # Gating mode analysis
+│   ├── 08_end_to_end_gating.ipynb   # End-to-end gating simulation
+│   ├── 09_human_evaluation.ipynb    # Human evaluation of explanations
+│   ├── 10_gpt51_explanation_audit.ipynb  # GPT-5.1 explanation audit
+│   ├── 11_rq2_rag_ablation.ipynb    # RQ2: RAG ablation study
+│   ├── 12_rq3_cost_quality_gating.ipynb  # RQ3: Cost-quality gating analysis
+│   └── 13_rq1_explanation_quality.ipynb  # RQ1: Explanation quality metrics
 ├── allinlog_BGL_inMem_GPT4BPE.ipynb # BGL model training notebook
 ├── allinlog_HDFS_inMEM_GPT4BPE.ipynb # HDFS model training notebook
 ├── BGL_screener.ipynb               # BGL screener inference testing
@@ -87,25 +99,37 @@ git clone https://github.com/tw13023/agentic-log-explanations.git
 cd agentic-log-explanations
 ```
 
-### 2. Install dependencies
+### 2. Create a virtual environment
+
+**Python 3.12 is required.**
 
 ```bash
-pip install -r requirements.txt
+python3.12 -m venv .venv
+source .venv/bin/activate        # Linux / macOS
+# .venv\Scripts\activate         # Windows
 ```
 
-**Key dependencies:** PyTorch (CUDA 12.8), Linformer, tiktoken, rank-bm25, scikit-learn, pandas, requests, PyYAML.
+### 3. Install dependencies
 
-### 3. Reconstruct large log files
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
+```
 
-The original logs are too large for GitHub. They are compressed and (for HDFS) split into chunks.
+> The `--extra-index-url` flag is required for PyTorch CUDA 12.8 builds (`torch==2.7.1+cu128`). Without it, pip cannot find this version on PyPI.
+
+**Key dependencies:** PyTorch (CUDA 12.8), Linformer, tiktoken, rank-bm25, scikit-learn, pandas, requests, python-dotenv, PyYAML.
+
+### 3. Prepare log files
 
 **BGL:**
-```bash
-cd logs
-gunzip BGL.log.gz
-```
+
+`BGL.log` is not included in this repository (too large for GitHub and not redistributable). Download it from the [LogHub dataset collection](https://github.com/logpai/loghub) and place it at `logs/BGL.log`.
 
 **HDFS:**
+
+The HDFS log is split into compressed chunks and included in the repository. Reconstruct it with:
+
 ```bash
 cat logs/HDFS_part_*.gz | gunzip > logs/HDFS.log
 ```
@@ -116,21 +140,23 @@ cat logs/HDFS_part_*.gz | gunzip > logs/HDFS.log
 
 | Dataset | Notebook |
 |---------|----------|
-| BGL     | `notebooks/03_pipeline_complete.ipynb` |
+| BGL     | `notebooks/03_pipeline_BGL.ipynb` |
 | HDFS    | `notebooks/04_pipeline_HDFS.ipynb` |
 
 **Option B — Command line:**
 
 ```bash
-python pipelines/explain_all.py --dataset BGL --max-sessions 100 --llm-model llama3.1:8b
+# Run with default config (configs/config.yaml)
+python pipelines/explain_all.py --dataset BGL
+
+# Limit to a subset of sessions for a quick test
+python pipelines/explain_all.py --dataset BGL --max-sessions 100
+
+# Use a custom config file
+python pipelines/explain_all.py --dataset HDFS --config path/to/config.yaml
 ```
 
-### 5. Train models from scratch (optional)
-
-- `allinlog_BGL_inMem_GPT4BPE.ipynb` — BGL model training
-- `allinlog_HDFS_inMEM_GPT4BPE.ipynb` — HDFS model training
-
-Pretrained models are included in `best_model/` and `best_model_HDFS/`.
+> LLM provider and model are configured in `configs/config.yaml` (`llm.provider`, `llm.model`).
 
 ---
 
@@ -155,6 +181,8 @@ Pretrained models are included in `best_model/` and `best_model_HDFS/`.
 | **Retriever** | BM25-based retrieval with mixed mode (anomaly + normal exemplars). Supports batch processing. |
 | **PromptBuilder** | Assembles LLM prompts with session content, retrieved evidence, and dataset-specific instructions. Defines the `TraceExplanation` JSON schema. |
 | **LLMClient** | Unified client for Ollama (local) and OpenAI. Tracks token usage, latency, and cost. |
+| **Gating** | Selects which predicted anomalies to explain. Mode `explain_all`: all anomalies; mode `top_k`: budget-constrained by screener uncertainty score. |
+| **ConfigLoader** | Loads and validates `configs/config.yaml`; centralizes all pipeline parameters. |
 | **Verifier** | 8-check faithfulness verification: structure, evidence ID validity, coverage (≥80%), keyword matching, span validity, signature format, and more. |
 
 ---
@@ -199,55 +227,52 @@ Each anomaly explanation is a structured JSON trace:
 
 ### Human Evaluation — GPT-5.1 (2026-03-04)
 
-Manual evaluation of 100 sampled sessions per dataset on four dimensions: Correctness, Completeness, Evidence Grounding (Likert 1–5), and Actionable (Y/N). Stratified by signature to ensure coverage. Evaluated in `notebooks/09_human_evaluation.ipynb`.
+Manual evaluation of 50 sampled sessions per dataset on four dimensions: Correctness, Completeness, Evidence Grounding (Likert 1–5), and Actionable (Y/N). Stratified by signature to ensure coverage. Evaluated in `notebooks/09_human_evaluation.ipynb`.
 
-**HDFS (100/100 complete):**
+**HDFS (50/50 complete):**
 
-| Dimension | Mean | Std | Distribution |
-|-----------|------|-----|--------------|
-| Correctness | 4.99 | 0.10 | 4:1, 5:99 |
-| Completeness | 4.99 | 0.10 | 4:1, 5:99 |
-| Evidence Grounding | 4.04 | 0.45 | 3:8, 4:80, 5:12 |
-| Actionable | 100% | — | Y:100 |
+| Dimension | Mean | Std |
+|-----------|------|-----|
+| Correctness | 4.92 | 0.27 |
+| Completeness | 4.96 | 0.20 |
+| Evidence Grounding | 4.64 | 0.52 |
+| Actionable | 100% | — |
 
-Evidence grounding scores were slightly lower than correctness and completeness. The gap arises because each reference evidence document carries a compact outcome label (e.g., `exceptions=0`, `NORMAL_FLOW`) but does not enumerate which log operations occurred. The model occasionally treated a "normal outcome" label as proof that certain operations were absent from the reference session, whereas those operations were actually present — they simply completed without error. This led to contrast claims that were directionally correct but overstated at the event level.
 
-**BGL (100/100 complete):**
 
-| Dimension | Mean | Std | Distribution |
-|-----------|------|-----|--------------|
-| Correctness | 4.99 | 0.10 | 4:1, 5:99 |
-| Completeness | 5.00 | 0.00 | 5:100 |
-| Evidence Grounding | 4.80 | 0.40 | 4:20, 5:80 |
-| Actionable | 100% | — | Y:100 |
+**BGL (50/50 complete):**
 
-BGL achieved higher evidence grounding than HDFS (4.80 vs 4.04). The 20 E=4 cases all involved contrast claims (Claim 3) mischaracterizing evidence session E5 — typically overstating differences between the anomalous session and normal exemplars. Three error patterns: (A) E5 content mischaracterization (n=12), (B) line count errors in prose (n=5), (C) logical contradictions between claims (n=3). All 20 cases scored 4, none scored ≤3.
+| Dimension | Mean | Std |
+|-----------|------|-----|
+| Correctness | 4.94 | 0.24 |
+| Completeness | 5.00 | 0.00 |
+| Evidence Grounding | 4.80 | 0.40 |
+| Actionable | 100% | — |
 
-**Overall (200 sessions):**
+
+**Overall (100 sessions):**
 
 | Dataset | n | Correctness | Completeness | Evid. Grounding | Actionable |
 |---------|:---:|:---:|:---:|:---:|:---:|
-| BGL | 100 | 4.99 ± 0.10 | 5.00 ± 0.00 | 4.80 ± 0.40 | 100% |
-| HDFS | 100 | 4.99 ± 0.10 | 4.99 ± 0.10 | 4.04 ± 0.45 | 100% |
-| Overall | 200 | 4.99 ± 0.10 | 5.00 ± 0.07 | 4.42 ± 0.57 | 100% |
+| BGL | 50 | 4.94 ± 0.24 | 5.00 ± 0.00 | 4.80 ± 0.40 | 100% |
+| HDFS | 50 | 4.92 ± 0.27 | 4.96 ± 0.20 | 4.64 ± 0.52 | 100% |
+| Overall | 100 | 4.93 ± 0.25 | 4.98 ± 0.14 | 4.72 ± 0.49 | 100% |
 
 ---
 
-### BGL Full Pipeline Run (2026-02-02)
+### BGL Full Pipeline Run (2026-03-13)
 
 | Metric | Value |
 |--------|-------|
 | Test sessions | 71,221 |
-| Predicted anomalies | 5,849 (5,844 TP, 5 FP) |
-| Explanations generated | 5,849 / 5,849 (100%) |
+| Predicted anomalies | 5,850 (5,840 TP, 10 FP) |
+| Explanations generated | 5,850 / 5,850 (100%) |
 | JSON parse success | 100% |
-| Verification pass rate | 99.7% (5,830 / 5,849) |
-| Avg tokens / explanation | ~2,654 |
-| Avg latency / explanation | ~5.8s |
-| Total wall time | ~9.5 hours |
-| LLM | Llama 3.1:8b (Ollama, local) |
-
-After implementing mixed retrieval (4 anomaly + 1 normal), all 19 verification failures were resolved → **100% pass rate**.
+| Verification pass rate | 100% (5,850 / 5,850) |
+| Avg tokens / explanation | ~6,496 |
+| Avg latency / explanation | ~7.6s |
+| Total wall time | ~12.4 hours |
+| LLM | GPT-5.1 (OpenAI) |
 
 ---
 
@@ -259,22 +284,27 @@ All settings are centralized in `configs/config.yaml`:
 - **Model hyperparameters** (vocab_size, embedding_dim, layers, heads, Linformer k)
 - **RAG settings** (retriever type, top_k)
 - **LLM settings** (provider, model, temperature, timeout)
-- **Gating mode** — `explain_all` (implemented) or `budgeted` (future: margin-based top-k%)
+- **Gating mode** — `explain_all` (all anomalies explained) or `top_k` (budget-constrained by screener uncertainty score)
 - **Output settings** (results directory, save format)
 
 ---
 
 ## LLM Requirements
 
-The explanation pipeline requires a running LLM server. Default: **Ollama** with Llama 3.1:8b.
+The explanation pipeline requires access to an LLM. Default: **OpenAI GPT-5.1** (set `llm.provider: "openai"` in config and provide an API key in a `.env` file).
+
+```bash
+# .env file
+OPENAI_API_KEY=your-key-here
+```
+
+**Ollama (local alternative):** Set `llm.provider: "ollama"` and `llm.model: "llama3.1:8b"` in config.
 
 ```bash
 # Install Ollama (https://ollama.ai)
 ollama pull llama3.1:8b
 ollama serve
 ```
-
-OpenAI is also supported — set `llm.provider: "openai"` in config and provide an API key in a `.env` file.
 
 ---
 
@@ -287,5 +317,7 @@ See repository for license information.
 
 ## Citation
 
-If you use this work, please cite the xxxxxx paper / repository.
+If you use this work, please cite:
+
+> Evidence-Grounded Explanations for Log-Based Anomaly Detection: A Screener–Reasoner Framework with Automated Evidence Verification
 

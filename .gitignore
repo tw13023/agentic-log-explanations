@@ -9,9 +9,8 @@ allinlog_architecture.pptx
 
 # Log files (large)
 logs/*.log
-logs/*.log.gz
-logs/*.gz
 
+# Keep compressed files (BGL.log.gz included; HDFS_part_*.gz tracked via logs/.gitignore)
 # Keep the label file (small)
 !logs/anomaly_label_HDFS.csv
 
