@@ -3,7 +3,7 @@
 
 This repository implements **Screener-Reasoner**, a framework for log-based anomaly detection using linear self-attention (Linformer) producing evidence-grounded, traceable explanations for detected anomalies.
 
-The AllLinLog screener achieves near-perfect detection (BGL F1 ≈ 0.999, HDFS F1 ≈ 0.997). The research focus of this project is producing **structured, verifiable explanations** via RAG-augmented LLM reasoning — not improving detection accuracy.
+The AllLinLog screener achieves near-perfect detection (BGL F1 ≈ 0.999, HDFS F1 ≈ 0.996). The research focus of this project is producing **structured, verifiable explanations** via RAG-augmented LLM reasoning — not improving detection accuracy.
 
 ---
 
@@ -138,25 +138,41 @@ cat logs/HDFS_part_*.gz | gunzip > logs/HDFS.log
 
 **Option A — Jupyter Notebook (recommended for exploration):**
 
-| Dataset | Notebook |
-|---------|----------|
-| BGL     | `notebooks/03_pipeline_BGL.ipynb` |
-| HDFS    | `notebooks/04_pipeline_HDFS.ipynb` |
+| Step | Dataset | Notebook |
+|------|---------|----------|
+| Screener | BGL  | `notebooks/14_BGL_screener.ipynb` |
+| Screener | HDFS | `notebooks/15_HDFS_screener.ipynb` |
+| Explanation pipeline | BGL  | `notebooks/03_pipeline_BGL.ipynb` |
+| Explanation pipeline | HDFS | `notebooks/04_pipeline_HDFS.ipynb` |
 
 **Option B — Command line:**
 
 ```bash
+# --- Screener (anomaly detection only, no LLM) ---
+
+# BGL screener
+python pipelines/BGL_screener.py
+
+# HDFS screener
+python pipelines/HDFS_screener.py
+
+# --- Explanation pipeline (screener + RAG + LLM) ---
+
 # Run with default config (configs/config.yaml)
 python pipelines/explain_all.py --dataset BGL
 
 # Limit to a subset of sessions for a quick test
 python pipelines/explain_all.py --dataset BGL --max-sessions 100
 
+# Run for HDFS
+python pipelines/explain_all.py --dataset HDFS
+
 # Use a custom config file
 python pipelines/explain_all.py --dataset HDFS --config path/to/config.yaml
 ```
 
 > LLM provider and model are configured in `configs/config.yaml` (`llm.provider`, `llm.model`).
+> The screener scripts (`BGL_screener.py`, `HDFS_screener.py`) do not call any LLM and require no API key.
 
 ---
 

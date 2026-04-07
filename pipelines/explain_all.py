@@ -8,6 +8,7 @@ Supports two gating modes (see src/gating.py):
 """
 
 import json
+import sys
 import time
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
@@ -15,6 +16,9 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from tqdm import tqdm
 import numpy as np
+
+# Ensure repo root is on sys.path when running as pipelines/explain_all.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # Import all components
 from src.data_loader import Session, BGLDataLoader, HDFSDataLoader, get_data_loader
@@ -477,7 +481,7 @@ Pattern Characteristics:
                 
             except Exception as e:
                 self.metrics.failed_explanations += 1
-                print(f"\n  ✗ Failed to explain {session.session_id}: {e}")
+                print(f"\n  [FAIL] Failed to explain {session.session_id}: {e}")
         
         # Step 3: Verify explanations (with E0 text for keyword matching)
         print(f"\n[Step 3] Verifying explanations...")
@@ -635,7 +639,7 @@ Pattern Characteristics:
             for result in self.results:
                 f.write(result.to_json() + "\n")
         
-        print(f"\n💾 Results saved to: {output_path}")
+        print(f"\n[OK] Results saved to: {output_path}")
         
         # Also save metrics
         metrics_path = output_path.with_suffix(".metrics.json")
@@ -645,7 +649,7 @@ Pattern Characteristics:
                 "metrics": self.metrics.to_dict()
             }, f, indent=2)
         
-        print(f"📈 Metrics saved to: {metrics_path}")
+        print(f"[OK] Metrics saved to: {metrics_path}")
         
         return str(output_path)
 
