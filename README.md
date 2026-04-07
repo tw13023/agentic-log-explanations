@@ -158,11 +158,13 @@ python pipelines/HDFS_screener.py
 
 # --- Explanation pipeline (screener + RAG + LLM) ---
 
-# Run with default config (configs/config.yaml)
-python pipelines/explain_all.py --dataset BGL
-
-# Limit to a subset of sessions for a quick test
+# (Recommended) Run on a small subset first to verify the setup and estimate cost
 python pipelines/explain_all.py --dataset BGL --max-sessions 100
+
+# Run on the full test set with default config (configs/config.yaml)
+# Note: processing the full dataset takes several hours and incurs significant
+# LLM API costs. Run the subset above first to confirm everything is working.
+python pipelines/explain_all.py --dataset BGL
 
 # Run for HDFS
 python pipelines/explain_all.py --dataset HDFS
