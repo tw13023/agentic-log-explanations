@@ -576,7 +576,7 @@
       "idx": 1,
       "normalized_signature": "APP__CIOD_STREAM_CONNECTION_RESET",
       "correctness": 4,
-      "completeness": 5,
+      "completeness": 4,
       "evidence_grounding": 5,
       "actionable": "Y",
       "notes": "TP. 6x APP FATAL Connection reset (L2,L3,L5,L6,L9,L10) + 4x KERNEL signal 15 (L1,L4,L7,L8). Span citations correct. Claim 1 prose says 7 APP FATAL and 3 signal 15 — both counts wrong (actual 6/4). C=4: factual count error in prose. E5=exec-format-error+signal15, no CioStream. 9/9 checks.",
@@ -1108,7 +1108,7 @@
       "evidence_grounding": 5,
       "actionable": "Y",
       "notes": "TP. 10 KERNEL FATAL rts: kernel terminated for reason 1001 across 10 nodes, same second. Claim 2 text cites E1 only, evidence_ids cites E1 only -> consistent EG=5. E5 (bad message header: cpu invalid, no reason 1001) contrasted. 9/9 checks.",
-      "rated_at": "2026-03-14T20:07:28.517261"
+      "rated_at": "2026-04-08T22:48:07.364795"
     }
   }
 }

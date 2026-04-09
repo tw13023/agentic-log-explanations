@@ -64,8 +64,8 @@
         "std": 0.23748684174075835
       },
       "completeness": {
-        "mean": 5.0,
-        "std": 0.0
+        "mean": 4.98,
+        "std": 0.13999999999999999
       },
       "evidence_grounding": {
         "mean": 4.8,

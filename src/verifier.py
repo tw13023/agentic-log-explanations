@@ -525,30 +525,36 @@ class Verifier:
         self,
         explanation: TraceExplanation
     ) -> VerificationIssue:
-        """Check that explanation has a signature."""
+        """Check that explanation has a valid signature.
+
+        A missing, UNKNOWN, or malformed signature is a hard FAIL because
+        signature generation is a core structured-output requirement of the
+        pipeline (RQ1).  Downgrading these to WARNING would mean VPR silently
+        ignores the most critical structured-output failure mode.
+        """
         if not explanation.signature:
             return VerificationIssue(
                 check_name="signature",
-                status=VerificationStatus.WARNING,
+                status=VerificationStatus.FAIL,
                 message="No signature provided"
             )
-        
+
         if not explanation.signature.name or explanation.signature.name == "UNKNOWN":
             return VerificationIssue(
                 check_name="signature",
-                status=VerificationStatus.WARNING,
+                status=VerificationStatus.FAIL,
                 message="Signature name is missing or UNKNOWN"
             )
-        
+
         # Check signature format: should contain double underscore
         if "__" not in explanation.signature.name:
             return VerificationIssue(
                 check_name="signature",
-                status=VerificationStatus.WARNING,
+                status=VerificationStatus.FAIL,
                 message=f"Signature '{explanation.signature.name}' doesn't follow COMPONENT__ERROR_TYPE format",
                 details={"signature": explanation.signature.name}
             )
-        
+
         return VerificationIssue(
             check_name="signature",
             status=VerificationStatus.PASS,
