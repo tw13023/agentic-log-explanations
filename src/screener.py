@@ -416,7 +416,9 @@ class Screener:
         
         attention_mask = (input_ids_tensor != 0).long()
         
-        
+        # Pass attention_mask as position_ids (3rd positional arg) to match training behaviour:
+        # the model was trained as model(input_ids, segment_ids, attention_masks) which mapped
+        # the binary 0/1 mask into the position_ids slot — position 2+ embeddings were never trained.
         with torch.no_grad():
             logits = self.model(input_ids_tensor, segment_ids_tensor, attention_mask)
             probs = torch.softmax(logits, dim=1)
@@ -488,7 +490,9 @@ class Screener:
             padded_segment_ids = padded_segment_ids.to(self.device)
             attention_masks = (padded_input_ids != 0).long()
             
-        
+            # Pass attention_masks as position_ids (3rd positional arg) to match training behaviour:
+            # the model was trained as model(input_ids, segment_ids, attention_masks) which mapped
+            # the binary 0/1 mask into the position_ids slot — position 2+ embeddings were never trained.
             with torch.no_grad():
                 logits = self.model(padded_input_ids, padded_segment_ids, attention_masks)
                 probs = torch.softmax(logits, dim=1)

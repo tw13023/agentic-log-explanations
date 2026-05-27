@@ -106,25 +106,7 @@ def build_table14(bgl: dict, hdfs: dict, sem: dict) -> str:
     bs  = sem['BGL']
     hs  = sem['HDFS']
 
-    # Phantom citations: reported as count in phase2, but Table 14 shows
-    # the number of sessions (= n_no_rag for HDFS=245, BGL=388 → but thesis
-    # shows BGL 338).  Use no_rag_phantom_citations / 3 claims = sessions
-    # with phantom = no_rag_phantom_citations (already per-session count
-    # if every session has exactly 1 phantom claim).
-    # From notebook: BGL 388 sessions → 388 phantom claims; but thesis
-    # shows 338 → that is the no_rag_e0_only_claims / something.
-    # Actually from notebook Cell 23: claims_with_phantom_eids = 388 (BGL),
-    # 245 (HDFS); but thesis Table 14 shows 338 and 245.
-    # BGL: 388 sessions * 3 claims = 1164 total; 388 phantom/1164 = 33.3%
-    # 338 = 388 - 50? Or it's the raw phantom count from a prior run.
-    # The semantic_faithfulness_results n=388 (BGL), n=245 (HDFS) matches
-    # the no_rag sample sizes.  338 for BGL appears to be the phantom count
-    # from an earlier notebook run stored in a different field.
-    # Check: no_rag_e0_only_claims BGL=776 (= 388*2), HDFS=490 (= 245*2).
-    # Best match: use no_rag_phantom_citations directly from the JSON which
-    # stores the value that was computed — BGL=388, but thesis=338.
-    # The thesis may be from an earlier run (n_no_rag was smaller then).
-    # Use the values from the JSON as the definitive source of truth.
+  
     bgl_phantom  = bp2['no_rag_phantom_citations']
     hdfs_phantom = hp2['no_rag_phantom_citations']
 
