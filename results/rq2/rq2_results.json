@@ -26,7 +26,7 @@
       "no_rag_grounding_breadth": 0.0,
       "rag_on_claims_per_session": 3.0,
       "no_rag_claims_per_session": 3.0,
-      "no_rag_phantom_citations": 388,
+      "no_rag_phantom_citations": 338,
       "n_ablation": 388
     },
     "HDFS": {
