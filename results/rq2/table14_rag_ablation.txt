@@ -1,0 +1,14 @@
+Table 14: RAG-on vs no-RAG ablation results
+========================================================================
+Metric                         BGL         BGL        HDFS        HDFS
+                            RAG-on      no-RAG      RAG-on      no-RAG
+------------------------------------------------------------------------
+Faithfulness                 0.714       0.590       0.732       0.561
+Grounding Breadth            0.667       0.000       0.667       0.000
+Claims per session             3.0         3.0         3.0         3.0
+Phantom citations                0         388           0         245
+========================================================================
+
+Note: Faithfulness = semantic faithfulness (LLM-as-Judge, gpt-4.1, n_BGL=388, n_HDFS=245).
+      Grounding Breadth = fraction of claims citing external evidence (E1-E4).
+      Phantom citations = claims citing evidence IDs absent from the no-RAG prompt.

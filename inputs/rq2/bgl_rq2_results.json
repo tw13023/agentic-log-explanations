@@ -1,0 +1,37 @@
+{
+  "timestamp": "20260409_132746",
+  "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
+  "revision_note": "Structural faithfulness removed (always ~1.0, not discriminating). Grounding Breadth is the primary discriminating metric. Semantic faithfulness (LLM-as-Judge) is in semantic_faithfulness_results.json.",
+  "key_finding": "RAG enables ~67% of claims to cite external anomaly patterns (E1-E4). Without RAG, 0% -- claims can only self-reference query session (E0).",
+  "phase0": {
+    "dataset": "BGL",
+    "n_sessions": 5850,
+    "context_precision_at_4_mean": 0.9913485280151947,
+    "context_precision_at_4_std": 0.05336644225454016,
+    "evidence_utilization": 0.6702991452991452,
+    "verification_pass_rate": 1.0
+  },
+  "phase1": {
+    "train_corpus_size": 332356,
+    "whole_corpus_size": 474796,
+    "n_compared": 100,
+    "anomaly_overlap_rate": 0.8725,
+    "top1_anomaly_match_rate": 0.88,
+    "e5_normal_match_rate": 0.54,
+    "new_docs_in_top4_mean": 0.51,
+    "conclusion": "Overlap >85% -- train-only corpus sufficient."
+  },
+  "phase2": {
+    "n_no_rag": 388,
+    "n_signatures": 237,
+    "total_cost_usd": 0.0,
+    "rag_on_grounding_breadth": 0.6666666666666667,
+    "no_rag_grounding_breadth": 0.0,
+    "grounding_breadth_delta": 0.6666666666666667,
+    "no_rag_claims_per_session": 3.0,
+    "rag_on_claims_per_session": 3.0,
+    "no_rag_insufficient_evidence": 0,
+    "no_rag_phantom_citations": 388,
+    "no_rag_e0_only_claims": 776
+  }
+}

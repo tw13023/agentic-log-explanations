@@ -1,0 +1,43 @@
+{
+  "rq": "RQ2",
+  "title": "RAG Ablation Study",
+  "bgl_run": "20260409_132746",
+  "hdfs_run": "20260409_141827",
+  "table13": {
+    "BGL": {
+      "n_sessions": 5850,
+      "context_precision_at_4": 0.9913,
+      "context_precision_at_4_std": 0.0534,
+      "evidence_utilization": 0.6703
+    },
+    "HDFS": {
+      "n_sessions": 2527,
+      "context_precision_at_4": 0.9457,
+      "context_precision_at_4_std": 0.1523,
+      "evidence_utilization": 0.4625
+    }
+  },
+  "table14": {
+    "judge_model": "gpt-4.1",
+    "BGL": {
+      "rag_on_faithfulness": 0.7139,
+      "no_rag_faithfulness": 0.5902,
+      "rag_on_grounding_breadth": 0.6667,
+      "no_rag_grounding_breadth": 0.0,
+      "rag_on_claims_per_session": 3.0,
+      "no_rag_claims_per_session": 3.0,
+      "no_rag_phantom_citations": 388,
+      "n_ablation": 388
+    },
+    "HDFS": {
+      "rag_on_faithfulness": 0.732,
+      "no_rag_faithfulness": 0.5605,
+      "rag_on_grounding_breadth": 0.6667,
+      "no_rag_grounding_breadth": 0.0,
+      "rag_on_claims_per_session": 3.0,
+      "no_rag_claims_per_session": 3.0,
+      "no_rag_phantom_citations": 245,
+      "n_ablation": 245
+    }
+  }
+}

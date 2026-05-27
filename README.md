@@ -64,7 +64,8 @@ Raw Logs → DataLoader (Session objects)
 │   ├── auto_evaluator.py            # Automated evaluation of explanation outputs
 │   ├── BGL_screener.py              # BGL screener inference (no LLM)
 │   ├── HDFS_screener.py             # HDFS screener inference (no LLM)
-│   └── rq1_explanation_quality.py   # RQ1: reproduce Table 10–12 + Figure 14
+│   ├── rq1_explanation_quality.py   # RQ1: reproduce Table 10–12 + Figure 14
+│   └── rq2_rag_ablation.py          # RQ2: reproduce Table 13–14 (RAG ablation)
 ├── notebooks/
 │   ├── 01_pipeline_test.ipynb       # Initial component testing
 │   ├── 02_pipeline_walkthrough.ipynb # Step-by-step interactive walkthrough
@@ -87,9 +88,11 @@ Raw Logs → DataLoader (Session objects)
 ├── best_model_HDFS/                 # Pretrained HDFS model
 ├── logs/                            # Log datasets (compressed; see below)
 ├── inputs/                          # Pre-computed inputs for analysis scripts
-│   └── rq1/                         # RQ1 inputs (metrics JSON + human eval)
+│   ├── rq1/                         # RQ1 inputs (metrics JSON + human eval)
+│   └── rq2/                         # RQ2 inputs (ablation results + faithfulness)
 ├── results/                         # BGL pipeline outputs (JSONL + metrics)
-│   └── rq1/                         # RQ1 analysis outputs (tables + figures)
+│   ├── rq1/                         # RQ1 analysis outputs (tables + figures)
+│   └── rq2/                         # RQ2 analysis outputs (tables)
 ├── results_HDFS/                    # HDFS pipeline outputs
 └── long-term-mem/                   # Development journal / decision log
 ```
@@ -204,15 +207,24 @@ Pre-computed pipeline outputs are already included in `inputs/` and `results/`, 
 # Table 12 (top-5 signatures), and Figure 14 (Zipf rank-frequency plot).
 # No LLM required. Outputs written to results/rq1/.
 python pipelines/rq1_explanation_quality.py
+
+# --- RQ2: RAG Ablation Study ---
+# Reproduces Table 13 (RAG-on baseline metrics) and Table 14
+# (RAG-on vs no-RAG ablation: faithfulness, grounding breadth, phantom citations).
+# No LLM required. Outputs written to results/rq2/.
+python pipelines/rq2_rag_ablation.py
 ```
 
-Input files are in `inputs/rq1/` (committed to this repository):
+Input files (all committed to this repository):
 
-| File | Contents |
-|------|----------|
-| `inputs/rq1/bgl_metrics.json` | BGL full-run metrics (2026-03-13, 5,850 sessions) |
-| `inputs/rq1/hdfs_metrics.json` | HDFS full-run metrics (2026-03-11, 2,527 sessions) |
-| `inputs/rq1/human_eval_ratings.json` | 100 human-rated explanations (50 BGL + 50 HDFS) |
+| Directory | File | Contents |
+|-----------|------|----------|
+| `inputs/rq1/` | `bgl_metrics.json` | BGL full-run metrics (2026-03-13, 5,850 sessions) |
+| `inputs/rq1/` | `hdfs_metrics.json` | HDFS full-run metrics (2026-03-11, 2,527 sessions) |
+| `inputs/rq1/` | `human_eval_ratings.json` | 100 human-rated explanations (50 BGL + 50 HDFS) |
+| `inputs/rq2/` | `bgl_rq2_results.json` | BGL ablation results (phase 0 + phase 2) |
+| `inputs/rq2/` | `hdfs_rq2_results.json` | HDFS ablation results (phase 0 + phase 2) |
+| `inputs/rq2/` | `semantic_faithfulness_results.json` | LLM-as-Judge faithfulness scores (GPT-4.1) |
 
 ---
 

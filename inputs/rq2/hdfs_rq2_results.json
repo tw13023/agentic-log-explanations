@@ -1,0 +1,36 @@
+{
+  "timestamp": "20260409_141827",
+  "research_question": "RQ2: RAG Contribution to Evidence Grounding Quality",
+  "revision_note": "Structural faithfulness removed (always ~1.0, not discriminating). Grounding Breadth is the primary discriminating metric. Semantic faithfulness (LLM-as-Judge) is in semantic_faithfulness_results.json.",
+  "phase0": {
+    "dataset": "HDFS",
+    "n_sessions": 2527,
+    "context_precision_at_4_mean": 0.9456755924899969,
+    "context_precision_at_4_std": 0.15225858500872003,
+    "evidence_utilization": 0.4625049465769687,
+    "verification_pass_rate": 1.0
+  },
+  "phase1": {
+    "train_corpus_size": 402542,
+    "whole_corpus_size": 575061,
+    "n_compared": 100,
+    "anomaly_overlap_rate": 0.8675,
+    "top1_anomaly_match_rate": 0.86,
+    "e5_normal_match_rate": 0.91,
+    "new_docs_in_top4_mean": 0.31,
+    "conclusion": "Overlap >85% -- train-only corpus sufficient."
+  },
+  "phase2": {
+    "n_no_rag": 245,
+    "n_signatures": 98,
+    "total_cost_usd": 0.0,
+    "rag_on_grounding_breadth": 0.6666666666666666,
+    "no_rag_grounding_breadth": 0.0,
+    "grounding_breadth_delta": 0.6666666666666666,
+    "no_rag_claims_per_session": 3.0,
+    "rag_on_claims_per_session": 3.0,
+    "no_rag_insufficient_evidence": 0,
+    "no_rag_phantom_citations": 245,
+    "no_rag_e0_only_claims": 490
+  }
+}
