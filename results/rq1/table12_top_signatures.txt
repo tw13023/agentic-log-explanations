@@ -1,0 +1,10 @@
+Table 12: Top 5 frequent anomaly signatures per dataset
+================================================================================================================
+Rank  BGL Signature                                  Count  HDFS Signature                                 Count
+----------------------------------------------------------------------------------------------------------------
+1     KERNEL__DATA_TLB_ERROR                         2,337  DATANODE__BLOCK_WRITE_STREAM_READ_FAILURE        425
+2     KERNEL__DATA_STORAGE_INTERRUPT                   821  FSDATASET__BLOCK_DELETION_METADATA_MISMATCH       412
+3     APP__CIOD_STREAM_ERROR                           704  NAMENODE__INCOMPLETE_PIPELINE                    385
+4     KERNEL__LUSTRE_MOUNT_FAILED                      480  FSDATASET__BLOCK_DELETION_METADATA_MISS          228
+5     KERNEL__KERNEL_TERMINATED                        171  NAMENODE__EXCESS_REPLICATION                     199
+================================================================================================================

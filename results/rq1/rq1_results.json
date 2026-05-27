@@ -1,0 +1,109 @@
+{
+  "rq": "RQ1",
+  "title": "Traceable Explanation Quality",
+  "model": "GPT-5.1",
+  "bgl_run": "2026-03-13",
+  "hdfs_run": "2026-03-11",
+  "pipeline": {
+    "BGL": {
+      "anomalies_explained": 5850,
+      "verification_pass_rate": 1.0,
+      "unique_signatures": 237,
+      "singleton_rate": 0.5401,
+      "avg_tokens": 6495.7,
+      "mean_latency_s": 7.6,
+      "p95_latency_s": 13.2,
+      "top5_signatures": [
+        [
+          "KERNEL__DATA_TLB_ERROR",
+          2337
+        ],
+        [
+          "KERNEL__DATA_STORAGE_INTERRUPT",
+          821
+        ],
+        [
+          "APP__CIOD_STREAM_ERROR",
+          704
+        ],
+        [
+          "KERNEL__LUSTRE_MOUNT_FAILED",
+          480
+        ],
+        [
+          "KERNEL__KERNEL_TERMINATED",
+          171
+        ]
+      ]
+    },
+    "HDFS": {
+      "anomalies_explained": 2527,
+      "verification_pass_rate": 1.0,
+      "unique_signatures": 98,
+      "singleton_rate": 0.3673,
+      "avg_tokens": 8120.0,
+      "mean_latency_s": 8.1,
+      "p95_latency_s": 14.4,
+      "top5_signatures": [
+        [
+          "DATANODE__BLOCK_WRITE_STREAM_READ_FAILURE",
+          425
+        ],
+        [
+          "FSDATASET__BLOCK_DELETION_METADATA_MISMATCH",
+          412
+        ],
+        [
+          "NAMENODE__INCOMPLETE_PIPELINE",
+          385
+        ],
+        [
+          "FSDATASET__BLOCK_DELETION_METADATA_MISS",
+          228
+        ],
+        [
+          "NAMENODE__EXCESS_REPLICATION",
+          199
+        ]
+      ]
+    }
+  },
+  "human_eval": {
+    "BGL": {
+      "correctness": {
+        "mean": 4.94,
+        "std": 0.2399,
+        "n": 50
+      },
+      "completeness": {
+        "mean": 4.98,
+        "std": 0.1414,
+        "n": 50
+      },
+      "evidence_grounding": {
+        "mean": 4.8,
+        "std": 0.4041,
+        "n": 50
+      },
+      "actionable_pct": 100.0
+    },
+    "HDFS": {
+      "correctness": {
+        "mean": 4.92,
+        "std": 0.274,
+        "n": 50
+      },
+      "completeness": {
+        "mean": 4.96,
+        "std": 0.1979,
+        "n": 50
+      },
+      "evidence_grounding": {
+        "mean": 4.64,
+        "std": 0.5253,
+        "n": 50
+      },
+      "actionable_pct": 100.0
+    }
+  }
+}

@@ -1,0 +1,11 @@
+Table 10: Reasoner pipeline results on BGL and HDFS
+====================================================================
+Metric                               BGL        HDFS
+--------------------------------------------------------------------
+Anomalies Explained                5,850       2,527
+Verification pass rate              100%        100%
+Unique signatures                    237          98
+Avg tokens/session                 6,496       8,120
+Mean latency (seconds)               7.6         8.1
+P95 latency (seconds)               13.2        14.4
+====================================================================
