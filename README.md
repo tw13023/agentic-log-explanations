@@ -61,7 +61,10 @@ Raw Logs → DataLoader (Session objects)
 │   └── verifier.py                  # 8-check faithfulness verification
 ├── pipelines/
 │   ├── explain_all.py               # End-to-end Explain-All pipeline (CLI + API)
-│   └── auto_evaluator.py            # Automated evaluation of explanation outputs
+│   ├── auto_evaluator.py            # Automated evaluation of explanation outputs
+│   ├── BGL_screener.py              # BGL screener inference (no LLM)
+│   ├── HDFS_screener.py             # HDFS screener inference (no LLM)
+│   └── rq1_explanation_quality.py   # RQ1: reproduce Table 10–12 + Figure 14
 ├── notebooks/
 │   ├── 01_pipeline_test.ipynb       # Initial component testing
 │   ├── 02_pipeline_walkthrough.ipynb # Step-by-step interactive walkthrough
@@ -83,7 +86,10 @@ Raw Logs → DataLoader (Session objects)
 ├── best_model/                      # Pretrained BGL model
 ├── best_model_HDFS/                 # Pretrained HDFS model
 ├── logs/                            # Log datasets (compressed; see below)
+├── inputs/                          # Pre-computed inputs for analysis scripts
+│   └── rq1/                         # RQ1 inputs (metrics JSON + human eval)
 ├── results/                         # BGL pipeline outputs (JSONL + metrics)
+│   └── rq1/                         # RQ1 analysis outputs (tables + figures)
 ├── results_HDFS/                    # HDFS pipeline outputs
 └── long-term-mem/                   # Development journal / decision log
 ```
@@ -175,6 +181,38 @@ python pipelines/explain_all.py --dataset HDFS --config path/to/config.yaml
 
 > LLM provider and model are configured in `configs/config.yaml` (`llm.provider`, `llm.model`).
 > The screener scripts (`BGL_screener.py`, `HDFS_screener.py`) do not call any LLM and require no API key.
+
+---
+
+### 5. Reproduce research question results
+
+Pre-computed pipeline outputs are already included in `inputs/` and `results/`, so the analysis scripts below run instantly with no LLM calls and no log files required.
+
+**Option A — Jupyter Notebook:**
+
+| RQ | Notebook |
+|----|----------|
+| RQ1: Explanation quality (Table 10–12, Figure 14) | `notebooks/13_rq1_explanation_quality.ipynb` |
+| RQ2: RAG ablation study | `notebooks/11_rq2_rag_ablation.ipynb` |
+| RQ3: Cost-quality gating | `notebooks/12_rq3_cost_quality_gating.ipynb` |
+
+**Option B — Command line:**
+
+```bash
+# --- RQ1: Traceable Explanation Quality ---
+# Reproduces Table 10 (pipeline summary), Table 11 (human evaluation),
+# Table 12 (top-5 signatures), and Figure 14 (Zipf rank-frequency plot).
+# No LLM required. Outputs written to results/rq1/.
+python pipelines/rq1_explanation_quality.py
+```
+
+Input files are in `inputs/rq1/` (committed to this repository):
+
+| File | Contents |
+|------|----------|
+| `inputs/rq1/bgl_metrics.json` | BGL full-run metrics (2026-03-13, 5,850 sessions) |
+| `inputs/rq1/hdfs_metrics.json` | HDFS full-run metrics (2026-03-11, 2,527 sessions) |
+| `inputs/rq1/human_eval_ratings.json` | 100 human-rated explanations (50 BGL + 50 HDFS) |
 
 ---
 
