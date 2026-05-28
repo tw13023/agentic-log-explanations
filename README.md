@@ -65,7 +65,8 @@ Raw Logs → DataLoader (Session objects)
 │   ├── BGL_screener.py              # BGL screener inference (no LLM)
 │   ├── HDFS_screener.py             # HDFS screener inference (no LLM)
 │   ├── rq1_explanation_quality.py   # RQ1: reproduce Table 10–12 + Figure 14
-│   └── rq2_rag_ablation.py          # RQ2: reproduce Table 13–14 (RAG ablation)
+│   ├── rq2_rag_ablation.py          # RQ2: reproduce Table 13–14 (RAG ablation)
+│   └── rq3_cost_quality_gating.py   # RQ3: reproduce Table 15 + Figure 15 (gating)
 ├── notebooks/
 │   ├── 01_pipeline_test.ipynb       # Initial component testing
 │   ├── 02_pipeline_walkthrough.ipynb # Step-by-step interactive walkthrough
@@ -89,10 +90,12 @@ Raw Logs → DataLoader (Session objects)
 ├── logs/                            # Log datasets (compressed; see below)
 ├── inputs/                          # Pre-computed inputs for analysis scripts
 │   ├── rq1/                         # RQ1 inputs (metrics JSON + human eval)
-│   └── rq2/                         # RQ2 inputs (ablation results + faithfulness)
+│   ├── rq2/                         # RQ2 inputs (ablation results + faithfulness)
+│   └── rq3/                         # RQ3 inputs (gating simulation results)
 ├── results/                         # BGL pipeline outputs (JSONL + metrics)
 │   ├── rq1/                         # RQ1 analysis outputs (tables + figures)
-│   └── rq2/                         # RQ2 analysis outputs (tables)
+│   ├── rq2/                         # RQ2 analysis outputs (tables)
+│   └── rq3/                         # RQ3 analysis outputs (table + figure)
 ├── results_HDFS/                    # HDFS pipeline outputs
 └── long-term-mem/                   # Development journal / decision log
 ```
@@ -213,6 +216,12 @@ python pipelines/rq1_explanation_quality.py
 # (RAG-on vs no-RAG ablation: faithfulness, grounding breadth, phantom citations).
 # No LLM required. Outputs written to results/rq2/.
 python pipelines/rq2_rag_ablation.py
+
+# --- RQ3: Cost-Quality Trade-off Under Confidence-Based Gating ---
+# Reproduces Table 15 (signature coverage % by gating strategy and budget)
+# and Figure 15 (Coverage-Cost Pareto curves).
+# No LLM required. Outputs written to results/rq3/.
+python pipelines/rq3_cost_quality_gating.py
 ```
 
 Input files (all committed to this repository):
@@ -225,6 +234,7 @@ Input files (all committed to this repository):
 | `inputs/rq2/` | `bgl_rq2_results.json` | BGL ablation results (phase 0 + phase 2) |
 | `inputs/rq2/` | `hdfs_rq2_results.json` | HDFS ablation results (phase 0 + phase 2) |
 | `inputs/rq2/` | `semantic_faithfulness_results.json` | LLM-as-Judge faithfulness scores (GPT-4.1) |
+| `inputs/rq3/` | `rq3_gating_simulation_results.json` | Gating simulation results (4 strategies × 6 budgets × 2 datasets) |
 
 ---
 
