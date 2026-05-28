@@ -46,12 +46,12 @@ OUT_DIR      = PROJECT_ROOT / 'results' / 'rq1'
 # ---------------------------------------------------------------------------
 
 def _load_json(path: Path) -> dict:
-    with open(path) as f:
+    with open(path, encoding='utf-8') as f:
         return json.load(f)
 
 
 def _write_txt(path: Path, text: str) -> None:
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         f.write(text)
 
 
@@ -347,7 +347,7 @@ def main() -> None:
     # rq1_results.json
     results = build_rq1_results(bgl, hdfs, human_eval)
     out_json = OUT_DIR / 'rq1_results.json'
-    with open(out_json, 'w') as f:
+    with open(out_json, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2)
     print(f'[OK] Saved rq1_results.json')
 
