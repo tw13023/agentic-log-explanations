@@ -56,7 +56,7 @@ Raw Logs → DataLoader (Session objects)
 │   ├── retriever.py                 # BM25 evidence retrieval with mixed-mode support
 │   ├── prompt_builder.py            # Prompt assembly + TraceExplanation schema
 │   ├── llm_client.py                # Unified LLM client (Ollama / OpenAI compatible)
-│   ├── gating.py                    # Gating logic (explain_all / top_k modes)
+│   ├── gating.py                    # Gating logic (explain_all / budgeted modes)
 │   ├── config_loader.py             # YAML config loader and validation
 │   └── verifier.py                  # 8-check faithfulness verification
 ├── pipelines/
@@ -111,28 +111,112 @@ git clone https://github.com/tw13023/agentic-log-explanations.git
 cd agentic-log-explanations
 ```
 
-### 2. Create a virtual environment
+### 2. Check Python
 
 **Python 3.12 is required.**
 
+Linux / macOS:
+
+```bash
+python3.12 --version
+```
+
+Windows PowerShell / Command Prompt:
+
+```powershell
+py -3.12 --version
+```
+
+Expected output: `Python 3.12.x`.
+
+### 3. Create and activate a virtual environment
+
+Linux / macOS:
+
 ```bash
 python3.12 -m venv .venv
-source .venv/bin/activate        # Linux / macOS
-# .venv\Scripts\activate         # Windows
+source .venv/bin/activate
 ```
 
-### 3. Install dependencies
+Windows PowerShell:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks activation on your machine, allow scripts for the current shell session only and activate again:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+Windows Command Prompt:
+
+```cmd
+py -3.12 -m venv .venv
+.venv\Scripts\activate.bat
+```
+
+### 4. Install dependencies online
+
+First upgrade `pip`:
 
 ```bash
-pip install --upgrade pip
-pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
+python -m pip install --upgrade pip
 ```
 
-> The `--extra-index-url` flag is required for PyTorch CUDA 12.8 builds (`torch==2.7.1+cu128`). Without it, pip cannot find this version on PyPI.
+Then install the official PyTorch wheel for your platform. You normally do **not** need to compile PyTorch from source.
 
-**Key dependencies:** PyTorch (CUDA 12.8), Linformer, tiktoken, rank-bm25, scikit-learn, pandas, requests, python-dotenv, PyYAML.
+For Windows or Linux with an NVIDIA GPU and a compatible CUDA 12.8 driver:
 
-### 3. Prepare log files
+```bash
+python -m pip install -r requirements-cuda.txt
+```
+
+For CPU-only Linux or Windows:
+
+```bash
+python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+```
+
+For macOS, including Apple Silicon Macs with MPS acceleration:
+
+```bash
+python -m pip install torch==2.7.1
+```
+
+If your CUDA version, driver, or operating system differs from the examples above, use the official PyTorch selector and install the command it recommends:
+
+```text
+https://pytorch.org/get-started/locally/
+```
+
+After PyTorch is installed, install the remaining project dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Verify the installation:
+
+```bash
+python -c "import sys, torch; print(sys.version); print('torch', torch.__version__); print('CUDA available:', torch.cuda.is_available())"
+```
+
+`CUDA available: False` is normal on CPU-only systems and macOS. The screener and analysis scripts can still run, but GPU-dependent workloads may be slower.
+
+**Key dependencies:** PyTorch, Linformer, tiktoken, rank-bm25, scikit-learn, pandas, requests, python-dotenv, PyYAML.
+
+Optional, for running the notebooks:
+
+```bash
+python -m pip install notebook ipykernel
+python -m ipykernel install --user --name agentic-log-explanations
+```
+
+### 5. Prepare log files
 
 Log files are **not included** in this repository (too large for GitHub and not redistributable). Download them from the [LogHub dataset collection](https://github.com/logpai/loghub) and place them in the `logs/` directory.
 
@@ -146,7 +230,9 @@ Download `HDFS_v1.tar.gz` (or equivalent) from LogHub. Extract it and place `HDF
 
 > The `logs/` directory is intentionally empty in the repository. All files in it are gitignored.
 
-### 4. Run the explanation pipeline
+### 6. Run the explanation pipeline
+
+The screener scripts run locally and do not require an LLM. The full explanation pipeline requires either an OpenAI API key or a local Ollama server; see [LLM Requirements](#llm-requirements).
 
 **Option A — Jupyter Notebook (recommended for exploration):**
 
@@ -190,7 +276,7 @@ python pipelines/explain_all.py --dataset HDFS --config path/to/config.yaml
 
 ---
 
-### 5. Reproduce research question results
+### 7. Reproduce research question results
 
 Pre-computed pipeline outputs are already included in `inputs/` and `results/`, so the analysis scripts below run instantly with no LLM calls and no log files required.
 
@@ -259,7 +345,7 @@ Input files (all committed to this repository):
 | **Retriever** | BM25-based retrieval with mixed mode (anomaly + normal exemplars). Supports batch processing. |
 | **PromptBuilder** | Assembles LLM prompts with session content, retrieved evidence, and dataset-specific instructions. Defines the `TraceExplanation` JSON schema. |
 | **LLMClient** | Unified client for Ollama (local) and OpenAI. Tracks token usage, latency, and cost. |
-| **Gating** | Selects which predicted anomalies to explain. Mode `explain_all`: all anomalies; mode `top_k`: budget-constrained by screener uncertainty score. |
+| **Gating** | Selects which predicted anomalies to explain. Mode `explain_all`: all anomalies; mode `budgeted`: budget-constrained by screener uncertainty score. |
 | **ConfigLoader** | Loads and validates `configs/config.yaml`; centralizes all pipeline parameters. |
 | **Verifier** | 8-check faithfulness verification: structure, evidence ID validity, coverage (≥80%), keyword matching, span validity, signature format, and more. |
 
@@ -362,7 +448,7 @@ All settings are centralized in `configs/config.yaml`:
 - **Model hyperparameters** (vocab_size, embedding_dim, layers, heads, Linformer k)
 - **RAG settings** (retriever type, top_k)
 - **LLM settings** (provider, model, temperature, timeout)
-- **Gating mode** — `explain_all` (all anomalies explained) or `top_k` (budget-constrained by screener uncertainty score)
+- **Gating mode** — `explain_all` (all anomalies explained) or `budgeted` (budget-constrained by screener uncertainty score)
 - **Output settings** (results directory, save format)
 
 ---
@@ -377,8 +463,22 @@ The explanation pipeline requires access to an LLM. Default: **OpenAI GPT-5.1**.
 
 1. Copy the provided example file:
 
+   Linux / macOS:
+
    ```bash
    cp .env.example .env
+   ```
+
+   Windows PowerShell:
+
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+
+   Windows Command Prompt:
+
+   ```cmd
+   copy .env.example .env
    ```
 
 2. Open `.env` and replace the placeholder with your real key:
@@ -389,9 +489,21 @@ The explanation pipeline requires access to an LLM. Default: **OpenAI GPT-5.1**.
 
 3. The `.env` file is loaded automatically at runtime via `python-dotenv`. It is listed in `.gitignore` and will never be committed to the repository.
 
-> You can also export the key as a shell environment variable instead of using a file:
+> You can also set the key as a shell environment variable instead of using a file.
+>
+> Linux / macOS:
 > ```bash
 > export OPENAI_API_KEY=sk-your-api-key-here
+> ```
+>
+> Windows PowerShell:
+> ```powershell
+> $env:OPENAI_API_KEY="sk-your-api-key-here"
+> ```
+>
+> Windows Command Prompt:
+> ```cmd
+> set OPENAI_API_KEY=sk-your-api-key-here
 > ```
 
 The active model can be changed without touching code — edit `llm.model` in `configs/config.yaml`:
@@ -424,4 +536,3 @@ See repository for license information.
 If you use this work, please cite:
 
 > Evidence-Grounded Explanations for Log-Based Anomaly Detection: A Screener–Reasoner Framework with Automated Evidence Verification
-

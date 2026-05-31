@@ -1,14 +1,11 @@
 # Generated 2025-08-25T10:51:26.977741Z
-# Updated 2026-04-07 for Agentic Explanation Pipeline
+# Updated 2026-05-31 for cross-platform online installation
 # Python 3.12
+#
+# Install PyTorch separately for your platform before installing this file.
+# See README.md for Windows, Linux, and macOS examples.
 
-# PyTorch (CUDA 12.8 build — requires the extra index below)
-# Install with:
-#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu128
---extra-index-url https://download.pytorch.org/whl/cu128
-
-# Core ML
-torch==2.7.1+cu128
+# Core ML / data science
 numpy==2.3.1
 pandas==2.3.1
 scikit-learn==1.7.0
